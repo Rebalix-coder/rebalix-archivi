@@ -1,0 +1,43 @@
+2026-07-26 15:01  === giro 2026-W30 avviato (dry=True) ===
+2026-07-26 15:01  [baskets:xspu] ok — 382/503 titoli, active share 56.5%
+2026-07-26 15:01  [baskets:world] ok — 519/1311 titoli, active share 59.3%
+2026-07-26 15:01  [td] ok — 1505 punti comuni, fine 2026-07-23, scarti +17pb, +21pb, +22pb, +24pb
+2026-07-26 15:01  [xeon] ok — 10 semestri, ultimo 2026-07-01 → 78.08%
+2026-07-26 15:01  [heartbeat] (dry) errori=0 moduli={'baskets-xspu': True, 'baskets-world': True, 'td': True, 'xeon-whitelist': True, 'deploy': True}
+2026-07-26 15:01  === giro completato (0 errori) ===
+2026-07-26 15:02  === giro 2026-W30 avviato (dry=True) ===
+2026-07-26 15:02  [baskets:xspu] ok — 382/503 titoli, active share 56.5%
+2026-07-26 15:02  [baskets:world] ok — 519/1311 titoli, active share 59.3%
+2026-07-26 15:02  [td] ok — 1505 punti comuni, fine 2026-07-23, scarti +17pb, +21pb, +22pb, +24pb
+2026-07-26 15:02  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-07-26 15:02  [heartbeat] (dry) errori=0 moduli={'baskets-xspu': True, 'baskets-world': True, 'td': True, 'xeon-whitelist': True, 'deploy': True}
+2026-07-26 15:02  === giro completato (0 errori) ===
+2026-07-26 15:06  === giro 2026-W30 avviato (dry=False) ===
+2026-07-26 15:06  [baskets:xspu] ok — 382/503 titoli, active share 56.5%
+2026-07-26 15:06  [baskets:world] ok — 519/1311 titoli, active share 59.3%
+2026-07-26 15:06  [td] ok — 1505 punti comuni, fine 2026-07-23, scarti +17pb, +21pb, +22pb, +24pb
+2026-07-26 15:06  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-07-26 15:09  [deploy] produzione aggiornata
+2026-07-26 15:09  [heartbeat] inviato (errori=0)
+2026-07-26 15:09  === giro completato (0 errori) ===
+2026-07-26 17:21  [hybrid] ok — 755 titoli fisici, USA 0.4%
+2026-07-26 17:52  [hybrid] ok — 755 titoli fisici, USA 0.4%; scarto vs fisico +52 pb/a su 401 sedute
+2026-07-26 18:12  === giro 2026-W30 avviato (dry=False) ===
+2026-07-26 18:12  [baskets:xspu] ok — 382/503 titoli, active share 56.5%
+2026-07-26 18:12  [baskets:world] ok — 519/1311 titoli, active share 59.3%
+2026-07-26 18:12  [td] ok — 1505 punti comuni, fine 2026-07-23, scarti +17pb, +21pb, +22pb, +24pb
+2026-07-26 18:12  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-07-26 18:12  [hybrid] ok — 755 titoli fisici, USA 0.4%; scarto vs fisico +52 pb/a su 401 sedute
+2026-07-26 18:12  [deploy] moduli invariati — nessun deploy
+2026-07-26 18:12  [heartbeat] inviato (errori=0)
+2026-07-26 18:12  === giro completato (0 errori) ===
+2026-07-27 07:40  === giro 2026-W31 avviato (dry=False) ===
+2026-07-27 07:40  [baskets:xspu] ok — 382/503 titoli, active share 56.5%
+2026-07-27 07:40  [baskets:world] ok — 519/1311 titoli, active share 59.3%
+2026-07-27 07:40  [td] ok — 1505 punti comuni, fine 2026-07-23, scarti +17pb, +21pb, +22pb, +24pb
+2026-07-27 07:40  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-07-27 07:40  [hybrid] ok — 755 titoli fisici, USA 0.4%; scarto vs fisico +51 pb/a su 402 sedute
+2026-07-27 07:42  [deploy] produzione aggiornata
+2026-07-27 07:42  [heartbeat] inviato (errori=0)
+2026-07-27 07:42  === giro completato (0 errori) ===
+2026-07-29 05:55  giro 2026-W31 già completato — niente da fare (usa --force per rifare)

@@ -1,0 +1,121 @@
+2026-07-28 22:14  === giro C3M ===
+2026-07-28 22:14     serie aggiornate (officialNav, adjustedBenchPrice)
+2026-07-28 22:14     spread: mercato chiuso (22:14), salto
+2026-07-28 22:14  [heartbeat] battito inviato
+2026-07-28 22:14  fatto, tutto OK
+2026-07-29 06:27  === giro C3M ===
+2026-07-29 06:27     composizione nuova per 2026-07-27
+2026-07-29 06:27     serie aggiornate (officialNav, adjustedBenchPrice)
+2026-07-29 06:27     spread: mercato chiuso (06:27), salto
+2026-07-29 06:27  [heartbeat] battito inviato
+2026-07-29 06:27  fatto, tutto OK
+2026-07-29 06:52  === giro C3M ===
+2026-07-29 06:52     serie aggiornate (officialNav, adjustedBenchPrice)
+2026-07-29 06:52     spread: mercato chiuso (06:52), salto
+2026-07-29 06:52  [heartbeat] battito inviato
+2026-07-29 06:52  fatto, tutto OK
+2026-07-29 07:06  === giro C3M ===
+2026-07-29 07:06     serie aggiornate (officialNav, adjustedBenchPrice)
+2026-07-29 07:06     spread: mercato chiuso (07:06), salto
+2026-07-29 07:06  !! variazioni: name 'BASE' is not defined
+2026-07-29 07:06  [heartbeat] battito inviato
+2026-07-29 07:06  fatto (1 errori)
+2026-07-29 07:06  === giro C3M ===
+2026-07-29 07:06     serie aggiornate (officialNav, adjustedBenchPrice)
+2026-07-29 07:06     spread: mercato chiuso (07:06), salto
+2026-07-29 07:06     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-07-29 07:06  [heartbeat] battito inviato
+2026-07-29 07:06  fatto, tutto OK
+2026-07-29 10:48  === giro C3M ===
+2026-07-29 10:48     [retry 1/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 10:48     [retry 2/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 10:49     [retry 3/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 10:49  !! snapshot: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 10:49     [retry 1/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 10:49     [retry 2/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:28     [retry 3/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:28  !! series: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:28     [retry 1/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:28     [retry 2/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:29     [retry 3/3] <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:29  !! spread: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:29     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-07-29 11:29  !! [heartbeat] fallito (non conto come errore dati): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-07-29 11:29  fatto (3 errori)
+2026-07-30 07:57  === giro C3M ===
+2026-07-30 07:57     composizione nuova per 2026-07-28 (55 strumenti nel paniere completo)
+2026-07-30 07:57     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-07-30 07:57     spread: mercato chiuso (07:57), salto
+2026-07-30 07:57     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-07-30 07:57  [heartbeat] battito inviato
+2026-07-30 07:57  fatto, tutto OK
+[main 17677f6] data(blog-c3m): refresh automatico dei moduli versionati
+ 2 files changed, 23 insertions(+), 23 deletions(-)
+HEAD is now at 17677f6 data(blog-c3m): refresh automatico dei moduli versionati
+2026-07-30 09:39  === giro C3M ===
+2026-07-30 09:39     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-07-30 09:39     spread registrato per 2 simboli
+2026-07-30 09:39     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-07-30 09:39     [c3m-performance] scritto: 2316 sedute 2017-07-10→2026-07-28, TD -15bp/a, maxDD -3.634% (2022-09-20), golden ok (16 vs dichiarato)
+2026-07-30 09:39     [c3m-composition] scritto: asof 2026-07-28, NAV 126.8509, AUM 929.4M, France 34.17% (tetto 34.5), somma paesi 100.0%
+2026-07-30 09:39     [c3m-tax] scritto: C3M 4 semestri (corrente 98.94% → 12.64%), XEON 11 semestri (corrente 78.08% → 15.46%)
+2026-07-30 09:39     [c3m-aum] scritto: 109 mesi 2017-07→2026-07, AUM 929M, raccolta 12m +181M, anni flussi: ['2017']…['2026']
+2026-07-30 09:39     [c3m-xeon-series] scritto: 233 mesi 2007-01→2026-07, golden ok
+2026-07-30 09:39  [deploy] commit dei moduli c3m
+2026-07-30 09:41  [deploy] deploy prod OK (17677f68) al tentativo 1
+2026-07-30 09:41  [heartbeat] battito inviato
+2026-07-30 09:41  fatto, tutto OK
+[main b1d3b98] data(blog-c3m): refresh automatico dei moduli versionati
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+HEAD is now at b1d3b98 data(blog-c3m): refresh automatico dei moduli versionati
+2026-07-30 10:45  === giro C3M ===
+2026-07-30 10:45     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-07-30 10:45     spread registrato per 2 simboli
+2026-07-30 10:45     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-07-30 10:45     [c3m-performance] scritto: 2316 sedute 2017-07-10→2026-07-28, TD -15bp/a, maxDD -3.634% (2022-09-20), golden ok (16 vs dichiarato)
+2026-07-30 10:45     [c3m-composition] scritto: asof 2026-07-28, NAV 126.8509, AUM 929.4M, France 34.17% (tetto 34.5), somma paesi 100.0%
+2026-07-30 10:45     [c3m-tax] scritto: C3M 4 semestri (corrente 98.94% → 12.64%), XEON 11 semestri (corrente 78.08% → 15.46%)
+2026-07-30 10:45     [c3m-aum] scritto: 109 mesi 2017-07→2026-07, AUM 929M, raccolta 12m +181M, anni flussi: ['2017']…['2026']
+2026-07-30 10:45     [c3m-xeon-series] scritto: 233 mesi 2007-01→2026-07, golden ok
+2026-07-30 10:45  [deploy] commit dei moduli c3m
+2026-07-30 10:47  [deploy] deploy prod OK (b1d3b984) al tentativo 1
+2026-07-30 10:47  [heartbeat] battito inviato
+2026-07-30 10:47  fatto, tutto OK
+[main e6c4233] data(blog-c3m): refresh automatico dei moduli versionati
+ 2 files changed, 36 insertions(+), 35 deletions(-)
+HEAD is now at e6c4233 data(blog-c3m): refresh automatico dei moduli versionati
+2026-07-31 10:51  === giro C3M ===
+2026-07-31 10:51     composizione nuova per 2026-07-29 (54 strumenti nel paniere completo)
+2026-07-31 10:51     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-07-31 10:51     spread registrato per 2 simboli
+2026-07-31 10:51     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-07-31 10:51     [c3m-performance] scritto: 2317 sedute 2017-07-10→2026-07-29, TD -15bp/a, maxDD -3.634% (2022-09-20), golden ok (16 vs dichiarato)
+2026-07-31 10:51     [c3m-composition] scritto: asof 2026-07-29, NAV 126.85, AUM 929.4M, France 34.5% (tetto 34.5), somma paesi 100.0%
+2026-07-31 10:51     [c3m-tax] scritto: C3M 4 semestri (corrente 98.94% → 12.64%), XEON 11 semestri (corrente 78.08% → 15.46%)
+2026-07-31 10:51     [c3m-aum] scritto: 109 mesi 2017-07→2026-07, AUM 929M, raccolta 12m +181M, anni flussi: ['2017']…['2026']
+2026-07-31 10:51     [c3m-xeon-series] scritto: 233 mesi 2007-01→2026-07, golden ok
+2026-07-31 10:51  [deploy] commit dei moduli c3m
+2026-07-31 10:52  !! push Codeberg fallito — proseguo col deploy del commit locale
+2026-07-31 10:54  [deploy] deploy prod OK (e6c42334) al tentativo 1
+2026-07-31 10:54  [heartbeat] battito inviato
+2026-07-31 10:54  fatto, tutto OK
+[main 6f1f6f2] data(blog-c3m): refresh automatico dei moduli versionati
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+HEAD is now at 6f1f6f2 data(blog-c3m): refresh automatico dei moduli versionati
+2026-08-01 10:45  === giro C3M ===
+2026-08-01 10:45     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-08-01 10:45     spread registrato per 2 simboli
+2026-08-01 10:45     [retry 1/3] HTTP Error 404: Not Found
+2026-08-01 10:45     [retry 2/3] HTTP Error 404: Not Found
+2026-08-01 10:45     [retry 3/3] HTTP Error 404: Not Found
+2026-08-01 10:45  !! docs: HTTP Error 404: Not Found
+2026-08-01 10:45     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-08-01 10:45     [c3m-performance] scritto: 2317 sedute 2017-07-10→2026-07-29, TD -15bp/a, maxDD -3.634% (2022-09-20), golden ok (16 vs dichiarato)
+2026-08-01 10:45     [c3m-composition] scritto: asof 2026-07-29, NAV 126.86, AUM 929.5M, France 34.5% (tetto 34.5), somma paesi 100.0%
+2026-08-01 10:45     [c3m-tax] scritto: C3M 4 semestri (corrente 98.94% → 12.64%), XEON 11 semestri (corrente 78.08% → 15.46%)
+2026-08-01 10:45     [c3m-aum] scritto: 109 mesi 2017-07→2026-07, AUM 930M, raccolta 12m +184M, anni flussi: ['2017']…['2026']
+2026-08-01 10:45     [c3m-xeon-series] scritto: 233 mesi 2007-01→2026-07, golden ok
+2026-08-01 10:45  [deploy] commit dei moduli c3m
+2026-08-01 10:47  [deploy] deploy prod OK (6f1f6f2a) al tentativo 1
+2026-08-01 11:02  !! [heartbeat] fallito (non conto come errore dati): The read operation timed out
+2026-08-01 11:02  fatto (1 errori)

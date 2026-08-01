@@ -1,0 +1,9 @@
+# dump del DATABASE: contengono dati utente → restano SOLO locali (il DB vero è su Supabase)
+rebalix/
+# cestino di file temporanei spostati dalle pulizie: non è archivio
+rebalix-cestino/
+# symlink verso ~/Documents (git non ne salva il contenuto): è specchiato in _whitelist-docs-mirror/
+rebalix-whitelist-docs
+# rumore
+.DS_Store
+_push-archivi.log

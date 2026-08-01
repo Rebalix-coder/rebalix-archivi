@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mock disegni — Replica fisica vs sintetica</title>
+<style>
+  body { margin:0; padding:32px 20px 64px; background:#0f172a; color:#CBD5E1;
+         font-family:-apple-system, system-ui, sans-serif; }
+  .wrap { max-width:860px; margin:0 auto; }
+  h1 { color:#F1F5F9; font-size:22px; margin:0 0 6px; }
+  .sub { color:#74828F; font-size:14px; margin:0 0 28px; }
+  .card { background:#111c2e; border:1px solid #1e293b; border-radius:12px;
+          padding:20px 20px 14px; margin:0 0 28px; }
+  .card h2 { color:#F1F5F9; font-size:16px; margin:0 0 2px; }
+  .card .dove { color:#f59e0b; font-size:12px; margin:0 0 12px; letter-spacing:.02em; }
+  .card .nota { color:#74828F; font-size:13px; line-height:1.5; margin:10px 0 4px; }
+  svg { width:100%; height:auto; display:block; }
+  .svgbox { background:#0b1322; border:1px solid #1e293b; border-radius:8px; padding:8px; }
+  text { font-family:-apple-system, system-ui, sans-serif; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Mock dei disegni — articolo «Replica fisica vs sintetica»</h1>
+<p class="sub">6 proposte da approvare · sfondo scuro come il blog · arancio solo come accento · frasi neutre</p>
+
+<!-- ============ MOCK 1 ============ -->
+<div class="card">
+  <h2>1 · Le due strade</h2>
+  <div class="dove">Apertura dell'articolo (sezione 1)</div>
+  <div class="svgbox">
+  <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg">
+    <!-- fonte comune -->
+    <rect x="280" y="16" width="200" height="44" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="380" y="36" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">Denaro degli investitori</text>
+    <text x="380" y="52" text-anchor="middle" fill="#74828F" font-size="11">lo stesso punto di partenza</text>
+    <!-- frecce -->
+    <path d="M330 60 L190 108" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+    <path d="M430 60 L570 108" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+      </marker>
+      <marker id="arrO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+      </marker>
+    </defs>
+
+    <!-- FISICO -->
+    <text x="190" y="100" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF a replica fisica</text>
+    <rect x="70" y="112" width="240" height="180" rx="10" fill="none" stroke="#334155"/>
+    <text x="190" y="134" text-anchor="middle" fill="#CBD5E1" font-size="12">compra i titoli dell'indice</text>
+    <!-- griglia titoli indice -->
+    <g>
+      <!-- 5 col x 4 righe, tinte blu/teal -->
+      <g transform="translate(100,148)">
+        <rect width="30" height="24" rx="4" fill="#3b82f6"/><rect x="38" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="76" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="114" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="152" width="30" height="24" rx="4" fill="#0ea5e9"/>
+        <rect y="32" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="38" y="32" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="76" y="32" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="114" y="32" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="152" y="32" width="30" height="24" rx="4" fill="#3b82f6"/>
+        <rect y="64" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="38" y="64" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="76" y="64" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="114" y="64" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="152" y="64" width="30" height="24" rx="4" fill="#14b8a6"/>
+        <rect y="96" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="38" y="96" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="76" y="96" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="114" y="96" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="152" y="96" width="30" height="24" rx="4" fill="#0ea5e9"/>
+      </g>
+    </g>
+    <text x="190" y="312" text-anchor="middle" fill="#74828F" font-size="11">il fondo possiede le azioni o le obbligazioni dell'indice</text>
+
+    <!-- SINTETICO -->
+    <text x="570" y="100" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF a replica sintetica</text>
+    <rect x="450" y="112" width="180" height="180" rx="10" fill="none" stroke="#334155"/>
+    <text x="540" y="134" text-anchor="middle" fill="#CBD5E1" font-size="12">compra un paniere diverso…</text>
+    <!-- paniere sostitutivo: tinte grigio/slate -->
+    <g transform="translate(472,148)">
+      <rect width="30" height="24" rx="4" fill="#64748b"/><rect x="38" width="30" height="24" rx="4" fill="#475569"/><rect x="76" width="30" height="24" rx="4" fill="#94a3b8"/><rect x="114" width="30" height="24" rx="4" fill="#64748b"/>
+      <rect y="32" width="30" height="24" rx="4" fill="#94a3b8"/><rect x="38" y="32" width="30" height="24" rx="4" fill="#64748b"/><rect x="76" y="32" width="30" height="24" rx="4" fill="#475569"/><rect x="114" y="32" width="30" height="24" rx="4" fill="#94a3b8"/>
+      <rect y="64" width="30" height="24" rx="4" fill="#475569"/><rect x="38" y="64" width="30" height="24" rx="4" fill="#94a3b8"/><rect x="76" y="64" width="30" height="24" rx="4" fill="#64748b"/><rect x="114" y="64" width="30" height="24" rx="4" fill="#475569"/>
+    </g>
+    <text x="540" y="258" text-anchor="middle" fill="#CBD5E1" font-size="12">…e scambia i rendimenti</text>
+    <text x="540" y="274" text-anchor="middle" fill="#CBD5E1" font-size="12">con una banca (swap)</text>
+    <!-- banca -->
+    <rect x="656" y="166" width="88" height="72" rx="8" fill="#1e293b" stroke="#f59e0b"/>
+    <text x="700" y="196" text-anchor="middle" fill="#F1F5F9" font-size="12" font-weight="600">Banca</text>
+    <text x="700" y="212" text-anchor="middle" fill="#74828F" font-size="10">controparte</text>
+    <path d="M632 186 L654 186" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrO)"/>
+    <path d="M654 218 L632 218" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrO)"/>
+    <text x="570" y="312" text-anchor="middle" fill="#74828F" font-size="11">il fondo possiede il paniere, non l'indice</text>
+
+    <!-- didascalia -->
+    <text x="380" y="352" text-anchor="middle" fill="#CBD5E1" font-size="13">Stesso indice replicato, patrimoni diversi: capire cosa possiede il fondo è il punto di partenza.</text>
+  </svg>
+  </div>
+  <p class="nota">Messaggio: «due ETF sullo stesso indice possono possedere cose completamente diverse». I riquadri colorati = titoli dell'indice; quelli grigi = paniere sostitutivo.</p>
+</div>
+
+<!-- ============ MOCK 2 ============ -->
+<div class="card">
+  <h2>2 · I tre modi della replica fisica</h2>
+  <div class="dove">Sezione 2 — pattern «bicchieri»</div>
+  <div class="svgbox">
+  <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg">
+    <!-- indice comune in alto -->
+    <text x="380" y="26" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">L'indice: 12 titoli, pesi diversi</text>
+    <g transform="translate(158,38)">
+      <rect width="34" height="20" rx="4" fill="#3b82f6"/><rect x="38" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="76" width="34" height="20" rx="4" fill="#14b8a6"/><rect x="114" width="34" height="20" rx="4" fill="#3b82f6"/><rect x="152" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="190" width="34" height="20" rx="4" fill="#14b8a6"/><rect x="228" width="34" height="20" rx="4" fill="#3b82f6"/><rect x="266" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="304" width="34" height="20" rx="4" fill="#14b8a6"/><rect x="342" width="34" height="20" rx="4" fill="#3b82f6"/><rect x="380" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="418" width="34" height="20" rx="4" fill="#14b8a6"/>
+    </g>
+    <path d="M240 70 L160 108" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+    <path d="M380 70 L380 108" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+    <path d="M520 70 L600 108" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+    <defs>
+      <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+      </marker>
+    </defs>
+
+    <!-- bicchiere 1: completa -->
+    <g transform="translate(80,116)">
+      <path d="M0 0 L160 0 L144 130 L16 130 Z" fill="none" stroke="#334155" stroke-width="2"/>
+      <g transform="translate(22,12)">
+        <rect width="26" height="16" rx="3" fill="#3b82f6"/><rect x="30" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="60" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="90" width="26" height="16" rx="3" fill="#3b82f6"/>
+        <rect y="22" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="30" y="22" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="60" y="22" width="26" height="16" rx="3" fill="#3b82f6"/><rect x="90" y="22" width="26" height="16" rx="3" fill="#0ea5e9"/>
+        <rect y="44" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="30" y="44" width="26" height="16" rx="3" fill="#3b82f6"/><rect x="60" y="44" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="90" y="44" width="26" height="16" rx="3" fill="#14b8a6"/>
+      </g>
+      <text x="80" y="152" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Completa</text>
+      <text x="80" y="170" text-anchor="middle" fill="#74828F" font-size="11">tutti i 12 titoli,</text>
+      <text x="80" y="184" text-anchor="middle" fill="#74828F" font-size="11">stessi pesi</text>
+    </g>
+
+    <!-- bicchiere 2: campionamento -->
+    <g transform="translate(300,116)">
+      <path d="M0 0 L160 0 L144 130 L16 130 Z" fill="none" stroke="#334155" stroke-width="2"/>
+      <g transform="translate(22,34)">
+        <rect width="26" height="16" rx="3" fill="#3b82f6"/><rect x="60" width="26" height="16" rx="3" fill="#14b8a6"/>
+        <rect y="22" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="90" y="22" width="26" height="16" rx="3" fill="#0ea5e9"/>
+        <rect x="30" y="44" width="26" height="16" rx="3" fill="#14b8a6"/>
+      </g>
+      <text x="80" y="152" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Campionamento</text>
+      <text x="80" y="170" text-anchor="middle" fill="#74828F" font-size="11">un sottoinsieme</text>
+      <text x="80" y="184" text-anchor="middle" fill="#74828F" font-size="11">rappresentativo</text>
+    </g>
+
+    <!-- bicchiere 3: ottimizzazione -->
+    <g transform="translate(520,116)">
+      <path d="M0 0 L160 0 L144 130 L16 130 Z" fill="none" stroke="#334155" stroke-width="2"/>
+      <g transform="translate(22,34)">
+        <rect width="26" height="16" rx="3" fill="#3b82f6"/><rect x="30" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="60" width="26" height="16" rx="3" fill="#14b8a6"/>
+        <rect y="22" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="30" y="22" width="26" height="16" rx="3" fill="#3b82f6"/><rect x="90" y="22" width="26" height="16" rx="3" fill="#0ea5e9"/>
+      </g>
+      <!-- mirino/modello -->
+      <circle cx="128" cy="22" r="12" fill="none" stroke="#f59e0b" stroke-width="2"/>
+      <path d="M128 6 L128 14 M128 30 L128 38 M112 22 L120 22 M136 22 L144 22" stroke="#f59e0b" stroke-width="2"/>
+      <text x="80" y="152" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Ottimizzazione</text>
+      <text x="80" y="170" text-anchor="middle" fill="#74828F" font-size="11">titoli scelti da un modello</text>
+      <text x="80" y="184" text-anchor="middle" fill="#74828F" font-size="11">per ridurre lo scarto</text>
+    </g>
+
+    <text x="380" y="322" text-anchor="middle" fill="#CBD5E1" font-size="13">Meno titoli possiede il fondo, più conta la bravura di chi li sceglie.</text>
+  </svg>
+  </div>
+  <p class="nota">Stesso «bicchiere» tre volte: pieno, riempito a campione, riempito da un modello (mirino arancio = criterio matematico).</p>
+</div>
+
+<!-- ============ MOCK 3 ============ -->
+<div class="card">
+  <h2>3 · Lo swap «unfunded» (il modello più diffuso)</h2>
+  <div class="dove">Sezione 3 — primo dei due modelli</div>
+  <div class="svgbox">
+  <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+      <marker id="arr3o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+    </defs>
+    <!-- investitore -->
+    <rect x="30" y="120" width="130" height="56" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="95" y="144" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Investitore</text>
+    <text x="95" y="162" text-anchor="middle" fill="#74828F" font-size="11">versa denaro</text>
+    <path d="M160 148 L208 148" stroke="#475569" stroke-width="2" marker-end="url(#arr3)"/>
+    <!-- ETF -->
+    <rect x="210" y="60" width="240" height="200" rx="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="330" y="84" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF sintetico</text>
+    <!-- paniere dentro -->
+    <rect x="234" y="100" width="192" height="120" rx="8" fill="#111c2e" stroke="#334155"/>
+    <text x="330" y="120" text-anchor="middle" fill="#CBD5E1" font-size="12">Paniere sostitutivo</text>
+    <g transform="translate(252,132)">
+      <rect width="30" height="20" rx="4" fill="#64748b"/><rect x="38" width="30" height="20" rx="4" fill="#94a3b8"/><rect x="76" width="30" height="20" rx="4" fill="#475569"/><rect x="114" width="30" height="20" rx="4" fill="#64748b"/>
+      <rect y="26" width="30" height="20" rx="4" fill="#94a3b8"/><rect x="38" y="26" width="30" height="20" rx="4" fill="#475569"/><rect x="76" y="26" width="30" height="20" rx="4" fill="#94a3b8"/><rect x="114" y="26" width="30" height="20" rx="4" fill="#64748b"/>
+    </g>
+    <text x="330" y="204" text-anchor="middle" fill="#74828F" font-size="10">di proprietà del fondo · conto segregato</text>
+    <text x="330" y="246" text-anchor="middle" fill="#74828F" font-size="11">se la banca fallisce, questo resta al fondo</text>
+    <!-- controparte -->
+    <rect x="580" y="96" width="150" height="128" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="655" y="124" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Banca</text>
+    <text x="655" y="140" text-anchor="middle" fill="#74828F" font-size="11">controparte swap</text>
+    <text x="655" y="164" text-anchor="middle" fill="#74828F" font-size="10">una o più banche;</text>
+    <text x="655" y="178" text-anchor="middle" fill="#74828F" font-size="10">più banche = rischio</text>
+    <text x="655" y="192" text-anchor="middle" fill="#74828F" font-size="10">più diviso</text>
+    <!-- scambio -->
+    <path d="M452 132 L576 132" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr3o)"/>
+    <text x="514" y="122" text-anchor="middle" fill="#CBD5E1" font-size="11">rendimento del paniere</text>
+    <path d="M576 188 L452 188" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr3o)"/>
+    <text x="514" y="208" text-anchor="middle" fill="#CBD5E1" font-size="11">rendimento dell'indice</text>
+    <text x="514" y="222" text-anchor="middle" fill="#74828F" font-size="10">(meno il costo dello swap)</text>
+    <!-- regola -->
+    <rect x="210" y="282" width="520" height="34" rx="8" fill="none" stroke="#f59e0b"/>
+    <text x="470" y="303" text-anchor="middle" fill="#CBD5E1" font-size="12">Regola UCITS: la differenza tra valore del fondo e paniere non può superare il 10% del patrimonio</text>
+  </svg>
+  </div>
+  <p class="nota">Il punto chiave visivo: il paniere sta <em>dentro</em> il perimetro dell'ETF (è suo), lo scambio con la banca è solo sui rendimenti.</p>
+</div>
+
+<!-- ============ MOCK 4 ============ -->
+<div class="card">
+  <h2>4 · Lo swap «funded» (variante col collaterale)</h2>
+  <div class="dove">Sezione 3 — secondo modello, in coppia col mock 3</div>
+  <div class="svgbox">
+  <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+      <marker id="arr4o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+    </defs>
+    <!-- investitore -->
+    <rect x="30" y="100" width="130" height="56" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="95" y="124" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Investitore</text>
+    <text x="95" y="142" text-anchor="middle" fill="#74828F" font-size="11">versa denaro</text>
+    <path d="M160 128 L208 128" stroke="#475569" stroke-width="2" marker-end="url(#arr4)"/>
+    <!-- ETF -->
+    <rect x="210" y="88" width="180" height="80" rx="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="300" y="118" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF sintetico</text>
+    <text x="300" y="140" text-anchor="middle" fill="#74828F" font-size="11">gira il denaro alla banca</text>
+    <!-- controparte -->
+    <rect x="540" y="88" width="190" height="80" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="635" y="114" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Banca controparte</text>
+    <text x="635" y="134" text-anchor="middle" fill="#74828F" font-size="11">promette il rendimento</text>
+    <text x="635" y="148" text-anchor="middle" fill="#74828F" font-size="11">dell'indice + il capitale</text>
+    <!-- scambio -->
+    <path d="M392 112 L536 112" stroke="#475569" stroke-width="2" marker-end="url(#arr4)"/>
+    <text x="464" y="102" text-anchor="middle" fill="#CBD5E1" font-size="11">denaro</text>
+    <path d="M536 148 L392 148" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr4o)"/>
+    <text x="464" y="168" text-anchor="middle" fill="#CBD5E1" font-size="11">rendimento dell'indice</text>
+    <!-- collaterale -->
+    <path d="M635 168 L635 208" stroke="#475569" stroke-width="2" marker-end="url(#arr4)"/>
+    <rect x="430" y="212" width="300" height="76" rx="10" fill="#111c2e" stroke="#334155" stroke-dasharray="6 4"/>
+    <text x="580" y="236" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Collaterale a garanzia — di norma ≥ 100%</text>
+    <text x="580" y="254" text-anchor="middle" fill="#74828F" font-size="11">titoli depositati presso un depositario terzo,</text>
+    <text x="580" y="268" text-anchor="middle" fill="#74828F" font-size="11">in un conto separato dalla banca</text>
+    <!-- differenza chiave -->
+    <rect x="30" y="212" width="360" height="76" rx="10" fill="none" stroke="#334155"/>
+    <text x="210" y="238" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Differenza col modello «unfunded»:</text>
+    <text x="210" y="256" text-anchor="middle" fill="#74828F" font-size="11">qui il fondo non possiede i titoli — ha una garanzia</text>
+    <text x="210" y="270" text-anchor="middle" fill="#74828F" font-size="11">da escutere se la banca non paga</text>
+    <text x="380" y="318" text-anchor="middle" fill="#CBD5E1" font-size="13">Possedere un paniere e avere una garanzia non sono la stessa cosa: cambia cosa succede nel giorno peggiore.</text>
+  </svg>
+  </div>
+  <p class="nota">In coppia col mock 3: stessa impaginazione, così il lettore coglie la differenza (possesso diretto vs garanzia) a colpo d'occhio.</p>
+</div>
+
+<!-- ============ MOCK 5 ============ -->
+<div class="card">
+  <h2>5 · Il dividendo alla frontiera</h2>
+  <div class="dove">Sezione 7 — il risparmio sulla ritenuta USA (disegno chiave)</div>
+  <div class="svgbox">
+  <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+    </defs>
+    <!-- confine -->
+    <line x1="380" y1="40" x2="380" y2="290" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="380" y="28" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">confine fiscale USA</text>
+    <text x="200" y="52" text-anchor="middle" fill="#74828F" font-size="11">Stati Uniti</text>
+    <text x="560" y="52" text-anchor="middle" fill="#74828F" font-size="11">Europa (fondo irlandese)</text>
+
+    <!-- sorgente -->
+    <rect x="60" y="130" width="150" height="80" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="135" y="160" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Dividendo</text>
+    <text x="135" y="180" text-anchor="middle" fill="#F1F5F9" font-size="18" font-weight="700">100</text>
+    <text x="135" y="198" text-anchor="middle" fill="#74828F" font-size="10">pagato dalle aziende USA</text>
+
+    <!-- percorso fisico -->
+    <text x="300" y="92" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Percorso fisico</text>
+    <path d="M210 116 C 260 100, 300 100, 356 108" stroke="#475569" stroke-width="3" fill="none"/>
+    <!-- casello -->
+    <rect x="352" y="88" width="56" height="40" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="380" y="105" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">−15%</text>
+    <text x="380" y="119" text-anchor="middle" fill="#74828F" font-size="9">ritenuta</text>
+    <path d="M408 108 C 460 104, 500 106, 556 112" stroke="#475569" stroke-width="3" fill="none" marker-end="url(#arr5)"/>
+    <rect x="562" y="88" width="150" height="44" rx="8" fill="#111c2e" stroke="#3b82f6"/>
+    <text x="637" y="106" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">85</text>
+    <text x="637" y="122" text-anchor="middle" fill="#74828F" font-size="10">entra nel valore del fondo</text>
+
+    <!-- percorso sintetico -->
+    <text x="300" y="246" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Percorso sintetico</text>
+    <path d="M210 226 C 280 258, 460 258, 556 234" stroke="#475569" stroke-width="3" fill="none" marker-end="url(#arr5)"/>
+    <text x="380" y="278" text-anchor="middle" fill="#74828F" font-size="10">dentro lo swap su indice «qualificato» — nessuna ritenuta (norma USA 871(m))</text>
+    <rect x="562" y="206" width="150" height="44" rx="8" fill="#111c2e" stroke="#3b82f6"/>
+    <text x="637" y="224" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">100</text>
+    <text x="637" y="240" text-anchor="middle" fill="#74828F" font-size="10">entra nel valore del fondo</text>
+
+    <!-- note -->
+    <text x="380" y="316" text-anchor="middle" fill="#CBD5E1" font-size="13">Con i dividendi attuali dell'S&amp;P 500, la differenza vale nell'ordine di 0,15–0,20% l'anno.</text>
+    <text x="380" y="338" text-anchor="middle" fill="#74828F" font-size="11">Regime USA soggetto a proroghe periodiche · fondi lussemburghesi: ritenuta 30% · dato aggiornato automaticamente</text>
+  </svg>
+  </div>
+  <p class="nota">Il costo invisibile reso visibile: il «casello» arancio sul percorso fisico. La cifra in didascalia sarà un valore vivo, ricalcolato dal modulo dati.</p>
+</div>
+
+<!-- ============ MOCK 6 ============ -->
+<div class="card">
+  <h2>6 · Il reset dello swap, giorno per giorno</h2>
+  <div class="dove">Sezione 3/5 — l'esempio numerico del Morningstar 2012, ridisegnato</div>
+  <div class="svgbox">
+  <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg">
+    <!-- asse -->
+    <line x1="90" y1="250" x2="700" y2="250" stroke="#334155" stroke-width="1"/>
+    <line x1="90" y1="250" x2="90" y2="60" stroke="#334155" stroke-width="1"/>
+    <text x="60" y="255" text-anchor="middle" fill="#74828F" font-size="10">0%</text>
+    <!-- soglia 10% -->
+    <line x1="90" y1="90" x2="700" y2="90" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="60" y="94" text-anchor="middle" fill="#f59e0b" font-size="10">10%</text>
+    <text x="600" y="80" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600">limite UCITS</text>
+    <text x="30" y="160" text-anchor="middle" fill="#74828F" font-size="10" transform="rotate(-90 30 160)">esposizione verso la banca</text>
+
+    <!-- barre: gio1 0, gio2 4.8, gio3 1.8, gio4 10.4->reset, gio5 0 -->
+    <g>
+      <rect x="130" y="248" width="60" height="2" fill="#3b82f6"/>
+      <text x="160" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 1</text>
+      <text x="160" y="286" text-anchor="middle" fill="#74828F" font-size="10">0%</text>
+
+      <rect x="240" y="173" width="60" height="77" fill="#3b82f6" rx="3"/>
+      <text x="270" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 2</text>
+      <text x="270" y="286" text-anchor="middle" fill="#74828F" font-size="10">4,8%</text>
+
+      <rect x="350" y="221" width="60" height="29" fill="#3b82f6" rx="3"/>
+      <text x="380" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 3</text>
+      <text x="380" y="286" text-anchor="middle" fill="#74828F" font-size="10">1,8%</text>
+
+      <rect x="460" y="84" width="60" height="166" fill="#3b82f6" rx="3"/>
+      <rect x="460" y="84" width="60" height="10" fill="#f59e0b" rx="3"/>
+      <text x="490" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 4</text>
+      <text x="490" y="286" text-anchor="middle" fill="#74828F" font-size="10">10,4% → reset</text>
+
+      <rect x="570" y="248" width="60" height="2" fill="#3b82f6"/>
+      <text x="600" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 4, dopo</text>
+      <text x="600" y="286" text-anchor="middle" fill="#74828F" font-size="10">0%</text>
+    </g>
+    <!-- freccia reset -->
+    <path d="M524 100 C 550 120, 560 190, 572 240" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arr6)"/>
+    <defs><marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker></defs>
+    <text x="588" y="140" fill="#CBD5E1" font-size="11">la banca versa titoli</text>
+    <text x="588" y="156" fill="#CBD5E1" font-size="11">nel paniere e</text>
+    <text x="588" y="172" fill="#CBD5E1" font-size="11">l'esposizione si azzera</text>
+
+    <text x="395" y="312" text-anchor="middle" fill="#CBD5E1" font-size="13">Molti emittenti azzerano prima del limite, spesso ogni giorno: il 10% è il tetto, non la prassi.</text>
+  </svg>
+  </div>
+  <p class="nota">Traduzione visiva dell'esempio numerico del Morningstar 2012 (indice che sale, paniere fermo, reset al tetto). I numeri sono illustrativi e dichiarati come tali.</p>
+</div>
+
+<p class="sub">Mancano di proposito: il grafico MSCI World (sez. 4) e la tabella fiscale per residenza (sez. 7) — quelli nascono come componenti interattivi coi dati veri, non come SVG statici.</p>
+</div>
+</body>
+</html>

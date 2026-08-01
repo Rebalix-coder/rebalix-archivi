@@ -1,0 +1,1 @@
+30 21 * * * cp -r ~/progetti/rebalix ~/Desktop/rebalix_backup_$(date +\%Y\%m\%d) && find ~/Desktop -name 'rebalix_backup_*' -mtime +7 -exec rm -rf {} +

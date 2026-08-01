@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOZZA — Replica fisica o sintetica: cosa possiede davvero il tuo ETF</title>
+<style>
+  body { margin:0; padding:0 0 80px; background:#0f172a; color:#CBD5E1;
+         font-family:-apple-system, system-ui, sans-serif; line-height:1.65; }
+  .banner { background:#f59e0b; color:#0f172a; font-weight:700; text-align:center;
+            padding:10px 16px; font-size:14px; position:sticky; top:0; z-index:9; }
+  .wrap { max-width:760px; margin:0 auto; padding:36px 20px 0; }
+  h1 { color:#F1F5F9; font-size:30px; line-height:1.25; margin:8px 0 10px; }
+  h2 { color:#F1F5F9; font-size:22px; margin:44px 0 10px; }
+  h3 { color:#F1F5F9; font-size:17px; margin:28px 0 8px; }
+  p  { margin:12px 0; }
+  .lead { font-size:18px; color:#E2E8F0; }
+  .meta { color:#94A3B8; font-size:13px; margin-bottom:24px; }
+  .svgbox { background:#0b1322; border:1px solid #1e293b; border-radius:10px; padding:10px; margin:20px 0; }
+  .svgbox figcaption { color:#CBD5E1; font-size:12.5px; padding:8px 8px 2px; }
+  svg { width:100%; height:auto; display:block; }
+  .placeholder { border:2px dashed #f59e0b; border-radius:10px; padding:18px 20px; margin:22px 0;
+                 color:#CBD5E1; font-size:14px; }
+  .placeholder b { color:#f59e0b; }
+  .box { background:#111c2e; border:1px solid #1e293b; border-left:3px solid #f59e0b;
+         border-radius:8px; padding:14px 18px; margin:20px 0; font-size:15px; }
+  table { border-collapse:collapse; width:100%; margin:18px 0; font-size:14px; }
+  th, td { border:1px solid #1e293b; padding:9px 12px; text-align:left; vertical-align:top; }
+  th { background:#111c2e; color:#F1F5F9; font-weight:600; }
+  td { color:#CBD5E1; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .dim { color:#94A3B8; }
+  p.dim { color:#CBD5E1; }
+  .faq dt { color:#F1F5F9; font-weight:600; margin:18px 0 4px; }
+  .faq dd { margin:0 0 0 0; }
+  .fonti li { margin:7px 0; font-size:14px; }
+  a { color:#7dd3fc; }
+  .disclaimer { border-top:1px solid #1e293b; margin-top:44px; padding-top:16px;
+                color:#94A3B8; font-size:13px; }
+  .notaredazione { background:#0b1322; border:1px solid #334155; border-radius:8px;
+                   color:#94a3b8; font-size:13px; padding:10px 14px; margin:14px 0; }
+  .notaredazione::before { content:"NOTA DI REDAZIONE · "; color:#f59e0b; font-weight:700; }
+</style>
+</head>
+<body>
+<div class="banner">BOZZA IN REVISIONE — non pubblicata, non in produzione. Per lettura di Linus.</div>
+<div class="wrap">
+
+<p class="meta">Guide · Bozza v1.17 (tabella «Quando si aggiorna questa pagina» in testa; doppia data Pubblicato/Aggiornato annotata; shortlist SEO da analisi Gemini con proposta finale) · 26 luglio 2026 · tempo di lettura ~17 minuti</p>
+<h1>Replica fisica o sintetica: cosa possiede davvero il tuo ETF</h1>
+<p class="lead">Due ETF sullo stesso indice possono avere in pancia cose completamente diverse. Uno compra le azioni che replicherà, l'altro compra <em>altro</em> e si fa promettere il rendimento da una banca. Capire la differenza non serve a scegliere un «vincitore»: serve a sapere cosa possiedi, cosa rischi e — in alcuni paesi — quante tasse paghi.</p>
+
+<div class="notaredazione">SEO (analisi Gemini recepita, 26/7) — proposta: <strong>seoTitle</strong> «ETF a replica fisica o sintetica: quale scegliere?» (47 car., angolo decisionale, spazio per «| Rebalix»); <strong>h1</strong> resta questo della pagina (title ≠ h1 come da linee guida); <strong>meta description</strong>: «Come funzionano gli ETF a replica fisica e sintetica: rischio di controparte, efficienza fiscale per paese e la mappa per orientarsi nella scelta.» Scartato «quale conviene» nell'h1 (parola bandita dallo stile neutro). Alternativa direct-match se Linus preferisce: «Differenza tra ETF a replica fisica e sintetica: guida» (52). Cover da fare. ATTESA CONFERMA FINALE di Linus sul seoTitle.</div>
+<div class="notaredazione">Impaginazione: date in testata — «Pubblicato il [data]» sempre; «<strong>Aggiornato il [data]</strong>» compare <strong>solo dal primo aggiornamento in poi</strong> (mai il giorno della pubblicazione) e da lì si rinnova a ogni aggiornamento, automatico dai moduli o editoriale. Nei metadati: dateModified presente solo quando esiste un aggiornamento reale, altrimenti = datePublished.</div>
+
+<h2 style="font-size:18px">Quando si aggiorna questa pagina</h2>
+<p style="font-size:14.5px">Ogni dato ha una fonte ufficiale e una cadenza propria. Qui trovi la data dell'ultimo aggiornamento di ciascuno — non una promessa, un elenco verificabile.</p>
+<table style="font-size:13.5px">
+  <tr><th>Cosa</th><th>Cadenza e fonte</th><th>Ultimo aggiornamento</th></tr>
+  <tr><td>Confronto paniere vs indice (S&amp;P 500 e MSCI World)</td><td>ogni settimana, dagli export ufficiali dell'emittente</td><td>26 luglio 2026</td></tr>
+  <tr><td>Tracking difference fisici vs sintetici (S&amp;P 500)</td><td>ogni settimana, dai NAV ufficiali degli emittenti</td><td class="dim">attivo dalla pubblicazione</td></tr>
+  <tr><td>Quota di mercato dei sintetici (patrimoni)</td><td>ogni settimana, dai patrimoni pubblicati dagli emittenti</td><td class="dim">attivo dalla pubblicazione</td></tr>
+  <tr><td>Risparmio sulla ritenuta USA (punti base)</td><td>ricalcolato dal rendimento da dividendo corrente</td><td>26 luglio 2026</td></tr>
+  <tr><td>Quota white-list di XEON (sezione 8)</td><td>ogni semestre, dal documento fiscale ufficiale dell'emittente</td><td>luglio 2026 <span class="dim">(valido lug–dic 2026)</span></td></tr>
+  <tr><td>Quadro normativo (UCITS, ESMA, 871(m), fiscalità per paese)</td><td>a ogni novità — sentinelle sulle pagine ufficiali + revisione redazionale</td><td>26 luglio 2026</td></tr>
+</table>
+<div class="notaredazione">Questa tabella in produzione è generata dai moduli dati (le date si aggiornano da sole); le righe «attivo dalla pubblicazione» spariscono quando i moduli vanno live. Pattern identico all'articolo LifeStrategy.</div>
+
+<!-- ============ SEZIONE 1 ============ -->
+<h2>1 · Le due strade</h2>
+<p>Quando compri una quota di un ETF che replica un indice — l'S&amp;P 500, il FTSE MIB, un paniere di titoli di Stato — il tuo denaro entra in un fondo. Da lì in poi, le strade possibili sono due.</p>
+<p>La prima è quella intuitiva: il fondo <strong>compra i titoli dell'indice</strong>. Possiedi, attraverso il fondo, un pezzetto di ogni azienda o obbligazione che l'indice contiene. Si chiama <strong>replica fisica</strong>.</p>
+<p>La seconda è meno intuitiva: il fondo compra <strong>un paniere di titoli che con l'indice può non c'entrare nulla</strong>, e in parallelo firma un contratto con una banca — uno <em>swap</em>, cioè uno scambio — in cui i due si promettono: «io ti giro il rendimento del mio paniere, tu mi giri il rendimento dell'indice». Si chiama <strong>replica sintetica</strong>.</p>
+
+<figure class="svgbox">
+  <!-- MOCK 1 — Le due strade (approvato) -->
+  <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg">
+    <rect x="280" y="16" width="200" height="44" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="380" y="36" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">Denaro degli investitori</text>
+    <text x="380" y="52" text-anchor="middle" fill="#94A3B8" font-size="11">lo stesso punto di partenza</text>
+    <path d="M330 60 L190 108" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+    <path d="M430 60 L570 108" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+      <marker id="arrO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+    </defs>
+    <text x="190" y="100" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF a replica fisica</text>
+    <rect x="70" y="112" width="240" height="180" rx="10" fill="none" stroke="#334155"/>
+    <text x="190" y="134" text-anchor="middle" fill="#CBD5E1" font-size="12">compra i titoli dell'indice</text>
+    <g transform="translate(100,148)">
+      <rect width="30" height="24" rx="4" fill="#3b82f6"/><rect x="38" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="76" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="114" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="152" width="30" height="24" rx="4" fill="#0ea5e9"/>
+      <rect y="32" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="38" y="32" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="76" y="32" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="114" y="32" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="152" y="32" width="30" height="24" rx="4" fill="#3b82f6"/>
+      <rect y="64" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="38" y="64" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="76" y="64" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="114" y="64" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="152" y="64" width="30" height="24" rx="4" fill="#14b8a6"/>
+      <rect y="96" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="38" y="96" width="30" height="24" rx="4" fill="#14b8a6"/><rect x="76" y="96" width="30" height="24" rx="4" fill="#0ea5e9"/><rect x="114" y="96" width="30" height="24" rx="4" fill="#3b82f6"/><rect x="152" y="96" width="30" height="24" rx="4" fill="#0ea5e9"/>
+    </g>
+    <text x="190" y="312" text-anchor="middle" fill="#CBD5E1" font-size="11">il fondo possiede le azioni o le obbligazioni dell'indice</text>
+    <text x="570" y="100" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF a replica sintetica</text>
+    <rect x="450" y="112" width="180" height="180" rx="10" fill="none" stroke="#334155"/>
+    <text x="540" y="134" text-anchor="middle" fill="#CBD5E1" font-size="12">compra un paniere diverso…</text>
+    <g transform="translate(472,148)">
+      <rect width="30" height="24" rx="4" fill="#64748b"/><rect x="38" width="30" height="24" rx="4" fill="#475569"/><rect x="76" width="30" height="24" rx="4" fill="#94a3b8"/><rect x="114" width="30" height="24" rx="4" fill="#64748b"/>
+      <rect y="32" width="30" height="24" rx="4" fill="#94a3b8"/><rect x="38" y="32" width="30" height="24" rx="4" fill="#64748b"/><rect x="76" y="32" width="30" height="24" rx="4" fill="#475569"/><rect x="114" y="32" width="30" height="24" rx="4" fill="#94a3b8"/>
+      <rect y="64" width="30" height="24" rx="4" fill="#475569"/><rect x="38" y="64" width="30" height="24" rx="4" fill="#94a3b8"/><rect x="76" y="64" width="30" height="24" rx="4" fill="#64748b"/><rect x="114" y="64" width="30" height="24" rx="4" fill="#475569"/>
+    </g>
+    <text x="540" y="258" text-anchor="middle" fill="#CBD5E1" font-size="12">…e scambia i rendimenti</text>
+    <text x="540" y="274" text-anchor="middle" fill="#CBD5E1" font-size="12">con una banca (swap)</text>
+    <rect x="656" y="166" width="88" height="72" rx="8" fill="#1e293b" stroke="#f59e0b"/>
+    <text x="700" y="196" text-anchor="middle" fill="#F1F5F9" font-size="12" font-weight="600">Banca</text>
+    <text x="700" y="212" text-anchor="middle" fill="#94A3B8" font-size="10">controparte</text>
+    <path d="M632 186 L654 186" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrO)"/>
+    <path d="M654 218 L632 218" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrO)"/>
+    <text x="570" y="312" text-anchor="middle" fill="#CBD5E1" font-size="11">il fondo possiede il paniere, non l'indice</text>
+    <text x="380" y="352" text-anchor="middle" fill="#CBD5E1" font-size="13">Stesso indice replicato, patrimoni diversi: capire cosa possiede il fondo è il punto di partenza.</text>
+  </svg>
+</figure>
+
+<p>In Europa la replica fisica domina: la stragrande maggioranza del patrimonio degli ETF europei è in fondi fisici, e la quota sintetica si è ridotta molto nell'ultimo decennio. Ma i sintetici non sono una nicchia in estinzione: su alcuni indici — l'S&amp;P 500 su tutti — stanno <em>riguadagnando</em> terreno, per un motivo fiscale che vedremo alla sezione 7.</p>
+<div class="placeholder"><b>COMPONENTE DATI VIVO #1</b> — Quota di patrimonio fisico vs sintetico sugli ETF UCITS S&amp;P 500 (calcolata dai patrimoni pubblicati dagli emittenti, aggiornamento settimanale). Sostituisce il «circa 30%» citato da Morningstar 2021 con un numero nostro e datato.</div>
+
+<!-- ============ SEZIONE 2 ============ -->
+<h2>2 · La replica fisica: tre modi di riempire il bicchiere</h2>
+<p>«Comprare l'indice» sembra un'operazione sola, ma si fa in tre modi.</p>
+<p>Con la <strong>replica completa</strong> il fondo compra tutti i titoli dell'indice, ciascuno col suo peso. È la via maestra quando l'indice è fatto di titoli grandi e liquidi: per un S&amp;P 500 è la norma.</p>
+<p>Quando l'indice ha migliaia di titoli, o titoli difficili da comprare, la replica completa diventa costosa o impraticabile. Un indice obbligazionario globale può contenere oltre 25.000 obbligazioni, molte delle quali passano mesi senza scambi. Qui entrano il <strong>campionamento</strong> — si compra un sottoinsieme rappresentativo, scelto perché somigli all'indice per emittenti, scadenze e rendimento — e l'<strong>ottimizzazione</strong>, dove il sottoinsieme lo sceglie un modello matematico con l'obiettivo esplicito di minimizzare lo scarto atteso dall'indice.</p>
+
+<figure class="svgbox">
+  <!-- MOCK 2 — bicchieri (approvato) -->
+  <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg">
+    <text x="380" y="26" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">L'indice: 12 titoli, pesi diversi</text>
+    <g transform="translate(158,38)">
+      <rect width="34" height="20" rx="4" fill="#3b82f6"/><rect x="38" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="76" width="34" height="20" rx="4" fill="#14b8a6"/><rect x="114" width="34" height="20" rx="4" fill="#3b82f6"/><rect x="152" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="190" width="34" height="20" rx="4" fill="#14b8a6"/><rect x="228" width="34" height="20" rx="4" fill="#3b82f6"/><rect x="266" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="304" width="34" height="20" rx="4" fill="#14b8a6"/><rect x="342" width="34" height="20" rx="4" fill="#3b82f6"/><rect x="380" width="34" height="20" rx="4" fill="#0ea5e9"/><rect x="418" width="34" height="20" rx="4" fill="#14b8a6"/>
+    </g>
+    <path d="M240 70 L160 108" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+    <path d="M380 70 L380 108" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+    <path d="M520 70 L600 108" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+    <defs><marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+    <g transform="translate(80,116)">
+      <path d="M0 0 L160 0 L144 130 L16 130 Z" fill="none" stroke="#334155" stroke-width="2"/>
+      <g transform="translate(22,12)">
+        <rect width="26" height="16" rx="3" fill="#3b82f6"/><rect x="30" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="60" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="90" width="26" height="16" rx="3" fill="#3b82f6"/>
+        <rect y="22" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="30" y="22" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="60" y="22" width="26" height="16" rx="3" fill="#3b82f6"/><rect x="90" y="22" width="26" height="16" rx="3" fill="#0ea5e9"/>
+        <rect y="44" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="30" y="44" width="26" height="16" rx="3" fill="#3b82f6"/><rect x="60" y="44" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="90" y="44" width="26" height="16" rx="3" fill="#14b8a6"/>
+      </g>
+      <text x="80" y="152" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Completa</text>
+      <text x="80" y="170" text-anchor="middle" fill="#CBD5E1" font-size="11">tutti i 12 titoli,</text>
+      <text x="80" y="184" text-anchor="middle" fill="#CBD5E1" font-size="11">stessi pesi</text>
+    </g>
+    <g transform="translate(300,116)">
+      <path d="M0 0 L160 0 L144 130 L16 130 Z" fill="none" stroke="#334155" stroke-width="2"/>
+      <g transform="translate(22,34)">
+        <rect width="26" height="16" rx="3" fill="#3b82f6"/><rect x="60" width="26" height="16" rx="3" fill="#14b8a6"/>
+        <rect y="22" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="90" y="22" width="26" height="16" rx="3" fill="#0ea5e9"/>
+        <rect x="30" y="44" width="26" height="16" rx="3" fill="#14b8a6"/>
+      </g>
+      <text x="80" y="152" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Campionamento</text>
+      <text x="80" y="170" text-anchor="middle" fill="#CBD5E1" font-size="11">un sottoinsieme</text>
+      <text x="80" y="184" text-anchor="middle" fill="#CBD5E1" font-size="11">rappresentativo</text>
+    </g>
+    <g transform="translate(520,116)">
+      <path d="M0 0 L160 0 L144 130 L16 130 Z" fill="none" stroke="#334155" stroke-width="2"/>
+      <g transform="translate(22,34)">
+        <rect width="26" height="16" rx="3" fill="#3b82f6"/><rect x="30" width="26" height="16" rx="3" fill="#0ea5e9"/><rect x="60" width="26" height="16" rx="3" fill="#14b8a6"/>
+        <rect y="22" width="26" height="16" rx="3" fill="#14b8a6"/><rect x="30" y="22" width="26" height="16" rx="3" fill="#3b82f6"/><rect x="90" y="22" width="26" height="16" rx="3" fill="#0ea5e9"/>
+      </g>
+      <circle cx="128" cy="22" r="12" fill="none" stroke="#f59e0b" stroke-width="2"/>
+      <path d="M128 6 L128 14 M128 30 L128 38 M112 22 L120 22 M136 22 L144 22" stroke="#f59e0b" stroke-width="2"/>
+      <text x="80" y="152" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Ottimizzazione</text>
+      <text x="80" y="170" text-anchor="middle" fill="#CBD5E1" font-size="11">titoli scelti da un modello</text>
+      <text x="80" y="184" text-anchor="middle" fill="#CBD5E1" font-size="11">per ridurre lo scarto</text>
+    </g>
+    <text x="380" y="322" text-anchor="middle" fill="#CBD5E1" font-size="13">Meno titoli possiede il fondo, più conta la bravura di chi li sceglie.</text>
+  </svg>
+</figure>
+
+<p>La conseguenza pratica: un fondo fisico che campiona può discostarsi dall'indice più di quanto ti aspetti — non perché «funzioni male», ma perché possiede solo una parte dei titoli. Il prospetto del fondo dichiara quale tecnica usa (chi dichiara campionamento può in pratica replicare per intero, ma non il contrario).</p>
+
+<h3>Il prestito titoli: il rischio di controparte che il fisico non racconta</h3>
+<p>C'è un dettaglio che rende il confronto col sintetico più onesto di come lo si legge di solito: <strong>anche molti ETF fisici hanno un rischio di controparte</strong>. Si chiama prestito titoli: il fondo presta temporaneamente una parte delle azioni che possiede a soggetti terzi (tipicamente per venderle allo scoperto), in cambio di una commissione e di un collaterale a garanzia di valore pari o superiore.</p>
+<p>Il prestito genera un piccolo ricavo che riduce il costo effettivo del fondo. La domanda giusta è: <strong>quanto di quel ricavo torna al fondo, e quanto resta all'emittente?</strong> Non serve chiederlo a nessuno: per le regole europee questa informazione <em>deve</em> essere pubblicata. La politica di ripartizione sta nel <strong>prospetto</strong> — compreso chi incassa le commissioni e se è una società collegata all'emittente — e i ricavi e costi effettivi dell'anno stanno nella <strong>relazione annuale</strong>; molti emittenti la riassumono anche nelle pagine «securities lending» dei loro siti.</p>
+<p>Sulla carta la regola dell'ESMA — l'autorità europea che vigila sui mercati finanziari, ne riparliamo alla sezione 5 — dice che «tutti i ricavi netti» devono tornare al fondo. Il punto sta in cosa viene sottratto prima, cioè la commissione dell'agente di prestito — che spesso è una società dello stesso gruppo. Qualche numero reale, preso dai documenti ufficiali degli emittenti: i fondi iShares trattengono il <strong>62,5%</strong> del ricavo lordo (il 37,5% va a BlackRock, che copre i costi operativi — è scritto nella sezione «Prestito titoli» di ogni scheda fondo); per gli Xtrackers dipende dalla piattaforma: <strong>82%</strong> ai fondi azionari (91% per i due ETF sul DAX), <strong>70%</strong> agli obbligazionari Xtrackers II (dalla loro <em>Securities Lending Policy</em>, in vigore dal febbraio 2024); Vanguard presta anch'essa i titoli, ma con una differenza di modello: il gestore non trattiene nulla — il prospetto in vigore (aprile 2026) dichiara che il ricavo netto «è riversato nel fondo» e che la società <em>non fa prestito titoli con entità del gruppo Vanguard</em>: l'agente è un terzo (J.P. Morgan, dal giugno 2025), che si copre i costi operativi con la propria commissione. Le cifre sono pubblicate fondo per fondo nella relazione annuale, e il collaterale accettato è limitato a debito sovrano di alta qualità. Stessa attività, fette e modelli diversi — e tutto scritto, per chi sa dove guardare: i prospetti si trovano sul sito dell'emittente e nella pagina del fondo su Borsa Italiana.</p>
+
+<figure class="svgbox">
+  <!-- MOCK 7 — prestito titoli (nuovo) -->
+  <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+      <marker id="arr7o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+    </defs>
+    <rect x="60" y="70" width="240" height="150" rx="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="180" y="96" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF fisico</text>
+    <g transform="translate(92,112)">
+      <rect width="30" height="22" rx="4" fill="#3b82f6"/><rect x="38" width="30" height="22" rx="4" fill="#0ea5e9"/><rect x="76" width="30" height="22" rx="4" fill="#14b8a6"/><rect x="114" width="30" height="22" rx="4" fill="#3b82f6"/><rect x="152" width="30" height="22" rx="4" fill="#0ea5e9"/>
+      <rect y="28" width="30" height="22" rx="4" fill="#14b8a6"/><rect x="38" y="28" width="30" height="22" rx="4" fill="#3b82f6"/><rect x="76" y="28" width="30" height="22" rx="4" fill="#0ea5e9" opacity="0.35"/><rect x="114" y="28" width="30" height="22" rx="4" fill="#14b8a6" opacity="0.35"/><rect x="152" y="28" width="30" height="22" rx="4" fill="#3b82f6" opacity="0.35"/>
+    </g>
+    <text x="180" y="200" text-anchor="middle" fill="#CBD5E1" font-size="11">i titoli sbiaditi sono «fuori» in prestito</text>
+    <rect x="520" y="70" width="180" height="150" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="610" y="98" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Prestatario</text>
+    <text x="610" y="116" text-anchor="middle" fill="#CBD5E1" font-size="11">(tramite un agente,</text>
+    <text x="610" y="130" text-anchor="middle" fill="#CBD5E1" font-size="11">spesso una banca)</text>
+    <path d="M302 110 L516 110" stroke="#475569" stroke-width="2" marker-end="url(#arr7)"/>
+    <text x="409" y="100" text-anchor="middle" fill="#CBD5E1" font-size="11">presta una parte dei titoli</text>
+    <path d="M516 150 L302 150" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr7o)"/>
+    <text x="409" y="142" text-anchor="middle" fill="#CBD5E1" font-size="11">collaterale di valore pari o superiore</text>
+    <path d="M516 186 L302 186" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr7o)"/>
+    <text x="409" y="206" text-anchor="middle" fill="#CBD5E1" font-size="11">commissione di prestito</text>
+    <rect x="60" y="244" width="640" height="34" rx="8" fill="none" stroke="#334155"/>
+    <text x="380" y="266" text-anchor="middle" fill="#CBD5E1" font-size="12">Quanta parte torna al fondo? Lo dicono prospetto e relazione annuale, per obbligo di legge</text>
+  </svg>
+  <figcaption>Il prestito titoli in un ETF a replica fisica: rischio piccolo e garantito, ma non zero — e ricavi divisi in fette diverse a seconda dell'emittente (62,5% iShares · 70–82% Xtrackers, 91% sui DAX · 100% netto costi Vanguard; dai documenti ufficiali degli emittenti).</figcaption>
+</figure>
+
+<p>Il rischio è remoto — il collaterale viene ricalcolato ogni giorno e alcuni emittenti offrono perfino un'indennità in caso di insolvenza del prestatario — ma esiste. Tienilo a mente per la sezione 5: il confronto vero tra fisico e sintetico non è «rischio contro zero rischio», ma due rischi di forma diversa, entrambi regolamentati.</p>
+
+<!-- ============ SEZIONE 3 ============ -->
+<h2>3 · La replica sintetica: lo scambio dei rendimenti</h2>
+<p>Un ETF sintetico non possiede i titoli dell'indice. Possiede (o ha in garanzia) <em>altri</em> titoli, e un contratto. Il contratto — un <em>total return swap</em> — dice: il fondo gira alla banca il rendimento del proprio paniere, la banca gira al fondo il rendimento dell'indice, meno un costo chiamato <em>spread dello swap</em>. Esistono due architetture.</p>
+
+<h3>Il modello «unfunded»: il fondo possiede il paniere</h3>
+<p>È il modello più diffuso in Europa. Il fondo usa il denaro degli investitori per comprare un paniere di titoli — il <strong>paniere sostitutivo</strong> — che resta di sua proprietà, custodito in un conto segregato. Se la banca dello swap fallisse, quei titoli restano al fondo.</p>
+
+<figure class="svgbox">
+  <!-- MOCK 3 (approvato) -->
+  <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+      <marker id="arr3o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+    </defs>
+    <rect x="30" y="120" width="130" height="56" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="95" y="144" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Investitore</text>
+    <text x="95" y="162" text-anchor="middle" fill="#94A3B8" font-size="11">versa denaro</text>
+    <path d="M160 148 L208 148" stroke="#475569" stroke-width="2" marker-end="url(#arr3)"/>
+    <rect x="210" y="60" width="240" height="200" rx="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="330" y="84" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF sintetico</text>
+    <rect x="234" y="100" width="192" height="120" rx="8" fill="#111c2e" stroke="#334155"/>
+    <text x="330" y="120" text-anchor="middle" fill="#CBD5E1" font-size="12">Paniere sostitutivo</text>
+    <g transform="translate(252,132)">
+      <rect width="30" height="20" rx="4" fill="#64748b"/><rect x="38" width="30" height="20" rx="4" fill="#94a3b8"/><rect x="76" width="30" height="20" rx="4" fill="#475569"/><rect x="114" width="30" height="20" rx="4" fill="#64748b"/>
+      <rect y="26" width="30" height="20" rx="4" fill="#94a3b8"/><rect x="38" y="26" width="30" height="20" rx="4" fill="#475569"/><rect x="76" y="26" width="30" height="20" rx="4" fill="#94a3b8"/><rect x="114" y="26" width="30" height="20" rx="4" fill="#64748b"/>
+    </g>
+    <text x="330" y="204" text-anchor="middle" fill="#CBD5E1" font-size="10">di proprietà del fondo · conto segregato</text>
+    <text x="330" y="246" text-anchor="middle" fill="#CBD5E1" font-size="11">se la banca fallisce, questo resta al fondo</text>
+    <rect x="580" y="96" width="150" height="128" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="655" y="124" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Banca</text>
+    <text x="655" y="140" text-anchor="middle" fill="#94A3B8" font-size="11">controparte swap</text>
+    <text x="655" y="164" text-anchor="middle" fill="#CBD5E1" font-size="10">una o più banche;</text>
+    <text x="655" y="178" text-anchor="middle" fill="#CBD5E1" font-size="10">più banche = rischio</text>
+    <text x="655" y="192" text-anchor="middle" fill="#CBD5E1" font-size="10">più diviso</text>
+    <path d="M452 132 L576 132" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr3o)"/>
+    <text x="514" y="122" text-anchor="middle" fill="#CBD5E1" font-size="11">rendimento del paniere</text>
+    <path d="M576 188 L452 188" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr3o)"/>
+    <text x="514" y="208" text-anchor="middle" fill="#CBD5E1" font-size="11">rendimento dell'indice</text>
+    <text x="514" y="222" text-anchor="middle" fill="#94A3B8" font-size="10">(meno il costo dello swap)</text>
+    <rect x="210" y="282" width="520" height="34" rx="8" fill="none" stroke="#f59e0b"/>
+    <text x="470" y="303" text-anchor="middle" fill="#CBD5E1" font-size="12">Regola UCITS: la differenza tra valore del fondo e paniere non può superare il 10% del patrimonio</text>
+  </svg>
+</figure>
+
+<p>Il rischio, qui, sta nella <em>differenza</em>: se l'indice sale più del paniere, la banca «deve» al fondo la differenza. Quella differenza — l'esposizione verso la controparte — è ciò che il fondo perderebbe (in parte) se la banca fallisse proprio in quel momento. La legge europea le mette un tetto, e in pratica gli emittenti la riportano a zero di frequente, spesso ogni giorno:</p>
+
+<figure class="svgbox">
+  <!-- MOCK 6 (approvato) -->
+  <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg">
+    <line x1="90" y1="250" x2="700" y2="250" stroke="#334155" stroke-width="1"/>
+    <line x1="90" y1="250" x2="90" y2="60" stroke="#334155" stroke-width="1"/>
+    <text x="60" y="255" text-anchor="middle" fill="#94A3B8" font-size="10">0%</text>
+    <line x1="90" y1="90" x2="700" y2="90" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="60" y="94" text-anchor="middle" fill="#f59e0b" font-size="10">10%</text>
+    <text x="600" y="80" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600">limite UCITS</text>
+    <text x="30" y="160" text-anchor="middle" fill="#94A3B8" font-size="10" transform="rotate(-90 30 160)">esposizione verso la banca</text>
+    <g>
+      <rect x="130" y="248" width="60" height="2" fill="#3b82f6"/>
+      <text x="160" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 1</text>
+      <text x="160" y="286" text-anchor="middle" fill="#94A3B8" font-size="10">0%</text>
+      <rect x="240" y="173" width="60" height="77" fill="#3b82f6" rx="3"/>
+      <text x="270" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 2</text>
+      <text x="270" y="286" text-anchor="middle" fill="#94A3B8" font-size="10">4,8%</text>
+      <rect x="350" y="221" width="60" height="29" fill="#3b82f6" rx="3"/>
+      <text x="380" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 3</text>
+      <text x="380" y="286" text-anchor="middle" fill="#94A3B8" font-size="10">1,8%</text>
+      <rect x="460" y="84" width="60" height="166" fill="#3b82f6" rx="3"/>
+      <rect x="460" y="84" width="60" height="10" fill="#f59e0b" rx="3"/>
+      <text x="490" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 4</text>
+      <text x="490" y="286" text-anchor="middle" fill="#94A3B8" font-size="10">10,4% → reset</text>
+      <rect x="570" y="248" width="60" height="2" fill="#3b82f6"/>
+      <text x="600" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">giorno 4, dopo</text>
+      <text x="600" y="286" text-anchor="middle" fill="#94A3B8" font-size="10">0%</text>
+    </g>
+    <path d="M524 100 C 550 120, 560 190, 572 240" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arr6)"/>
+    <defs><marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker></defs>
+    <text x="588" y="140" fill="#CBD5E1" font-size="11">la banca versa titoli</text>
+    <text x="588" y="156" fill="#CBD5E1" font-size="11">nel paniere e</text>
+    <text x="588" y="172" fill="#CBD5E1" font-size="11">l'esposizione si azzera</text>
+    <text x="395" y="312" text-anchor="middle" fill="#CBD5E1" font-size="13">Molti emittenti azzerano prima del limite, spesso ogni giorno: il 10% è il tetto, non la prassi.</text>
+  </svg>
+  <figcaption>Numeri illustrativi, ricostruiti dall'esempio dello studio Morningstar (2012): indice che sale, paniere fermo, reset al tetto.</figcaption>
+</figure>
+
+<h3>Il modello «funded»: il fondo ha una garanzia</h3>
+<p>Nella variante «funded» il fondo non compra un paniere: gira il denaro alla banca, che promette il rendimento dell'indice e deposita a garanzia un pacchetto di titoli — il <strong>collaterale</strong> — presso un depositario terzo, in un conto separato, di norma per un valore <em>superiore</em> al patrimonio del fondo (la sovra-collateralizzazione compensa il fatto che i titoli non sono del fondo).</p>
+
+<figure class="svgbox">
+  <!-- MOCK 4 (approvato) -->
+  <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+      <marker id="arr4o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+    </defs>
+    <rect x="30" y="100" width="130" height="56" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="95" y="124" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Investitore</text>
+    <text x="95" y="142" text-anchor="middle" fill="#94A3B8" font-size="11">versa denaro</text>
+    <path d="M160 128 L208 128" stroke="#475569" stroke-width="2" marker-end="url(#arr4)"/>
+    <rect x="210" y="88" width="180" height="80" rx="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <text x="300" y="118" text-anchor="middle" fill="#F1F5F9" font-size="14" font-weight="600">ETF sintetico</text>
+    <text x="300" y="140" text-anchor="middle" fill="#CBD5E1" font-size="11">gira il denaro alla banca</text>
+    <rect x="540" y="88" width="190" height="80" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="635" y="114" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Banca controparte</text>
+    <text x="635" y="134" text-anchor="middle" fill="#CBD5E1" font-size="11">promette il rendimento</text>
+    <text x="635" y="148" text-anchor="middle" fill="#CBD5E1" font-size="11">dell'indice + il capitale</text>
+    <path d="M392 112 L536 112" stroke="#475569" stroke-width="2" marker-end="url(#arr4)"/>
+    <text x="464" y="102" text-anchor="middle" fill="#CBD5E1" font-size="11">denaro</text>
+    <path d="M536 148 L392 148" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr4o)"/>
+    <text x="464" y="168" text-anchor="middle" fill="#CBD5E1" font-size="11">rendimento dell'indice</text>
+    <path d="M635 168 L635 208" stroke="#475569" stroke-width="2" marker-end="url(#arr4)"/>
+    <rect x="430" y="212" width="300" height="76" rx="10" fill="#111c2e" stroke="#334155" stroke-dasharray="6 4"/>
+    <text x="580" y="236" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Collaterale a garanzia — di norma ≥ 100%</text>
+    <text x="580" y="254" text-anchor="middle" fill="#CBD5E1" font-size="11">titoli depositati presso un depositario terzo,</text>
+    <text x="580" y="268" text-anchor="middle" fill="#CBD5E1" font-size="11">in un conto separato dalla banca</text>
+    <rect x="30" y="212" width="360" height="76" rx="10" fill="none" stroke="#334155"/>
+    <text x="210" y="238" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Differenza col modello «unfunded»:</text>
+    <text x="210" y="256" text-anchor="middle" fill="#CBD5E1" font-size="11">qui il fondo non possiede i titoli — ha una garanzia</text>
+    <text x="210" y="270" text-anchor="middle" fill="#CBD5E1" font-size="11">da escutere se la banca non paga</text>
+    <text x="380" y="318" text-anchor="middle" fill="#CBD5E1" font-size="13">Possedere un paniere e avere una garanzia non sono la stessa cosa: cambia cosa succede nel giorno peggiore.</text>
+  </svg>
+</figure>
+
+<p>La garanzia può essere intestata direttamente al fondo (trasferimento di proprietà: in caso di insolvenza i titoli passano subito al fondo) oppure restare intestata alla banca ma vincolata a favore del fondo (pegno: il fondo deve prima farla valere). È una differenza tecnica che nei giorni tranquilli non conta nulla, e nel giorno sbagliato conta parecchio — per questo è tra le domande della sezione 9.</p>
+
+<!-- ============ SEZIONE 4 ============ -->
+<h2>4 · Cosa possiedi davvero: il paniere visto da vicino</h2>
+<p>«Il paniere sostitutivo è correlato all'indice» è la formula che si legge ovunque. Quanto, davvero? L'abbiamo misurato questa settimana su uno dei più grandi ETF sintetici europei sull'S&amp;P 500 — lo Xtrackers S&amp;P 500 Swap, 7 miliardi di patrimonio — usando le liste integrali che l'emittente stesso pubblica:</p>
+<table>
+  <tr><th></th><th class="num">Paniere del fondo <span class="dim">(26/7/2026)</span></th><th class="num">Indice S&amp;P 500 <span class="dim">(31/3/2026)</span></th></tr>
+  <tr><td>Numero di titoli</td><td class="num">382</td><td class="num">503</td></tr>
+  <tr><td>Titoli non statunitensi</td><td class="num"><strong>98 — il 28,4% del peso</strong></td><td class="num">0 <span class="dim">(indice di sole società quotate USA)</span></td></tr>
+  <tr><td>&nbsp;&nbsp;di cui Giappone</td><td class="num">13,5% <span class="dim">(31 titoli)</span></td><td class="num">—</td></tr>
+  <tr><td>&nbsp;&nbsp;di cui Germania</td><td class="num">6,1% <span class="dim">(20 titoli)</span></td><td class="num">—</td></tr>
+  <tr><td>&nbsp;&nbsp;di cui Portogallo</td><td class="num">2,7%</td><td class="num">—</td></tr>
+  <tr><td>Peso dei primi 10 titoli</td><td class="num">27,6%</td><td class="num">36,0%</td></tr>
+  <tr><td>Titoli in comune</td><td class="num" colspan="2">166 — circa il 65% del peso, da entrambi i lati</td></tr>
+  <tr><td><strong>Active share</strong> <span class="dim">(quanto andrebbe «rifatto» per coincidere con l'indice)</span></td><td class="num" colspan="2"><strong>56,5%</strong></td></tr>
+  <tr><td>NVIDIA</td><td class="num">7,53% <span class="dim">(1ª)</span></td><td class="num">7,46% <span class="dim">(1ª)</span></td></tr>
+  <tr><td>Apple</td><td class="num">2,48%</td><td class="num">6,70% <span class="dim">(2ª)</span></td></tr>
+  <tr><td>Microsoft</td><td class="num">fuori dalle prime 15 posizioni</td><td class="num">4,86% <span class="dim">(3ª)</span></td></tr>
+  <tr><td>Seagate Technology</td><td class="num">3,50% <span class="dim">(2ª posizione)</span></td><td class="num">peso marginale</td></tr>
+</table>
+<p class="dim" style="font-size:13px">Fonte: liste integrali di paniere (382 posizioni al 26/7/2026) e indice (503 al 31/3/2026, revisione trimestrale) scaricate dalla scheda dell'emittente (DWS) — file salvati agli atti, somme dei pesi pari al 100,0% in entrambi. Active share = metà della somma delle differenze di peso titolo per titolo; abbinamento per denominazione (il file dell'indice non riporta gli ISIN). Il paniere cambia ogni giorno di borsa.</p>
+<p>Un fondo che replica le 500 maggiori società americane deteneva, il giorno in cui scriviamo, <strong>quasi un terzo del patrimonio fuori dagli Stati Uniti</strong>: banche giapponesi, utility tedesche e portoghesi, un produttore di memorie di Tokyo — mentre <strong>337 titoli dell'indice non c'erano affatto</strong>, tra cui JPMorgan, Exxon, Visa, Costco e Netflix, e Apple pesava poco più di un terzo del suo peso reale. L'active share del 56,5% dice tutto in un numero: per trasformare questo paniere nell'indice bisognerebbe vendere e ricomprare più di metà del portafoglio.</p>
+<p>Non è uno scandalo: è il funzionamento normale del modello, e il rendimento che ricevi resta quello dell'indice. Ma è ciò che possiederesti se lo swap saltasse — e per questo gli emittenti pubblicano il paniere ogni giorno sul proprio sito: guardarlo almeno una volta è un esercizio che consigliamo a chiunque possieda un sintetico.</p>
+<p>E non è un caso isolato, né un fenomeno nuovo. La sola analisi comparabile che abbiamo trovato — il paper di ricerca Vanguard del dicembre 2020, di cui l'articolo divulgativo del 2025 è dichiaratamente la sintesi — fotografava lo stesso meccanismo su un ETF sintetico <strong>MSCI World</strong>, l'indice più diffuso tra i risparmiatori europei: paniere di 354 titoli contro 1.607, Francia al 18% contro il 3,3%, Regno Unito assente. Allora abbiamo rifatto anche quello, sullo stesso indice, con i dati di oggi (Xtrackers MSCI World Swap):</p>
+<table>
+  <tr><th>MSCI World, allora e oggi</th><th class="num">Vanguard <span class="dim">(paniere al 31/5/2019)</span></th><th class="num">Rebalix <span class="dim">(paniere al 26/7/2026)</span></th></tr>
+  <tr><td>Titoli nel paniere / nell'indice</td><td class="num">354 / 1.607</td><td class="num">519 / 1.311</td></tr>
+  <tr><td>Primi 10 del paniere vs indice</td><td class="num">39,7% vs 17,3%</td><td class="num">40,7% vs 24,8%</td></tr>
+  <tr><td>Titoli dell'indice assenti dal paniere</td><td class="num">n.d.</td><td class="num">1.040 — il 51,6% del peso dell'indice</td></tr>
+  <tr><td>Active share</td><td class="num">n.d. <span class="dim">(TE ex-ante 4,6%, modello FactSet)</span></td><td class="num"><strong>59,3%</strong></td></tr>
+</table>
+<p class="dim" style="font-size:13px">Colonna 2019: Vanguard Research, dic. 2020. Colonna 2026: nostri calcoli sulle liste integrali pubblicate dall'emittente (paniere 519 posizioni al 26/7/2026; indice 1.311 al 31/3/2026); abbinamento per denominazione. Tra i titoli assenti dal paniere: JPMorgan, Exxon, Eli Lilly, ASML, Visa.</p>
+<p>Sette anni dopo, su un altro fondo, la concentrazione del paniere è rimasta quasi identica (39,7% allora, 40,7% oggi): il meccanismo non è un incidente di percorso, è il modo normale in cui i banchi swap costruiscono i panieri. Da allora, per quanto abbiamo cercato, nessun altro ha pubblicato confronti del genere — questi li terremo aggiornati noi.</p>
+<div class="placeholder"><b>COMPONENTE DATI VIVO #2</b> — «Guarda dentro un paniere sostitutivo, oggi»: le due tabelle qui sopra, rese automatiche, con selettore a due viste (<strong>S&amp;P 500 | MSCI World</strong>). Aggiornamento settimanale + archivio storico — un confronto paniere-vs-indice che, a quanto ci risulta, nessun altro pubblica con dati correnti. Nota per l'archiviatore: <strong>endpoint TROVATI e verificati via fetch diretto (26/7)</strong> — paniere: <code>etf.dws.com/etfdata/export/GBR/ENG/excel/product/constituent/{ISIN}/</code> · indice: <code>…/excel/index/constituent/{ISIN}/</code>; ISIN: LU0490618542 (S&amp;P 500 Swap) e LU0274208692 (MSCI World Swap). Parametrizzati per ISIN: la stessa ricetta vale per qualsiasi fondo Xtrackers (XEON compreso, utile per la sez. 8). Automazione confermata, niente più download manuali.</div>
+
+<!-- ============ SEZIONE 5 ============ -->
+<h2>5 · Le regole che ti proteggono (quelle che gli articoli non spiegano)</h2>
+<p>Quasi ogni articolo sul tema cita «i requisiti della direttiva UCITS» senza dire quali sono. Eccoli, in parole semplici, dalle fonti originali: la <a href="https://eur-lex.europa.eu/eli/dir/2009/65/2024-04-15/ita" target="_blank" rel="noopener noreferrer">direttiva europea 2009/65/CE</a> (la «direttiva UCITS», nel testo consolidato — l'aggiornamento del 2026 ha toccato liquidità e deleghe, non queste regole) e gli <a href="https://www.esma.europa.eu/sites/default/files/library/2015/11/esma_it_0.pdf" target="_blank" rel="noopener noreferrer">orientamenti su ETF e altri OICVM</a> che la attuano. Chi li scrive, questi orientamenti? L'<strong>ESMA</strong> (European Securities and Markets Authority): l'autorità dell'Unione Europea che vigila sui mercati finanziari e coordina le autorità nazionali — quella che in Italia conosciamo come Consob. Le sue istruzioni sono vincolanti per i gestori, e sono pubbliche: il documento linkato è la traduzione italiana ufficiale, 15 pagine leggibili.</p>
+<div class="box">
+<p style="margin:4px 0"><strong>Il tetto all'esposizione.</strong> La differenza tra il valore del fondo e ciò che il fondo possiede (o ha in garanzia) non può superare il <strong>10%</strong> del patrimonio se la controparte è una banca vigilata, il <strong>5%</strong> negli altri casi. Tradotto: anche nel giorno peggiore possibile, almeno il 90% del patrimonio è coperto da titoli reali. In pratica, la maggior parte degli emittenti fa meglio: azzera l'esposizione ogni giorno o tiene garanzie sopra il 100%.</p>
+<p style="margin:12px 0 4px"><strong>Le regole sul collaterale</strong> (linee guida ESMA, in vigore dal 2013). I titoli a garanzia devono essere:</p>
+<ul style="margin:6px 0">
+  <li><strong>liquidi e quotati</strong> — vendibili in fretta, a un prezzo vicino a quello di valutazione;</li>
+  <li><strong>valutati ogni giorno</strong>, con sconti prudenziali («haircut») sui titoli più volatili;</li>
+  <li><strong>di alta qualità</strong> e <strong>indipendenti dalla controparte</strong> — la banca non può garantirti con obbligazioni proprie o troppo legate a sé;</li>
+  <li><strong>diversificati</strong> — al massimo il 20% del patrimonio su un singolo emittente, sommando tutte le garanzie;</li>
+  <li><strong>escutibili subito</strong>, senza dover chiedere il permesso alla banca;</li>
+  <li><strong>non riutilizzabili</strong> — il fondo non può prestarli, reinvestirli o impegnarli a sua volta (il contante ha regole strette: depositi, titoli di Stato di qualità, fondi monetari).</li>
+</ul>
+<p style="margin:12px 0 4px"><strong>La regola sugli indici.</strong> Un indice replicabile da un UCITS non può avere un singolo componente sopra il <strong>20%</strong> (35% in casi eccezionali). È il motivo per cui non esistono ETF UCITS «solo oro»: i prodotti su una singola materia prima che vedi quotati sono ETC, un involucro diverso, fuori da queste tutele.</p>
+</div>
+<h3>Prima ancora: chi custodisce il patrimonio</h3>
+<p>C'è una protezione che viene prima di tutte quelle sopra, vale per fisici e sintetici allo stesso modo, ed è scritta in ogni KID — quasi sempre nella sezione «Cosa accade se l'emittente non è in grado di corrispondere quanto dovuto?». Il patrimonio del fondo <strong>non sta presso l'emittente</strong>: sta presso una <strong>banca depositaria</strong> indipendente, obbligata per legge a tenerlo separato dai propri attivi. Se l'emittente fallisce, i titoli del fondo non entrano nel suo fallimento: sono tuoi (del fondo), custoditi altrove. Se a fallire fosse la depositaria, la segregazione protegge comunque gli attivi, e la depositaria risponde per legge delle perdite dovute a negligenza o dolo — un rischio residuo esiste, ma è di un altro ordine di grandezza.</p>
+<p>Una cosa però il KID la dice altrettanto chiaramente, e va ripetuta: <strong>un ETF non è un conto deposito</strong>. Il valore delle quote non è garantito da nessuno, e se il fondo perde, nessuno rimborsa la perdita. Gli <strong>schemi di indennizzo nazionali</strong> esistono, ma coprono un rischio diverso: scattano se fallisce il tuo <em>intermediario</em> — il broker o la banca dove tieni gli strumenti — e i tuoi titoli non ti vengono restituiti. In Europa li impone la <a href="https://eur-lex.europa.eu/eli/dir/1997/9/oj/ita" target="_blank" rel="noopener noreferrer">direttiva 97/9/CE</a>, con copertura minima di 20.000&nbsp;€: in Italia è il <a href="https://www.fondonazionaledigaranzia.it/" target="_blank" rel="noopener noreferrer">Fondo Nazionale di Garanzia</a> (fino a 20.000&nbsp;€ per investitore), nel Regno Unito l'<a href="https://www.fscs.org.uk/" target="_blank" rel="noopener noreferrer">FSCS</a> (fino a 85.000&nbsp;£), in Germania l'EdW (90%, massimo 20.000&nbsp;€), in Francia l'FGDR (fino a 70.000&nbsp;€).</p>
+<p>Attenzione a non leggere male questi importi: <strong>non significano che dal fallimento del tuo broker recuperi al massimo 20.000&nbsp;€</strong>. Nel caso normale recuperi tutto, senza alcun tetto: anche presso l'intermediario i tuoi titoli sono separati per legge dal suo patrimonio, i suoi creditori non possono toccarli, e in caso di fallimento ti vengono restituiti o trasferiti a un altro intermediario per intero. Lo schema di indennizzo è l'ultima rete, per il caso patologico: se la separazione è stata violata — frode, ammanchi — e all'appello i titoli non si trovano, copre fino a quegli importi la parte mancante. Le cifre sembrano basse proprio perché coprono quel caso raro, non il fallimento ordinario. (La liquidità sul conto è un discorso a parte: presso una banca è protetta dal fondo di garanzia dei depositi, fino a 100.000&nbsp;€.) E nemmeno questi schemi, in ogni caso, coprono le perdite di mercato o l'insolvenza dell'emittente dell'ETF: lì la protezione è — di nuovo — la separazione patrimoniale, non un'assicurazione. Ricapitolando i «giorni peggiori» possibili: fallisce l'<em>emittente</em> → il patrimonio è al sicuro presso la depositaria; fallisce il <em>prestatario</em> del prestito titoli → c'è il collaterale (sezione 2); fallisce la <em>controparte dello swap</em> → c'è il paniere o il collaterale, con lo scoperto massimo del 10% (sezione 3). Tre rischi diversi, tre protezioni diverse — nessuna delle quali è «zero rischio».</p>
+<div class="notaredazione">Deciso (Linus, 26/7): sui fondi di garanzia e indennizzo arriverà un <strong>articolo dedicato</strong> — depositi (IT: FITD 100k€), indennizzo investitori (IT: FNG 20k€ per le SIM) e mappa europea. Qui la sezione resta com'è; quando l'articolo sarà live, linkarlo da questo paragrafo (rete link interni).</div>
+<p>Due studi indipendenti hanno verificato come queste regole funzionano nella pratica. <a href="https://web.archive.org/web/20160705122217/http://media.morningstar.com/eu/ETF/assets/SyntheticETFsUnderTheMicroscope_AGlobalStudy_Morningstar.pdf" target="_blank" rel="noopener noreferrer">Morningstar (2012)</a>, dopo la stagione degli allarmi dei regolatori, rilevò che la maggioranza degli emittenti applicava soglie <em>più strette</em> del minimo di legge. Uno studio accademico pubblicato sul <a href="https://www.sciencedirect.com/science/article/abs/pii/S037842661930069X" target="_blank" rel="noopener noreferrer">Journal of Banking &amp; Finance (2019)</a> — <a href="https://shs.hal.science/halshs-01023807" target="_blank" rel="noopener noreferrer">testo integrale libero qui</a> — misurò le esposizioni reali e concluse che i timori sulla qualità dei collaterali erano infondati — i fondi risultavano in media sovra-collateralizzati — e che il rischio residuo era remunerato da costi complessivi più bassi. Nessuno dei due studi dice «rischio zero»: dicono «rischio piccolo, regolamentato e visibile, se sai dove guardare». Le domande della sezione 9 servono a guardare lì.</p>
+
+<!-- ============ SEZIONE 6 ============ -->
+<h2>6 · Fedeltà e trasparenza: il vero scambio</h2>
+<p>Prima i due termini, perché metà dei confronti online li usa a rovescio:</p>
+<ul>
+  <li><strong>Tracking difference</strong>: quanto il fondo ha reso in meno (o in più) dell'indice in un periodo. È il numero che ti costa (o ti regala) soldi.</li>
+  <li><strong>Tracking error</strong>: quanto quella differenza <em>oscilla</em> nel tempo. Misura la prevedibilità, non il costo.</li>
+</ul>
+<p>Ora lo scambio. Il sintetico, per costruzione, segue l'indice con grande fedeltà: il rendimento glielo garantisce il contratto, non l'abilità di un gestore che campiona. Sui mercati meno liquidi la differenza si vede: sugli ETF UCITS che replicano l'MSCI Emerging Markets, il tracking error medio a 3 anni era 0,69% per i sintetici contro 1,21% per i fisici (dati Vanguard al 30/9/2020). Ma nello stesso campione la <em>tracking difference</em> media era <strong>peggiore</strong> per i sintetici: −0,65% l'anno contro −0,39%. Più fedeli, e più costosi — con il costo nascosto nello spread dello swap.</p>
+<p>Ed è qui il punto sulla trasparenza, che vale una regola generale: <strong>di un fisico puoi scomporre la tracking difference</strong> (costi correnti noti + ritenute note + ricavi da prestito titoli), <strong>di un sintetico no</strong>, perché lo spread dello swap non è pubblicato e cambia nel tempo. Morningstar lo scrisse nel 2012, lo ha ripetuto nel 2021: nove anni dopo, l'opacità sui costi degli swap è rimasta il punto debole del modello. Quando un sintetico rende più del previsto non sai mai bene perché — e nemmeno quando rende meno.</p>
+<div class="placeholder"><b>COMPONENTE DATI VIVO #3</b> — Il modulo centrale dell'articolo: tracking difference a 1/3/5 anni, fisici vs sintetici sull'S&amp;P 500, calcolata da noi sui NAV ufficiali degli emittenti, con storico archiviato e aggiornamento settimanale. Grafico + tabella, ogni valore con la sua data.</div>
+<p>Per chi vuole controllare il proprio ETF: <a href="https://www.trackingdifferences.com" target="_blank" rel="noopener noreferrer">trackingdifferences.com</a> è la risorsa comunitaria di riferimento per le tracking difference misurate sui dati ufficiali, su centinaia di fondi. Il nostro modulo fa una cosa diversa e complementare: confronta <em>in parallelo</em> fisici e sintetici sullo stesso indice, e ne archivia la storia.</p>
+
+<!-- ============ SEZIONE 7 ============ -->
+<h2>7 · Il risparmio sulla ritenuta dei dividendi USA</h2>
+<p>Qui il sintetico ha un vantaggio strutturale, ed è il motivo del suo ritorno di popolarità sugli indici americani. Il meccanismo avviene tutto <em>prima</em> che tu entri in scena.</p>
+<p>Quando un'azienda americana paga un dividendo a un fondo europeo, il fisco USA trattiene una parte alla frontiera: <strong>15%</strong> per i fondi domiciliati in Irlanda (grazie al trattato fiscale USA–Irlanda), <strong>30%</strong> per quelli lussemburghesi. Un ETF <em>fisico</em> subisce questa ritenuta su ogni dividendo. Un ETF <em>sintetico</em> no: non possiede le azioni, e il rendimento dell'indice gli arriva dentro lo swap. Per la norma fiscale americana «871(m)», i derivati su indici <strong>qualificati</strong> — S&amp;P 500 e Nasdaq-100 lo sono — possono ricevere il rendimento coi dividendi pieni, senza ritenuta.</p>
+
+<figure class="svgbox">
+  <!-- MOCK 5 (approvato) -->
+  <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="arr5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+    <line x1="380" y1="40" x2="380" y2="290" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="380" y="28" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">confine fiscale USA</text>
+    <text x="200" y="52" text-anchor="middle" fill="#94A3B8" font-size="11">Stati Uniti</text>
+    <text x="560" y="52" text-anchor="middle" fill="#94A3B8" font-size="11">Europa (fondo irlandese)</text>
+    <rect x="60" y="130" width="150" height="80" rx="10" fill="#1e293b" stroke="#334155"/>
+    <text x="135" y="160" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="600">Dividendo</text>
+    <text x="135" y="180" text-anchor="middle" fill="#F1F5F9" font-size="18" font-weight="700">100</text>
+    <text x="135" y="198" text-anchor="middle" fill="#CBD5E1" font-size="10">pagato dalle aziende USA</text>
+    <text x="300" y="92" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Percorso fisico</text>
+    <path d="M210 116 C 260 100, 300 100, 356 108" stroke="#475569" stroke-width="3" fill="none"/>
+    <rect x="352" y="88" width="56" height="40" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="380" y="105" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">−15%</text>
+    <text x="380" y="119" text-anchor="middle" fill="#94A3B8" font-size="9">ritenuta</text>
+    <path d="M408 108 C 460 104, 500 106, 556 112" stroke="#475569" stroke-width="3" fill="none" marker-end="url(#arr5)"/>
+    <rect x="562" y="88" width="150" height="44" rx="8" fill="#111c2e" stroke="#3b82f6"/>
+    <text x="637" y="106" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">85</text>
+    <text x="637" y="122" text-anchor="middle" fill="#CBD5E1" font-size="10">entra nel valore del fondo</text>
+    <text x="300" y="246" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">Percorso sintetico</text>
+    <path d="M210 226 C 280 258, 460 258, 556 234" stroke="#475569" stroke-width="3" fill="none" marker-end="url(#arr5)"/>
+    <text x="380" y="278" text-anchor="middle" fill="#CBD5E1" font-size="10">dentro lo swap su indice «qualificato» — nessuna ritenuta (norma USA 871(m))</text>
+    <rect x="562" y="206" width="150" height="44" rx="8" fill="#111c2e" stroke="#3b82f6"/>
+    <text x="637" y="224" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">100</text>
+    <text x="637" y="240" text-anchor="middle" fill="#CBD5E1" font-size="10">entra nel valore del fondo</text>
+    <text x="380" y="316" text-anchor="middle" fill="#CBD5E1" font-size="13">Con i dividendi attuali dell'S&amp;P 500, la differenza vale nell'ordine di 0,15–0,20% l'anno.</text>
+    <text x="380" y="338" text-anchor="middle" fill="#CBD5E1" font-size="11">Regime USA soggetto a proroghe periodiche · fondi lussemburghesi: ritenuta 30% · dato aggiornato automaticamente</text>
+  </svg>
+</figure>
+
+<p>Quanto vale? Dipende dai dividendi: con il rendimento da dividendo attuale dell'S&amp;P 500 (~1,1%), il 15% risparmiato vale <strong>0,16–0,17% l'anno</strong>. Negli articoli scritti quando i dividendi erano più alti leggerai «0,30%»: era vero allora. Tre avvertenze oneste: il beneficio arriva al fondo solo nella misura in cui la banca dello swap lo trasferisce; la norma 871(m) è un regime che il fisco americano rivede e proroga periodicamente (ultima proroga: fino a fine 2026); e nulla di tutto questo cambia le tasse che paghi <em>tu</em> — quelle dipendono da dove vivi. Ed è il prossimo punto, perché lo stesso ETF conviene fiscalmente in modo diverso a seconda del passaporto fiscale del lettore.</p>
+<div class="placeholder"><b>COMPONENTE DATI VIVO #4</b> — Punti base risparmiati: 15% × rendimento da dividendo corrente dell'S&amp;P 500, ricalcolato dalle distribuzioni ufficiali. Il numero nel disegno e nel testo si aggiorna da solo.</div>
+
+<h3>Lo strato nazionale: la stessa struttura, cinque fisci diversi</h3>
+<table>
+  <tr><th>Residenza</th><th>Cosa cambia tra fisico e sintetico per te</th></tr>
+  <tr><td><strong>Italia</strong></td><td>Per l'aliquota sui proventi (26%) non cambia nulla: fisici e sintetici armonizzati sono tassati uguale. Cambia però la <strong>quota agevolata al 12,5%</strong>: si calcola sui titoli di Stato che il fondo <em>possiede davvero</em> — e per un sintetico «davvero» significa il paniere sostitutivo, non l'indice. Il caso concreto è alla sezione 8.</td></tr>
+  <tr><td><strong>Germania</strong></td><td>Qui la replica può cambiare l'aliquota: l'esenzione parziale del 30% (Teilfreistellung) spetta solo ai fondi con almeno il 51% di azioni <em>possedute direttamente</em> (§20 InvStG). I grandi sintetici azionari tengono panieri azionari proprio per restare sopra la soglia — ma va verificato fondo per fondo.</td></tr>
+  <tr><td><strong>Francia</strong></td><td>Il sintetico è la porta d'ingresso: nel PEA (conto fiscalmente agevolato) servono almeno 75% di azioni europee, quindi l'S&amp;P 500 ci entra solo in versione sintetica — paniere europeo più swap sull'indice americano.</td></tr>
+  <tr><td><strong>Svizzera</strong></td><td>Nessun doppio vantaggio: il fisco federale attribuisce un reddito imponibile anche agli ETF swap (il rendimento «da dividendo» dentro lo swap è tassato come reddito, via ICTax). Resta il vantaggio a livello di fondo, uguale per tutti.</td></tr>
+  <tr><td><strong>Regno Unito</strong></td><td>Dentro ISA e SIPP il fisco personale sparisce: resta solo il vantaggio a livello di fondo, che lì è guadagno pieno. Fuori dai wrapper conta lo status di «reporting fund» (uguale per fisici e sintetici). In più, gli swap su azioni UK evitano l'imposta di bollo dello 0,5% sugli acquisti.</td></tr>
+  <tr><td><strong>Resto del SEE</strong></td><td>Lo strato comune (la ritenuta alla fonte dentro il fondo) è identico per tutti; cambia solo il fisco nazionale sopra. In assenza di regole speciali, fisico e sintetico sono trattati allo stesso modo.</td></tr>
+</table>
+<div class="box" style="font-size:14px"><strong>Nota importante.</strong> Rebalix non fornisce consulenza in materia di investimenti né fiscale. Questa tabella descrive regole generali, a scopo informativo: le norme cambiano nel tempo, e la tua situazione specifica può fare eccezione. Per le decisioni che ti riguardano, fai sempre riferimento alle normative del tuo paese e, in caso di dubbio, al supporto di un professionista abilitato — un commercialista o consulente fiscale per le imposte, un consulente finanziario per gli investimenti.</div>
+<div class="notaredazione">DECISO (26/7): niente passaggio legale esterno — al suo posto la checklist a costo zero, da applicare in stesura finale: (1) una fonte primaria linkata e datata per OGNI cella (InvStG, DM 13/12/2011 + circ. 11/E, doc. AMF/PEA, ICTax, HMRC); (2) grammatica solo descrittiva («la norma prevede», mai «conviene»); (3) gerarchia di certezza: legge → si afferma, prassi amministrativa → si attribuisce, dubbio residuo → la cella si toglie; (4) date visibili + sentinelle normative; (5) riga «trovato un'imprecisione? Scrivici» a fine sezione. Disclaimer di sezione già inserito (visibile in produzione).</div>
+
+<!-- ============ SEZIONE 8 ============ -->
+<h2>8 · Il caso italiano: quando il paniere decide le tue tasse</h2>
+<p>Premessa d'obbligo: tutto ciò che segue in questa sezione vale <strong>solo per chi è fiscalmente residente in Italia</strong> — se risiedi altrove, per te contano le regole del tuo paese (sezione 7). Il fisco italiano tassa i proventi degli ETF al 26%, ma la quota riferibile a titoli di Stato (italiani o di paesi collaborativi) è tassata al <strong>12,5%</strong>. Come si calcola quella quota? Sulla <em>percentuale media dell'attivo</em> investita in titoli pubblici, presa dagli ultimi due rendiconti del fondo. L'attivo. Non l'indice.</p>
+<p>Per un ETF fisico le due cose coincidono. Per un sintetico no — e la differenza non è teorica. Prendi <strong>XEON</strong> — lo Xtrackers II EUR Overnight Rate Swap UCITS ETF (ISIN LU0290358497), uno dei più grandi ETF monetari europei, di cui abbiamo parlato nella <a href="https://rebalix.com/it/blog/etf-monetario-xeon">guida agli ETF monetari</a>: è un fondo swap che replica il tasso €STR, e il suo indice è un tasso d'interesse — zero titoli di Stato <em>per definizione</em>. Ma il suo paniere sostitutivo è fatto in gran parte di obbligazioni governative. Risultato, nero su bianco nelle certificazioni fiscali semestrali dell'emittente:</p>
+<table>
+  <tr><th>Semestre di validità</th><th class="num">Quota «titoli pubblici» certificata</th></tr>
+  <tr><td>lug–dic 2024</td><td class="num">93,7%</td></tr>
+  <tr><td>gen–giu 2025</td><td class="num">93,4%</td></tr>
+  <tr><td>lug–dic 2025</td><td class="num">94,0%</td></tr>
+  <tr><td>gen–giu 2026</td><td class="num">87,5%</td></tr>
+  <tr><td>lug–dic 2026</td><td class="num">78,1%</td></tr>
+</table>
+<p class="dim" style="font-size:13px">Fonte: documenti «Fiscalità degli ETF» pubblicati da DWS per il mercato italiano, serie completa dal 2021 in archivio.</p>
+<p>Tre lezioni in una tabella. Primo: un investitore italiano in questo fondo paga il 12,5% (non il 26%) su gran parte dei proventi — un effetto che dall'indice non indovineresti mai. Secondo: vale anche il contrario — un sintetico su un indice <em>obbligazionario governativo</em> il cui paniere non fosse fatto di titoli di Stato perderebbe l'agevolazione. Terzo: la quota <strong>balla</strong> (dal 94% al 78% in un anno), perché il paniere cambia. Chi vuole controllare il proprio fondo trova le percentuali nei documenti fiscali dell'emittente, aggiornati ogni semestre — oppure, molto più in fretta, nel nostro <a href="https://rebalix.com/it/tassazione-etf-white-list">database della tassazione ETF e white list</a> — pensato per i residenti fiscali in Italia: cerchi il fondo per nome o ISIN e vedi aliquote ed esempi con importi (la <a href="https://rebalix.com/it/tassazione-etf/LU0290358497">scheda di XEON è qui</a>).</p>
+<div class="placeholder"><b>COMPONENTE DATI VIVO #5</b> — La tabella qui sopra, alimentata dal controllo mensile dei documenti fiscali dell'emittente (nuovo semestre → riga nuova, in automatico).</div>
+<div class="notaredazione">Impaginazione: aggiungere questo articolo a <code>whitelist-articles.ts</code> con gli ISIN dei fondi citati (XEON LU0290358497, XSPU LU0490618542, World Swap LU0274208692) → il box «Approfondimento» delle schede per-ISIN del database punterà qui. Imbuto bidirezionale: articolo → database → articolo. VERSIONE EN: la sezione resta come «the Italian case» (esempio del principio paniere→tasse, interessante per tutti) ma con lo scoping esplicito in testa e i link al database marcati «(in Italian, for Italian tax residents)».</div>
+
+<!-- ============ SEZIONE 9 ============ -->
+<h2>9 · Quando ha senso l'uno, quando l'altro</h2>
+<p>Non c'è un vincitore. C'è una mappa:</p>
+<table>
+  <tr><th>Situazione</th><th>Cosa dice l'evidenza</th></tr>
+  <tr><td>Indici grandi e liquidi (azionario sviluppato, governativi euro)</td><td>Il fisico replica bene e costa poco; la semplicità è un valore. Il sintetico qui compete solo se ha un vantaggio fiscale specifico.</td></tr>
+  <tr><td>Indici USA (S&amp;P 500, Nasdaq-100)</td><td>Il sintetico parte con ~0,15–0,20% l'anno di vantaggio strutturale sulla ritenuta. È il caso in cui i sintetici stanno riconquistando quota di mercato.</td></tr>
+  <tr><td>Mercati emergenti e di frontiera</td><td>Il fisico è costretto a campionare (tracking error più alto); il sintetico segue meglio, ma con costi swap meno prevedibili. Qui il confronto va fatto sulla tracking difference storica, fondo per fondo.</td></tr>
+  <tr><td>Mercati ad accesso limitato (es. azioni cinesi classe A)</td><td>Spesso il sintetico è l'unica via praticabile o la più efficiente; in alcuni periodi le banche hanno perfino pagato per l'esposizione (spread swap negativi). Involucro e regole vanno letti con attenzione doppia.</td></tr>
+  <tr><td>Materie prime</td><td>Qui la scelta quasi non esiste: dentro gli UCITS l'esposizione passa da indici di <em>future</em> su panieri diversificati (la regola del 20% vista alla sezione 5 esclude i fondi su una singola materia prima), e questi fondi sono replicati via swap come norma — detenere fisicamente materie prime significherebbe caveau e stoccaggio. Chi vuole il singolo metallo (oro, argento) trova gli ETC con metallo fisico: un involucro diverso, fuori dalle tutele UCITS.</td></tr>
+  <tr><td>Chi vuole capire ogni riga di ciò che possiede</td><td>Il fisico è più leggibile: portafoglio pubblicato, costi scomponibili. La tracking difference di un sintetico resta in parte inspiegabile dall'esterno.</td></tr>
+</table>
+<h3>Le domande da fare prima di comprare (e dove trovare le risposte)</h3>
+<p><em>Per un fisico:</em> quale tecnica di replica usa (KID/prospetto)? Fa prestito titoli, con che limiti, e quanta parte dei ricavi torna al fondo (documenti dell'emittente)? C'è un'indennità in caso di insolvenza del prestatario? Sui limiti, due esempi reali di quanto siano concreti e diversi: la policy di prestito di DWS fissa un tetto contrattuale del 50% del patrimonio per gli Xtrackers azionari, fino al 100% per gli obbligazionari Xtrackers II, con eccezioni come il 23% per gli ETF idonei al PEA francese e il 30% per quelli quotati a Hong Kong; il prospetto Vanguard (aprile 2026) fissa il 50% massimo in prestito e mai più del 20% verso una singola controparte.</p>
+<p><em>Per un sintetico:</em> unfunded o funded? Una controparte o più? Con che frequenza azzera l'esposizione? Cosa c'è nel paniere/collaterale, oggi (sito dell'emittente, aggiornato quotidianamente)? In caso di pegno, quanto è rapida l'escussione? E la domanda che quasi nessuno fa: come è andata la tracking difference negli ultimi 3–5 anni rispetto ai concorrenti fisici?</p>
+
+<!-- ============ SEZIONE 10 ============ -->
+<h2>10 · Domande frequenti</h2>
+<dl class="faq">
+  <dt>Come scopro se il mio ETF è fisico o sintetico?</dt>
+  <dd>Dal KID o dalla scheda del fondo: cerca «replica fisica/completa/a campionamento» oppure «replica sintetica/swap». Spesso lo dice già il nome: se contiene la parola «Swap», è sintetico.</dd>
+  <dt>Se fallisce l'emittente del mio ETF, perdo i soldi?</dt>
+  <dd>No: il patrimonio del fondo è custodito da una banca depositaria indipendente, separato per legge sia dagli attivi dell'emittente sia da quelli della depositaria stessa. Il fallimento dell'emittente non tocca i titoli del fondo. Ricorda però che un ETF non è un conto deposito: nessuno schema garantisce il valore delle quote. I fondi di indennizzo nazionali (in Italia il Fondo Nazionale di Garanzia) riguardano un altro caso ancora — gli ammanchi da frode presso il tuo intermediario; nel fallimento ordinario del broker i titoli, separati per legge, ti tornano per intero e senza tetto. La protezione, a ogni livello della catena, è la separazione patrimoniale.</dd>
+  <dt>Se fallisce la banca dello swap perdo tutto?</dt>
+  <dd>No. Il fondo possiede il paniere sostitutivo (o escute il collaterale), e per legge l'esposizione scoperta non può superare il 10% del patrimonio — in pratica gli emittenti la tengono quasi sempre vicino a zero. Il rischio realistico non è «perdere tutto», ma perdere una piccola frazione e restare per qualche tempo con un portafoglio diverso dall'indice.</dd>
+  <dt>Perché il mio ETF S&amp;P 500 batte l'indice?</dt>
+  <dd>Quasi sempre è l'effetto delle ritenute sui dividendi: l'indice «net return» usato come riferimento assume una ritenuta del 30%, mentre un fondo irlandese ne paga il 15% e un sintetico lo 0%. Battere quell'indice non è magia: è aritmetica fiscale.</dd>
+  <dt>Dove vedo il paniere sostitutivo del mio ETF sintetico?</dt>
+  <dd>Sul sito dell'emittente, nella pagina del fondo: la composizione è pubblicata e aggiornata ogni giorno di borsa. Se non la trovi, è una risposta anche quella.</dd>
+  <dt>Il sintetico è tassato diversamente in Italia?</dt>
+  <dd>L'aliquota è la stessa (26%), ma la quota agevolata al 12,5% si calcola su ciò che il fondo possiede davvero — il paniere, non l'indice. Il risultato può sorprendere in entrambe le direzioni: vedi la sezione 8, e — se sei fiscalmente residente in Italia — per il tuo fondo specifico cerca nome o ISIN nel nostro <a href="https://rebalix.com/it/tassazione-etf-white-list">database della tassazione ETF</a>.</dd>
+  <dt>Il prestito titoli rende rischioso un ETF fisico?</dt>
+  <dd>Aggiunge un rischio piccolo e garantito da collaterale giornaliero. Le cose da guardare sono i limiti di prestito e quanta parte dei ricavi torna al fondo.</dd>
+  <dt>Dove controllo la tracking difference del mio ETF?</dt>
+  <dd>Su trackingdifferences.com per il singolo fondo; nel nostro modulo qui sopra per il confronto fisici-vs-sintetici sullo stesso indice, con lo storico.</dd>
+  <dt>Meglio fisico o sintetico?</dt>
+  <dd>Dipende dal mercato e da cosa pesa di più per te tra semplicità, fedeltà all'indice e fiscalità. La mappa della sezione 9 è il punto di partenza; la scelta resta tua.</dd>
+</dl>
+
+<!-- ============ FONTI ============ -->
+<div class="notaredazione">Impaginazione: i link normativi vanno resi <strong>per-lingua</strong> come i testi (pattern i18n del sito). Versione EN: direttiva → stesso ELI con suffisso <code>/eng</code> (verificato, 200); orientamenti ESMA → PDF ufficiale 2012-832EN (agli atti). Fonti solo-locali (Agenzia Entrate, InvStG tedesco, DM 2011): nella versione EN restano in lingua originale con una parentesi «(in Italian/German)» — prassi onesta e comune. ICTax e HMRC hanno versioni inglesi native.</div>
+<h2>Fonti</h2>
+<ul class="fonti">
+  <li>Vanguard Research, <em>An overview of physical and synthetic ETF structures</em> (Corsi, Hussain, Hsu), dicembre 2020 — il paper di cui l'articolo Vanguard divulgativo è la sintesi.</li>
+  <li>Morningstar ETF Research, <a href="https://web.archive.org/web/20160705122217/http://media.morningstar.com/eu/ETF/assets/SyntheticETFsUnderTheMicroscope_AGlobalStudy_Morningstar.pdf" target="_blank" rel="noopener noreferrer"><em>Synthetic ETFs Under the Microscope: A Global Study</em></a>, maggio 2012 (copia archiviata: l'originale non è più online) — e l'aggiornamento <em>Spotlight on Synthetic ETFs in Europe</em>, marzo 2021 (accesso tramite Morningstar; <a href="https://www.etfstrategy.com/morningstar-publishes-review-of-synthetic-etfs-98547/" target="_blank" rel="noopener noreferrer">sintesi pubblica</a>).</li>
+  <li>Hurlin, Iseli, Pérignon, Yeung, <em>The Counterparty Risk Exposure of ETF Investors</em>, <a href="https://www.sciencedirect.com/science/article/abs/pii/S037842661930069X" target="_blank" rel="noopener noreferrer">Journal of Banking &amp; Finance, 2019</a> — <a href="https://shs.hal.science/halshs-01023807" target="_blank" rel="noopener noreferrer">preprint ad accesso libero (HAL)</a>.</li>
+  <li><a href="https://eur-lex.europa.eu/eli/dir/2009/65/2024-04-15/ita" target="_blank" rel="noopener noreferrer">Direttiva 2009/65/CE (UCITS), testo consolidato su EUR-Lex</a> — con le modifiche della direttiva (UE) 2024/927 — e <a href="https://www.esma.europa.eu/sites/default/files/library/2015/11/esma_it_0.pdf" target="_blank" rel="noopener noreferrer">orientamenti ESMA/2012/832 su ETF e altri OICVM (traduzione italiana ufficiale)</a>.</li>
+  <li>IRS, Section 871(m) e Notice 2024-44 (proroga del regime transitorio fino al 2026).</li>
+  <li>DM 13 dicembre 2011 e circolare Agenzia delle Entrate 11/E del 28/3/2012 (quota titoli pubblici negli OICR); documenti fiscali semestrali dell'emittente per il caso della sezione 8.</li>
+  <li>§20 InvStG (Germania, Teilfreistellung); disciplina PEA (Francia).</li>
+  <li>Politiche di prestito titoli e ripartizione dei ricavi — obbligo di trasparenza ex linee guida ESMA 2012/832, par. 28-29 e 35. Fonti per le percentuali citate: schede fondo iShares UCITS, sezione «Securities Lending» (62,5% al fondo); DWS, <a href="https://etf.dws.com/en-gb/AssetDownload/Index/a1e064c8-c1f9-464a-acf6-b98e592f24cd/Securities-Lending-Policy.pdf" target="_blank" rel="noopener noreferrer"><em>Xtrackers UCITS ETFs Securities Lending Policy</em></a> (82% azionari, 91% DAX, 70% Xtrackers II, dal 1/2/2024); Vanguard Funds plc, <a href="https://www.borsaitaliana.it/CAETF/2026-52110-PROSPECTUS-2dee9fee-74ae-4b96-8d83-6bf7777f9185.pdf" target="_blank" rel="noopener noreferrer"><em>Prospectus</em>, 28 aprile 2026</a> (ricavo netto al fondo; nessun prestito a società del gruppo; limiti 50% del patrimonio e 20% per controparte) e <a href="https://fund-docs.vanguard.com/etf-annual-report.pdf" target="_blank" rel="noopener noreferrer"><em>Annual Report</em> al 30 giugno 2025</a>, note ai bilanci (ripartizione solo tra fondo e agente terzo J.P. Morgan, tabelle per fondo, collaterale solo sovrano).</li>
+  <li>Liste integrali di panieri e indici dei fondi Xtrackers S&amp;P 500 Swap UCITS ETF 1C e Xtrackers MSCI World Swap UCITS ETF 1C, scaricate dagli export ufficiali DWS il 26/7/2026 (panieri al 26/7/2026, indici al 31/3/2026) — file e copia PDF della scheda agli atti.</li>
+  <li>trackingdifferences.com — tracking difference misurate su dati ufficiali, per singolo fondo.</li>
+</ul>
+<p class="dim" style="font-size:13px">Dati aggiornati al: [data del modulo] · Quadro normativo verificato al: 25 luglio 2026.</p>
+
+<div class="disclaimer">
+Questo articolo ha scopo informativo e didattico: descrive come funzionano i prodotti e cosa dicono le norme, non è una raccomandazione di investimento né una consulenza fiscale. Le regole fiscali citate dipendono dalla residenza e possono cambiare; per la tua situazione specifica rivolgiti a un professionista abilitato.
+</div>
+
+</div>
+</body>
+</html>
