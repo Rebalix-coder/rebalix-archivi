@@ -20,6 +20,12 @@ DEST = os.path.join(REPO, "lib", "blog", "xd-holdings.ts")
 PROFILI = {"20": "xeq2", "40": "xeq4", "60": "xeq6", "80": "xeq8"}
 CLASSI = {"Azionari": "azioni", "Obbligazionari": "obbligazioni",
           "Materie Prime": "oro", "Cash": "liquidita"}
+# Mattoncini NON-ETF noti: il feed DWS li serve senza nome e/o con classe sbagliata.
+# 1 ago 2026: la liquidità di XEQ6 è parcheggiata nel monetario INTERNO DWS (LVNAV,
+# classe Z istituzionale, lanciato 2015, mai quotato → ignoto a FIRDS/OpenFIGI e allo
+# stesso feed ETF di DWS, che lo dava «--» e Azionari!). Nome dal KID PRIIPs (Linus).
+OVERRIDE = {"IE00BZ3FDF20": {"nome": "Deutsche Managed Euro Fund Z (monetario DWS)",
+                             "classe": "liquidita"}}
 
 def e_hy(nome):
     return "high yield" in (nome or "").lower()
@@ -57,8 +63,12 @@ def main():
         for p in r["posizioni"]:
             peso = p["peso"] or 0
             classe = CLASSI.get(p.get("classe") or "", "liquidita")
-            classi[classe] = round(classi[classe] + peso, 4)
             nome = p.get("nome") or ""
+            ov = OVERRIDE.get(p.get("isin") or "")
+            if ov:
+                nome = ov.get("nome", nome)
+                classe = ov.get("classe", classe)
+            classi[classe] = round(classi[classe] + peso, 4)
             if "Swap" in nome:
                 swap += peso
             if classe == "obbligazioni":

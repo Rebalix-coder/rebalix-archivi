@@ -75,16 +75,34 @@ def dist_mattoncino(isin, nome):
 def falda(posizioni, classe):
     """Aggrega paesi (e settori se azionaria) della falda richiesta, pesata e rinormalizzata."""
     voci = [p for p in posizioni if p["classe"] == classe and p["isin"]]
-    tot_falda = sum(p["peso"] for p in voci)
-    paesi, settori, proxy_note = {}, {}, []
+    # Mattoncino SENZA radiografia in archivio (1 ago 2026: IE00BZ3FDF20 comparso in XEQ6 il
+    # 30/07 senza nome nemmeno nel feed DWS, ignoto a FIRDS/OpenFIGI — ISIN nuovo o inciampo
+    # del feed; l'API DWS non lo serve → il raccoglitore lo salta e qui il file manca).
+    # Non deve uccidere il modulo: si ESCLUDE, si rinormalizza sul coperto e lo si DICHIARA
+    # in nota. Oltre MAX_SCONOSCIUTA% della falda resta fail-loud: un buco grosso non si tace.
+    coperti, mancanti = [], []
     for p in voci:
-        if classe == "azioni":
-            dp, ds, proxy = dist_mattoncino(p["isin"], p["nome"])
-            if proxy:
-                proxy_note.append(f"{p['nome']}: {proxy}")
-        else:
-            r = lookthrough(p["isin"])
-            dp, ds = normalizza(r["aggregati"].get("paese", {})), {}
+        try:
+            if classe == "azioni":
+                dp, ds, proxy = dist_mattoncino(p["isin"], p["nome"])
+            else:
+                r = lookthrough(p["isin"])
+                dp, ds, proxy = normalizza(r["aggregati"].get("paese", {})), {}, None
+            coperti.append((p, dp, ds, proxy))
+        except FileNotFoundError:
+            mancanti.append(p)
+    quota_mancante = sum(p["peso"] for p in mancanti)
+    tot_lordo = sum(p["peso"] for p in voci)
+    if tot_lordo and quota_mancante / tot_lordo * 100 > MAX_SCONOSCIUTA:
+        sys.exit(f"!! falda {classe}: {quota_mancante:.1f} pt su {tot_lordo:.1f} senza radiografia — modulo NON scritto")
+    tot_falda = sum(p["peso"] for p, _, _, _ in coperti)
+    paesi, settori, proxy_note = {}, {}, []
+    for p in mancanti:
+        etichetta = p["nome"] if (p.get("nome") or "").strip() not in ("", "--") else p["isin"]
+        proxy_note.append(f"{etichetta}: radiografia non ancora disponibile ({p['peso']:.1f}% del comparto) — escluso dall'aggregato")
+    for p, dp, ds, proxy in coperti:
+        if proxy:
+            proxy_note.append(f"{p['nome']}: {proxy}")
         quota = p["peso"] / tot_falda
         for k, v in dp.items():
             paesi[k] = paesi.get(k, 0) + v * quota
@@ -139,12 +157,23 @@ def main():
                 r = json.loads(line)
                 if r.get("kind") == "full":
                     h = r
+        # CASH_LIKE: mattoncini che il feed marca Azionari ma sono LIQUIDITÀ (1 ago 2026:
+        # IE00BZ3FDF20 = Deutsche Managed Euro Fund Z, monetario interno DWS) → "altro",
+        # fuori dalle falde per metodologia (come oro e cash), niente radiografia attesa.
+        CASH_LIKE = {"IE00BZ3FDF20"}
         pos = [{"isin": p["isin"], "nome": p["nome"], "peso": p["peso"] or 0,
-                "classe": {"Azionari": "azioni", "Obbligazionari": "obbligazioni"}.get(p.get("classe"), "altro")}
+                "classe": "altro" if p["isin"] in CASH_LIKE else
+                          {"Azionari": "azioni", "Obbligazionari": "obbligazioni"}.get(p.get("classe"), "altro")}
                for p in h["posizioni"]]
         az_p, az_s, proxy = falda(pos, "azioni")
-        ob_p, _, _ = falda(pos, "obbligazioni")
-        note_proxy = proxy or note_proxy
+        ob_p, _, proxy_ob = falda(pos, "obbligazioni")
+        # UNIONE delle note di tutti i profili (dedup, ordine di apparizione): prima l'ultimo
+        # profilo SOVRASCRIVEVA i precedenti — la nota d'esclusione di XEQ6 (mattoncino senza
+        # radiografia, 1 ago 2026) spariva se XEQ8 non aveva buchi.
+        for nota in (proxy or []) + (proxy_ob or []):
+            etichettata = nota if prof in nota else f"{prof}: {nota}" if "escluso dall'aggregato" in nota else nota
+            if etichettata not in note_proxy:
+                note_proxy.append(etichettata)
         scon = sum(v for k, v in az_p.items() if k in IGNORA) + sum(v for k, v in ob_p.items() if k in IGNORA)
         if scon > MAX_SCONOSCIUTA:
             sys.exit(f"!! {key}: quota ignota {scon:.1f}% — modulo NON scritto")

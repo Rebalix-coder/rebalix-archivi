@@ -216,16 +216,29 @@ def _scarica(url, dest):
 
 
 def archive_docs():
-    """Mensile (primi 7 giorni del mese): factsheet del mese chiuso + KID/prospetto correnti."""
+    """Factsheet del mese chiuso + KID/prospetto correnti.
+    FACTSHEET: Amundi lo pubblica con LAG (1 ago 2026: quello di luglio non c'era ancora →
+    404 per giorni). Si ritenta OGNI giorno finché appare; il 404 è ATTESA normale, non
+    errore. Allarme vero (fail-loud) solo se manca ancora anche il factsheet di DUE mesi
+    fa: a quel punto non è lag, è il pattern URL cambiato.
+    KID/PROSPETTO: mensile nei primi 7 giorni; lì il 404 resta un ERRORE (= versione
+    ruotata, la data nell'URL è cambiata → aggiornare DOCS a mano)."""
     oggi = datetime.date.today()
-    if oggi.day > 7:
-        return
     fine_mese_scorso = oggi.replace(day=1) - datetime.timedelta(days=1)
     ymd = fine_mese_scorso.strftime("%Y%m%d")
     dest_fs = f"docs/factsheet_{ymd}.pdf"
     if not os.path.exists(os.path.join(ARCHIVE, dest_fs)):
-        _scarica(FACTSHEET.format(ymd=ymd), dest_fs)
-        log(f"   factsheet {ymd} archiviato")
+        try:
+            _scarica(FACTSHEET.format(ymd=ymd), dest_fs)
+            log(f"   factsheet {ymd} archiviato")
+        except Exception:
+            due_mesi_fa = (fine_mese_scorso.replace(day=1) - datetime.timedelta(days=1)).strftime("%Y%m%d")
+            if os.path.exists(os.path.join(ARCHIVE, f"docs/factsheet_{due_mesi_fa}.pdf")):
+                log(f"   factsheet {ymd}: non ancora pubblicato — si ritenta domani (lag normale Amundi)")
+            else:
+                raise RuntimeError(f"factsheet: mancano sia {ymd} sia {due_mesi_fa} — pattern URL cambiato?")
+    if oggi.day > 7:
+        return
     for nome, url in DOCS.items():
         ver = url.rsplit("/", 1)[-1]
         dest = f"docs/{nome}_{ver}.pdf"

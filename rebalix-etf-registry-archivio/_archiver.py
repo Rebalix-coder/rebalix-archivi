@@ -99,6 +99,21 @@ def main():
         with open(STATE, "w") as f:
             json.dump({"last_ym": YM, "at": f"{datetime.datetime.now():%Y-%m-%d %H:%M}"}, f)
     log(f"esito: exit={p.returncode}, emittenti ok={sum(1 for v in modules.values() if v)}/{len(modules)}")
+
+    # Costi di transazione dai KID (trimestrale di fatto: lo script salta le righe
+    # con estrazione più fresca di 80 giorni). NON-fatale: un problema qui non deve
+    # oscurare il giro principale — finisce nel battito come modulo dedicato.
+    if not DRY:
+        try:
+            k = subprocess.run([NODE, "scripts/enrich-kid-costs.mjs", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (k.stdout or "").strip().splitlines()[-4:]:
+                log(f"  |kid| {line}")
+            modules["kid-costs"] = k.returncode == 0
+        except Exception as e:
+            log(f"!! kid-costs fallito (non blocca): {e}")
+            modules["kid-costs"] = False
+
     send_heartbeat(ok, falliti + (0 if p.returncode == 0 else 1), modules)
     sys.exit(0 if ok else 1)
 

@@ -30,7 +30,8 @@ VERCEL = shutil.which("vercel") or "/usr/local/bin/vercel"
 DATA_FILES = ["lib/blog/xd-performance.ts", "lib/blog/xd-holdings.ts",
               "lib/blog/xd-lookthrough.ts", "lib/blog/xd-aum.ts",
               "lib/blog/xd-tax.ts", "lib/blog/xeon-tax.ts",  # fiscalità white list dal DB
-              "lib/blog/xd-costs.ts"]  # costi estratti dai KID PRIIPs (DWS + Vanguard)
+              "lib/blog/xd-costs.ts",  # costi estratti dai KID PRIIPs (DWS + Vanguard)
+              "lib/blog/xd-changes.ts"]  # registro variazioni paniere (soglie dichiarate)
 BASE = "https://etf.dws.com/api/pdp/it-it/etf/"
 
 ETFS = {
@@ -542,7 +543,7 @@ GEN_TO_MODULE = {  # script generatore -> chiave modulo attesa dal guardiano (li
     "gen_xd_performance.py": "xd-performance", "gen_xd_holdings.py": "xd-holdings",
     "gen_xd_lookthrough.py": "xd-lookthrough", "gen_xd_aum.py": "xd-aum",
     "gen_xd_tax.py": "xd-tax", "gen_xeon_tax.py": "xeon-tax",
-    "gen_xd_costs.py": "xd-costs",
+    "gen_xd_costs.py": "xd-costs", "gen_xd_changes.py": "xd-changes",
 }
 
 def latest_nav_date():
@@ -616,7 +617,7 @@ def main():
     # rigenera i moduli del sito e, se cambiati, deploya (solo i file dati, da worktree pulito)
     modules = {}
     for g in ("gen_xd_performance.py", "gen_xd_holdings.py", "gen_xd_lookthrough.py", "gen_xd_aum.py",
-              "gen_xd_tax.py", "gen_xeon_tax.py", "gen_xd_costs.py"):
+              "gen_xd_tax.py", "gen_xeon_tax.py", "gen_xd_costs.py", "gen_xd_changes.py"):
         modules[GEN_TO_MODULE[g]] = regen(g)
     if not autodeploy():  # deploy fallito = i dati freschi non sono arrivati in prod → allerta
         errori += 1

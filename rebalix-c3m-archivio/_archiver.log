@@ -116,3 +116,7 @@
 2026-08-01 10:47  [deploy] deploy prod OK (6f1f6f2a) al tentativo 1
 2026-08-01 11:02  !! [heartbeat] fallito (non conto come errore dati): The read operation timed out
 2026-08-01 11:02  fatto (1 errori)
+2026-08-01 22:22     [retry 1/3] HTTP Error 404: Not Found
+2026-08-01 22:22     [retry 2/3] HTTP Error 404: Not Found
+2026-08-01 22:22     [retry 3/3] HTTP Error 404: Not Found
+2026-08-01 22:22     factsheet 20260731: non ancora pubblicato — si ritenta domani (lag normale Amundi)
