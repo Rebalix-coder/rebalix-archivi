@@ -22,3 +22,19 @@ HEAD is now at afe9ed4 data(blog-replica): refresh automatico panieri, active sh
 2026-07-27 07:42  [heartbeat] inviato (errori=0)
 2026-07-27 07:42  === giro completato (0 errori) ===
 2026-07-29 05:55  giro 2026-W31 già completato — niente da fare (usa --force per rifare)
+2026-08-02 23:38  giro 2026-W31 già completato — niente da fare (usa --force per rifare)
+[main 41d7499] data(blog-replica): refresh automatico panieri, active share, scarto TD e ibrido
+ 3 files changed, 59 insertions(+), 59 deletions(-)
+HEAD is now at 41d7499 data(blog-replica): refresh automatico panieri, active share, scarto TD e ibrido
+2026-08-03 00:45  === giro 2026-W32 avviato (dry=False) ===
+2026-08-03 00:45  [baskets:xspu] ok — 398/504 titoli, active share 56.4%
+2026-08-03 00:45  [baskets:world] ok — 513/1283 titoli, active share 59.5%
+2026-08-03 00:46  [td] ok — 1510 punti comuni, fine 2026-07-30, scarti +17pb, +20pb, +22pb, +24pb
+2026-08-03 00:46  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-08-03 00:46  [hybrid] ok — 754 titoli fisici, USA 0.5%; scarto vs fisico +51 pb/a su 407 sedute
+2026-08-03 00:46  !! push Codeberg fallito — proseguo col deploy del commit locale
+2026-08-03 00:48  [deploy] produzione aggiornata
+2026-08-03 00:48  [heartbeat] inviato (errori=0)
+2026-08-03 00:48  === giro completato (0 errori) ===
+2026-08-03 07:12  giro 2026-W32 già completato — niente da fare (usa --force per rifare)
+2026-08-03 07:40  giro 2026-W32 già completato — niente da fare (usa --force per rifare)

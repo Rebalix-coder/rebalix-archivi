@@ -1,0 +1,82 @@
+=== bond-lifecycle 2026-08-03T00:59:03+02:00 ===
+--- [bulk-corporate] 00:59:03
+== COMMIT: scriverò su bond_registry ==
+FULINS_D: 4 parti
+  parse FULINS_D_20260801_04of04.zip
+  parse FULINS_D_20260801_03of04.zip
+  parse FULINS_D_20260801_02of04.zip
+  parse FULINS_D_20260801_01of04.zip
+obbligazioni (DB, majors): 73,685
+emittenti da arricchire (GLEIF): 9,314
+  GLEIF 150/9314
+  GLEIF 3150/9314
+  GLEIF 6150/9314
+  GLEIF 9150/9314
+per tipo: { supranational: 358, corporate: 64157, agency: 2589, sovereign: 2608 }
+da scrivere: 66,746 · saltati (sovrani + 19 sovranazionali curati): 2,966
+ESCLUSI perché già cessati ovunque (richiamati/delistati): 48
+QUARANTENA: 3,925 ISIN non scritti (verifica fallita)
+  ⚠️ XS2288825263 scadenza nel nome (2031-01-21) ≠ campo (2033-01-22) | BANQUE OUEST AF/EUR NT 20310121 RES
+  ⚠️ FR001400IZD3 cedola nel nome (4.8) ≠ campo (0) | NATIXIS STRUCTU/4.8 Bd 20280707
+  ⚠️ FR001400J3E0 cedola nel nome (1.575) ≠ campo (0) | NATIXIS STRUCTU/1.575 Bd 20330824
+  ⚠️ FR001400J6Z8 cedola nel nome (1.8125) ≠ campo (0) | NATIXIS STRUCTU/1.8125 Bd 20330817
+  ⚠️ FR001400UU61 cedola nel nome (6) ≠ campo (0.06) | NATIXIS STRUCTU/6.0 BD 20370430
+  ⚠️ FR001400X5P3 cedola nel nome (2.05) ≠ campo (0) | NATIXIS STRUCTU/2.05 Bd 20350314
+  ⚠️ FR001400X7G8 cedola nel nome (3.6) ≠ campo (0) | NATIXIS STRUCTU/3.6 Bd 20300212
+  ⚠️ FR001400XMW0 cedola nel nome (0.9334) ≠ campo (0) | Natixis Structu/0.9334 Bd 20350329
+  ⚠️ FR001400XNZ1 cedola nel nome (2.125) ≠ campo (0) | Natixis Structu/2.125 Bd 20350411
+  ⚠️ FR001400XR89 cedola nel nome (3.0625) ≠ campo (0) | Natixis Structu/3.0625 Bd 20350418
+  ⚠️ FR001400XTW5 cedola nel nome (3.125) ≠ campo (0) | Natixis Structu/3.125 Bd 20350613
+  ⚠️ FR001400XZH3 cedola nel nome (7.08) ≠ campo (0) | Natixis Structu/7.08 Bd 20290313
+  ⚠️ FR001400YL19 cedola nel nome (6) ≠ campo (0) | NATIXIS STRUCTU/6.0 BD 20351015
+  ⚠️ FR001400YTJ0 cedola nel nome (2.75) ≠ campo (0) | Natixis Structu/2.75 Bd 20350813
+  ⚠️ FR001400YU91 cedola nel nome (2.55) ≠ campo (0) | Natixis Structu/2.55 Bd 20350807
+  … e altri 3910 in bond-corporate-quarantine.json
+  upsert 0/66746
+  upsert 5000/66746
+  upsert 10000/66746
+  upsert 15000/66746
+  upsert 20000/66746
+  upsert 25000/66746
+  upsert 30000/66746
+  upsert 35000/66746
+  upsert 40000/66746
+  upsert 45000/66746
+  upsert 50000/66746
+  upsert 55000/66746
+  upsert 60000/66746
+  upsert 65000/66746
+COMMIT ok: 66,746 righe upsertate.
+quarantena aggiornata: 3,925 in quarantena, risanamento su 66,746 vivi.
+--- [bulk-corporate] OK
+--- [sovrani] 01:02:03
+IT  listing=24810  isin=1146  VIVI=535  scartati=8  cessati-esclusi=6  (81s)
+
+Totale vivi inseriti: 535
+
+══ REPORT QUARANTENA (8 titoli NON scritti — verifica fallita) ══
+  IT0001086567  [Repubblica Italiana]  ITALIA/7.25 BTP 20261101
+    → cedola nel nome (7.25) ≠ campo (3.625)
+  IT0001174611  [Repubblica Italiana]  ITALIA/6.5 BTP 20271101
+    → cedola nel nome (6.5) ≠ campo (3.25)
+  IT0001278511  [Repubblica Italiana]  ITALIA/5.25 BTP 20291101
+    → cedola nel nome (5.25) ≠ campo (2.625)
+  IT0005713539  [Repubblica Italiana]  ITALIA/TV BTP ITALIA SI 20310623
+    → cedole discordi tra borse: 0 vs 1.6
+  XS3358406075  [Repubblica Italiana]  REPUBBLICA ITAL/4EMTN 20380400  GTE
+    → cedole discordi tra borse: 0 vs 4
+  IT0005696320  [Repubblica Italiana]  ITALIA/TV BTP VALORE 20320310
+    → cedole discordi tra borse: 0 vs 0.5 vs 0.625 vs 2.5
+  XS2842049053  [Repubblica Italiana]  REPUBBLICA ITAL/VAR MTN 20340614
+    → cedole discordi tra borse: 0 vs 4
+  XS0247541971  [Repubblica Italiana]  ITALY, REP.OF/4.425 MTN 20360328
+    → cedola nel nome (4.425) ≠ campo (0)
+--- [sovrani] OK
+--- [marcatura] 01:03:25
+auto-guarigione: 5 titoli tornati vivi
+candidati alla marcatura 'termination': 0
+marcati: 0
+--- [marcatura] OK
+{"ok":true,"name":"bond-lifecycle","recorded_at":"2026-08-02T23:03:27.502Z"}
+[heartbeat] inviato (ok=true, errori=0)
+=== fine 2026-08-03T01:03:27+02:00, errori=0 ===

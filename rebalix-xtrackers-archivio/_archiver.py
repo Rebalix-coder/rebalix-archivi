@@ -586,8 +586,11 @@ def send_heartbeat(name, errori, modules, data_date):
         req = urllib.request.Request(
             "https://rebalix.com/api/heartbeat", data=payload, method="POST",
             headers={"Authorization": f"Bearer {secret}", "Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=30) as r:
-            log(f"[heartbeat] inviato ({r.status})")
+        # il battito DEVE arrivare: se manca, il guardiano crede l'archivio fermo e manda
+        # un falso allarme (02/08/2026: blip DNS all'invio → email «xd-lookthrough/xd-changes
+        # non rigenerati» mentre erano perfetti). net_retry come per le altre chiamate.
+        status = net_retry(lambda: urllib.request.urlopen(req, timeout=30).status)
+        log(f"[heartbeat] inviato ({status})")
     except Exception as e:
         log(f"!! [heartbeat] invio fallito (non blocca l'archivio): {e}")
 
