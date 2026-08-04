@@ -114,6 +114,46 @@ def main():
             log(f"!! kid-costs fallito (non blocca): {e}")
             modules["kid-costs"] = False
 
+    # Borse di quotazione da FIRDS/ESMA (3.188 ISIN x ~0,6s ≈ 35-40 min). NON-fatale
+    # come kid-costs. --only-missing NO: il senso del giro mensile è proprio rivedere
+    # gli stati (un listing puo' passare a Terminated), quindi si ripassa tutto.
+    if not DRY:
+        try:
+            l = subprocess.run([NODE, "scripts/enrich-etf-listings.mjs", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=5400)
+            for line in (l.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |listings| {line}")
+            modules["listings"] = l.returncode == 0
+        except Exception as e:
+            log(f"!! listings fallito (non blocca): {e}")
+            modules["listings"] = False
+
+    # Listini ufficiali delle borse (ticker+valuta per linea; primo modulo Xetra).
+    # PRIMA dei ticker derivati: cio' che scrive la borsa non va sovrascritto.
+    if not DRY:
+        try:
+            v = subprocess.run([NODE, "scripts/enrich-venue-listings.mjs", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (v.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |venues| {line}")
+            modules["venues"] = v.returncode == 0
+        except Exception as e:
+            log(f"!! venues fallito (non blocca): {e}")
+            modules["venues"] = False
+
+    # Ticker per borsa (whitelist + emittenti + OpenFIGI con taratura). Dopo listings:
+    # aggiorna le righe che il modulo precedente ha appena creato/rivisto.
+    if not DRY:
+        try:
+            t = subprocess.run([NODE, "scripts/enrich-etf-tickers.mjs", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=5400)
+            for line in (t.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |tickers| {line}")
+            modules["tickers"] = t.returncode == 0
+        except Exception as e:
+            log(f"!! tickers fallito (non blocca): {e}")
+            modules["tickers"] = False
+
     send_heartbeat(ok, falliti + (0 if p.returncode == 0 else 1), modules)
     sys.exit(0 if ok else 1)
 

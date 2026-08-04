@@ -1104,3 +1104,59 @@ HEAD is now at 6ddea8c data(blog-xd): refresh automatico dei moduli versionati
 2026-08-02 11:45  [deploy] deploy prod OK (6ddea8cf) al tentativo 3
 2026-08-02 11:45  !! [heartbeat] invio fallito (non blocca l'archivio): <urlopen error [Errno 8] nodename nor servname provided, or not known>
 2026-08-02 11:45  fatto, tutto OK
+[main 8ce34b9] data(blog-xd): refresh automatico dei moduli versionati
+ 6 files changed, 100 insertions(+), 101 deletions(-)
+HEAD is now at 8ce34b9 data(blog-xd): refresh automatico dei moduli versionati
+2026-08-03 10:30  --- avvio archiviatore Xtrackers  ---
+2026-08-03 10:30  xeq2: dato al 2026-07-31, 1 snapshot nuovi
+2026-08-03 10:30  xeq2: NAV ufficiale, 129 punti
+2026-08-03 10:30  xeq4: dato al 2026-07-31, 1 snapshot nuovi
+2026-08-03 10:30  xeq4: NAV ufficiale, 129 punti
+2026-08-03 10:30  xeq6: dato al 2026-07-31, 1 snapshot nuovi
+2026-08-03 10:30  xeq6: NAV ufficiale, 129 punti
+2026-08-03 10:30  xeq8: dato al 2026-07-31, 1 snapshot nuovi
+2026-08-03 10:30  xeq8: NAV ufficiale, 129 punti
+2026-08-03 10:30  xqui: dato al 2026-07-31, 1 snapshot nuovi
+2026-08-03 10:30  xqui: NAV ufficiale, 4395 punti
+2026-08-03 10:30  magr: composizione invariata (impronta 4092aefa8f5be490) — niente da fare
+2026-08-03 10:30  modr: composizione invariata (impronta f72048fd2372b1f5) — niente da fare
+2026-08-03 10:30  macv: composizione invariata (impronta f68a340ae267ec64) — niente da fare
+2026-08-03 10:30  spread: snapshot 2026-08-03 10:30, 4/11 book validi
+2026-08-03 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-03 10:30  lookthrough IE0006WW1TQ4: 772 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE000F354Q61: 3311 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BD4DX952: 384 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BFMKQC67: 3330 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BG04LT92: 790 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BGHQ0G80: 1862 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BJ0KDR00: 534 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BJZ2DD79: 1963 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BL25JM42: 420 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BTJRMP35: 1231 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BYPHT736: 1903 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough IE00BZ036J45: 3330 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough LU2263803533: 513 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough LU2581375073: 309 posizioni al 2026-07-30
+2026-08-03 10:30  lookthrough LU2675291913: 184 posizioni al 2026-07-30
+2026-08-03 10:30  [golden] XEQ2.MI: 104 date | cum Yahoo -0.06% vs NAV -0.53% (diff 0.47 pt) | rend. mediano 0.188 pt | livello max 1.75%
+2026-08-03 10:30  [golden] XEQ4.MI: 105 date | cum Yahoo +1.04% vs NAV +0.61% (diff 0.44 pt) | rend. mediano 0.251 pt | livello max 1.83%
+2026-08-03 10:30  [golden] XEQ6.MI: 107 date | cum Yahoo +2.93% vs NAV +2.68% (diff 0.25 pt) | rend. mediano 0.291 pt | livello max 1.92%
+2026-08-03 10:30  [golden] XEQ8.MI: 107 date | cum Yahoo +5.02% vs NAV +4.58% (diff 0.44 pt) | rend. mediano 0.341 pt | livello max 1.99%
+2026-08-03 10:30  [xd-perf] scritto /Users/ale/progetti/rebalix/lib/blog/xd-performance.ts: 129 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-03 10:30  [xd-hold] scritto /Users/ale/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-07-31) — 20: swap 0.0%, HY 5.0%+EM 15.0% dei bond | 40: swap 15.98%, HY 5.0%+EM 15.0% dei bond | 60: swap 30.51%, HY 5.0%+EM 15.0% dei bond | 80: swap 43.53%, HY 5.0%+EM 15.0% dei bond
+2026-08-03 10:30  [xd-look] scritto /Users/ale/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-03 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.67}, {'nome': 'Giappone', 'pct': 5.97}, {'nome': 'Taiwan', 'pct': 3.42}]
+2026-08-03 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 29.19}, {'nome': 'Finanza', 'pct': 17.75}, {'nome': 'Prodotti industriali', 'pct': 11.45}]
+2026-08-03 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 39.84}, {'nome': 'Giappone', 'pct': 7.26}, {'nome': 'Francia', 'pct': 4.94}]
+2026-08-03 10:30  [xd-aum] scritto /Users/ale/progetti/rebalix/lib/blog/xd-aum.ts: 19 giorni, ultimo (2026-08-03): 20%=2.026M, 40%=3.115M, 60%=3.455M, 80%=5.113M
+2026-08-03 10:30  [xd-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-08-03 10:30  [xeon-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-08-03 10:30  [xd-costs] scritto /Users/ale/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-08-03
+2026-08-03 10:30  [xd-changes] scritto: 2 eventi (baseline 2026-07-10)
+2026-08-03 10:30  [deploy] commit dei moduli xd
+2026-08-03 10:33  [deploy] Production: https://rebalix-80elzrsq2-rebalixs-projects.vercel.app [4s]
+2026-08-03 10:33  [deploy] [2K[1A[2K[GProduction: https://rebalix-80elzrsq2-rebalixs-projects.vercel.app [2m]
+2026-08-03 10:33  [deploy] Aliased: https://rebalix.com [2m]
+2026-08-03 10:33  [deploy] deploy prod OK (8ce34b9b) al tentativo 1
+2026-08-03 10:33  [heartbeat] inviato (200)
+2026-08-03 10:33  fatto, tutto OK

@@ -3,3 +3,39 @@
 2026-08-02 23:38  già girato per 2026-08, esco (usa --force per rifare)
 2026-08-03 00:45  già girato per 2026-08, esco (usa --force per rifare)
 2026-08-03 07:12  già girato per 2026-08, esco (usa --force per rifare)
+2026-08-03 23:44  lancio: /usr/local/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-08-03 23:48    | → xtrackers…
+2026-08-03 23:48    |   xtrackers: 370 righe, 348 con benchmark  ✓
+2026-08-03 23:48    | → spdr…
+2026-08-03 23:48    |   spdr: 175 righe, 175 con benchmark  ✓
+2026-08-03 23:48    | → ubs…
+2026-08-03 23:48    |   ubs: 231 righe, 231 con benchmark  ✓
+2026-08-03 23:48    | → jpm…
+2026-08-03 23:48    |   jpm: 90 righe, 85 con benchmark  ✓
+2026-08-03 23:48    | → lgim…
+2026-08-03 23:48    |   lgim: 69 righe, 69 con benchmark  ✓
+2026-08-03 23:48    | → 21shares…
+2026-08-03 23:48    |   21shares: 58 righe, 0 con benchmark  ✓
+2026-08-03 23:48    | 
+2026-08-03 23:48    | Totale: 3188 righe, 3015 con benchmark, 1575 indici distinti
+2026-08-03 23:48    | Snapshot righe: /var/folders/c5/hfxcrx6s13bgcmcbwkktz6yr0000gn/T/etf-registry-dry/registry-rows.json
+2026-08-03 23:48    |   DB: 3188 righe upsertate
+2026-08-03 23:48    |   memoria: 0 fotografie nuove per 2026-08 in etf_registry_history
+2026-08-03 23:48    |   archivio: amundi-products.json già presente per 2026-08, non sovrascrivo
+2026-08-03 23:48    |   archivio: ubs-etf-product-overview-it.xlsx già presente per 2026-08, non sovrascrivo
+2026-08-03 23:48    |   archivio: jpm-etf.json già presente per 2026-08, non sovrascrivo
+2026-08-03 23:48    |   archivio: lgim-fund-centre.json già presente per 2026-08, non sovrascrivo
+2026-08-03 23:48    |   archivio: 21shares-product-list.html già presente per 2026-08, non sovrascrivo
+2026-08-03 23:48    |   archivio: snapshot 2026-08 in /Users/ale/backups/rebalix-etf-registry-archivio/snapshots/2026-08
+2026-08-03 23:48    | 
+2026-08-03 23:48    | ✓ Ingest completato.
+2026-08-03 23:48  esito: exit=0, emittenti ok=10/10
+2026-08-04 00:20    |kid|   ✗ Amundi FR001400SDJ6: nessuna variante URL ha funzionato
+2026-08-04 00:20    |kid|   ✗ Amundi FR001400SDK4: nessuna variante URL ha funzionato
+2026-08-04 00:20    |kid|   ✗ Amundi FR001400SDL2: nessuna variante URL ha funzionato
+2026-08-04 00:20    |kid| ✓ aggiornate 0 righe (kid_transaction_costs).
+2026-08-04 01:04    |listings| ISIN nel registro: 3188, da elaborare: 3188
+2026-08-04 01:04    |listings|   …100/3188 (vuoti 0, falliti 0)
+2026-08-04 01:04    |listings|   ✗ FR0010446658: fetch failed
+2026-08-04 07:35  !! tickers fallito (non blocca): Command '['/usr/local/bin/node', 'scripts/enrich-etf-tickers.mjs', '--commit']' timed out after 5400 seconds
+2026-08-04 07:35  [heartbeat] inviato (200)
