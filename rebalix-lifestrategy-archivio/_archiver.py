@@ -19,7 +19,9 @@ GIT = shutil.which("git") or "/usr/bin/git"
 VERCEL = shutil.which("vercel") or "/usr/local/bin/vercel"
 # i moduli dati versionati che i generatori rigenerano (gli unici file che il deploy auto committa)
 DATA_FILES = ["lib/blog/ls-aum.ts", "lib/blog/ls-holdings.ts", "lib/blog/ls-holdings-uk.ts",
-              "lib/blog/ls-lookthrough.ts", "lib/blog/ls-tax.ts", "lib/blog/ls-distributions.ts"]
+              "lib/blog/ls-lookthrough.ts", "lib/blog/ls-tax.ts", "lib/blog/ls-distributions.ts",
+              "lib/blog/ls-bondstats.ts",  # ← mancava: il Q2-2026 restò rigenerato ma mai committato
+              "lib/blog/ls-changes.ts"]   # registro variazioni panieri (trimestrale)
 NEWSLETTER = "https://www.it.vanguard/content/dam/intl/europe/documents/it/lifestrategy-etf-newsletter-it-pro.pdf"
 MONTHS = {"marzo":("Marzo","03"),"giugno":("Giugno","06"),"settembre":("Settembre","09"),"dicembre":("Dicembre","12")}
 
@@ -145,7 +147,7 @@ LS_GEN_TO_MODULE = {  # script -> chiave modulo attesa dal guardiano (lib/archiv
     "parse_ls.py": "parse_ls", "gen_aum_module.py": "aum", "gen_holdings_module.py": "holdings",
     "gen_holdings_uk_module.py": "holdings_uk", "gen_lookthrough_module.py": "lookthrough",
     "gen_tax_module.py": "tax", "gen_distributions_module.py": "distributions",
-    "gen_bondstats_module.py": "bondstats",
+    "gen_bondstats_module.py": "bondstats", "gen_ls_changes.py": "changes",
 }
 
 def send_heartbeat(name, errori, modules, data_date):
@@ -281,7 +283,7 @@ def main():
     # parse_ls.py PER PRIMO: ri-estrae ls_timeseries.json da tutti i PDF trimestrali archiviati,
     # così AUM / paniere euro / duration (che ne dipendono) riflettono l'ultimo report senza passi manuali.
     modules = {}
-    for s in ("parse_ls.py", "gen_aum_module.py", "gen_holdings_module.py", "gen_holdings_uk_module.py", "gen_lookthrough_module.py", "gen_tax_module.py", "gen_distributions_module.py", "gen_bondstats_module.py"):
+    for s in ("parse_ls.py", "gen_aum_module.py", "gen_holdings_module.py", "gen_holdings_uk_module.py", "gen_lookthrough_module.py", "gen_tax_module.py", "gen_distributions_module.py", "gen_bondstats_module.py", "gen_ls_changes.py"):
         modules[LS_GEN_TO_MODULE[s]] = regen(s)
     if not autodeploy():  # deploy fallito = i dati freschi non sono arrivati in prod → allerta
         errori += 1

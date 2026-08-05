@@ -39,3 +39,4 @@
 2026-08-04 01:04    |listings|   ✗ FR0010446658: fetch failed
 2026-08-04 07:35  !! tickers fallito (non blocca): Command '['/usr/local/bin/node', 'scripts/enrich-etf-tickers.mjs', '--commit']' timed out after 5400 seconds
 2026-08-04 07:35  [heartbeat] inviato (200)
+2026-08-05 08:14  già girato per 2026-08, esco (usa --force per rifare)

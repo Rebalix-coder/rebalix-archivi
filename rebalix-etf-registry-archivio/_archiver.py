@@ -128,6 +128,21 @@ def main():
             log(f"!! listings fallito (non blocca): {e}")
             modules["listings"] = False
 
+    # Serie storiche + COMPOSIZIONI (NAV, total-return, benchmark, holdings) per i
+    # 4 emittenti industrializzati. E' il modulo LUNGO (~3-4h coi ritmi di cortesia):
+    # timeout largo, non-fatale, e riprende da solo se interrotto (salta i gia'
+    # fatti in giornata). Le pagine mostrano sempre la data di rilevazione.
+    if not DRY:
+        try:
+            sr = subprocess.run([NODE, "scripts/ingest-etf-series.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=6*3600)
+            for line in (sr.stdout or "").strip().splitlines()[-4:]:
+                log(f"  |series| {line}")
+            modules["series"] = sr.returncode == 0
+        except Exception as e:
+            log(f"!! series fallito (non blocca): {e}")
+            modules["series"] = False
+
     # Listini ufficiali delle borse (ticker+valuta per linea; primo modulo Xetra).
     # PRIMA dei ticker derivati: cio' che scrive la borsa non va sovrascritto.
     if not DRY:
@@ -153,6 +168,33 @@ def main():
         except Exception as e:
             log(f"!! tickers fallito (non blocca): {e}")
             modules["tickers"] = False
+
+    # Documenti ufficiali (prospetto+factsheet): aggancia i fondi nuovi e vigila
+    # sugli schemi-URL. Gli URL emittente sono stabili e aggiornati sul posto.
+    if not DRY:
+        try:
+            dd = subprocess.run([NODE, "scripts/enrich-etf-documents.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1200)
+            for line in (dd.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |documents| {line}")
+            modules["documents"] = dd.returncode == 0
+        except Exception as e:
+            log(f"!! documents fallito (non blocca): {e}")
+            modules["documents"] = False
+
+    # Archivio storico dei PDF (KID/prospetto/factsheet): gli emittenti aggiornano
+    # sul posto e la versione di ieri sparisce dal mondo — noi la teniamo. Dedup
+    # per hash: si salva solo ciò che è cambiato. «La storia è valore» (Linus).
+    if not DRY:
+        try:
+            da = subprocess.run([NODE, "scripts/archive-etf-documents.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3*3600)
+            for line in (da.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |doc-archive| {line}")
+            modules["doc-archive"] = da.returncode == 0
+        except Exception as e:
+            log(f"!! doc-archive fallito (non blocca): {e}")
+            modules["doc-archive"] = False
 
     send_heartbeat(ok, falliti + (0 if p.returncode == 0 else 1), modules)
     sys.exit(0 if ok else 1)

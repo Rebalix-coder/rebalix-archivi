@@ -4,7 +4,7 @@
 del blog resta aggiornato senza interventi manuali. Include solo i trimestri con AUM
 per tutti e 4 i fondi (i report PDF-immagine, senza AUM leggibile, restano esclusi).
 Scrive solo se la cartella del repo esiste (macchina di sviluppo)."""
-import json, os, sys
+import json, os, sys, glob, datetime
 
 ARCHIVE = os.path.expanduser("~/backups/rebalix-lifestrategy-archivio")
 TS_JSON = os.path.join(ARCHIVE, "_scripts", "ls_timeseries.json")
@@ -24,6 +24,13 @@ def main():
         for k in aum: aum[k].append(vals[k])
     if not quarters:
         print("[aum] nessun trimestre con AUM completo — salto."); return
+    # Data di ARRIVO del report più recente (mtime del PDF in {anno}/{Mese}.pdf): è la data
+    # in cui la pagina ha iniziato a mostrare il dato nuovo → alimenta il dateModified
+    # dell'articolo (il report di giugno esce con ~5 settimane di lag: senza questo campo
+    # la data di modifica resterebbe ferma alla pubblicazione). Deterministico tra i run.
+    pdfs = glob.glob(os.path.join(ARCHIVE, "[12][0-9][0-9][0-9]", "*.pdf"))
+    archived_at = max((datetime.date.fromtimestamp(os.path.getmtime(p)) for p in pdfs), default=None)
+    archived_str = archived_at.isoformat() if archived_at else ""
     def arr(xs): return "[" + ", ".join(f"{x:g}" for x in xs) + "]"
     body = f'''/**
  * Patrimonio (AUM) trimestrale dei quattro Vanguard LifeStrategy europei, in milioni di euro.
@@ -35,12 +42,14 @@ def main():
  */
 export type LsAum = {{
   updated: string // ultimo trimestre incluso (YYYY-MM)
+  reportArchivedAt: string // quando il report più recente è ARRIVATO nell'archivio (YYYY-MM-DD)
   quarters: string[] // 'YYYY-MM' (fine trimestre)
   aum: Record<'20' | '40' | '60' | '80', number[]> // €M, allineati a `quarters`
 }}
 
 export const LS_AUM: LsAum = {{
   updated: '{quarters[-1]}',
+  reportArchivedAt: '{archived_str}',
   quarters: [{", ".join(f"'{q}'" for q in quarters)}],
   aum: {{
     '20': {arr(aum["20"])},
