@@ -114,6 +114,21 @@ def main():
             log(f"!! kid-costs fallito (non blocca): {e}")
             modules["kid-costs"] = False
 
+    # Classificazioni per i filtri del motore (regione/settore/strategie/frequenza
+    # + borse dichiarate). Ha le SUE attese interne (regione azionaria >=99%):
+    # exit 1 = orfani nuovi da decidere -> modulo rosso nel battito, dati non
+    # scritti a meta'. NON-fatale per il giro.
+    if not DRY:
+        try:
+            c = subprocess.run([NODE, "scripts/enrich-etf-classificazione.mjs", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (c.stdout or "").strip().splitlines()[-4:]:
+                log(f"  |classif| {line}")
+            modules["classificazione"] = c.returncode == 0
+        except Exception as e:
+            log(f"!! classificazione fallita (non blocca): {e}")
+            modules["classificazione"] = False
+
     # Borse di quotazione da FIRDS/ESMA (3.188 ISIN x ~0,6s ≈ 35-40 min). NON-fatale
     # come kid-costs. --only-missing NO: il senso del giro mensile è proprio rivedere
     # gli stati (un listing puo' passare a Terminated), quindi si ripassa tutto.
@@ -142,6 +157,59 @@ def main():
         except Exception as e:
             log(f"!! series fallito (non blocca): {e}")
             modules["series"] = False
+
+    # Frequenza di distribuzione (dichiarata Vanguard + contata dagli archivi
+    # serie iShares/UBS appena aggiornati). Non sovrascrive mai il dichiarato.
+    if not DRY:
+        try:
+            fq = subprocess.run([NODE, "scripts/enrich-dist-frequency.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (fq.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |distfreq| {line}")
+            modules["dist-frequency"] = fq.returncode == 0
+        except Exception as e:
+            log(f"!! dist-frequency fallita (non blocca): {e}")
+            modules["dist-frequency"] = False
+
+    # Prestito titoli dai KID (frase dichiarata; salta le righe gia' valorizzate,
+    # quindi a regime tocca solo i fondi nuovi). Golden UBS interno.
+    if not DRY:
+        try:
+            sl = subprocess.run([NODE, "scripts/enrich-securities-lending.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=4*3600)
+            for line in (sl.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |lending| {line}")
+            modules["sec-lending"] = sl.returncode == 0
+        except Exception as e:
+            log(f"!! sec-lending fallito (non blocca): {e}")
+            modules["sec-lending"] = False
+
+    # Indicatore di rischio KID (SRI 1-7, dichiarato). Salta i gia' valorizzati.
+    if not DRY:
+        try:
+            kr = subprocess.run([NODE, "scripts/enrich-kid-risk.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=4*3600)
+            for line in (kr.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |kidrisk| {line}")
+            modules["kid-risk"] = kr.returncode == 0
+        except Exception as e:
+            log(f"!! kid-risk fallito (non blocca): {e}")
+            modules["kid-risk"] = False
+
+    # Borse DICHIARATE dagli emittenti (tabelle listini vere: pagine iShares,
+    # API Amundi, raw UBS). Giro PIENO ogni mese: coglie borse aggiunte/ritirate.
+    # Modulo nato dalla bonifica 7 ago (il vecchio criterio dentro |classif|
+    # corruppe 752 righe). Golden interni MDAX/CSPX dentro lo script.
+    if not DRY:
+        try:
+            dl = subprocess.run([NODE, "scripts/enrich-declared-listings.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=2*3600)
+            for line in (dl.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |declared| {line}")
+            modules["declared-listings"] = dl.returncode == 0
+        except Exception as e:
+            log(f"!! declared-listings fallito (non blocca): {e}")
+            modules["declared-listings"] = False
 
     # Listini ufficiali delle borse (ticker+valuta per linea; primo modulo Xetra).
     # PRIMA dei ticker derivati: cio' che scrive la borsa non va sovrascritto.
@@ -195,6 +263,20 @@ def main():
         except Exception as e:
             log(f"!! doc-archive fallito (non blocca): {e}")
             modules["doc-archive"] = False
+
+    # ULTIMO: ricostruisce le righe pronte del motore /cerca-etf (etf_search_rows)
+    # da tutte le fonti appena aggiornate. Golden interni (Xeon, CSPX, numerosita')
+    # dentro lo script: se violati esce 1 e il guardiano lo segnala.
+    if not DRY:
+        try:
+            mt = subprocess.run([NODE, "scripts/build-motore-dataset.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (mt.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |motore| {line}")
+            modules["motore"] = mt.returncode == 0
+        except Exception as e:
+            log(f"!! motore fallito (non blocca): {e}")
+            modules["motore"] = False
 
     send_heartbeat(ok, falliti + (0 if p.returncode == 0 else 1), modules)
     sys.exit(0 if ok else 1)
