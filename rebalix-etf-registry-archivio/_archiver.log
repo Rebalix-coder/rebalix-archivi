@@ -41,3 +41,62 @@
 2026-08-04 07:35  [heartbeat] inviato (200)
 2026-08-05 08:14  già girato per 2026-08, esco (usa --force per rifare)
 2026-08-06 23:13  già girato per 2026-08, esco (usa --force per rifare)
+2026-08-07 15:34  lancio: /usr/local/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-08-07 15:38    |   ishares: 1405 righe, 1377 con benchmark  ✓
+2026-08-07 15:38    | → vanguard…
+2026-08-07 15:38    |   vanguard: 137 righe, 76 con benchmark  ✓
+2026-08-07 15:38    | → amundi…
+2026-08-07 15:38    |   amundi: 665 righe, 662 con benchmark  ✓
+2026-08-07 15:38    | → xtrackers…
+2026-08-07 15:38    |   xtrackers: 372 righe, 349 con benchmark  ✓
+2026-08-07 15:38    | → spdr…
+2026-08-07 15:38    |   spdr: 176 righe, 176 con benchmark  ✓
+2026-08-07 15:38    | → ubs…
+2026-08-07 15:38    |   ubs: SALTATO — file non trovato (usare --ubs <path>)
+2026-08-07 15:38    | → jpm…
+2026-08-07 15:38    |   ✗ jpm: p is not defined
+2026-08-07 15:38    | → lgim…
+2026-08-07 15:38    |   lgim: 70 righe, 70 con benchmark  ✓
+2026-08-07 15:38    | → 21shares…
+2026-08-07 15:38    |   21shares: 58 righe, 0 con benchmark  ✓
+2026-08-07 15:38    | 
+2026-08-07 15:38    | Totale: 2883 righe, 2710 con benchmark, 1357 indici distinti
+2026-08-07 15:38    | Snapshot righe: /var/folders/c5/hfxcrx6s13bgcmcbwkktz6yr0000gn/T/etf-registry-dry/registry-rows.json
+2026-08-07 15:38    | 
+2026-08-07 15:38    | ⚠ PROBLEMI RILEVATI:
+2026-08-07 15:38    |   · jpm: FALLITO — p is not defined
+2026-08-07 15:38    | 
+2026-08-07 15:38    | ✗ Con un emittente FALLITO non scrivo: il soft-delist marcherebbe centinaia di ISIN sani.
+2026-08-07 15:38  esito: exit=1, emittenti ok=7/8
+2026-08-07 15:38    |kid|   ✗ Amundi HK0000308285: nessuna variante URL ha funzionato
+2026-08-07 15:38    |kid|   ✗ Amundi HK0000308293: nessuna variante URL ha funzionato
+2026-08-07 15:38    |kid|   ✗ Xtrackers XS2595366340: nessuna variante URL ha funzionato
+2026-08-07 15:38    |kid| ✓ aggiornate 0 righe (kid_transaction_costs).
+2026-08-07 15:38    |classif|   iShares screener: 1414 classi
+2026-08-07 15:38    |classif| aggiornate 0 righe (scritte)
+2026-08-07 15:38    |classif| ATTESA regione azionaria: 100.0% (1494/1494)
+2026-08-07 15:38    |classif| ✓ attese rispettate
+2026-08-07 16:30    |listings| 
+2026-08-07 16:30    |listings| Fatto: 2770 ISIN con listing, 435 senza documenti FIRDS, 0 falliti; 88883 righe scritte
+2026-08-07 16:30    |listings| Listing non-attivi visti: 26938
+2026-08-07 17:47    |series|   …175/370 (3 falliti)
+2026-08-07 17:47    |series|   …200/370 (3 falliti)
+2026-08-07 17:47    |series|   …225/370 (3 falliti)
+2026-08-07 17:47    |series|   …250/370 (3 falliti)
+2026-08-07 17:48    |distfreq|   ✗ LU0927735406: TypeError: fetch failed
+2026-08-07 17:48    |distfreq| frequenze pronte: 676 — scritte (solo dove mancava): 0
+2026-08-07 17:48    |lending| enrich-securities-lending — COMMIT
+2026-08-07 17:48    |kidrisk| enrich-kid-risk — COMMIT
+2026-08-07 17:48    |kidrisk|   Amundi SRRI dichiarati: 0
+2026-08-07 17:48    |declared| enrich-declared-listings — COMMIT
+2026-08-07 17:48    |venues| xetra: 4940 strumenti attivi con simbolo nel listino ufficiale
+2026-08-07 17:48    |venues| righe gruppo-Xetra: 0 — aggiornate 0, già allineate 0, ISIN fuori listino 0
+2026-08-07 17:48    |tickers| collaudo whitelist↔openfigi: 0 confronti, 0 divergenze (0%)
+2026-08-07 17:48    |tickers| scritte 0 righe
+2026-08-07 17:48    |tickers| mappa tarata salvata in /tmp/figi-mic-map.json
+2026-08-07 17:59    |documents| SPDR: 175 fondi con documenti
+2026-08-07 17:59    |documents| Amundi: 657 fondi con documenti
+2026-08-07 20:59  !! doc-archive fallito (non blocca): Command '['/usr/local/bin/node', 'scripts/archive-etf-documents.mjs', '--commit']' timed out after 10800 seconds
+2026-08-07 21:00    |motore| golden interni ✓ (Xeon ticker, CSPX completo, numerosità)
+2026-08-07 21:00    |motore| COMMIT: 2625 righe in etf_search_rows
+2026-08-07 21:00  [heartbeat] inviato (200)

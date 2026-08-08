@@ -256,13 +256,27 @@ def main():
     if not DRY:
         try:
             da = subprocess.run([NODE, "scripts/archive-etf-documents.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=3*3600)
+                                cwd=REPO, capture_output=True, text=True, timeout=6*3600)  # 7 ago: prima passata > 3h
             for line in (da.stdout or "").strip().splitlines()[-2:]:
                 log(f"  |doc-archive| {line}")
             modules["doc-archive"] = da.returncode == 0
         except Exception as e:
             log(f"!! doc-archive fallito (non blocca): {e}")
             modules["doc-archive"] = False
+
+    # Tracking difference 12 mesi (dalle serie appena aggiornate): fondo vs indice
+    # col metodo dei rapporti, solo dove onesta (TR o classi acc). Golden DAX/C3M/
+    # CSPX dentro lo script; rete di sanita' |TD|>3% = scarto, mai numeri falsi.
+    if not DRY:
+        try:
+            td = subprocess.run([NODE, "scripts/enrich-tracking-difference.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (td.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |td| {line}")
+            modules["tracking-difference"] = td.returncode == 0
+        except Exception as e:
+            log(f"!! tracking-difference fallita (non blocca): {e}")
+            modules["tracking-difference"] = False
 
     # ULTIMO: ricostruisce le righe pronte del motore /cerca-etf (etf_search_rows)
     # da tutte le fonti appena aggiornate. Golden interni (Xeon, CSPX, numerosita')
