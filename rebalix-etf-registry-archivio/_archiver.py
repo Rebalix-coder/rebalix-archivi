@@ -292,6 +292,57 @@ def main():
             log(f"!! motore fallito (non blocca): {e}")
             modules["motore"] = False
 
+    # Metal detector delle serie (Linus, 9 ago): audit post-ingest con la
+    # pipeline di lettura completa (cure da lib/serie-riparazioni.json).
+    # exit 2 = anomalie DURE nuove -> modulo rosso, il guardiano abbaia;
+    # le osservazioni morbide restano solo a verbale qui nel log.
+    if not DRY:
+        try:
+            au = subprocess.run([NODE, "scripts/audit-serie-anomalie.mjs"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (au.stdout or "").strip().splitlines():
+                log(f"  |audit| {line}")
+            modules["audit"] = au.returncode == 0
+            if au.returncode != 0:
+                log("!! AUDIT: anomalie DURE nelle serie appena ingerite - vedi righe |audit| sopra")
+        except Exception as e:
+            log(f"!! audit fallito (non blocca): {e}")
+            modules["audit"] = False
+
+    # Registro ESMA MMF (Linus, 9 ago): la promessa del hub /etf-monetari.
+    # Rilegge il registro ufficiale (Reg. UE 2017/1131) e rinnova l'incrocio
+    # in lib/esma-mmf.json. exit 2 = ritiro/sparizione di un autorizzato o
+    # zero incroci -> modulo rosso, email del guardiano (poi serve deploy).
+    if not DRY:
+        try:
+            mm = subprocess.run([NODE, "scripts/ingest-esma-mmf.mjs"],
+                                cwd=REPO, capture_output=True, text=True, timeout=900)
+            for line in (mm.stdout or "").strip().splitlines():
+                log(f"  |esma-mmf| {line}")
+            modules["esma-mmf"] = mm.returncode == 0
+            if mm.returncode != 0:
+                log("!! ESMA MMF: ritiro/sparizione o zero incroci - vedi righe sopra")
+        except Exception as e:
+            log(f"!! esma-mmf fallito (non blocca): {e}")
+            modules["esma-mmf"] = False
+
+    # Golden ESTERNO (Linus, 9 ago): metriche nostre vs serie del grafico
+    # JustETF sul roster dei 7 (SOLO verifica, mai fonte). Date allineate,
+    # tolleranze strette. exit 2 = scarto vero -> modulo rosso, email;
+    # fonte irraggiungibile = ⚠ a verbale, nessun falso allarme.
+    if not DRY:
+        try:
+            ge = subprocess.run([NODE, "scripts/golden-confronto-esterno.mjs"],
+                                cwd=REPO, capture_output=True, text=True, timeout=900)
+            for line in (ge.stdout or "").strip().splitlines():
+                log(f"  |golden-esterno| {line}")
+            modules["golden-esterno"] = ge.returncode == 0
+            if ge.returncode != 0:
+                log("!! GOLDEN ESTERNO: metriche fuori tolleranza - vedi righe sopra")
+        except Exception as e:
+            log(f"!! golden-esterno fallito (non blocca): {e}")
+            modules["golden-esterno"] = False
+
     send_heartbeat(ok, falliti + (0 if p.returncode == 0 else 1), modules)
     sys.exit(0 if ok else 1)
 

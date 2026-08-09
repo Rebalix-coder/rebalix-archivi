@@ -1354,3 +1354,133 @@ HEAD is now at c5f91ac data(blog-xd): refresh automatico dei moduli versionati
 2026-08-07 10:32  [deploy] deploy prod OK (c5f91ac3) al tentativo 1
 2026-08-07 10:32  [heartbeat] inviato (200)
 2026-08-07 10:32  fatto, tutto OK
+2026-08-08 10:30  --- avvio archiviatore Xtrackers  ---
+2026-08-08 10:30  xeq2: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-08 10:30  xeq2: NAV ufficiale, 134 punti
+2026-08-08 10:30  xeq4: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-08 10:30  xeq4: NAV ufficiale, 134 punti
+2026-08-08 10:30  xeq6: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-08 10:30  xeq6: NAV ufficiale, 134 punti
+2026-08-08 10:30  xeq8: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-08 10:30  xeq8: NAV ufficiale, 134 punti
+2026-08-08 10:30  xqui: dato al 2026-08-07, 1 snapshot nuovi
+2026-08-08 10:30  xqui: NAV ufficiale, 4400 punti
+2026-08-08 10:30  magr: 24 posizioni, NUOVA composizione (impronta 6814cbb02dfd1a41)
+2026-08-08 10:30  modr: 26 posizioni, NUOVA composizione (impronta f1adf49d8699d47a)
+2026-08-08 10:30  macv: 28 posizioni, NUOVA composizione (impronta 8f39d6dfc6444df1)
+2026-08-08 10:30  spread: snapshot 2026-08-08 10:30, 4/11 book validi
+2026-08-08 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-08 10:30  [golden] XEQ2.MI: 109 date | cum Yahoo +1.14% vs NAV +0.54% (diff 0.60 pt) | rend. mediano 0.194 pt | livello max 1.75%
+2026-08-08 10:30  [golden] XEQ4.MI: 110 date | cum Yahoo +2.50% vs NAV +2.27% (diff 0.23 pt) | rend. mediano 0.244 pt | livello max 1.83%
+2026-08-08 10:30  [golden] XEQ6.MI: 112 date | cum Yahoo +5.54% vs NAV +4.96% (diff 0.58 pt) | rend. mediano 0.291 pt | livello max 1.92%
+2026-08-08 10:30  [golden] XEQ8.MI: 112 date | cum Yahoo +8.19% vs NAV +7.49% (diff 0.70 pt) | rend. mediano 0.350 pt | livello max 1.99%
+2026-08-08 10:30  [xd-perf] scritto /Users/ale/progetti/rebalix/lib/blog/xd-performance.ts: 134 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-08 10:30  [xd-hold] scritto /Users/ale/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-08-06) — 20: swap 0.0%, HY 5.0%+EM 15.1% dei bond | 40: swap 16.29%, HY 5.0%+EM 15.1% dei bond | 60: swap 31.0%, HY 5.1%+EM 15.1% dei bond | 80: swap 43.97%, HY 5.0%+EM 15.0% dei bond
+2026-08-08 10:30  [xd-look] scritto /Users/ale/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-08 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.48}, {'nome': 'Giappone', 'pct': 5.94}, {'nome': 'Taiwan', 'pct': 3.66}]
+2026-08-08 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 29.48}, {'nome': 'Finanza', 'pct': 17.51}, {'nome': 'Prodotti industriali', 'pct': 11.5}]
+2026-08-08 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 39.68}, {'nome': 'Giappone', 'pct': 7.49}, {'nome': 'Francia', 'pct': 5.01}]
+2026-08-08 10:30  [xd-aum] scritto /Users/ale/progetti/rebalix/lib/blog/xd-aum.ts: 24 giorni, ultimo (2026-08-08): 20%=2.026M, 40%=3.115M, 60%=3.455M, 80%=5.113M
+2026-08-08 10:32  rete instabile (timeout) — ritento tra 5s
+2026-08-08 10:32  rete instabile (timeout) — ritento tra 20s
+2026-08-08 10:32  Traceback (most recent call last):
+2026-08-08 10:32  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_tax.py", line 135, in <module>
+2026-08-08 10:32  main()
+2026-08-08 10:32  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_tax.py", line 80, in main
+2026-08-08 10:32  row = db_quote(env, isin)
+2026-08-08 10:32  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_tax.py", line 62, in db_quote
+2026-08-08 10:32  rows = json.loads(net_retry(lambda: urllib.request.urlopen(req, timeout=30).read()))
+2026-08-08 10:32  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_tax.py", line 49, in net_retry
+2026-08-08 10:32  return fn()
+2026-08-08 10:32  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_tax.py", line 62, in <lambda>
+2026-08-08 10:32  rows = json.loads(net_retry(lambda: urllib.request.urlopen(req, timeout=30).read()))
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 214, in urlopen
+2026-08-08 10:32  return opener.open(url, data, timeout)
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 517, in open
+2026-08-08 10:32  response = self._open(req, data)
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 534, in _open
+2026-08-08 10:32  result = self._call_chain(self.handle_open, protocol, protocol +
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 494, in _call_chain
+2026-08-08 10:32  result = func(*args)
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1389, in https_open
+2026-08-08 10:32  return self.do_open(http.client.HTTPSConnection, req,
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1350, in do_open
+2026-08-08 10:32  r = h.getresponse()
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+2026-08-08 10:32  response.begin()
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+2026-08-08 10:32  version, status, reason = self._read_status()
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+2026-08-08 10:32  line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+2026-08-08 10:32  return self._sock.recv_into(b)
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+2026-08-08 10:32  return self.read(nbytes, buffer)
+2026-08-08 10:32  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+2026-08-08 10:32  return self._sslobj.read(len, buffer)
+2026-08-08 10:32  socket.timeout: The read operation timed out
+2026-08-08 10:34  rete instabile (timeout) — ritento tra 5s
+2026-08-08 10:34  rete instabile (timeout) — ritento tra 20s
+2026-08-08 10:34  Traceback (most recent call last):
+2026-08-08 10:34  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xeon_tax.py", line 80, in <module>
+2026-08-08 10:34  main()
+2026-08-08 10:34  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xeon_tax.py", line 53, in main
+2026-08-08 10:34  rows = json.loads(net_retry(lambda: urllib.request.urlopen(req, timeout=30).read()))
+2026-08-08 10:34  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xeon_tax.py", line 36, in net_retry
+2026-08-08 10:34  return fn()
+2026-08-08 10:34  File "/Users/ale/backups/rebalix-xtrackers-archivio/_scripts/gen_xeon_tax.py", line 53, in <lambda>
+2026-08-08 10:34  rows = json.loads(net_retry(lambda: urllib.request.urlopen(req, timeout=30).read()))
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 214, in urlopen
+2026-08-08 10:34  return opener.open(url, data, timeout)
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 517, in open
+2026-08-08 10:34  response = self._open(req, data)
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 534, in _open
+2026-08-08 10:34  result = self._call_chain(self.handle_open, protocol, protocol +
+[main d01500e] data(blog-xd): refresh automatico dei moduli versionati
+ 5 files changed, 21 insertions(+), 21 deletions(-)
+HEAD is now at d01500e data(blog-xd): refresh automatico dei moduli versionati
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 494, in _call_chain
+2026-08-08 10:34  result = func(*args)
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1389, in https_open
+2026-08-08 10:34  return self.do_open(http.client.HTTPSConnection, req,
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1350, in do_open
+2026-08-08 10:34  r = h.getresponse()
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+2026-08-08 10:34  response.begin()
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+2026-08-08 10:34  version, status, reason = self._read_status()
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+2026-08-08 10:34  line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+2026-08-08 10:34  return self._sock.recv_into(b)
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+2026-08-08 10:34  return self.read(nbytes, buffer)
+2026-08-08 10:34  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+2026-08-08 10:34  return self._sslobj.read(len, buffer)
+2026-08-08 10:34  socket.timeout: The read operation timed out
+2026-08-08 10:34  [xd-costs] scritto /Users/ale/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-08-08
+2026-08-08 10:34  [xd-changes] invariato (2 eventi)
+2026-08-08 10:34  [deploy] commit dei moduli xd
+2026-08-08 10:38  !! [deploy] tentativo 1/3 fallito (exit 1)
+2026-08-08 10:43  !! [deploy] tentativo 2/3 fallito (exit 1)
+2026-08-08 10:59  !! [deploy] tentativo 3/3 fallito (exit 1)
+2026-08-08 10:59  !! [deploy] DEPLOY FALLITO dopo 3 tentativi (d01500e1). Il commit è su Codeberg ma NON in produzione. Output vercel:
+obbligazioni-corporate/bayer (attempt 1 of 3) because it took more than 60 seconds. Retrying again shortly.
+Building: Failed to build /[lang]/(public)/obbligazioni-corporate/[issuer]/page: /it/obbligazioni-corporate/bayer (attempt 1 of 3) because it took more than 60 seconds. Retrying again shortly.
+Building: Failed to build /[lang]/(public)/obbligazioni-corporate/[issuer]/page: /en/obbligazioni-corporate/bbva (attempt 1 of 3) because it took more than 60 seconds. Retrying again shortly.
+Building: Failed to build /[lang]/(public)/obbligazioni-corporate/[issuer]/page: /it/obbligazioni-corporate/bbva (attempt 1 of 3) because it took more than 60 seconds. Retrying again shortly.
+Building: Failed to build /[lang]/(public)/obbligazioni-corporate/[issuer]/page: /en/obbligazioni-corporate/belfius (attempt 1 of 3) because it took more than 60 seconds. Retrying again shortly.
+Building: Failed to build /[lang]/(public)/obbligazioni-corporate/[issuer]/page: /it/obbligazioni-corporate/belfius (attempt 1 of 3) because it took more than 60 seconds. Retrying again shortly.
+Building: Failed to build /[lang]/(public)/blog/[slug]/page: /en/blog/guida-ai-btp-valore (attempt 1 of 3) because it took more than 60 seconds. Retrying again shortly.
+Building: Generating static pages using 3 workers (32/476)
+Building: Generating static pages using 3 workers (119/476)
+Building: Generating static pages using 3 workers (238/476)
+Building: Generating static pages using 3 workers (357/476)
+Building: ✓ Generating static pages using 3 workers (476/476) in 105s
+Building: Finalizing page optimization ...
+Building: Running onBuildComplete from Vercel
+Error: request to https://api.vercel.com/v13/deployments/dpl_D56dFVbPnE4wnnbqxZQCDzcaZiY1?teamId=team_XwGrl9XAVMSGosSnQ8I81qQK failed, reason: read ECONNRESET
+2026-08-08 10:59     rete instabile (HTTPError) — ritento tra 5s
+2026-08-08 11:00     rete instabile (HTTPError) — ritento tra 20s
+2026-08-08 11:00  !! [heartbeat] invio fallito (non blocca l'archivio): HTTP Error 504: Gateway Timeout
+2026-08-08 11:00  fatto (1 errori)
