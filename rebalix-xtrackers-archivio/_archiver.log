@@ -1699,3 +1699,70 @@ Error: request to https://api.vercel.com/v13/deployments/dpl_D56dFVbPnE4wnnbqxZQ
 2026-08-08 11:00     rete instabile (HTTPError) — ritento tra 20s
 2026-08-08 11:00  !! [heartbeat] invio fallito (non blocca l'archivio): HTTP Error 504: Gateway Timeout
 2026-08-08 11:00  fatto (1 errori)
+2026-08-09 10:30  --- avvio archiviatore Xtrackers  ---
+2026-08-09 10:30  xeq2: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-09 10:30  xeq2: NAV ufficiale, 134 punti
+2026-08-09 10:30  xeq4: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-09 10:30  xeq4: NAV ufficiale, 134 punti
+2026-08-09 10:30  xeq6: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-09 10:30  xeq6: NAV ufficiale, 134 punti
+2026-08-09 10:30  xeq8: dato al 2026-08-06, 0 snapshot nuovi (gia' in archivio)
+2026-08-09 10:30  xeq8: NAV ufficiale, 134 punti
+2026-08-09 10:30  xqui: dato al 2026-08-07, 0 snapshot nuovi (gia' in archivio)
+2026-08-09 10:30  xqui: NAV ufficiale, 4400 punti
+2026-08-09 10:30  magr: composizione invariata (impronta 6814cbb02dfd1a41) — niente da fare
+2026-08-09 10:30  modr: composizione invariata (impronta f1adf49d8699d47a) — niente da fare
+2026-08-09 10:30  macv: composizione invariata (impronta 8f39d6dfc6444df1) — niente da fare
+2026-08-09 10:30  spread: snapshot 2026-08-09 10:30, 4/11 book validi
+2026-08-09 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-09 10:30  lookthrough IE0006WW1TQ4: 772 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE000F354Q61: 3309 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BD4DX952: 385 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BFMKQC67: 3338 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BG04LT92: 780 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BGHQ0G80: 1863 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BJ0KDR00: 533 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BJZ2DD79: 1965 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BL25JM42: 420 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BTJRMP35: 1233 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BYPHT736: 1903 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough IE00BZ036J45: 3338 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0290355717: 563 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0290357259: 34 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0321462953: 870 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0322253906: 853 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0328475792: 616 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0378818131: 1311 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0478205379: 4186 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0484968903: 2901 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0524480265: 193 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU0942970798: 5200 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU1109943388: 680 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU1399300455: 305 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU2178481649: 2189 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU2263803533: 518 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU2581375073: 323 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU2675291913: 189 posizioni al 2026-08-06
+2026-08-09 10:30  lookthrough LU3003218446: 286 posizioni al 2026-08-06
+2026-08-09 10:30  [golden] XEQ2.MI: 109 date | cum Yahoo +1.14% vs NAV +0.54% (diff 0.60 pt) | rend. mediano 0.194 pt | livello max 1.75%
+2026-08-09 10:30  [golden] XEQ4.MI: 110 date | cum Yahoo +2.50% vs NAV +2.27% (diff 0.23 pt) | rend. mediano 0.244 pt | livello max 1.83%
+2026-08-09 10:30  [golden] XEQ6.MI: 112 date | cum Yahoo +5.54% vs NAV +4.96% (diff 0.58 pt) | rend. mediano 0.291 pt | livello max 1.92%
+2026-08-09 10:30  [golden] XEQ8.MI: 112 date | cum Yahoo +8.19% vs NAV +7.49% (diff 0.70 pt) | rend. mediano 0.350 pt | livello max 1.99%
+2026-08-09 10:30  [xd-perf] scritto /Users/ale/progetti/rebalix/lib/blog/xd-performance.ts: 134 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-09 10:30  [xd-hold] scritto /Users/ale/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-08-06) — 20: swap 0.0%, HY 5.0%+EM 15.1% dei bond | 40: swap 16.29%, HY 5.0%+EM 15.1% dei bond | 60: swap 31.0%, HY 5.1%+EM 15.1% dei bond | 80: swap 43.97%, HY 5.0%+EM 15.0% dei bond
+2026-08-09 10:30  [xd-look] scritto /Users/ale/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-09 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.5}, {'nome': 'Giappone', 'pct': 5.95}, {'nome': 'Taiwan', 'pct': 3.71}]
+2026-08-09 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 30.07}, {'nome': 'Finanza', 'pct': 17.37}, {'nome': 'Prodotti industriali', 'pct': 11.52}]
+2026-08-09 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.63}, {'nome': 'Giappone', 'pct': 7.71}, {'nome': 'Francia', 'pct': 5.1}]
+2026-08-09 10:30  [xd-aum] scritto /Users/ale/progetti/rebalix/lib/blog/xd-aum.ts: 25 giorni, ultimo (2026-08-09): 20%=2.026M, 40%=3.115M, 60%=3.455M, 80%=5.113M
+2026-08-09 10:30  [xd-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-08-09 10:30  [xeon-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-08-09 10:30  [xd-costs] scritto /Users/ale/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-08-09
+2026-08-09 10:30  [xd-changes] invariato (2 eventi)
+2026-08-09 10:30  [deploy] commit dei moduli xd
+2026-08-09 10:33  [deploy] Production: https://rebalix-fgidieyk7-rebalixs-projects.vercel.app [5s]
+2026-08-09 10:33  [deploy] [2K[1A[2K[GProduction: https://rebalix-fgidieyk7-rebalixs-projects.vercel.app [2m]
+2026-08-09 10:33  [deploy] Aliased: https://rebalix.com [2m]
+2026-08-09 10:33  [deploy] deploy prod OK (23e8f18e) al tentativo 1
+2026-08-09 10:33  [heartbeat] inviato (200)
+2026-08-09 10:33  fatto, tutto OK

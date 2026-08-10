@@ -309,6 +309,70 @@ def main():
             log(f"!! audit fallito (non blocca): {e}")
             modules["audit"] = False
 
+    # Composizioni Xtrackers (Fase B, 10 ago): export constituent DWS per ISIN
+    # -> etf_holdings (posizioni+settori+paesi). La scheda gestisce i sintetici
+    # (paniere sostitutivo, niente mappa). Rifacimento mensile completo.
+    if not DRY:
+        try:
+            hx = subprocess.run([NODE, "scripts/ingest-etf-holdings-xtrackers.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (hx.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |holdings-xtrackers| {line}")
+            modules["holdings-xtrackers"] = hx.returncode == 0
+            if hx.returncode != 0:
+                log("!! HOLDINGS XTRACKERS: troppi falliti - vedi righe sopra")
+        except Exception as e:
+            log(f"!! holdings-xtrackers fallito (non blocca): {e}")
+            modules["holdings-xtrackers"] = False
+
+    # Composizioni SPDR (Fase B/2, 10 ago): holdings-daily ufficiale per slug
+    # con verifica ISIN-nel-file (impossibile ingerire il fondo sbagliato).
+    if not DRY:
+        try:
+            hs = subprocess.run([NODE, "scripts/ingest-etf-holdings-spdr.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=2400)
+            for line in (hs.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |holdings-spdr| {line}")
+            modules["holdings-spdr"] = hs.returncode == 0
+            if hs.returncode != 0:
+                log("!! HOLDINGS SPDR: raccolto a zero - vedi righe sopra")
+        except Exception as e:
+            log(f"!! holdings-spdr fallito (non blocca): {e}")
+            modules["holdings-spdr"] = False
+
+    # Composizioni Vanguard (Fase B/3, notte 10-11 ago): GraphQL gpx ufficiale
+    # (borHoldings paginato + marketAllocation + sectorDiversification).
+    if not DRY:
+        try:
+            hv = subprocess.run([NODE, "scripts/ingest-etf-holdings-vanguard.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=2400)
+            for line in (hv.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |holdings-vanguard| {line}")
+            modules["holdings-vanguard"] = hv.returncode == 0
+            if hv.returncode != 0:
+                log("!! HOLDINGS VANGUARD: troppi falliti - vedi righe sopra")
+        except Exception as e:
+            log(f"!! holdings-vanguard fallito (non blocca): {e}")
+            modules["holdings-vanguard"] = False
+
+    # Composizioni dai FACTSHEET ARCHIVIATI (fabbrica dei factsheet, notte
+    # 10-11 ago): JPM, LGIM, UBS, Amundi. Nessun download: si rilegge l'ultimo
+    # PDF in ~/backups/rebalix-docs-archivio (che il giro-documenti rinfresca).
+    # exit 2 dei parser = piu' falliti che ok -> modulo rosso.
+    if not DRY:
+        for emittente in ("jpm", "lgim", "ubs", "amundi"):
+            try:
+                hf = subprocess.run([NODE, f"scripts/ingest-etf-holdings-{emittente}-factsheet.mjs", "--commit"],
+                                    cwd=REPO, capture_output=True, text=True, timeout=2400)
+                for line in (hf.stdout or "").strip().splitlines()[-2:]:
+                    log(f"  |holdings-{emittente}| {line}")
+                modules[f"holdings-{emittente}"] = hf.returncode == 0
+                if hf.returncode != 0:
+                    log(f"!! HOLDINGS {emittente.upper()}: troppi falliti - vedi righe sopra")
+            except Exception as e:
+                log(f"!! holdings-{emittente} fallito (non blocca): {e}")
+                modules[f"holdings-{emittente}"] = False
+
     # Registro ESMA MMF (Linus, 9 ago): la promessa del hub /etf-monetari.
     # Rilegge il registro ufficiale (Reg. UE 2017/1131) e rinnova l'incrocio
     # in lib/esma-mmf.json. exit 2 = ritiro/sparizione di un autorizzato o

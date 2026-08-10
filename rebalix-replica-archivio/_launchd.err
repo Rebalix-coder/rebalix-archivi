@@ -13,3 +13,6 @@ hint: the same ref. If you want to integrate the remote changes, use
 hint: 'git pull' before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 Preparing worktree (detached HEAD 41d7499)
+To https://github.com/Rebalix-coder/rebalix.git
+   c853024..0eff3ac  main -> main
+Preparing worktree (detached HEAD 0eff3ac)
