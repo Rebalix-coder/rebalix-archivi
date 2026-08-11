@@ -309,6 +309,22 @@ def main():
             log(f"!! audit fallito (non blocca): {e}")
             modules["audit"] = False
 
+    # Censimento tick sporchi nei BENCHMARK (10 ago, caso SGLN): il despike a
+    # lettura li cura da solo, questo e' il termometro — exit 2 = esplosione
+    # rispetto alla baseline (24 fondi) -> modulo rosso, guardiano.
+    if not DRY:
+        try:
+            ab = subprocess.run([NODE, "scripts/audit-bench-spikes.mjs"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (ab.stdout or "").strip().splitlines()[-6:]:
+                log(f"  |audit-bench| {line}")
+            modules["audit-bench"] = ab.returncode == 0
+            if ab.returncode != 0:
+                log("!! AUDIT-BENCH: esplosione di tick sporchi nei benchmark - vedi righe sopra")
+        except Exception as e:
+            log(f"!! audit-bench fallito (non blocca): {e}")
+            modules["audit-bench"] = False
+
     # Composizioni Xtrackers (Fase B, 10 ago): export constituent DWS per ISIN
     # -> etf_holdings (posizioni+settori+paesi). La scheda gestisce i sintetici
     # (paniere sostitutivo, niente mappa). Rifacimento mensile completo.
@@ -339,6 +355,18 @@ def main():
         except Exception as e:
             log(f"!! holdings-spdr fallito (non blocca): {e}")
             modules["holdings-spdr"] = False
+
+    # Composizioni Avantis (emittente n.10, 10 ago): __data.json del sito
+    if not DRY:
+        try:
+            ha = subprocess.run([NODE, "scripts/ingest-etf-holdings-avantis.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (ha.stdout or "").strip().splitlines():
+                log(f"  |holdings-avantis| {line}")
+            modules["holdings-avantis"] = ha.returncode == 0
+        except Exception as e:
+            log(f"!! holdings-avantis fallito (non blocca): {e}")
+            modules["holdings-avantis"] = False
 
     # Composizioni Vanguard (Fase B/3, notte 10-11 ago): GraphQL gpx ufficiale
     # (borHoldings paginato + marketAllocation + sectorDiversification).
@@ -372,6 +400,43 @@ def main():
             except Exception as e:
                 log(f"!! holdings-{emittente} fallito (non blocca): {e}")
                 modules[f"holdings-{emittente}"] = False
+
+    # DIVIDENDI (industrializzazione 11 ago sera): storico cedole in
+    # etf_distributions. Vanguard via gpx (distributionDetails), iShares dal
+    # foglio Distributions del fundDownload (stesso file delle serie).
+    # Tabella append-only: l'upsert aggiunge le cedole nuove, mai perdite.
+    if not DRY:
+        for emittente, script in (("vanguard", "scripts/ingest-etf-distributions-vanguard.mjs"),
+                                  ("ishares", "scripts/ingest-etf-distributions-ishares.mjs"),
+                                  ("spdr", "scripts/ingest-etf-distributions-spdr.mjs"),
+                                  ("xtrackers", "scripts/ingest-etf-distributions-xtrackers.mjs")):
+            try:
+                dv = subprocess.run([NODE, script, "--commit"],
+                                    cwd=REPO, capture_output=True, text=True, timeout=3600)
+                for line in (dv.stdout or "").strip().splitlines()[-2:]:
+                    log(f"  |dividendi-{emittente}| {line}")
+                modules[f"dividendi-{emittente}"] = dv.returncode == 0
+                if dv.returncode != 0:
+                    log(f"!! DIVIDENDI {emittente.upper()}: troppi falliti - vedi righe sopra")
+            except Exception as e:
+                log(f"!! dividendi-{emittente} fallito (non blocca): {e}")
+                modules[f"dividendi-{emittente}"] = False
+
+    # FOTO MENSILE composizioni -> etf_holdings_history (10 ago): DOPO i raccolti
+    # holdings, cosi' la foto e' del mese fresco. Idempotente: rilanci nello
+    # stesso mese completano i buchi. exit 2 = foto incompleta -> guardiano.
+    if not DRY:
+        try:
+            hh = subprocess.run([NODE, "scripts/snapshot-etf-holdings.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (hh.stdout or "").strip().splitlines():
+                log(f"  |holdings-history| {line}")
+            modules["holdings-history"] = hh.returncode == 0
+            if hh.returncode != 0:
+                log("!! HOLDINGS-HISTORY: foto mensile incompleta o fallita")
+        except Exception as e:
+            log(f"!! holdings-history fallito (non blocca): {e}")
+            modules["holdings-history"] = False
 
     # Registro ESMA MMF (Linus, 9 ago): la promessa del hub /etf-monetari.
     # Rilegge il registro ufficiale (Reg. UE 2017/1131) e rinnova l'incrocio

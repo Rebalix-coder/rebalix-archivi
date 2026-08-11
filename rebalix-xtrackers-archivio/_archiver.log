@@ -1766,3 +1766,44 @@ Error: request to https://api.vercel.com/v13/deployments/dpl_D56dFVbPnE4wnnbqxZQ
 2026-08-09 10:33  [deploy] deploy prod OK (23e8f18e) al tentativo 1
 2026-08-09 10:33  [heartbeat] inviato (200)
 2026-08-09 10:33  fatto, tutto OK
+2026-08-10 10:30  --- avvio archiviatore Xtrackers  ---
+2026-08-10 10:30  xeq2: dato al 2026-08-07, 1 snapshot nuovi
+2026-08-10 10:30  xeq2: NAV ufficiale, 134 punti
+2026-08-10 10:30  xeq4: dato al 2026-08-07, 1 snapshot nuovi
+2026-08-10 10:30  xeq4: NAV ufficiale, 134 punti
+2026-08-10 10:30  xeq6: dato al 2026-08-07, 1 snapshot nuovi
+2026-08-10 10:30  xeq6: NAV ufficiale, 134 punti
+2026-08-10 10:30  xeq8: dato al 2026-08-07, 1 snapshot nuovi
+2026-08-10 10:30  xeq8: NAV ufficiale, 134 punti
+2026-08-10 10:30  xqui: dato al 2026-08-07, 1 snapshot nuovi
+2026-08-10 10:30  xqui: NAV ufficiale, 4401 punti
+2026-08-10 10:30  magr: 26 posizioni, NUOVA composizione (impronta 4085969b18476ea5)
+2026-08-10 10:30  modr: 26 posizioni, NUOVA composizione (impronta 87938ebccc964fda)
+2026-08-10 10:30  macv: 28 posizioni, NUOVA composizione (impronta ff902f9dd8c6cd53)
+2026-08-10 10:30  spread: snapshot 2026-08-10 10:30, 4/11 book validi
+2026-08-10 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-10 10:30  !! lookthrough IE00BZ3FDF20: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-10 10:30  !! Factsheet IE00BZ3FDF20: non scaricabile (it/de) — salto
+2026-08-10 10:30  factsheet+kid 2026-08: scaricati 0/1 nuovi
+2026-08-10 10:30  [golden] XEQ2.MI: 109 date | cum Yahoo +1.14% vs NAV +0.54% (diff 0.60 pt) | rend. mediano 0.194 pt | livello max 1.75%
+2026-08-10 10:30  [golden] XEQ4.MI: 110 date | cum Yahoo +2.50% vs NAV +2.27% (diff 0.23 pt) | rend. mediano 0.244 pt | livello max 1.83%
+2026-08-10 10:30  [golden] XEQ6.MI: 112 date | cum Yahoo +5.54% vs NAV +4.96% (diff 0.58 pt) | rend. mediano 0.291 pt | livello max 1.92%
+2026-08-10 10:30  [golden] XEQ8.MI: 112 date | cum Yahoo +8.19% vs NAV +7.49% (diff 0.70 pt) | rend. mediano 0.350 pt | livello max 1.99%
+2026-08-10 10:30  [xd-perf] scritto /Users/ale/progetti/rebalix/lib/blog/xd-performance.ts: 134 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-10 10:30  [xd-hold] scritto /Users/ale/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-08-07) — 20: swap 0.0%, HY 5.1%+EM 15.1% dei bond | 40: swap 16.26%, HY 5.0%+EM 15.1% dei bond | 60: swap 30.91%, HY 5.1%+EM 15.1% dei bond | 80: swap 43.9%, HY 5.0%+EM 15.0% dei bond
+2026-08-10 10:30  [xd-look] scritto /Users/ale/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-10 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.6}, {'nome': 'Giappone', 'pct': 5.95}, {'nome': 'Taiwan', 'pct': 3.68}]
+2026-08-10 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 30.06}, {'nome': 'Finanza', 'pct': 17.37}, {'nome': 'Prodotti industriali', 'pct': 11.53}]
+2026-08-10 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.63}, {'nome': 'Giappone', 'pct': 7.71}, {'nome': 'Francia', 'pct': 5.1}]
+2026-08-10 10:30  [xd-aum] scritto /Users/ale/progetti/rebalix/lib/blog/xd-aum.ts: 26 giorni, ultimo (2026-08-10): 20%=2.026M, 40%=3.115M, 60%=3.455M, 80%=5.113M
+2026-08-10 10:30  [xd-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-08-10 10:30  [xeon-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-08-10 10:30  [xd-costs] scritto /Users/ale/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-08-10
+2026-08-10 10:30  [xd-changes] invariato (2 eventi)
+2026-08-10 10:30  [deploy] commit dei moduli xd
+2026-08-10 10:32  [deploy] Production: https://rebalix-6gyqrxy5o-rebalixs-projects.vercel.app [7s]
+2026-08-10 10:32  [deploy] [2K[1A[2K[GProduction: https://rebalix-6gyqrxy5o-rebalixs-projects.vercel.app [2m]
+2026-08-10 10:32  [deploy] Aliased: https://rebalix.com [2m]
+2026-08-10 10:32  [deploy] deploy prod OK (9a68972f) al tentativo 1
+2026-08-10 10:32  [heartbeat] inviato (200)
+2026-08-10 10:32  fatto, tutto OK
