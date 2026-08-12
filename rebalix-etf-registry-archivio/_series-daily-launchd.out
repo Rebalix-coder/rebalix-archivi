@@ -1,0 +1,22 @@
+2026-08-11 11:27  giro quotidiano serie: avantis
+2026-08-11 11:27    | 
+2026-08-11 11:27  !! ingest uscito con codice null
+2026-08-11 11:27  ok Avantis: 6/6 serie rinfrescate · dato più fresco 2026-08-10
+2026-08-11 11:27  [heartbeat] inviato (200)
+2026-08-11 11:27  fine giro: PROBLEMI (1)
+2026-08-11 11:27  giro quotidiano serie: avantis
+2026-08-11 11:27    | ingest-etf-series — COMMIT
+2026-08-11 11:27    | 
+2026-08-11 11:27    | → Avantis: 6 fondi, 6 da elaborare
+2026-08-11 11:27    |   Avantis: 6 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-08-11 11:27  ok Avantis: 6/6 serie rinfrescate · dato più fresco 2026-08-10
+2026-08-11 11:28  [heartbeat] inviato (200)
+2026-08-11 11:28  fine giro: OK
+2026-08-11 13:15  giro quotidiano serie: avantis
+2026-08-11 13:15    | ingest-etf-series — COMMIT
+2026-08-11 13:15    | 
+2026-08-11 13:15    | → Avantis: 6 fondi, 6 da elaborare
+2026-08-11 13:15    |   Avantis: 6 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-08-11 13:15  ok Avantis: 6/6 serie rinfrescate · dato più fresco 2026-08-10
+2026-08-11 13:15  [heartbeat] inviato (200)
+2026-08-11 13:15  fine giro: OK

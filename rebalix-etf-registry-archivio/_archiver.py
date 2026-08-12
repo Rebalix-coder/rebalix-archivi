@@ -264,6 +264,20 @@ def main():
             log(f"!! doc-archive fallito (non blocca): {e}")
             modules["doc-archive"] = False
 
+    # Obiettivi dal KID (12 ago): sezione PRIIPs estratta dai PDF appena archiviati
+    # (marcatori per lingua it/en/de/fr, lingua verificata dal testo, guardie di
+    # lunghezza/pulizia; i curati a mano — Avantis, Flexible — non si toccano).
+    if not DRY:
+        try:
+            ko = subprocess.run([NODE, "scripts/extract-kid-objectives.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (ko.stdout or "").strip().splitlines()[-10:]:
+                log(f"  |kid-objectives| {line}")
+            modules["kid-objectives"] = ko.returncode == 0
+        except Exception as e:
+            log(f"!! kid-objectives fallito (non blocca): {e}")
+            modules["kid-objectives"] = False
+
     # Tracking difference 12 mesi (dalle serie appena aggiornate): fondo vs indice
     # col metodo dei rapporti, solo dove onesta (TR o classi acc). Golden DAX/C3M/
     # CSPX dentro lo script; rete di sanita' |TD|>3% = scarto, mai numeri falsi.
