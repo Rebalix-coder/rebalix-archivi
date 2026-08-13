@@ -66,3 +66,12 @@
 2026-08-10 07:43  [heartbeat] inviato (errori=0)
 2026-08-10 07:43  === giro completato (0 errori) ===
 2026-08-10 22:29  giro 2026-W33 già completato — niente da fare (usa --force per rifare)
+2026-08-13 22:09  === giro 2026-W33 avviato (dry=False) ===
+2026-08-13 22:09  [baskets:xspu] ok — 376/504 titoli, active share 58.2%
+2026-08-13 22:09  [baskets:world] ok — 536/1283 titoli, active share 62.2%
+2026-08-13 22:09  [td] ok — 1519 punti comuni, fine 2026-08-12, scarti +18pb, +21pb, +22pb, +24pb
+2026-08-13 22:09  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-08-13 22:09  [hybrid] ok — 754 titoli fisici, USA 0.5%; scarto vs fisico +50 pb/a su 413 sedute
+2026-08-13 22:12  [deploy] produzione aggiornata
+2026-08-13 22:12  [heartbeat] inviato (errori=0)
+2026-08-13 22:12  === giro completato (0 errori) ===

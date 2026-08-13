@@ -312,8 +312,16 @@ def autodeploy():
                "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>")
         subprocess.run([GIT, "-C", REPO, "commit", "-m", msg, "--"] + files, check=True)
         log("[deploy] commit dei moduli c3m")
+        # ANTI-RETROCESSIONE (lezione 13 ago 2026): con più macchine che pushano, deployare
+        # una base non allineata a origin/main retrocede in prod il lavoro delle altre.
+        # Rebase + push obbligatori: se una delle due fallisce, deploy ANNULLATO (False → guardiano).
+        if subprocess.run([GIT, "-C", REPO, "fetch", "origin", "main"]).returncode != 0:
+            log("!! [deploy] fetch origin fallito — deploy ANNULLATO (base non verificabile)"); return False
+        if subprocess.run([GIT, "-C", REPO, "rebase", "-X", "theirs", "origin/main"]).returncode != 0:
+            subprocess.run([GIT, "-C", REPO, "rebase", "--abort"])
+            log("!! [deploy] rebase su origin/main fallito — deploy ANNULLATO (risolvere a mano)"); return False
         if subprocess.run([GIT, "-C", REPO, "push", "origin", "main"]).returncode != 0:
-            log("!! push Codeberg fallito — proseguo col deploy del commit locale")
+            log("!! [deploy] push fallito DOPO il rebase — deploy ANNULLATO (mai deployare una base non pushata)"); return False
         head = subprocess.run([GIT, "-C", REPO, "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
         wt = tempfile.mkdtemp(prefix="rebalix-deploy-c3m-")
         try:
