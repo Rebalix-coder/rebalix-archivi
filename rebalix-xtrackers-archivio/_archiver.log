@@ -1848,3 +1848,78 @@ Error: request to https://api.vercel.com/v13/deployments/dpl_D56dFVbPnE4wnnbqxZQ
 2026-08-11 10:33  [deploy] deploy prod OK (e38803d6) al tentativo 1
 2026-08-11 10:33  [heartbeat] inviato (200)
 2026-08-11 10:33  fatto, tutto OK
+2026-08-12 10:33  --- avvio archiviatore Xtrackers  ---
+2026-08-12 10:33     rete instabile (URLError) — ritento tra 5s
+2026-08-12 10:34     rete instabile (URLError) — ritento tra 20s
+2026-08-12 10:34  !! xeq2 archive_holdings: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-08-12 10:34     rete instabile (URLError) — ritento tra 5s
+2026-08-12 10:34     rete instabile (URLError) — ritento tra 20s
+2026-08-12 10:50  !! xeq2 archive_nav: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-08-12 10:50     rete instabile (URLError) — ritento tra 5s
+2026-08-12 10:50     rete instabile (URLError) — ritento tra 20s
+2026-08-12 10:53  !! xeq4 archive_holdings: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-08-12 10:53     rete instabile (URLError) — ritento tra 5s
+2026-08-12 10:53     rete instabile (URLError) — ritento tra 20s
+2026-08-12 10:54  xeq4: NAV ufficiale, 136 punti
+2026-08-12 10:54  xeq6: dato al 2026-08-10, 1 snapshot nuovi
+2026-08-12 10:54  xeq6: NAV ufficiale, 136 punti
+2026-08-12 10:54  xeq8: dato al 2026-08-10, 1 snapshot nuovi
+2026-08-12 10:54  xeq8: NAV ufficiale, 136 punti
+2026-08-12 10:54  xqui: dato al 2026-08-11, 2 snapshot nuovi
+2026-08-12 10:54  xqui: NAV ufficiale, 4402 punti
+2026-08-12 10:54  magr: 29 posizioni, NUOVA composizione (impronta 1e56c9012c0ad0f4)
+2026-08-12 10:54  modr: 28 posizioni, NUOVA composizione (impronta 3bbf857e1084afd1)
+2026-08-12 10:54  macv: 29 posizioni, NUOVA composizione (impronta db3e91587cd8972d)
+2026-08-12 10:54  spread: snapshot 2026-08-12 10:54, 4/11 book validi
+2026-08-12 10:54  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-12 10:54  lookthrough IE0006WW1TQ4: 772 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE000F354Q61: 3309 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BD4DX952: 385 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BFMKQC67: 3352 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BG04LT92: 782 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BGHQ0G80: 1862 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BJ0KDR00: 533 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BJZ2DD79: 1965 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BL25JM42: 420 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BTJRMP35: 1233 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BYPHT736: 1903 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough IE00BZ036J45: 3352 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0290355717: 563 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0290357259: 34 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0321462953: 870 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0322253906: 853 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0328475792: 616 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0378818131: 1311 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0478205379: 4187 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0484968903: 2901 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0524480265: 193 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU0942970798: 5202 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU1109943388: 679 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU1399300455: 305 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU2178481649: 2188 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU2263803533: 528 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU2581375073: 334 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU2675291913: 189 posizioni al 2026-08-10
+2026-08-12 10:54  lookthrough LU3003218446: 286 posizioni al 2026-08-10
+2026-08-12 10:54  [golden] XEQ2.MI: 110 date | cum Yahoo +1.29% vs NAV +0.76% (diff 0.54 pt) | rend. mediano 0.191 pt | livello max 1.75%
+2026-08-12 10:54  [golden] XEQ4.MI: 112 date | cum Yahoo +3.09% vs NAV +2.43% (diff 0.66 pt) | rend. mediano 0.244 pt | livello max 1.83%
+2026-08-12 10:54  [golden] XEQ6.MI: 114 date | cum Yahoo +5.84% vs NAV +5.27% (diff 0.56 pt) | rend. mediano 0.280 pt | livello max 1.92%
+2026-08-12 10:54  [golden] XEQ8.MI: 114 date | cum Yahoo +8.60% vs NAV +7.96% (diff 0.65 pt) | rend. mediano 0.329 pt | livello max 1.99%
+2026-08-12 10:54  [xd-perf] scritto /Users/ale/progetti/rebalix/lib/blog/xd-performance.ts: 135 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-12 10:54  [xd-hold] scritto /Users/ale/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-08-07) — 20: swap 0.0%, HY 5.1%+EM 15.1% dei bond | 40: swap 16.26%, HY 5.0%+EM 15.1% dei bond | 60: swap 30.91%, HY 5.1%+EM 15.1% dei bond | 80: swap 43.88%, HY 5.0%+EM 15.0% dei bond
+2026-08-12 10:54  [xd-look] scritto /Users/ale/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-12 10:54  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.68}, {'nome': 'Giappone', 'pct': 5.94}, {'nome': 'Taiwan', 'pct': 3.67}]
+2026-08-12 10:54  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 29.98}, {'nome': 'Finanza', 'pct': 17.21}, {'nome': 'Prodotti industriali', 'pct': 11.5}]
+2026-08-12 10:54  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.58}, {'nome': 'Giappone', 'pct': 7.68}, {'nome': 'Francia', 'pct': 5.11}]
+2026-08-12 10:54  [xd-aum] scritto /Users/ale/progetti/rebalix/lib/blog/xd-aum.ts: 28 giorni, ultimo (2026-08-12): 20%=1.998M, 40%=3.074M, 60%=3.832M, 80%=5.054M
+2026-08-12 10:54  [xd-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-08-12 10:54  [xeon-tax] scritto /Users/ale/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-08-12 10:55  [xd-costs] scritto /Users/ale/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-08-12
+2026-08-12 10:55  [xd-changes] invariato (2 eventi)
+2026-08-12 10:55  [deploy] commit dei moduli xd
+2026-08-12 10:57  [deploy] Production: https://rebalix-8zox62dwk-rebalixs-projects.vercel.app [4s]
+2026-08-12 10:57  [deploy] [2K[1A[2K[GProduction: https://rebalix-8zox62dwk-rebalixs-projects.vercel.app [2m]
+2026-08-12 10:57  [deploy] Aliased: https://rebalix.com [2m]
+2026-08-12 10:57  [deploy] deploy prod OK (d6f3d539) al tentativo 1
+2026-08-12 10:57  [heartbeat] inviato (200)
+2026-08-12 10:57  fatto (3 errori)
