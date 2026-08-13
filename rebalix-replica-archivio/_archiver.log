@@ -75,3 +75,54 @@
 2026-08-13 22:12  [deploy] produzione aggiornata
 2026-08-13 22:12  [heartbeat] inviato (errori=0)
 2026-08-13 22:12  === giro completato (0 errori) ===
+2026-08-13 22:34  giro 2026-W33 già completato — niente da fare (usa --force per rifare)
+2026-08-13 22:34  === giro 2026-W33 avviato (dry=True) ===
+2026-08-13 22:34  [baskets:xspu] ok — 376/504 titoli, active share 58.2%
+2026-08-13 22:34  [baskets:world] ok — 536/1283 titoli, active share 62.2%
+2026-08-13 22:34  [td] ok — 1519 punti comuni, fine 2026-08-12, scarti +18pb, +21pb, +22pb, +24pb
+2026-08-13 22:34  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-08-13 22:34  [hybrid] ok — 754 titoli fisici, USA 0.5%; scarto vs fisico +50 pb/a su 413 sedute
+2026-08-13 22:34  [heartbeat] (dry) errori=0 moduli={'baskets-xspu': True, 'baskets-world': True, 'td': True, 'xeon-whitelist': True, 'hybrid': True, 'deploy': True}
+2026-08-13 22:34  === giro completato (0 errori) ===
+2026-08-13 22:38  === giro 2026-W33 avviato (dry=False) ===
+2026-08-13 22:38  [baskets:xspu] ok — 376/504 titoli, active share 58.2%
+2026-08-13 22:38  [baskets:world] ok — 536/1283 titoli, active share 62.2%
+2026-08-13 22:38  [td] ok — 1519 punti comuni, fine 2026-08-12, scarti +18pb, +21pb, +22pb, +24pb
+2026-08-13 22:38  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-08-13 22:38  [hybrid] ok — 754 titoli fisici, USA 0.5%; scarto vs fisico +50 pb/a su 413 sedute
+2026-08-13 22:38  !! tsc fallito sui moduli rigenerati:
+
+[41m                                                                               [0m
+[41m[37m                This is not the tsc command you are looking for                [0m
+[41m                                                                               [0m
+
+To get access to the TypeScript compiler, [34mtsc[0m, from the command line either:
+
+- Use [1mnpm install typescript[0m to first add TypeScript to your project [1mbefore[0m using npx
+- Use [1myarn[0m to avoid accidentally running code from un-installed packages
+
+2026-08-13 22:38  !! moduli rigenerati NON compilano — revert eseguito
+2026-08-13 22:38  [heartbeat] inviato (errori=2)
+2026-08-13 22:38  === giro completato (2 errori) ===
+2026-08-13 22:42  === giro 2026-W33 avviato (dry=False) ===
+2026-08-13 22:42  [baskets:xspu] ok — 376/504 titoli, active share 58.2%
+2026-08-13 22:42  [baskets:world] ok — 536/1283 titoli, active share 62.2%
+2026-08-13 22:43  [td] ok — 1519 punti comuni, fine 2026-08-12, scarti +18pb, +21pb, +22pb, +24pb
+2026-08-13 22:43  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-08-13 22:43  [hybrid] ok — 754 titoli fisici, USA 0.5%; scarto vs fisico +50 pb/a su 413 sedute
+2026-08-13 22:43  !! tsc fallito sui moduli rigenerati:
+lib/i18n.ts(73,20): error TS2307: Cannot find module '@/messages/generated/it.json' or its corresponding type declarations.
+lib/i18n.ts(74,20): error TS2307: Cannot find module '@/messages/generated/en.json' or its corresponding type declarations.
+
+2026-08-13 22:43  !! moduli rigenerati NON compilano — revert eseguito
+2026-08-13 22:43  [heartbeat] inviato (errori=2)
+2026-08-13 22:43  === giro completato (2 errori) ===
+2026-08-13 22:44  === giro 2026-W33 avviato (dry=False) ===
+2026-08-13 22:44  [baskets:xspu] ok — 376/504 titoli, active share 58.2%
+2026-08-13 22:44  [baskets:world] ok — 536/1283 titoli, active share 62.2%
+2026-08-13 22:44  [td] ok — 1519 punti comuni, fine 2026-08-12, scarti +18pb, +21pb, +22pb, +24pb
+2026-08-13 22:44  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-08-13 22:44  [hybrid] ok — 754 titoli fisici, USA 0.5%; scarto vs fisico +50 pb/a su 413 sedute
+2026-08-13 22:44  [deploy] moduli invariati — nessun deploy
+2026-08-13 22:44  [heartbeat] inviato (errori=0)
+2026-08-13 22:44  === giro completato (0 errori) ===

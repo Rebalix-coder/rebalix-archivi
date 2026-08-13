@@ -1923,3 +1923,85 @@ Error: request to https://api.vercel.com/v13/deployments/dpl_D56dFVbPnE4wnnbqxZQ
 2026-08-12 10:57  [deploy] deploy prod OK (d6f3d539) al tentativo 1
 2026-08-12 10:57  [heartbeat] inviato (200)
 2026-08-12 10:57  fatto (3 errori)
+2026-08-13 09:14  --- avvio archiviatore Xtrackers  ---
+2026-08-13 09:14  xeq2: dato al 2026-08-10, 1 snapshot nuovi
+2026-08-13 09:14  xeq2: NAV ufficiale, 137 punti
+2026-08-13 09:14  xeq4: dato al 2026-08-10, 1 snapshot nuovi
+2026-08-13 09:14  xeq4: NAV ufficiale, 137 punti
+2026-08-13 09:14  xeq6: dato al 2026-08-10, 0 snapshot nuovi (gia' in archivio)
+2026-08-13 09:14  xeq6: NAV ufficiale, 137 punti
+2026-08-13 09:14  xeq8: dato al 2026-08-10, 0 snapshot nuovi (gia' in archivio)
+2026-08-13 09:14  xeq8: NAV ufficiale, 137 punti
+2026-08-13 09:14  xqui: dato al 2026-08-12, 1 snapshot nuovi
+2026-08-13 09:14  xqui: NAV ufficiale, 4403 punti
+2026-08-13 09:14  magr: 31 posizioni, NUOVA composizione (impronta 93a6c6d3ce360cc6)
+2026-08-13 09:15  modr: 28 posizioni, NUOVA composizione (impronta f4e3a542f4fdf7fa)
+2026-08-13 09:15  macv: 29 posizioni, NUOVA composizione (impronta 2cd96dd3188164d9)
+2026-08-13 09:15  spread: snapshot 2026-08-13 09:15, 4/11 book validi
+2026-08-13 09:15  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-13 09:15  [golden] XEQ2.MI: 112 date | cum Yahoo +1.23% vs NAV +0.63% (diff 0.60 pt) | rend. mediano 0.188 pt | livello max 1.75%
+2026-08-13 09:15  [golden] XEQ4.MI: 113 date | cum Yahoo +3.09% vs NAV +2.49% (diff 0.61 pt) | rend. mediano 0.239 pt | livello max 1.83%
+2026-08-13 09:15  [golden] XEQ6.MI: 115 date | cum Yahoo +5.88% vs NAV +5.30% (diff 0.57 pt) | rend. mediano 0.274 pt | livello max 1.92%
+2026-08-13 09:15  [golden] XEQ8.MI: 115 date | cum Yahoo +8.72% vs NAV +7.96% (diff 0.76 pt) | rend. mediano 0.327 pt | livello max 1.99%
+2026-08-13 09:15  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 137 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-13 09:15  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-13 09:15  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-08-13 09:15  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-13 09:15  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-08-13 09:15  [xd-hold] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-08-10) — 20: swap 0.0%, HY 5.1%+EM 15.1% dei bond | 40: swap 16.28%, HY 5.1%+EM 15.1% dei bond | 60: swap 30.91%, HY 5.1%+EM 15.1% dei bond | 80: swap 43.88%, HY 5.0%+EM 15.0% dei bond
+2026-08-13 09:15  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-13 09:15  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.68}, {'nome': 'Giappone', 'pct': 5.94}, {'nome': 'Taiwan', 'pct': 3.67}]
+2026-08-13 09:15  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 29.98}, {'nome': 'Finanza', 'pct': 17.21}, {'nome': 'Prodotti industriali', 'pct': 11.5}]
+2026-08-13 09:15  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.58}, {'nome': 'Giappone', 'pct': 7.68}, {'nome': 'Francia', 'pct': 5.11}]
+2026-08-13 09:15  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 29 giorni, ultimo (2026-08-13): 20%=1.998M, 40%=3.074M, 60%=3.832M, 80%=5.054M
+2026-08-13 09:15  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-08-13 09:15  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-08-13 09:15  Traceback (most recent call last):
+2026-08-13 09:15  File "/home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_costs.py", line 24, in <module>
+2026-08-13 09:15  import pdfplumber
+2026-08-13 09:15  ModuleNotFoundError: No module named 'pdfplumber'
+2026-08-13 09:15  [xd-changes] invariato (2 eventi)
+2026-08-13 09:15  [deploy] commit dei moduli xd
+2026-08-13 09:15  !! push Codeberg fallito — proseguo col deploy del commit locale
+2026-08-13 09:17  [deploy] deploy prod OK (8883862d) al tentativo 1
+2026-08-13 09:17  [heartbeat] inviato (200)
+2026-08-13 09:17  fatto, tutto OK
+2026-08-13 10:30  --- avvio archiviatore Xtrackers  ---
+2026-08-13 10:30  xeq2: dato al 2026-08-10, 0 snapshot nuovi (gia' in archivio)
+2026-08-13 10:30  xeq2: NAV ufficiale, 137 punti
+2026-08-13 10:30  xeq4: dato al 2026-08-10, 0 snapshot nuovi (gia' in archivio)
+2026-08-13 10:30  xeq4: NAV ufficiale, 137 punti
+2026-08-13 10:30  xeq6: dato al 2026-08-10, 0 snapshot nuovi (gia' in archivio)
+2026-08-13 10:30  xeq6: NAV ufficiale, 137 punti
+2026-08-13 10:30  xeq8: dato al 2026-08-10, 0 snapshot nuovi (gia' in archivio)
+2026-08-13 10:30  xeq8: NAV ufficiale, 137 punti
+2026-08-13 10:30  xqui: dato al 2026-08-12, 0 snapshot nuovi (gia' in archivio)
+2026-08-13 10:30  xqui: NAV ufficiale, 4404 punti
+2026-08-13 10:30  magr: composizione invariata (impronta 93a6c6d3ce360cc6) — niente da fare
+2026-08-13 10:30  modr: composizione invariata (impronta f4e3a542f4fdf7fa) — niente da fare
+2026-08-13 10:30  macv: composizione invariata (impronta 2cd96dd3188164d9) — niente da fare
+2026-08-13 10:30  spread: snapshot 2026-08-13 10:30, 4/11 book validi
+2026-08-13 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-13 10:30  [golden] XEQ2.MI: 112 date | cum Yahoo +1.23% vs NAV +0.63% (diff 0.60 pt) | rend. mediano 0.188 pt | livello max 1.75%
+2026-08-13 10:30  [golden] XEQ4.MI: 113 date | cum Yahoo +3.09% vs NAV +2.49% (diff 0.61 pt) | rend. mediano 0.239 pt | livello max 1.83%
+2026-08-13 10:30  [golden] XEQ6.MI: 115 date | cum Yahoo +5.88% vs NAV +5.30% (diff 0.57 pt) | rend. mediano 0.274 pt | livello max 1.92%
+2026-08-13 10:30  [golden] XEQ8.MI: 115 date | cum Yahoo +8.72% vs NAV +7.96% (diff 0.76 pt) | rend. mediano 0.327 pt | livello max 1.99%
+2026-08-13 10:30  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 137 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-13 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-13 10:30  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-08-13 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-13 10:30  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-08-13 10:30  [xd-hold] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-08-10) — 20: swap 0.0%, HY 5.1%+EM 15.1% dei bond | 40: swap 16.28%, HY 5.1%+EM 15.1% dei bond | 60: swap 30.91%, HY 5.1%+EM 15.1% dei bond | 80: swap 43.88%, HY 5.0%+EM 15.0% dei bond
+2026-08-13 10:30  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-13 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.68}, {'nome': 'Giappone', 'pct': 5.94}, {'nome': 'Taiwan', 'pct': 3.67}]
+2026-08-13 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 29.98}, {'nome': 'Finanza', 'pct': 17.21}, {'nome': 'Prodotti industriali', 'pct': 11.5}]
+2026-08-13 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.58}, {'nome': 'Giappone', 'pct': 7.68}, {'nome': 'Francia', 'pct': 5.11}]
+2026-08-13 10:30  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 29 giorni, ultimo (2026-08-13): 20%=1.998M, 40%=3.074M, 60%=3.832M, 80%=5.054M
+2026-08-13 10:30  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-08-13 10:30  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-08-13 10:30  [xd-costs] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-08-13
+2026-08-13 10:30  [xd-changes] invariato (2 eventi)
+2026-08-13 10:30  [deploy] commit dei moduli xd
+2026-08-13 10:32  [deploy] deploy prod OK (e4f441a0) al tentativo 1
+2026-08-13 10:32  [heartbeat] inviato (200)
+2026-08-13 10:32  fatto, tutto OK

@@ -1,75 +1,0 @@
-To https://codeberg.org/rebalix-dev/rebalix.git
-   e42dd83..897349a  main -> main
-Preparing worktree (detached HEAD 897349a)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   83a3b6b..9413809  main -> main
-Preparing worktree (detached HEAD 9413809)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   3b8de43..eac1a0b  main -> main
-Preparing worktree (detached HEAD eac1a0b)
-fatal: unable to access 'https://codeberg.org/rebalix-dev/rebalix.git/': The requested URL returned error: 504
-Preparing worktree (detached HEAD e315884)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   dee739f..186eeca  main -> main
-Preparing worktree (detached HEAD 186eeca)
-fatal: unable to access 'https://codeberg.org/rebalix-dev/rebalix.git/': Could not resolve host: codeberg.org
-Preparing worktree (detached HEAD 92e0655)
-error: RPC failed; HTTP 504 curl 22 The requested URL returned error: 504
-send-pack: unexpected disconnect while reading sideband packet
-fatal: the remote end hung up unexpectedly
-Everything up-to-date
-Preparing worktree (detached HEAD 25fc1d9)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   831e39d..8647a11  main -> main
-Preparing worktree (detached HEAD 8647a11)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   e450d20..c7cacf7  main -> main
-Preparing worktree (detached HEAD c7cacf7)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   54e2f33..ef87b94  main -> main
-Preparing worktree (detached HEAD ef87b94)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   e84ecea..45b1355  main -> main
-Preparing worktree (detached HEAD 45b1355)
-To https://codeberg.org/rebalix-dev/rebalix.git
-   e76f1c7..d25d13e  main -> main
-Preparing worktree (detached HEAD d25d13e)
-Updating files:  63% (570/900)Updating files:  64% (576/900)Updating files:  65% (585/900)Updating files:  66% (594/900)Updating files:  67% (603/900)Updating files:  68% (612/900)Updating files:  69% (621/900)Updating files:  70% (630/900)Updating files:  71% (639/900)Updating files:  72% (648/900)Updating files:  73% (657/900)Updating files:  74% (666/900)Updating files:  75% (675/900)Updating files:  76% (684/900)Updating files:  77% (693/900)Updating files:  78% (702/900)Updating files:  79% (711/900)Updating files:  80% (720/900)Updating files:  81% (729/900)Updating files:  82% (738/900)Updating files:  83% (747/900)Updating files:  84% (756/900)Updating files:  85% (765/900)Updating files:  86% (774/900)Updating files:  87% (783/900)Updating files:  88% (792/900)Updating files:  89% (801/900)Updating files:  90% (810/900)Updating files:  91% (819/900)Updating files:  92% (828/900)Updating files:  93% (837/900)Updating files:  94% (846/900)Updating files:  95% (855/900)Updating files:  96% (864/900)Updating files:  97% (873/900)Updating files:  98% (882/900)Updating files:  99% (891/900)Updating files: 100% (900/900)Updating files: 100% (900/900), done.
-fatal: unable to access 'https://codeberg.org/rebalix-dev/rebalix.git/': The requested URL returned error: 503
-Preparing worktree (detached HEAD 4555699)
-To https://github.com/Rebalix-coder/rebalix.git
-   c40e904..5f67bcc  main -> main
-Preparing worktree (detached HEAD 5f67bcc)
-To https://github.com/Rebalix-coder/rebalix.git
-   5f94377..6ddea8c  main -> main
-Preparing worktree (detached HEAD 6ddea8c)
-To https://github.com/Rebalix-coder/rebalix.git
-   8e6997a..8ce34b9  main -> main
-Preparing worktree (detached HEAD 8ce34b9)
-To https://github.com/Rebalix-coder/rebalix.git
-   415bb53..aba6621  main -> main
-Preparing worktree (detached HEAD aba6621)
-To https://github.com/Rebalix-coder/rebalix.git
-   2d89b1f..f1898f3  main -> main
-Preparing worktree (detached HEAD f1898f3)
-To https://github.com/Rebalix-coder/rebalix.git
-   73102ff..7c9429f  main -> main
-Preparing worktree (detached HEAD 7c9429f)
-To https://github.com/Rebalix-coder/rebalix.git
-   14e1b24..c5f91ac  main -> main
-Preparing worktree (detached HEAD c5f91ac)
-To https://github.com/Rebalix-coder/rebalix.git
-   a328638..d01500e  main -> main
-Preparing worktree (detached HEAD d01500e)
-To https://github.com/Rebalix-coder/rebalix.git
-   728a877..23e8f18  main -> main
-Preparing worktree (detached HEAD 23e8f18)
-To https://github.com/Rebalix-coder/rebalix.git
-   9293412..9a68972  main -> main
-Preparing worktree (detached HEAD 9a68972)
-To https://github.com/Rebalix-coder/rebalix.git
-   364215e..e38803d  main -> main
-Preparing worktree (detached HEAD e38803d)
-To https://github.com/Rebalix-coder/rebalix.git
-   1320549..d6f3d53  main -> main
-Preparing worktree (detached HEAD d6f3d53)

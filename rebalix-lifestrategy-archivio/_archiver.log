@@ -519,3 +519,78 @@
 2026-08-10 22:29  report online = Giugno 2026
 2026-08-10 22:29  già archiviato (2026/Giugno.pdf) — niente da fare.
 2026-08-10 22:29  [heartbeat] inviato (200)
+2026-08-13 22:38  --- avvio archiviatore  ---
+2026-08-13 22:38  [capture] snapshot 2026-06-30 già presente — niente da fare.
+2026-08-13 22:38  2022-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2023-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2023-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2023-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2023-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2024-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 12}
+2026-08-13 22:38  2024-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2024-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2024-09-30  fondi=0  holdings={}
+2026-08-13 22:38  2025-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2025-06-30  fondi=0  holdings={}
+2026-08-13 22:38  2025-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2025-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2026-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  2026-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:38  -> 15 trimestri scritti in /home/rebalix/backups/rebalix-lifestrategy-archivio/_scripts/ls_timeseries.json
+2026-08-13 22:38  [aum] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-aum.ts: 13 trimestri, ultimo 2026-06, totale attuale €2648M
+2026-08-13 22:38  [holdings] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-holdings.ts: LS20 9 / LS40 9 / LS60 13 / LS80 14 mattoncini, trimestre 2026-06
+2026-08-13 22:39  [uk] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-holdings-uk.ts: eff 2026-06 · LS20 11 / LS100 7 righe
+2026-08-13 22:39  [xray] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-lookthrough.ts: effective 2026-06-30, LS60 47 paesi / 11 settori
+2026-08-13 22:39  Traceback (most recent call last):
+2026-08-13 22:39  File "/home/rebalix/backups/rebalix-lifestrategy-archivio/_scripts/gen_tax_module.py", line 7, in <module>
+2026-08-13 22:39  import os, sys, glob, openpyxl
+2026-08-13 22:39  ModuleNotFoundError: No module named 'openpyxl'
+2026-08-13 22:39  [dist] LS20 (port 9491): 11 distribuzioni, rendimento storico 3.55 (al 2026-07-31)
+2026-08-13 22:39  [dist] LS40 (port 9493): 11 distribuzioni, rendimento storico 2.94 (al 2026-07-31)
+2026-08-13 22:39  [dist] LS60 (port 9495): 11 distribuzioni, rendimento storico 2.39 (al 2026-07-31)
+2026-08-13 22:39  [dist] LS80 (port 9497): 11 distribuzioni, rendimento storico 1.9 (al 2026-07-31)
+2026-08-13 22:39  [dist] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-distributions.ts: aggiornato 2026-06, rendimento al 2026-07-31, valuta EUR
+2026-08-13 22:39  [bond] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-bondstats.ts: 2026-06 · duration LS20 6.2 / YTM 4.2%
+2026-08-13 22:39  [ls-changes] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-changes.ts: 1 eventi su 13 report (ultimo 2026-06-30)
+2026-08-13 22:39  [deploy] commit dei moduli: lib/blog/ls-distributions.ts
+2026-08-13 22:39  !! [deploy] rebase su origin/main fallito — deploy ANNULLATO (risolvere a mano)
+2026-08-13 22:39  report online = Giugno 2026
+2026-08-13 22:39  già archiviato (2026/Giugno.pdf) — niente da fare.
+2026-08-13 22:39  [heartbeat] inviato (200)
+2026-08-13 22:45  --- avvio archiviatore  ---
+2026-08-13 22:45  [capture] snapshot 2026-06-30 già presente — niente da fare.
+2026-08-13 22:45  2022-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2023-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2023-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2023-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2023-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2024-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 12}
+2026-08-13 22:45  2024-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2024-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2024-09-30  fondi=0  holdings={}
+2026-08-13 22:45  2025-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2025-06-30  fondi=0  holdings={}
+2026-08-13 22:45  2025-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2025-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2026-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  2026-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-13 22:45  -> 15 trimestri scritti in /home/rebalix/backups/rebalix-lifestrategy-archivio/_scripts/ls_timeseries.json
+2026-08-13 22:45  [aum] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-aum.ts: 13 trimestri, ultimo 2026-06, totale attuale €2648M
+2026-08-13 22:45  [holdings] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-holdings.ts: LS20 9 / LS40 9 / LS60 13 / LS80 14 mattoncini, trimestre 2026-06
+2026-08-13 22:45  [uk] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-holdings-uk.ts: eff 2026-06 · LS20 11 / LS100 7 righe
+2026-08-13 22:45  [xray] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-lookthrough.ts: effective 2026-06-30, LS60 47 paesi / 11 settori
+2026-08-13 22:45  Traceback (most recent call last):
+2026-08-13 22:45  File "/home/rebalix/backups/rebalix-lifestrategy-archivio/_scripts/gen_tax_module.py", line 7, in <module>
+2026-08-13 22:45  import os, sys, glob, openpyxl
+2026-08-13 22:45  ModuleNotFoundError: No module named 'openpyxl'
+2026-08-13 22:45  [dist] LS20 (port 9491): 11 distribuzioni, rendimento storico 3.55 (al 2026-07-31)
+2026-08-13 22:45  [dist] LS40 (port 9493): 11 distribuzioni, rendimento storico 2.94 (al 2026-07-31)
+2026-08-13 22:45  [dist] LS60 (port 9495): 11 distribuzioni, rendimento storico 2.39 (al 2026-07-31)
+2026-08-13 22:45  [dist] LS80 (port 9497): 11 distribuzioni, rendimento storico 1.9 (al 2026-07-31)
+2026-08-13 22:45  [dist] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-distributions.ts: aggiornato 2026-06, rendimento al 2026-07-31, valuta EUR
+2026-08-13 22:45  [bond] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-bondstats.ts: 2026-06 · duration LS20 6.2 / YTM 4.2%
+2026-08-13 22:45  [ls-changes] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-changes.ts: 1 eventi su 13 report (ultimo 2026-06-30)
+2026-08-13 22:45  [deploy] moduli dati invariati — nessun deploy.
+2026-08-13 22:45  report online = Giugno 2026
+2026-08-13 22:45  già archiviato (2026/Giugno.pdf) — niente da fare.
+2026-08-13 22:45  [heartbeat] inviato (200)
