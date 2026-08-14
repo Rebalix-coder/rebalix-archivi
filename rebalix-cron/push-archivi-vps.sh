@@ -12,7 +12,7 @@ if ! git diff --cached --quiet; then
   git commit -q -m "Snapshot archivi $(date "+%Y-%m-%d") (VPS)" >> "$LOG" 2>&1
   log "commit dello snapshot"
 fi
-if ! git pull --rebase -q origin main >> "$LOG" 2>&1; then
+if ! git pull --rebase -X theirs -q origin main >> "$LOG" 2>&1; then
   git rebase --abort >> "$LOG" 2>&1
   log "!! pull --rebase FALLITO — push saltato (riprovera domani)"
   exit 1
