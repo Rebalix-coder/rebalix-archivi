@@ -14,8 +14,11 @@ quel broker e si segnala l'errore nel battito del guardiano — mai pubblicare u
 crollo che in realtà è un cambio di formato della fonte.
 
 Uso: python3 _archiver.py [--dry-run] [--force] [--no-deploy]
-Cadenza: launchd il 1° del mese (RunAtLoad recupera i mesi col Mac spento:
-lo stato in _state.json evita i doppi giri nello stesso mese).
+Cadenza: SETTIMANALE dal 14 ago 2026 (timer systemd sulla VPS; prima: mensile).
+Le liste cambiano anche a metà mese e il deploy parte solo se qualcosa è
+cambiato davvero, quindi girare più spesso costa zero e riduce la finestra
+di scostamento da 30 a 7 giorni. La guardia in _state.json è A GIORNI
+(salta se l'ultimo giro ok ha meno di 4 giorni, salvo --force).
 """
 import os, re, sys, json, time, shutil, tempfile, datetime, subprocess, urllib.request, html as htmllib
 
@@ -98,14 +101,31 @@ def src_fineco(snap):
     return entries, names
 
 def src_moneyfarm(snap):
-    page = fetch("https://www.moneyfarm.com/it/pac-diy/", timeout=90).decode("utf-8", errors="ignore")
-    m = re.search(r'href="(https://[^"]*T_and_Cs[^"]*\.pdf)"', page)
-    if not m:
-        raise RuntimeError("link T&C promo non trovato nella pagina PAC")
+    # Ago 2026: dal /pac-diy/ è sparito il link al bundle T&C per-ISIN (lì ora c'è solo
+    # la promo generale «Promo Pricing ETF» a 0,95 €, SENZA liste); il bundle con i
+    # regolamenti per-emittente vive su /conto-trading/. Cerchiamo su entrambe le pagine.
+    link = None
+    for page_url in ("https://www.moneyfarm.com/it/pac-diy/",
+                     "https://www.moneyfarm.com/it/conto-trading/"):
+        try:
+            page = fetch(page_url, timeout=90).decode("utf-8", errors="ignore")
+        except Exception as e:
+            log(f"[moneyfarm] pagina {page_url} non leggibile ({e}) — provo la prossima")
+            continue
+        m = re.search(r'href="(https://[^"]*T_and_C[^"]*\.pdf)"', page)
+        if m:
+            link = m.group(1)
+            break
+    if not link:
+        raise RuntimeError("bundle T&C per-ISIN non trovato (né su /pac-diy/ né su /conto-trading/)")
     pdf = os.path.join(snap, "moneyfarm-tc.pdf")
-    fetch(m.group(1), pdf, min_size=100_000)
+    fetch(link, pdf, min_size=100_000)
     txt = pdf_text(pdf)
     parts = re.split(r"REGOLAMENTO DELL.INIZIATIVA", txt)[1:]
+    if not parts:
+        # documento sbagliato (es. la promo pricing generale): meglio un errore parlante
+        # subito che un conteggio-zero a valle
+        raise RuntimeError(f"PDF senza sezioni REGOLAMENTO ({link}): non è il bundle per-ISIN")
     entries, names = {}, {}
     for part in parts:
         v = re.search(r"valida dal\s+(.{4,30}?)\s+(?:fino\s+)?al\s+(.{4,30}?)\s*\(", part)
@@ -306,9 +326,15 @@ def autodeploy(files):
 def main():
     state_path = os.path.join(ARCHIVE, "_state.json")
     state = json.load(open(state_path)) if os.path.exists(state_path) else {}
-    if not FORCE and state.get("last_ok", "")[:7] == YM:
-        log(f"giro di {YM} già completato ({state['last_ok']}) — niente da fare (usa --force per rifare)")
-        return
+    last_ok = state.get("last_ok", "")
+    if not FORCE and last_ok:
+        try:
+            giorni = (TODAY - datetime.date.fromisoformat(last_ok)).days
+        except ValueError:
+            giorni = 999
+        if giorni < 4:  # cadenza settimanale: il RunAtLoad/riavvio non deve raddoppiare i giri
+            log(f"ultimo giro ok {last_ok} ({giorni}g fa) — niente da fare (usa --force per rifare)")
+            return
     os.makedirs(SNAPDIR, exist_ok=True)
     log(f"=== giro {YM} avviato (dry={DRY}) ===")
 

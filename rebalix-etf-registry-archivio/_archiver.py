@@ -15,13 +15,13 @@ Uso: python3 _archiver.py [--dry-run] [--force]
 Cadenza: launchd il giorno 2 del mese alle 07:45 (RunAtLoad recupera i mesi col
 Mac spento; _state.json evita i doppi giri nello stesso mese).
 """
-import os, re, sys, json, datetime, subprocess, urllib.request
+import os, re, sys, json, shutil, datetime, subprocess, urllib.request
 
 os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH", "")
 
 ARCHIVE = os.path.expanduser("~/backups/rebalix-etf-registry-archivio")
 REPO = os.path.expanduser("~/progetti/rebalix")
-NODE = "/usr/local/bin/node"
+NODE = shutil.which("node") or "/usr/local/bin/node"
 STATE = os.path.join(ARCHIVE, "_state.json")
 
 DRY = "--dry-run" in sys.argv

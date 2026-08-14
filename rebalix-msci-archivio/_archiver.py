@@ -20,7 +20,7 @@ si sorvegliano sui documenti ufficiali. Due compiti, giro SETTIMANALE:
 Notifiche: CHANGES.md nell'archivio + notifica macOS (osascript) + heartbeat
 al guardiano archiver-health (name=msci, fail-soft). Uso: _archiver.py [--dry-run]
 """
-import os, sys, json, re, datetime, hashlib, subprocess, urllib.request
+import os, sys, json, re, datetime, hashlib, subprocess, shutil, urllib.request
 
 os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH", "")
 
@@ -28,7 +28,7 @@ ARCHIVE = os.path.expanduser("~/backups/rebalix-msci-archivio")
 REPO = os.path.expanduser("~/progetti/rebalix")
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
 DRY = "--dry-run" in sys.argv
-PDFTOTEXT = "/opt/homebrew/bin/pdftotext"
+PDFTOTEXT = shutil.which("pdftotext") or "/opt/homebrew/bin/pdftotext"
 
 FACTSHEETS = {
     "usd-net":   "https://www.msci.com/documents/10199/255599/msci-world-index-usd-net.pdf",
