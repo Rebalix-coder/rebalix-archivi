@@ -1,0 +1,78 @@
+[2026-08-14 01:28] === censimento meta mese avviato ===
+ingest-etf-registry — COMMIT (scrive su DB)
+→ ishares…
+  ishares: 1405 righe, 1377 con benchmark  ✓
+→ vanguard…
+  vanguard: 137 righe, 76 con benchmark  ✓
+→ amundi…
+  amundi: 665 righe, 662 con benchmark  ✓
+→ xtrackers…
+  xtrackers: 372 righe, 349 con benchmark  ✓
+→ spdr…
+  spdr: 176 righe, 176 con benchmark  ✓
+→ ubs…
+  ubs: SALTATO — file non trovato (usare --ubs <path>)
+→ jpm…
+  jpm: 96 righe, 90 con benchmark  ✓
+→ lgim…
+  lgim: 70 righe, 70 con benchmark  ✓
+→ 21shares…
+  21shares: 58 righe, 0 con benchmark  ✓
+→ avantis…
+  avantis: 6 righe, 6 con benchmark  ✓
+
+Totale: 2985 righe, 2806 con benchmark, 1405 indici distinti
+Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+  aum_eur: 1512/1512 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+  DB: 2985 righe upsertate
+  Xtrackers: 17 ISIN marcati delisted_at=2026-08-13: DE000A2T0VT7, XS2595366340, CH1315732268, CH1315732250, DE000A2T5DZ1, GB00B5840F36, DE000A1E0HS6, DE000A1EK0J7…
+ERRORE FATALE: Error: history write: canceling statement due to statement timeout
+    at scrivi (file:///home/rebalix/progetti/rebalix/scripts/ingest-etf-registry.mjs:722:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async main (file:///home/rebalix/progetti/rebalix/scripts/ingest-etf-registry.mjs:889:3)
+[2026-08-14 01:32] !! censimento FALLITO
+{"ok":true,"name":"etf-registry-censimento","recorded_at":"2026-08-13T23:32:34.751Z"}[2026-08-14 01:32] [heartbeat] inviato
+[2026-08-14 01:42] === censimento meta mese avviato ===
+ingest-etf-registry — COMMIT (scrive su DB)
+→ ishares…
+  ishares: 1405 righe, 1377 con benchmark  ✓
+→ vanguard…
+  vanguard: 137 righe, 76 con benchmark  ✓
+→ amundi…
+  amundi: 665 righe, 662 con benchmark  ✓
+→ xtrackers…
+  xtrackers: 372 righe, 349 con benchmark  ✓
+→ spdr…
+  spdr: 176 righe, 176 con benchmark  ✓
+→ ubs…
+  ubs: SALTATO — file non trovato (usare --ubs <path>)
+→ jpm…
+  jpm: 96 righe, 90 con benchmark  ✓
+→ lgim…
+  lgim: 70 righe, 70 con benchmark  ✓
+→ 21shares…
+  21shares: 58 righe, 0 con benchmark  ✓
+→ avantis…
+  avantis: 6 righe, 6 con benchmark  ✓
+
+Totale: 2985 righe, 2806 con benchmark, 1405 indici distinti
+Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+  aum_eur: 1512/1512 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+  DB: 2985 righe upsertate
+  memoria: 10 fotografie nuove per 2026-08 in etf_registry_history
+  archivio: ishares-product-data.json già presente per 2026-08, non sovrascrivo
+  archivio: ishares-product-list.xls già presente per 2026-08, non sovrascrivo
+  archivio: vanguard-funds-graphql.json già presente per 2026-08, non sovrascrivo
+  archivio: vanguard-pro.pdf già presente per 2026-08, non sovrascrivo
+  archivio: amundi-products.json già presente per 2026-08, non sovrascrivo
+  archivio: xtrackers-benchmarks.json già presente per 2026-08, non sovrascrivo
+  archivio: xtrackers-sitemap.xml già presente per 2026-08, non sovrascrivo
+  archivio: spdr-product-data.xlsx già presente per 2026-08, non sovrascrivo
+  archivio: jpm-etf.json già presente per 2026-08, non sovrascrivo
+  archivio: lgim-fund-centre.json già presente per 2026-08, non sovrascrivo
+  archivio: 21shares-product-list.html già presente per 2026-08, non sovrascrivo
+  archivio: snapshot 2026-08 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-08
+
+✓ Ingest completato.
+[2026-08-14 01:45] censimento OK
+{"ok":true,"name":"etf-registry-censimento","recorded_at":"2026-08-13T23:45:55.447Z"}[2026-08-14 01:45] [heartbeat] inviato

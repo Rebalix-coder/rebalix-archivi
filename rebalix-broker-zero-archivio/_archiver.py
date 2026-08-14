@@ -257,7 +257,7 @@ def send_heartbeat(errori, modules, data_date):
             log("!! [heartbeat] CRON_SECRET non trovato — salto")
             return
         payload = json.dumps({"name": "broker-zero", "ok": errori == 0, "errors_count": errori,
-                              "metrics": {"modules": modules, "data_date": data_date}}).encode()
+                              "metrics": {"host": os.uname().nodename, "modules": modules, "data_date": data_date}}).encode()
         req = urllib.request.Request("https://rebalix.com/api/heartbeat", data=payload, method="POST",
                                      headers={"Authorization": f"Bearer {secret}",
                                               "Content-Type": "application/json"})

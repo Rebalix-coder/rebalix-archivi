@@ -200,7 +200,7 @@ def main():
                     secret = l.split("=", 1)[1].strip().strip('"').strip("'")
         if secret and not DRY:
             payload = json.dumps({"name": "msci", "ok": errori == 0, "errors_count": errori,
-                                  "metrics": {"segnali": len(segnali), "factsheetAsOf": state.get("factsheetAsOf")}}).encode()
+                                  "metrics": {"host": os.uname().nodename, "segnali": len(segnali), "factsheetAsOf": state.get("factsheetAsOf")}}).encode()
             req = urllib.request.Request("https://rebalix.com/api/heartbeat", data=payload, method="POST",
                                          headers={"Content-Type": "application/json", "Authorization": f"Bearer {secret}"})
             urllib.request.urlopen(req, timeout=30).read()

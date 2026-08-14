@@ -165,7 +165,7 @@ def send_heartbeat(name, errori, modules, data_date):
             log("!! [heartbeat] CRON_SECRET non trovato in .env.local — salto"); return
         payload = json.dumps({
             "name": name, "ok": errori == 0, "errors_count": errori,
-            "metrics": {"modules": modules, "data_date": data_date},
+            "metrics": {"host": os.uname().nodename, "modules": modules, "data_date": data_date},
         }).encode("utf-8")
         req = urllib.request.Request(
             "https://rebalix.com/api/heartbeat", data=payload, method="POST",

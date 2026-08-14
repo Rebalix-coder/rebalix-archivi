@@ -11,5 +11,5 @@ log "=== censimento meta mese avviato ==="
 if node scripts/ingest-etf-registry.mjs --commit >> "$LOG" 2>&1; then OK=true; ERR=0; log "censimento OK"; else OK=false; ERR=1; log "!! censimento FALLITO"; fi
 SECRET=$(grep "^CRON_SECRET=" "$REPO/.env.local" | head -1 | cut -d= -f2- | tr -d "\"" | tr -d "'")
 curl -s -m 30 -X POST https://rebalix.com/api/heartbeat -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" \
-  -d "{\"name\":\"etf-registry-censimento\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"modules\":{\"censimento\":$OK},\"data_date\":\"$(date +%F)\"}}" >> "$LOG" 2>&1 && log "[heartbeat] inviato"
+  -d "{\"name\":\"etf-registry-censimento\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"host\":\"$(hostname)\",\"modules\":{\"censimento\":$OK},\"data_date\":\"$(date +%F)\"}}" >> "$LOG" 2>&1 && log "[heartbeat] inviato"
 [ "$OK" = true ]

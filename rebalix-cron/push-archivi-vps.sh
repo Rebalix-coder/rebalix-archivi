@@ -6,7 +6,7 @@ set -u
 cd "$HOME/backups" || exit 1
 LOG="$HOME/backups/_push-archivi.log"
 log() { echo "[$(date "+%Y-%m-%d %H:%M")] $*" >> "$LOG"; }
-DIRS="rebalix-xtrackers-archivio rebalix-c3m-archivio rebalix-lifestrategy-archivio rebalix-replica-archivio rebalix-broker-zero-archivio rebalix-cron"
+DIRS="rebalix-xtrackers-archivio rebalix-c3m-archivio rebalix-lifestrategy-archivio rebalix-replica-archivio rebalix-broker-zero-archivio rebalix-cron rebalix-etf-registry-archivio rebalix-docs-archivio rebalix-msci-archivio"
 git add -A -- $DIRS >> "$LOG" 2>&1
 if ! git diff --cached --quiet; then
   git commit -q -m "Snapshot archivi $(date "+%Y-%m-%d") (VPS)" >> "$LOG" 2>&1
