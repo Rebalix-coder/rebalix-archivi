@@ -1,0 +1,245 @@
+=== bond-lifecycle 2026-08-14T00:40:20+02:00 ===
+--- [bulk-corporate] 00:40:20
+== COMMIT: scriverò su bond_registry ==
+FULINS_D: 4 parti
+  parse FULINS_D_20260808_04of04.zip
+<ref *1> Error: spawnSync unzip ENOENT
+    at Object.spawnSync (node:internal/child_process:1120:20)
+    at spawnSync (node:child_process:902:24)
+    at execFileSync (node:child_process:945:15)
+    at parseInto (/home/rebalix/progetti/rebalix/lib/firds-bulk.ts:108:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async main (/home/rebalix/progetti/rebalix/scripts/ingest-bond-corporate.ts:43:76) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawnSync unzip',
+  path: 'unzip',
+  spawnargs: [ '-o', '/tmp/firds-v5MHVu/p.zip', '-d', '/tmp/firds-v5MHVu' ],
+  error: [Circular *1],
+  status: null,
+  signal: null,
+  output: null,
+  pid: 0,
+  stdout: undefined,
+  stderr: undefined
+}
+--- [bulk-corporate] FALLITO (exit 1)
+--- [sovrani] 00:40:21
+AT  listing=6101  isin=1198  VIVI=90  scartati=0  cessati-esclusi=532  (19s)
+BE  listing=8287  isin=444  VIVI=205  scartati=0  cessati-esclusi=10  (21s)
+BG  listing=823  isin=62  VIVI=31  scartati=0  cessati-esclusi=1  (5s)
+HR  listing=907  isin=123  VIVI=33  scartati=0  cessati-esclusi=0  (6s)
+CY  listing=801  isin=152  VIVI=5  scartati=9  cessati-esclusi=9  (3s)
+CZ  listing=2213  isin=252  VIVI=73  scartati=1  cessati-esclusi=17  (6s)
+DK  listing=2354  isin=77  VIVI=20  scartati=0  cessati-esclusi=0  (6s)
+EE  listing=115  isin=16  VIVI=6  scartati=1  cessati-esclusi=0  (0s)
+FI  listing=3066  isin=157  VIVI=43  scartati=1  cessati-esclusi=0  (7s)
+FR  listing=25194  isin=988  VIVI=353  scartati=1  cessati-esclusi=2  (56s)
+DE  listing=14559  isin=502  VIVI=229  scartati=6  cessati-esclusi=8  (35s)
+GR  listing=6867  isin=346  VIVI=28  scartati=25  cessati-esclusi=34  (18s)
+HU  listing=5164  isin=366  VIVI=78  scartati=2  cessati-esclusi=3  (15s)
+IE  listing=2168  isin=222  VIVI=52  scartati=2  cessati-esclusi=4  (6s)
+IT  listing=24320  isin=1148  VIVI=537  scartati=8  cessati-esclusi=6  (57s)
+LV  listing=883  isin=47  VIVI=20  scartati=0  cessati-esclusi=0  (3s)
+LT  listing=1621  isin=69  VIVI=30  scartati=0  cessati-esclusi=0  (6s)
+LU  listing=481  isin=24  VIVI=16  scartati=0  cessati-esclusi=0  (2s)
+MT  listing=1611  isin=1048  VIVI=147  scartati=5  cessati-esclusi=30  (6s)
+NL  listing=5470  isin=467  VIVI=118  scartati=6  cessati-esclusi=6  (20s)
+PL  listing=8005  isin=188  VIVI=85  scartati=2  cessati-esclusi=4  (29s)
+PT  listing=3346  isin=106  VIVI=36  scartati=0  cessati-esclusi=0  (12s)
+RO  listing=4842  isin=525  VIVI=299  scartati=4  cessati-esclusi=2  (16s)
+SK  listing=1803  isin=64  VIVI=36  scartati=0  cessati-esclusi=0  (7s)
+SI  listing=1449  isin=269  VIVI=44  scartati=0  cessati-esclusi=1  (7s)
+ES  listing=23042  isin=546  VIVI=277  scartati=0  cessati-esclusi=3  (49s)
+SE  listing=2095  isin=215  VIVI=32  scartati=1  cessati-esclusi=3  (7s)
+IS  listing=313  isin=99  VIVI=28  scartati=1  cessati-esclusi=0  (1s)
+NO  listing=1267  isin=41  VIVI=16  scartati=0  cessati-esclusi=0  (4s)
+GB  listing=10784  isin=783  VIVI=136  scartati=2  cessati-esclusi=94  (27s)
+CH  listing=1207  isin=390  VIVI=41  scartati=0  cessati-esclusi=42  (4s)
+
+Totale vivi inseriti: 3144
+
+══ REPORT QUARANTENA (77 titoli NON scritti — verifica fallita) ══
+  XS2105097393  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/1.25 MTN 20400121
+    → cedola nel nome (1.25) ≠ campo (0)
+  XS2610236445  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/4.125 MTN 20330413
+    → cedola nel nome (4.125) ≠ campo (0)
+  XS1989383788  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/2.75 MTN 20490503
+    → cedola nel nome (2.75) ≠ campo (0)
+  XS2157183950  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/2.25 MTN 20500416
+    → cedola nel nome (2.25) ≠ campo (0)
+  XS2157184255  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/1.5 MTN 20270416
+    → cedola nel nome (1.5) ≠ campo (0)
+  XS2434393968  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/0.95 MTN 20320120
+    → cedola nel nome (0.95) ≠ campo (0)
+  XS1956050923  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/2.75 MTN 20340226
+    → cedola nel nome (2.75) ≠ campo (0)
+  XS1883942648  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/2.375 MTN 20280925
+    → cedola nel nome (2.375) ≠ campo (0)
+  XS2849767202  [Ministry of Finance Public Debt Management Office (Cyprus)]  CYPRUS, REP.OF/2.375 MTN 20280925
+    → cedola nel nome (2.375) ≠ campo (0)
+  CZ0001007629  [Česká republika - Ministerstvo financí]  MF CR/4.95 DEB 20370227
+    → cedole discordi tra borse: 0 vs 4.95
+  XS2532370231  [Rahandusministeerium (Estonia MoF)]  REPUBLIC OF EST/2.95EUR NT 20320914
+    → cedola nel nome (2.95) ≠ campo (4)
+  XS3396019336  [Republic of Finland / Suomen valtio]  REPUBLIC OF FIN/1EMTN 20360603 GTE
+    → cedola nel nome (1) ≠ campo (4.5)
+  FR0013410610  [Direction Générale du Trésor]  DIRECTION GENER/0.100000 BD
+    → cedola nel nome (0.1) ≠ campo (0)
+  DE000BU22148  [Bundesrepublik Deutschland]  BUND DEUTSCHLAN/2.7 BSA 20280913
+    → cedole discordi tra borse: 0 vs 2.7
+  DE000BU2Z072  [Bundesrepublik Deutschland]  BUND DEUTSCHLAN/3 ANL 20360815 GGAR
+    → cedole discordi tra borse: 0 vs 3
+  DE000A1K0QR1  [Bundesrepublik Deutschland]  HKW PERSONALK./8.25 ANL 20161115
+    → nome datato (2016-11-15) ma scadenza in campo sentinella (9999-12-31): possibile default/ristrutturazione
+  DE000BU22130  [Bundesrepublik Deutschland]  BUND DEUTSCHLAN/2.5 BSA 20280614
+    → cedole discordi tra borse: 0 vs 2.5
+  DE000A1X3MD9  [Bundesrepublik Deutschland]  GEBR.SANDERS/8.75 IHS 20181022 USEC
+    → nome datato (2018-10-22) ma scadenza in campo sentinella (9999-12-31): possibile default/ristrutturazione
+  DE000BU25075  [Bundesrepublik Deutschland]  Bundesrepublik Deutschland  Bond
+    → cedole discordi tra borse: 0 vs 2.9
+  GR0128014710  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20270224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133007204  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20290224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138012787  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20400224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133009226  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20310224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138006722  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20340224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138011771  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20390224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138007738  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20350224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138005716  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20330224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138009759  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20370224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138010765  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20380224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138013793  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20410224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138008744  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20360224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133010232  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20320224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133006198  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20280224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133008210  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20300224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138014809  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20420224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0002285543  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20260821 GOVT GTD
+    → cedole discordi tra borse: 0 vs 1.84
+  GR0000249558  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20261009 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.16
+  GR0002291608  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20270122 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.32
+  GR0004143690  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20270305 GOVT GTD
+    → cedole discordi tra borse: 0 vs 1.97
+  GR0002289586  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20261228 GOVT GTD
+    → scadenze discordi tra borse: 2026-09-25 vs 2026-12-28 | cedole discordi tra borse: 0 vs 2.24
+  GR0002286558  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20260925 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.16
+  GR0002287564  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20261023 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.12
+  GR0004144706  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20270604 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.41
+  GR0002288570  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20261127 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.21
+  HU0000407598  [Magyarország]  Magyar Allam/FXD DBT 20330727 GTD
+    → cedole discordi tra borse: 0 vs 6
+  HU0000407564  [Magyarország]  Magyar Allam/DBT 20370923
+    → cedole discordi tra borse: 0 vs 6.25
+  XS2178582594  [National Treasury Management Agency (Ireland)]  THE GOVERNMENT/1.23EMTN 20210529
+    → nome datato (2021-05-29) ma scadenza in campo sentinella (2120-05-29): possibile default/ristrutturazione
+  XS2152325655  [National Treasury Management Agency (Ireland)]  THE GOVERNMENT/1.2EMTN 20210415
+    → nome datato (2021-04-15) ma scadenza in campo sentinella (2120-04-15): possibile default/ristrutturazione
+  IT0001174611  [Repubblica Italiana]  ITALIA/6.5 BTP 20271101
+    → cedola nel nome (6.5) ≠ campo (3.25)
+  IT0001278511  [Repubblica Italiana]  ITALIA/5.25 BTP 20291101
+    → cedola nel nome (5.25) ≠ campo (2.625)
+  IT0001086567  [Repubblica Italiana]  ITALIA/7.25 BTP 20261101
+    → cedola nel nome (7.25) ≠ campo (3.625)
+  IT0005696320  [Repubblica Italiana]  ITALIA/TV BTP VALORE 20320310
+    → cedole discordi tra borse: 0 vs 0.5 vs 0.625 vs 2.5
+  XS2842049053  [Repubblica Italiana]  REPUBBLICA ITAL/VAR MTN 20340614
+    → cedole discordi tra borse: 0 vs 4
+  XS0247541971  [Repubblica Italiana]  ITALY, REP.OF/4.425 MTN 20360328
+    → cedola nel nome (4.425) ≠ campo (0)
+  XS3358406075  [Repubblica Italiana]  REPUBBLICA ITAL/4EMTN 20380400  GTE
+    → cedole discordi tra borse: 0 vs 4
+  IT0005713539  [Repubblica Italiana]  ITALIA/TV BTP ITALIA SI 20310623
+    → cedole discordi tra borse: 0 vs 1.6
+  MT0000013988  [Republic of Malta]  GOVMALTA/2.80 DBT 20300227 GOVT GTD
+    → cedola nel nome (2.8) ≠ campo (0)
+  MT0000013012  [Republic of Malta]  GOVMALTA/0.04 DBT 20261020 GOVT GTD
+    → cedola nel nome (0.04) ≠ campo (0.4)
+  MT0000012873  [Republic of Malta]  GOVMALTA/7 DBT 20271231 GOVT GTD
+    → scadenze discordi tra borse: 2027-12-31 vs 2036-12-31
+  MT0000012675  [Republic of Malta]  GOVMALTA/7 DBT 20261231 GOVT GTD
+    → scadenze discordi tra borse: 2026-12-31 vs 2036-12-31
+  MT0000013558  [Republic of Malta]  GOVMALTA/3.8 20420826 GOV GTD6
+    → cedola nel nome (3.8) ≠ campo (3.4)
+  NL0015614579  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/1 Bd 20520115
+    → cedola nel nome (1) ≠ campo (0)
+  NL0015001XZ6  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/0 Bd 20340715
+    → cedola nel nome (0) ≠ campo (2.5)
+  NL00150012X2  [Ministerie van Financiën (Netherlands)]  Staat der Neder/0.0 Bd 20540115
+    → cedola nel nome (0) ≠ campo (2)
+  NL0015073VV8  [Ministerie van Financiën (Netherlands)]  STAAT DER NEDER/0 BD 20360715
+    → cedola nel nome (0) ≠ campo (2.75)
+  NL0015001RG8  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/0 Bd 20440115
+    → cedola nel nome (0) ≠ campo (3.25)
+  NL0015002F72  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/0 Bd 20350715
+    → cedola nel nome (0) ≠ campo (2.5)
+  XS3109460959  [Ministerstwo Finansów (Poland)]  REPUBLIC OF POL/1EMTN 20370707 GTE
+    → cedola nel nome (1) ≠ campo (3.875)
+  XS3109446610  [Ministerstwo Finansów (Poland)]  REPUBLIC OF POL/1EMTN 20320707 GTE
+    → cedola nel nome (1) ≠ campo (3.125)
+  XS2364200357  [Ministerul Finanțelor (Romania)]  ROMANIA/1EMTN 20420313
+    → cedola nel nome (1) ≠ campo (2.875)
+  ROZBOC49U096  [Ministerul Finanțelor (Romania)]  MF/5.96 BD 20281030 GOVT GTD
+    → cedola nel nome (5.96) ≠ campo (8.75)
+  XS2364199674  [Ministerul Finanțelor (Romania)]  ROMANIA/1EMTN 20300715
+    → cedola nel nome (1) ≠ campo (1.75)
+  ROL18FQB3YR2  [Ministerul Finanțelor (Romania)]  MF/7.3 BD 20280416 UNGTD
+    → scadenze discordi tra borse: 2028-04-15 vs 2028-04-16
+  SE0028000281  [Riksgäldskontoret (Swedish National Debt Office)]  STATEN/2.75 DEBT 20370209
+    → cedole discordi tra borse: 0 vs 2.75
+  XS3081371554  [Endurlán ríkissjóðs (Iceland)]  REPUBLIC OF ICE/2.265EMTN 20300527
+    → cedola nel nome (2.265) ≠ campo (2.625)
+  GB00BSQNRD01  [His Majesty's Treasury]  HIS MAJE/4 LN STK 20300307 GOVT GTD
+    → cedola nel nome (4) ≠ campo (4.375)
+  GB00BYZW3G56  [His Majesty's Treasury]  HM TREA/1.5 LN STK 20260722   GOVT
+    → scadenze discordi tra borse: 2026-07-22 vs 2026-11-18
+--- [sovrani] OK
+--- [marcatura] 00:47:59
+auto-guarigione: 0 titoli tornati vivi
+candidati alla marcatura 'termination': 0
+marcati: 0
+--- [marcatura] OK
+--- [call-watch] 00:48:05
+allarmi date esatte (entro 90 gg): 0
+coda perpetui stimata (>5 anni, mai verificati): 856
+  · XS0200688256  partito 2004-09-17  NORDEA AB/2.429 DEB P U  Nordea Bank AB
+  · PTCON1OE0008  partito 2004-12-07  REP PORTUGUESA/3.5 OB PERP  Republic of Portugal
+  · PTCON2OE0007  partito 2004-12-07  REP PORTUGUESA/3 OB PERP  Republic of Portugal
+  · PTCON4OE0005  partito 2004-12-07  REP PORTUGUESA/4 OB PERP  Republic of Portugal
+  · PTCON3OE0006  partito 2004-12-07  REP PORTUGUESA/2.75 OB PERP  Republic of Portugal
+  · DE000A0DX3M2  partito 2005-02-18  ALPHA GROUPJEY/DEB P U  ALPHA GROUP JERSEY LIMITED
+  · XS0212590557  partito 2005-03-16  JYSKE BK AS/VAR BD PERP JR UNSEC  JYSKE BANK A/S
+  · FR0010499111  partito 2007-07-13  SocTourEiffel/VAR  SOCIETE DE LA TOUR EIFFEL
+  · DK0007200117  partito 2007-11-01  KBHV KREDIT/3.50/ 01S  NYKREDIT REALKREDIT A/S
+  · DK0007800304  partito 2007-11-01  HUSEJER/4.00/ 01S 01A  Jyske Realkredit A/S
+  · DK0007800148  partito 2007-11-01  HUSEJER/3.50/ 01S 01A  Jyske Realkredit A/S
+  · DK0006702949  partito 2007-11-01  OESTIFTER ALM/4.50/ 07S  REALKREDIT DANMARK A/S
+  · DK0006700141  partito 2007-11-01  OESTIFTER ALM/3.50/ 07S  REALKREDIT DANMARK A/S
+  · DK0006701461  partito 2007-11-01  OESTIFTER ALM/4.00/ 07S  REALKREDIT DANMARK A/S
+  · US370835AB62  partito 2010-11-11  GeneralShopFin/10 BD  GENERAL SHOPPING FINANCE LIMIT
+email inviata
+--- [call-watch] OK
+{"ok":true,"name":"bond-lifecycle","recorded_at":"2026-08-13T22:48:06.222Z"}
+[heartbeat] inviato (ok=false, errori=1)
+=== fine 2026-08-14T00:48:06+02:00, errori=1 ===
