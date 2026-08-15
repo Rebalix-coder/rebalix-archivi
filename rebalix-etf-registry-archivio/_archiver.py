@@ -382,6 +382,19 @@ def main():
             log(f"!! holdings-avantis fallito (non blocca): {e}")
             modules["holdings-avantis"] = False
 
+    # Composizioni Invesco (emittente n.11, 14 ago): holdings/fund via Chromium
+    # headless (WAF anti-bot, lib-invesco-fetch) — timeout largo: ~290 fondi.
+    if not DRY:
+        try:
+            hi = subprocess.run([NODE, "scripts/ingest-etf-holdings-invesco.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (hi.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |holdings-invesco| {line}")
+            modules["holdings-invesco"] = hi.returncode == 0
+        except Exception as e:
+            log(f"!! holdings-invesco fallito (non blocca): {e}")
+            modules["holdings-invesco"] = False
+
     # Composizioni Vanguard (Fase B/3, notte 10-11 ago): GraphQL gpx ufficiale
     # (borHoldings paginato + marketAllocation + sectorDiversification).
     if not DRY:
@@ -423,7 +436,8 @@ def main():
         for emittente, script in (("vanguard", "scripts/ingest-etf-distributions-vanguard.mjs"),
                                   ("ishares", "scripts/ingest-etf-distributions-ishares.mjs"),
                                   ("spdr", "scripts/ingest-etf-distributions-spdr.mjs"),
-                                  ("xtrackers", "scripts/ingest-etf-distributions-xtrackers.mjs")):
+                                  ("xtrackers", "scripts/ingest-etf-distributions-xtrackers.mjs"),
+                                  ("invesco", "scripts/ingest-etf-distributions-invesco.mjs")):  # da Borsa Italiana (15 ago): l emittente non pubblica lo storico
             try:
                 dv = subprocess.run([NODE, script, "--commit"],
                                     cwd=REPO, capture_output=True, text=True, timeout=3600)

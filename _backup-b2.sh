@@ -49,7 +49,7 @@ if [ -n "$SECRET" ]; then
   ERR=$([ "$ESITO" -eq 0 ] && echo 0 || echo 1)
   curl -s -m 30 -X POST "https://rebalix.com/api/heartbeat" \
     -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" \
-    -d "{\"name\":\"b2-backup\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"modules\":{\"sync\":$OK},\"remote\":$([ -n "$BILANCIO" ] && echo "$BILANCIO" || echo null),\"data_date\":\"$(date '+%Y-%m-%d')\"}}" >> "$LOG" 2>&1
+    -d "{\"name\":\"b2-backup\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"host\":\"$(hostname)\",\"modules\":{\"sync\":$OK},\"remote\":$([ -n "$BILANCIO" ] && echo "$BILANCIO" || echo null),\"data_date\":\"$(date '+%Y-%m-%d')\"}}" >> "$LOG" 2>&1
   log "heartbeat inviato (ok=$OK)"
 else
   log "!! CRON_SECRET non trovato — battito saltato"
