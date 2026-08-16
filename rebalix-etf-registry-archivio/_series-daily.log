@@ -669,3 +669,89 @@
 2026-08-14 23:35    ‼ IE00BK5LYT47  [azionario]  Invesco MSCI USA UCITS ETF Dist
 2026-08-14 23:35  [heartbeat] inviato (200)
 2026-08-14 23:35  fine giro: PROBLEMI (1)
+2026-08-15 13:15  giro quotidiano serie: avantis,xtrackers,spdr,ubs,jpmorgan,lgim
+2026-08-15 13:41    | ingest-etf-series — COMMIT
+2026-08-15 13:41    | 
+2026-08-15 13:41    | → Xtrackers: 372 fondi, 372 da elaborare
+2026-08-15 13:41    |   …25/372 (1 falliti)
+2026-08-15 13:41    |   …50/372 (3 falliti)
+2026-08-15 13:41    |   …75/372 (3 falliti)
+2026-08-15 13:41    |   …100/372 (3 falliti)
+2026-08-15 13:41    |   …125/372 (3 falliti)
+2026-08-15 13:41    |   …150/372 (3 falliti)
+2026-08-15 13:41    |   …175/372 (3 falliti)
+2026-08-15 13:41    |   …200/372 (3 falliti)
+2026-08-15 13:41    |   …225/372 (3 falliti)
+2026-08-15 13:41    |   …250/372 (3 falliti)
+2026-08-15 13:41    |   …275/372 (3 falliti)
+2026-08-15 13:41    |   …300/372 (3 falliti)
+2026-08-15 13:41    |   …325/372 (3 falliti)
+2026-08-15 13:41    |   …350/372 (3 falliti)
+2026-08-15 13:41    |   ✗ LU3367672295: nessun punto NAV
+2026-08-15 13:41    |   Xtrackers: 366 serie ok, 6 falliti, 349 con serie benchmark (TD), 0 con composizione
+2026-08-15 13:41    |   ⚠️  5 serie SCARTATE dal collaudo NAV:
+2026-08-15 13:41    |      IE00064N5UY4: serie troppo corta dopo la pulizia (27 punti)
+2026-08-15 13:41    |      IE000AGH5ZI1: serie troppo corta dopo la pulizia (27 punti)
+2026-08-15 13:41    |      IE000EUY91Y9: serie troppo corta dopo la pulizia (27 punti)
+2026-08-15 13:41    |      LU3367672022: serie troppo corta dopo la pulizia (15 punti)
+2026-08-15 13:41    |      LU3386643970: serie troppo corta dopo la pulizia (10 punti)
+2026-08-15 13:41    | 
+2026-08-15 13:41    | → JPMorgan: 96 fondi, 96 da elaborare
+2026-08-15 13:41    |   …25/96 (0 falliti)
+2026-08-15 13:41    |   …50/96 (1 falliti)
+2026-08-15 13:41    |   …75/96 (1 falliti)
+2026-08-15 13:41    |   JPMorgan: 95 serie ok, 1 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-08-15 13:41    |   ⚠️  1 serie SCARTATE dal collaudo NAV:
+2026-08-15 13:41    |      IE000H0H26Q8: serie troppo corta dopo la pulizia (4 punti)
+2026-08-15 13:41    | 
+2026-08-15 13:41    | → LGIM: 70 fondi, 70 da elaborare
+2026-08-15 13:41    |   …25/70 (3 falliti)
+2026-08-15 13:41    |   …50/70 (3 falliti)
+2026-08-15 13:41    |   LGIM: 67 serie ok, 3 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-08-15 13:41    |   ⚠️  3 serie SCARTATE dal collaudo NAV:
+2026-08-15 13:41    |      IE000GUIUCJ1: serie troppo corta dopo la pulizia (25 punti)
+2026-08-15 13:41    |      IE000JMMZAP4: serie troppo corta dopo la pulizia (25 punti)
+2026-08-15 13:41    |      IE000MJ79846: serie troppo corta dopo la pulizia (4 punti)
+2026-08-15 13:41    | 
+2026-08-15 13:41    | → SPDR: 176 fondi, 176 da elaborare
+2026-08-15 13:41    |   …25/176 (0 falliti)
+2026-08-15 13:41    |   ✗ IE000P60WPS6: navhist non trovato (provati: swwd-ln)
+2026-08-15 13:41    |   …50/176 (1 falliti)
+2026-08-15 13:41    |   …75/176 (1 falliti)
+2026-08-15 13:41    |   …100/176 (1 falliti)
+2026-08-15 13:41    |   …125/176 (1 falliti)
+2026-08-15 13:41    |   …150/176 (1 falliti)
+2026-08-15 13:41    |   …175/176 (1 falliti)
+2026-08-15 13:41    |   SPDR: 175 serie ok, 1 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-08-15 13:41    | 
+2026-08-15 13:41    | → UBS: 231 fondi, 231 da elaborare
+2026-08-15 13:41    |   …25/231 (0 falliti)
+2026-08-15 13:41    |   …50/231 (0 falliti)
+2026-08-15 13:41    |   …75/231 (0 falliti)
+2026-08-15 13:41    |   …100/231 (0 falliti)
+2026-08-15 13:41    |   …125/231 (1 falliti)
+2026-08-15 13:41    |   …150/231 (1 falliti)
+2026-08-15 13:41    |   …175/231 (1 falliti)
+2026-08-15 13:41    |   …200/231 (1 falliti)
+2026-08-15 13:41    |   …225/231 (1 falliti)
+2026-08-15 13:41    |   UBS: 228 serie ok, 3 falliti, 228 con serie benchmark (TD), 0 con composizione
+2026-08-15 13:41    |   ⚠️  3 serie SCARTATE dal collaudo NAV:
+2026-08-15 13:41    |      LU0950668367: serie troppo corta dopo la pulizia (17 punti)
+2026-08-15 13:41    |      LU3333848920: serie troppo corta dopo la pulizia (24 punti)
+2026-08-15 13:41    |      LU3333849068: serie troppo corta dopo la pulizia (24 punti)
+2026-08-15 13:41    | 
+2026-08-15 13:41    | → Avantis: 6 fondi, 6 da elaborare
+2026-08-15 13:41    |   Avantis: 6 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-08-15 13:41  ok Avantis: 6/6 serie rinfrescate · dato più fresco 2026-08-14
+2026-08-15 13:41  ok Xtrackers (con avviso): 6/372 non rinfrescati, entro tolleranza (IE00064N5UY4, LU3367672295, LU3386643970, IE000AGH5ZI1, LU3367672022, IE000EUY91Y9)
+2026-08-15 13:41  ok SPDR (con avviso): 1/176 non rinfrescati, entro tolleranza (IE000P60WPS6)
+2026-08-15 13:41  ok UBS (con avviso): 3/231 non rinfrescati, entro tolleranza (LU3333848920, LU3333849068, LU0950668367)
+2026-08-15 13:41  ok JPMorgan (con avviso): 1/96 non rinfrescati, entro tolleranza (IE000H0H26Q8)
+2026-08-15 13:41  ok LGIM (con avviso): 3/70 non rinfrescati, entro tolleranza (IE000MJ79846, IE000GUIUCJ1, IE000JMMZAP4)
+2026-08-15 13:42  ok iShares (coda screener): 806 punti aggiunti · 86 già freschi/respinti · 0 falliti
+2026-08-15 13:43  ok Amundi (coda batch): 0 punti aggiunti · 0 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-08-15 13:43  ok Vanguard (coda GraphQL): 0 punti aggiunti · 685 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-08-15 13:44  ok Invesco (coda browser): 1 punti aggiunti · 283 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-08-15 13:46  metal detector: exit 0 · serie esaminate: 2918 · anomalie DURE: 0 · osservazioni morbide: 11
+2026-08-15 13:46  [heartbeat] inviato (200)
+2026-08-15 13:46  fine giro: OK

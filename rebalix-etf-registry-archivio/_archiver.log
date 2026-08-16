@@ -101,4 +101,264 @@
 2026-08-07 21:00    |motore| COMMIT: 2625 righe in etf_search_rows
 2026-08-07 21:00  [heartbeat] inviato (200)
 2026-08-10 22:29  già girato per 2026-08, esco (usa --force per rifare)
-2026-08-16 09:07  già girato per 2026-08, esco (usa --force per rifare)
+2026-08-15 14:41  lancio: /usr/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-08-15 14:50    |   …invesco 200/294
+2026-08-15 14:50    |   …invesco 250/294
+2026-08-15 14:50    |   invesco: 294 righe, 294 con benchmark  ✓
+2026-08-15 14:50    | 
+2026-08-15 14:50    | Totale: 3279 righe, 3100 con benchmark, 1575 indici distinti
+2026-08-15 14:50    | Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+2026-08-15 14:50    |   aum_eur: 1956/1956 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+2026-08-15 14:50    |   DB: 3279 righe upsertate
+2026-08-15 14:50    |   memoria: 0 fotografie nuove per 2026-08 in etf_registry_history
+2026-08-15 14:50    |   archivio: ishares-product-data.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: ishares-product-list.xls già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: vanguard-funds-graphql.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: vanguard-pro.pdf già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: amundi-products.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: xtrackers-benchmarks.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: xtrackers-sitemap.xml già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: spdr-product-data.xlsx già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: jpm-etf.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: lgim-fund-centre.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: 21shares-product-list.html già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: invesco-solr-products.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: invesco-products-listing.json già presente per 2026-08, non sovrascrivo
+2026-08-15 14:50    |   archivio: snapshot 2026-08 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-08
+2026-08-15 14:50    | 
+2026-08-15 14:50    | ✓ Ingest completato.
+2026-08-15 14:50  esito: exit=0, emittenti ok=11/11
+2026-08-15 14:50    |kid|   ✗ LGIM IE000MJ79846: nessuna variante URL ha funzionato
+2026-08-15 14:50    |kid|   ✗ SPDR IE000P60WPS6: nessuna variante URL ha funzionato
+2026-08-15 14:50    |kid|   ✗ Xtrackers LU3367672295: nessuna variante URL ha funzionato
+2026-08-15 14:50    |kid| ✓ aggiornate 0 righe (kid_transaction_costs).
+2026-08-15 14:50    |classif|   iShares screener: 1414 classi
+2026-08-15 14:50    |classif| aggiornate 0 righe (scritte)
+2026-08-15 14:50    |classif| ATTESA regione azionaria: 100.0% (1500/1500)
+2026-08-15 14:50    |classif| ✓ attese rispettate
+2026-08-15 15:37    |listings| 
+2026-08-15 15:37    |listings| Fatto: 3070 ISIN con listing, 440 senza documenti FIRDS, 0 falliti; 99698 righe scritte
+2026-08-15 15:37    |listings| Listing non-attivi visti: 29073
+2026-08-15 16:57    |series|   Invesco: 282 serie ok, 2 falliti, 82 con serie benchmark (TD), 0 con composizione
+2026-08-15 16:57    |series|   ⚠️  2 serie SCARTATE dal collaudo NAV:
+2026-08-15 16:57    |series|      IE000WN3JW15: serie troppo corta dopo la pulizia (29 punti)
+2026-08-15 16:57    |series|      IE00BD0Q9673: NAV 32.14034 alla data del registro (2026-08-15) vs 21.57982 dichiarato (49% di scarto)
+2026-08-15 17:11    |distfreq|   Invesco dichiarate: 0
+2026-08-15 17:11    |distfreq| frequenze pronte: 730 — scritte (solo dove mancava): 730
+2026-08-15 17:45    |lending| prestito dichiarato: 23 — frase assente: 859 — KID non raggiunti: 9
+2026-08-15 17:45    |lending| golden UBS ✓ (dichiara il prestito)
+2026-08-15 17:51    |kidrisk| rischio estratto: 179 — KID letti senza numero: 202 — non raggiunti: 147
+2026-08-15 17:51    |kidrisk| golden CSPX ✓ (rischio 4)
+2026-08-15 18:40    |declared| aggiornati: 18 — azzerati (nessuna fonte): 0 — iShares non letti: 76
+2026-08-15 18:40    |declared|   borse fuori mappa (tenute col nome originale): Bolsa De Valores De Colombia×41, Santiago Stock Exchange×98, Cboe Europe×47, Bolsa Institucional de Valores×59, BATS Chi-X Europe×4, Tel Aviv Stock Exchange×23
+2026-08-15 18:40    |declared| golden ✓ MDAX=["SIX Zurigo","Xetra"] CSPX=["Bolsa De Valores De Colombia","Bolsa Mexicana","Borsa Italiana","Euronext Amsterdam","Londra (LSE)","SIX Zurigo","Santiago Stock Exchange","Tel Aviv Stock Exchange","Xetra"]
+2026-08-15 18:41    |venues| xetra: 4942 strumenti attivi con simbolo nel listino ufficiale
+2026-08-15 18:41    |venues| righe gruppo-Xetra: 4094 — aggiornate 976, già allineate 3118, ISIN fuori listino 0
+2026-08-15 19:20    |tickers| collaudo whitelist↔openfigi: 18283 confronti, 497 divergenze (2.7%)
+2026-08-15 19:20    |tickers| scritte 31285 righe
+2026-08-15 19:20    |tickers| mappa tarata salvata in /tmp/figi-mic-map.json
+2026-08-15 19:40  !! documents fallito (non blocca): Command '['/usr/bin/node', 'scripts/enrich-etf-documents.mjs', '--commit']' timed out after 1200 seconds
+2026-08-15 22:26    |doc-archive|     non-PDF  https://jp.techrules.com/rebrandingPDF/LoadPdf.aspx?ShareClassId=16001&country=IT&lang=IT&paramMIFID=YES
+2026-08-15 22:26    |doc-archive|     non-PDF  https://jp.techrules.com/rebrandingPDF/LoadPdf.aspx?ShareClassId=16000&country=IT&lang=IT&paramMIFID=YES
+2026-08-15 22:28    |kid-objectives| extract-kid-objectives — COMMIT
+2026-08-15 22:29    |td| enrich-tracking-difference — COMMIT
+2026-08-15 22:32    |motore| build-motore-dataset — carico le fonti…
+2026-08-15 22:36  !! AUDIT: anomalie DURE nelle serie appena ingerite - vedi righe |audit| sopra
+2026-08-15 22:36  !! AUDIT-BENCH: esplosione di tick sporchi nei benchmark - vedi righe sopra
+2026-08-15 22:36    |holdings-xtrackers| Xtrackers da lavorare: 0 (COMMIT)
+2026-08-15 22:36    |holdings-xtrackers| 
+2026-08-15 22:36    |holdings-xtrackers| esito: ok 0 · senza file 0 · falliti 0
+2026-08-15 22:37    |holdings-spdr| SPDR da lavorare: 0 (COMMIT)
+2026-08-15 22:37    |holdings-spdr| 
+2026-08-15 22:37    |holdings-spdr| esito: ok 0 · senza file 0 · falliti 0
+2026-08-15 22:37    |holdings-avantis| Avantis: 0 fondi (COMMIT)
+2026-08-15 22:37    |holdings-avantis| 
+2026-08-15 22:37    |holdings-avantis| esito: ok 0 · falliti 0
+2026-08-15 22:37    |holdings-invesco| Invesco: 0 fondi (COMMIT)
+2026-08-15 22:37    |holdings-invesco| 
+2026-08-15 22:37    |holdings-invesco| esito: ok 0 · falliti 0
+2026-08-15 22:38    |holdings-vanguard| 
+2026-08-15 22:38    |holdings-vanguard| esito: ok 0 · falliti 0
+2026-08-15 23:27  lancio: /usr/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-08-15 23:34    |   …invesco 200/294
+2026-08-15 23:34    |   …invesco 250/294
+2026-08-15 23:34    |   invesco: 294 righe, 294 con benchmark  ✓
+2026-08-15 23:34    | 
+2026-08-15 23:34    | Totale: 3279 righe, 3100 con benchmark, 1575 indici distinti
+2026-08-15 23:34    | Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+2026-08-15 23:34    |   aum_eur: 1956/1956 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+2026-08-15 23:34    |   DB: 3279 righe upsertate
+2026-08-15 23:34    |   memoria: 1 fotografie nuove per 2026-08 in etf_registry_history
+2026-08-15 23:34    |   archivio: ishares-product-data.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: ishares-product-list.xls già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: vanguard-funds-graphql.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: vanguard-pro.pdf già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: amundi-products.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: xtrackers-benchmarks.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: xtrackers-sitemap.xml già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: spdr-product-data.xlsx già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: jpm-etf.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: lgim-fund-centre.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: 21shares-product-list.html già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: invesco-solr-products.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: invesco-products-listing.json già presente per 2026-08, non sovrascrivo
+2026-08-15 23:34    |   archivio: snapshot 2026-08 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-08
+2026-08-15 23:34    | 
+2026-08-15 23:34    | ✓ Ingest completato.
+2026-08-15 23:34  esito: exit=0, emittenti ok=11/11
+2026-08-15 23:35    |etc|   ✓ DE000A2UDH63 Xtrackers IE Physical Platinum EUR Hedged ETC Se — fee 0,73% EUR Metalli preziosi
+2026-08-15 23:35    |etc|   ✓ DE000A1E0HS6 Xtrackers Physical Silver ETC (EUR) — fee 0,40% USD Metalli preziosi
+2026-08-15 23:35    |etc|   ✓ CH1492505164 Xtrackers Galaxy MSCI Physical Crypto Market ETC — fee 0,65% USD DIGITAL ASSET
+2026-08-15 23:35    |etc| Xtrackers ETC scritti: 18/18
+2026-08-15 23:35    |kid|   ✗ Amundi HK0000308285: nessuna variante URL ha funzionato
+2026-08-15 23:35    |kid|   ✗ Amundi HK0000308293: nessuna variante URL ha funzionato
+2026-08-15 23:35    |kid|   ✗ JPMorgan IE000H0H26Q8: nessuna variante URL ha funzionato
+2026-08-15 23:35    |kid| ✓ aggiornate 4 righe (kid_transaction_costs).
+2026-08-15 23:35    |classif|   iShares screener: 1414 classi
+2026-08-15 23:35    |classif| aggiornate 55 righe (scritte)
+2026-08-15 23:35    |classif| ATTESA regione azionaria: 100.0% (1500/1500)
+2026-08-15 23:35    |classif| ✓ attese rispettate
+2026-08-16 00:22    |listings| 
+2026-08-16 00:22    |listings| Fatto: 3087 ISIN con listing, 440 senza documenti FIRDS, 1 falliti; 100162 righe scritte
+2026-08-16 00:22    |listings| Listing non-attivi visti: 29221
+2026-08-16 00:25    |series|   serie dal DB: 1525
+2026-08-16 00:25    |series|   serie dal DB: 2025
+2026-08-16 00:25    |series|   serie dal DB: 2525
+2026-08-16 00:25    |series|   cache serie riscritta: 2918 righe → /home/rebalix/cache/etf-series.json
+2026-08-16 00:39    |distfreq|   Invesco dichiarate: 0
+2026-08-16 00:39    |distfreq| frequenze pronte: 735 — scritte (solo dove mancava): 735
+2026-08-16 01:09    |lending| prestito dichiarato: 2 — frase assente: 863 — KID non raggiunti: 4
+2026-08-16 01:09    |lending| golden UBS ✓ (dichiara il prestito)
+2026-08-16 01:13    |kidrisk| rischio estratto: 49 — KID letti senza numero: 203 — non raggiunti: 116
+2026-08-16 01:13    |kidrisk| golden CSPX ✓ (rischio 4)
+2026-08-16 02:00    |declared| aggiornati: 4 — azzerati (nessuna fonte): 0 — iShares non letti: 76
+2026-08-16 02:00    |declared|   borse fuori mappa (tenute col nome originale): Bolsa De Valores De Colombia×41, Santiago Stock Exchange×98, Cboe Europe×47, Bolsa Institucional de Valores×59, BATS Chi-X Europe×4, Tel Aviv Stock Exchange×23
+2026-08-16 02:00    |declared| golden ✓ MDAX=["SIX Zurigo","Xetra"] CSPX=["Bolsa De Valores De Colombia","Bolsa Mexicana","Borsa Italiana","Euronext Amsterdam","Londra (LSE)","SIX Zurigo","Santiago Stock Exchange","Tel Aviv Stock Exchange","Xetra"]
+2026-08-16 02:00    |venues| enrich-venue-listings — COMMIT
+2026-08-16 02:39    |tickers| collaudo whitelist↔openfigi: 18283 confronti, 497 divergenze (2.7%)
+2026-08-16 02:39    |tickers| scritte 31294 righe
+2026-08-16 02:39    |tickers| mappa tarata salvata in /tmp/figi-mic-map.json
+2026-08-16 02:59  !! documents fallito (non blocca): Command '['/usr/bin/node', 'scripts/enrich-etf-documents.mjs', '--commit']' timed out after 1200 seconds
+2026-08-16 05:38    |doc-archive|     non-PDF  https://jp.techrules.com/rebrandingPDF/LoadPdf.aspx?ShareClassId=16000&country=IT&lang=IT&paramMIFID=YES
+2026-08-16 05:38    |doc-archive|     non raggiungibile  https://www.amundietf.it/pdfDocuments/prospectus/LU1650489385/DEU/DEU
+2026-08-16 05:43    |kid-objectives| Invesco      ok  288/294 · EN ufficiale  288 (senza: 0)  marcatore inizio×1 · sezione corta×5
+2026-08-16 05:43    |kid-objectives| JPMorgan     ok   95/95 · EN ufficiale   95 (senza: 0)  
+2026-08-16 05:43    |kid-objectives| LGIM         ok   70/70 · EN ufficiale   67 (senza: 3)  en: lingua it ≠ kid_lang en×2
+2026-08-16 05:43    |kid-objectives| SPDR         ok  176/176 · EN ufficiale  176 (senza: 0)  
+2026-08-16 05:43    |kid-objectives| UBS          ok  231/231 · EN ufficiale  231 (senza: 0)  
+2026-08-16 05:43    |kid-objectives| Vanguard     ok  137/137 · EN ufficiale  137 (senza: 0)  
+2026-08-16 05:43    |kid-objectives| Xtrackers    ok  386/386 · EN ufficiale  386 (senza: 0)  
+2026-08-16 05:43    |kid-objectives| iShares      ok  900/900 · EN ufficiale  900 (senza: 0)  
+2026-08-16 05:43    |kid-objectives| 
+2026-08-16 05:43    |kid-objectives| rapporto con campioni: /tmp/kid-objectives-report.json
+2026-08-16 05:44    |td|   golden CSPX: TD 0.14 %/a (atteso -0.4…0.6)
+2026-08-16 05:44    |td| golden TD ✓
+2026-08-16 05:44    |td| COMMIT: 1290 td_1y scritte, 36 azzerate
+2026-08-16 05:44    |motore| revalidate motore: HTTP 200
+2026-08-16 05:44    |motore| revalidate emittenti: HTTP 200
+2026-08-16 05:44    |audit| serie dalla cache (/home/rebalix/cache/etf-series.json, 2918 righe, età 5.3h)
+2026-08-16 05:44    |audit| serie esaminate: 2918 · anomalie DURE: 1 · osservazioni morbide: 11
+2026-08-16 05:44    |audit| 
+2026-08-16 05:44    |audit| · FR0013346681  [monetario]  Amundi PEA Euro Court Terme UCITS ETF Acc
+2026-08-16 05:44    |audit|     → volatilità 5% (soglia 4% per monetario)
+2026-08-16 05:44    |audit| · IE0009W21NT4  [azionario]  UBS MSCI World Selection UCITS ETF hEUR acc
+2026-08-16 05:44    |audit|     → buco di 146 giorni nella serie
+2026-08-16 05:44    |audit| · IE000EPIJ442  [azionario]  UBS Solactive US Listed Gold & Silver Miners UCITS ETF 
+2026-08-16 05:44    |audit|     → annualizzato 85%/a (soglia ±80% per azionario)
+2026-08-16 05:44    |audit| · IE000PEAJOT0  [azionario]  Amundi MSCI USA ESG Selection UCITS ETF Acc
+2026-08-16 05:44    |audit|     → buco di 60 giorni nella serie
+2026-08-16 05:44    |audit| · IE000TG1LGI4  [azionario]  UBS MSCI World Selection UCITS ETF USD acc
+2026-08-16 05:44    |audit|     → buco di 146 giorni nella serie
+2026-08-16 05:44    |audit| · IE00B9MRHC27  [azionario]  Xtrackers Msci Nordic UCITS ETF 1d
+2026-08-16 05:44    |audit|     → buco di 148 giorni nella serie
+2026-08-16 05:44    |audit| · IE00BPVLQD13  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 1d
+2026-08-16 05:44    |audit|     → buco di 53 giorni nella serie
+2026-08-16 05:44    |audit| · IE00BQWJFQ70  [multi-asset]  State Street® SPDR® Morningstar Multi-Asset Global Infr
+2026-08-16 05:44    |audit|     → buco di 82 giorni nella serie
+2026-08-16 05:44    |audit| · IE00BRB36B93  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 3c Eur Hedged
+2026-08-16 05:44    |audit|     → buco di 53 giorni nella serie
+2026-08-16 05:44    |audit| · LU0290358497  [monetario]  Xtrackers Eur Overnight Rate Swap UCITS ETF 1c
+2026-08-16 05:44    |audit|     → buco di 90 giorni nella serie
+2026-08-16 05:44    |audit| · LU2109787635  [azionario]  Amundi MSCI EMU SRI Climate Paris Aligned UCITS ETF DR 
+2026-08-16 05:44    |audit|     → buco di 60 giorni nella serie
+2026-08-16 05:44    |audit| ‼ IE00BKS7L097  [azionario]  Invesco S&P 500 Scored & Screened UCITS ETF Acc
+2026-08-16 05:44    |audit|     → tracking difference fuori scala (2023: 3.6 pp) — valuta serie/benchmark hedged/gradino da istruire, o aggiungere a tdQuarantena
+2026-08-16 05:44  !! AUDIT: anomalie DURE nelle serie appena ingerite - vedi righe |audit| sopra
+2026-08-16 05:45    |audit-bench|   DE0005933923  1 tick (0 ai confini)  es: 2011-05-09
+2026-08-16 05:45    |audit-bench|   IE0005QL4147  1 tick (0 ai confini)  es: 2023-04-11
+2026-08-16 05:45    |audit-bench|   IE000OHHIBC6  1 tick (0 ai confini)  es: 2025-03-31
+2026-08-16 05:45    |audit-bench|   IE000V73IL86  1 tick (0 ai confini)  es: 2025-10-10
+2026-08-16 05:45    |audit-bench|   IE00B0M63177  1 tick (0 ai confini)  es: 2025-03-31
+2026-08-16 05:45    |audit-bench|   IE00B1YZSC51  1 tick (1 ai confini)  es: 2022-12-30
+2026-08-16 05:50    |holdings-xtrackers|   ✗ LU3386643970 testata non trovata
+2026-08-16 05:50    |holdings-xtrackers| 
+2026-08-16 05:50    |holdings-xtrackers| esito: ok 370 · senza file 1 · falliti 1
+2026-08-16 05:52    |holdings-spdr| SPDR da lavorare: 176 (COMMIT)
+2026-08-16 05:52    |holdings-spdr| 
+2026-08-16 05:52    |holdings-spdr| esito: ok 169 · senza file 7 · falliti 0
+2026-08-16 05:53    |holdings-avantis| Avantis: 6 fondi (COMMIT)
+2026-08-16 05:53    |holdings-avantis|   ✓ IE0003R87OG3 1744 pos · as_of 2026-08-14 · top: VIASAT INC COMMON STOCK USD.00 0.82%
+2026-08-16 05:53    |holdings-avantis|   ✓ IE000K975W13 2936 pos · as_of 2026-08-14 · top: TAIWAN SEMICONDUCTOR MANUFAC C 4.91%
+2026-08-16 05:53    |holdings-avantis|   ✓ IE000OW54ZX1 2199 pos · as_of 2026-08-14 · top: NVIDIA CORP COMMON STOCK USD.0 5.44%
+2026-08-16 05:53    |holdings-avantis|   ✓ IE000RJECXS5 4195 pos · as_of 2026-08-14 · top: NVIDIA CORP COMMON STOCK USD.0 3.87%
+2026-08-16 05:53    |holdings-avantis|   ✓ IE000SDFJUU0 1251 pos · as_of 2026-08-14 · top: ASML HOLDING NV NY REG SHS NY  3.28%
+2026-08-16 05:53    |holdings-avantis|   ✓ IE000T62NEO6 1313 pos · as_of 2026-08-14 · top: BHP GROUP LTD SPON ADR ADR 2.85%
+2026-08-16 05:53    |holdings-avantis| 
+2026-08-16 05:53    |holdings-avantis| esito: ok 6 · falliti 0
+2026-08-16 06:02    |holdings-invesco|   …275/285
+2026-08-16 06:02    |holdings-invesco| 
+2026-08-16 06:02    |holdings-invesco| esito: ok 285 · falliti 0
+2026-08-16 06:02    |copertura|   · Xtrackers · replica: 0% (atteso: campo non censito)
+2026-08-16 06:02    |copertura|   · JPMorgan · replica: 0% (atteso: campo non censito)
+2026-08-16 06:02    |copertura|   · Vanguard · replica: 0% (atteso: campo non censito (backlog 4 ago))
+2026-08-16 06:02    |copertura|   · LGIM · replica: 0% (atteso: campo non censito)
+2026-08-16 06:02    |copertura| 
+2026-08-16 06:02    |copertura| ✓ nessun buco di copertura non dichiarato
+2026-08-16 06:07    |xetra| 
+2026-08-16 06:07    |xetra| esito: TER trovati 348 · AUM trovati 405 · non quotati a Xetra 34 · falliti 0 · righe aggiornate 407
+2026-08-16 06:07    |xetra| per emittente: {"Xtrackers":348,"LGIM":59}
+2026-08-16 06:10    |holdings-vanguard| 
+2026-08-16 06:10    |holdings-vanguard| esito: ok 78 · falliti 0
+2026-08-16 06:10    |holdings-jpm| 
+2026-08-16 06:10    |holdings-jpm| esito: ok 85 · senza pdf 3 · falliti 8
+2026-08-16 06:10    |holdings-lgim| 
+2026-08-16 06:10    |holdings-lgim| esito: ok 66 · senza pdf 3 · falliti 1
+2026-08-16 06:11    |holdings-ubs| 
+2026-08-16 06:11    |holdings-ubs| esito: ok 182 · senza pdf 3 · falliti 46
+2026-08-16 06:12    |holdings-amundi| 
+2026-08-16 06:12    |holdings-amundi| esito: ok 582 · senza pdf 56 · falliti 18
+2026-08-16 06:12    |dividendi-vanguard| 
+2026-08-16 06:12    |dividendi-vanguard| esito: ok 32 · senza distribuzioni 46 · falliti 0
+2026-08-16 06:27    |dividendi-ishares| 
+2026-08-16 06:27    |dividendi-ishares| esito: ok 352 · senza cedole 38 · falliti 0
+2026-08-16 06:27    |dividendi-spdr| dalla più antica 2011-07-29 alla più recente 2026-08-03
+2026-08-16 06:27    |dividendi-spdr| upsert completato: 1223 righe
+2026-08-16 06:27    |dividendi-xtrackers| 
+2026-08-16 06:27    |dividendi-xtrackers| esito: ok 0 (0 cedole) · senza tabella 0 · falliti 0
+2026-08-16 06:28    |dividendi-amundi| 
+2026-08-16 06:28    |dividendi-amundi| esito: ok 204 (1643 cedole) · senza stacchi 28 · falliti 0
+2026-08-16 06:28    |dividendi-ubs| 
+2026-08-16 06:28    |dividendi-ubs| esito: ok 81 (1635 cedole) · senza stacchi 0 · falliti 0
+2026-08-16 06:28    |dividendi-borsaitaliana| 
+2026-08-16 06:28    |dividendi-borsaitaliana| esito: ok 6 (293 cedole) · senza stacchi 81 · stacchi senza importo su BI 2 (scartati) · falliti 0 · coda fuori Milano 96
+2026-08-16 06:29    |holdings-history| foto 2026-08-01 (COMMIT) · già presenti: 2495
+2026-08-16 06:29    |holdings-history| esito: 2797 fondi letti · 302 fotografati
+2026-08-16 06:29    |holdings-history| verifica: 2797 righe nella foto 2026-08-01
+2026-08-16 06:29    |esma-mmf| registro ESMA MMF: 671 fondi
+2026-08-16 06:29    |esma-mmf| ISIN dichiarati: 2166 · record senza ISIN (match per nome): 142
+2026-08-16 06:29    |esma-mmf| 
+2026-08-16 06:29    |esma-mmf| incroci col censimento: 4 (4 Authorised) → lib/esma-mmf.json
+2026-08-16 06:29    |esma-mmf|   ✓ LU3178805456  Standard VNAV · Authorised · match isin  «AMUNDI INDEX SOLUTIONS - AMUNDI EUR CASH ACTIVE»
+2026-08-16 06:29    |esma-mmf|   ✓ IE000SOORXS0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-08-16 06:29    |esma-mmf|   ✓ IE000JJPY166  Short-term VNAV · Authorised · match nome  «iShares EUR Cash UCITS ETF»
+2026-08-16 06:29    |esma-mmf|   ✓ IE000AFVKJZ0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-08-16 06:29    |golden-esterno| ✓ SWDA    1a +23.4%|+23.3% · YTD +16.3%|+16.2% · MAX +670.9%|+670.5% · DD -33.9%|-33.9%
+2026-08-16 06:29    |golden-esterno| ✓ VWCE    1a +24.8%|+24.6% · YTD +17.1%|+17.0% · MAX +136.2%|+135.9% · DD -33.5%|-33.5%
+2026-08-16 06:29    |golden-esterno| ✓ VNGA60  1a +14.1%|+14.3% · YTD +9.4%|+9.6% · MAX +48.9%|+49.6% · DD -15.2%|-15.4%
+2026-08-16 06:29    |golden-esterno| ✓ VAGF    1a -0.4%|-0.4% · YTD -1.0%|-0.9% · MAX -5.9%|-6.1% · DD -19.6%|-19.5%
+2026-08-16 06:29    |golden-esterno| ✓ AGGH    1a -0.2%|+0.0% · YTD -0.8%|-0.6% · MAX -2.2%|-2.0% · DD -17.8%|-17.8%
+2026-08-16 06:29    |golden-esterno| ✓ SGLN    1a +32.0%|+31.6% · YTD +3.5%|+3.2% · MAX +260.8%|+260.9% · DD -37.4%|-37.2%
+2026-08-16 06:29    |golden-esterno| ✓ ORO-AM  1a +31.5%|+31.5% · YTD +3.3%|+3.3% · MAX +229.7%|+225.8% · DD -23.4%|-23.4%
+2026-08-16 06:29    |golden-esterno| 
+2026-08-16 06:29    |golden-esterno| golden esterno ✓ (metriche entro tolleranza sul roster)
+2026-08-16 06:29  [heartbeat] inviato (200)

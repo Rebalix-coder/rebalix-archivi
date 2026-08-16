@@ -535,6 +535,32 @@ def main():
             log(f"!! holdings-invesco fallito (non blocca): {e}")
             modules["holdings-invesco"] = False
 
+    # Audit di COPERTURA arricchimenti × emittente (15 ago, rilievo Linus): un
+    # emittente a 0% dove gli altri stanno alti = modulo mai lanciato → rosso.
+    if not DRY:
+        try:
+            ac = subprocess.run([NODE, "scripts/audit-copertura-emittenti.mjs"],
+                                cwd=REPO, capture_output=True, text=True, timeout=600)
+            for line in (ac.stdout or "").strip().splitlines()[-6:]:
+                log(f"  |copertura| {line}")
+            modules["copertura"] = ac.returncode == 0
+        except Exception as e:
+            log(f"!! copertura fallito (non blocca): {e}")
+            modules["copertura"] = False
+
+    # AUM/TER di classe da Xetra dove mancano (15 ago): Xtrackers e chiunque
+    # quoti a Francoforte senza dato — fonte borsa, header firmati, golden TER.
+    if not DRY:
+        try:
+            xe = subprocess.run([NODE, "scripts/enrich-etf-xetra.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (xe.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |xetra| {line}")
+            modules["xetra"] = xe.returncode == 0
+        except Exception as e:
+            log(f"!! xetra fallito (non blocca): {e}")
+            modules["xetra"] = False
+
     # Composizioni Vanguard (Fase B/3, notte 10-11 ago): GraphQL gpx ufficiale
     # (borHoldings paginato + marketAllocation + sectorDiversification).
     if not DRY:
@@ -580,7 +606,9 @@ def main():
                                   ("ishares", "scripts/ingest-etf-distributions-ishares.mjs"),
                                   ("spdr", "scripts/ingest-etf-distributions-spdr.mjs"),
                                   ("xtrackers", "scripts/ingest-etf-distributions-xtrackers.mjs"),
-                                  ("invesco", "scripts/ingest-etf-distributions-invesco.mjs")):  # da Borsa Italiana (15 ago): l emittente non pubblica lo storico
+                                  ("amundi", "scripts/ingest-etf-distributions-amundi.mjs"),   # API emittente dividendAmount (15 ago)
+                                  ("ubs", "scripts/ingest-etf-distributions-ubs.mjs"),         # nav-details gia archiviato (15 ago)
+                                  ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs")):  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
             try:
                 dv = subprocess.run([NODE, script, "--commit"],
                                     cwd=REPO, capture_output=True, text=True, timeout=3600)
