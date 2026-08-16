@@ -126,3 +126,4 @@ lib/i18n.ts(74,20): error TS2307: Cannot find module '@/messages/generated/en.js
 2026-08-13 22:44  [deploy] moduli invariati — nessun deploy
 2026-08-13 22:44  [heartbeat] inviato (errori=0)
 2026-08-13 22:44  === giro completato (0 errori) ===
+2026-08-16 09:07  giro 2026-W33 già completato — niente da fare (usa --force per rifare)

@@ -628,3 +628,33 @@
 2026-08-14 15:02  report online = Giugno 2026
 2026-08-14 15:02  già archiviato (2026/Giugno.pdf) — niente da fare.
 2026-08-14 15:02  [heartbeat] inviato (200)
+2026-08-16 09:07  --- avvio archiviatore  ---
+2026-08-16 09:07  [capture] ERRORE: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-08-16 09:07  !! cattura look-through: exit non-zero (fonte GraphQL da verificare)
+2026-08-16 09:07  2022-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2023-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2023-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2023-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2023-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2024-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 12}
+2026-08-16 09:07  2024-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2024-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2024-09-30  fondi=0  holdings={}
+2026-08-16 09:07  2025-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2025-06-30  fondi=0  holdings={}
+2026-08-16 09:07  2025-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2025-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2026-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  2026-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-08-16 09:07  -> 15 trimestri scritti in /Users/ale/backups/rebalix-lifestrategy-archivio/_scripts/ls_timeseries.json
+2026-08-16 09:07  [aum] scritto /Users/ale/progetti/rebalix/lib/blog/ls-aum.ts: 13 trimestri, ultimo 2026-06, totale attuale €2648M
+2026-08-16 09:07  [holdings] scritto /Users/ale/progetti/rebalix/lib/blog/ls-holdings.ts: LS20 9 / LS40 9 / LS60 13 / LS80 14 mattoncini, trimestre 2026-06
+2026-08-16 09:07  [uk] ERRORE: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-08-16 09:07  [xray] scritto /Users/ale/progetti/rebalix/lib/blog/ls-lookthrough.ts: effective 2026-06-30, LS60 47 paesi / 11 settori
+2026-08-16 09:07  [tax] scritto /Users/ale/progetti/rebalix/lib/blog/ls-tax.ts: eff 2026-07 · aliquota LS60 22.54% · fai-da-te VWCE 26.0% / VAGF 17.55%
+2026-08-16 09:07  [dist] ERRORE: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-08-16 09:07  [bond] scritto /Users/ale/progetti/rebalix/lib/blog/ls-bondstats.ts: 2026-06 · duration LS20 6.2 / YTM 4.2%
+2026-08-16 09:07  [ls-changes] scritto /Users/ale/progetti/rebalix/lib/blog/ls-changes.ts: 1 eventi su 13 report (ultimo 2026-06-30)
+2026-08-16 09:07  [deploy] branch = feat/gestione-attiva-passiva (non main) — salto commit/deploy per sicurezza.
+2026-08-16 09:07  !! archivio newsletter fallito: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+2026-08-16 09:07  !! [heartbeat] invio fallito (non blocca l'archivio): <urlopen error [Errno 8] nodename nor servname provided, or not known>

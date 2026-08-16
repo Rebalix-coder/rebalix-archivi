@@ -110,3 +110,22 @@
 2026-08-13 13:53  metal detector: exit 0 · serie esaminate: 2629 · anomalie DURE: 0 · osservazioni morbide: 11
 2026-08-13 13:53  [heartbeat] inviato (200)
 2026-08-13 13:53  fine giro: OK
+2026-08-16 07:07  giro quotidiano serie: avantis,xtrackers,spdr,ubs,jpmorgan,lgim
+2026-08-16 07:07    | ingest-etf-series — COMMIT
+2026-08-16 07:07    | ERRORE FATALE: Error: TypeError: fetch failed
+2026-08-16 07:07    |     at main (file:///Users/ale/progetti/rebalix/scripts/ingest-etf-series.mjs:676:24)
+2026-08-16 07:07    |     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+2026-08-16 07:07  !! ingest uscito con codice 1
+2026-08-16 07:07  !! Avantis: lettura verifica fallita (TypeError: fetch failed)
+2026-08-16 07:07  !! Xtrackers: lettura verifica fallita (TypeError: fetch failed)
+2026-08-16 07:07  !! SPDR: lettura verifica fallita (TypeError: fetch failed)
+2026-08-16 07:07  !! UBS: lettura verifica fallita (TypeError: fetch failed)
+2026-08-16 07:07  !! JPMorgan: lettura verifica fallita (TypeError: fetch failed)
+2026-08-16 07:07  !! LGIM: lettura verifica fallita (TypeError: fetch failed)
+2026-08-16 07:07  !! iShares coda fallita: TypeError: fetch failed
+2026-08-16 07:07  !! Amundi coda fallita: Error: TypeError: fetch failed
+2026-08-16 07:07  !! Vanguard coda fallita: Error: TypeError: fetch failed
+2026-08-16 07:07  !! Invesco coda fallita: Error: TypeError: fetch failed
+2026-08-16 07:07  metal detector: exit 1 · ?
+2026-08-16 07:07  !! [heartbeat] invio fallito (non blocca): TypeError: fetch failed
+2026-08-16 07:07  fine giro: PROBLEMI (12)

@@ -38,6 +38,9 @@ def log(msg):
             f.write(line + "\n")
 
 
+DELISTED = []  # riempito dal main col riepilogo dei delisting del giro
+
+
 def send_heartbeat(ok, errori, modules):
     if DRY:
         log(f"[heartbeat] (dry) ok={ok} moduli={modules}")
@@ -53,7 +56,8 @@ def send_heartbeat(ok, errori, modules):
             log("!! [heartbeat] CRON_SECRET non trovato — salto")
             return
         payload = json.dumps({"name": "etf-registry", "ok": ok, "errors_count": errori,
-                              "metrics": {"host": os.uname().nodename, "modules": modules, "data_date": f"{TODAY}"}}).encode()
+                              "metrics": {"host": os.uname().nodename, "modules": modules, "data_date": f"{TODAY}",
+                                          "delisted": DELISTED}}).encode()
         req = urllib.request.Request("https://rebalix.com/api/heartbeat", data=payload, method="POST",
                                      headers={"Authorization": f"Bearer {secret}",
                                               "Content-Type": "application/json"})
@@ -95,10 +99,35 @@ def main():
     falliti = sum(1 for v in modules.values() if not v)
     ok = p.returncode == 0 and falliti == 0 and len(modules) > 0
 
+    # ISIN marcati chiusi in questo giro (rigo nel battito, decisione Linus 15 ago
+    # 2026: il delisting sotto soglia era MUTO — 17 ETC Xtrackers spenti in silenzio
+    # il 13 ago; ora l'elenco arriva sempre al guardiano, che lo mette in mail)
+    delisted = []
+    for m in re.finditer(r"^\s{2}(\w[\w&]*): (\d+) ISIN marcati delisted_at=\S+: (.*)$", out, re.M):
+        delisted.append({"issuer": m.group(1), "n": int(m.group(2)), "isin": m.group(3).strip()})
+    if delisted:
+        log(f"  ISIN marcati chiusi in questo giro: {sum(d['n'] for d in delisted)}")
+    DELISTED.extend(delisted)
+
     if ok and not DRY:
         with open(STATE, "w") as f:
             json.dump({"last_ym": YM, "at": f"{datetime.datetime.now():%Y-%m-%d %H:%M}"}, f)
     log(f"esito: exit={p.returncode}, emittenti ok={sum(1 for v in modules.values() if v)}/{len(modules)}")
+
+    # ETC/ETP (Xtrackers da etc.dws.com, ricetta a parte: la sitemap ETF non li ha).
+    # 15 ago 2026: i 17 ETC erano stati spenti dal delisting per emittente del
+    # censimento ETF (segnalato da Linus su DE000A2T5DZ1) — ora il delisting è per
+    # fonte e gli ETC si rileggono qui ogni giro. NON-fatale, modulo |etc|.
+    if not DRY:
+        try:
+            e = subprocess.run([NODE, "scripts/ingest-etc.mjs", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=900)
+            for line in ((e.stdout or "") + (e.stderr or "")).strip().splitlines()[-4:]:
+                log(f"  |etc| {line}")
+            modules["etc"] = e.returncode == 0
+        except Exception as ex:
+            log(f"!! etc fallito (non blocca): {ex}")
+            modules["etc"] = False
 
     # Costi di transazione dai KID (trimestrale di fatto: lo script salta le righe
     # con estrazione più fresca di 80 giorni). NON-fatale: un problema qui non deve
@@ -395,6 +424,32 @@ def main():
             log(f"!! holdings-invesco fallito (non blocca): {e}")
             modules["holdings-invesco"] = False
 
+    # Audit di COPERTURA arricchimenti × emittente (15 ago, rilievo Linus): un
+    # emittente a 0% dove gli altri stanno alti = modulo mai lanciato → rosso.
+    if not DRY:
+        try:
+            ac = subprocess.run([NODE, "scripts/audit-copertura-emittenti.mjs"],
+                                cwd=REPO, capture_output=True, text=True, timeout=600)
+            for line in (ac.stdout or "").strip().splitlines()[-6:]:
+                log(f"  |copertura| {line}")
+            modules["copertura"] = ac.returncode == 0
+        except Exception as e:
+            log(f"!! copertura fallito (non blocca): {e}")
+            modules["copertura"] = False
+
+    # AUM/TER di classe da Xetra dove mancano (15 ago): Xtrackers e chiunque
+    # quoti a Francoforte senza dato — fonte borsa, header firmati, golden TER.
+    if not DRY:
+        try:
+            xe = subprocess.run([NODE, "scripts/enrich-etf-xetra.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (xe.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |xetra| {line}")
+            modules["xetra"] = xe.returncode == 0
+        except Exception as e:
+            log(f"!! xetra fallito (non blocca): {e}")
+            modules["xetra"] = False
+
     # Composizioni Vanguard (Fase B/3, notte 10-11 ago): GraphQL gpx ufficiale
     # (borHoldings paginato + marketAllocation + sectorDiversification).
     if not DRY:
@@ -437,7 +492,9 @@ def main():
                                   ("ishares", "scripts/ingest-etf-distributions-ishares.mjs"),
                                   ("spdr", "scripts/ingest-etf-distributions-spdr.mjs"),
                                   ("xtrackers", "scripts/ingest-etf-distributions-xtrackers.mjs"),
-                                  ("invesco", "scripts/ingest-etf-distributions-invesco.mjs")):  # da Borsa Italiana (15 ago): l emittente non pubblica lo storico
+                                  ("amundi", "scripts/ingest-etf-distributions-amundi.mjs"),   # API emittente dividendAmount (15 ago)
+                                  ("ubs", "scripts/ingest-etf-distributions-ubs.mjs"),         # nav-details gia archiviato (15 ago)
+                                  ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs")):  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
             try:
                 dv = subprocess.run([NODE, script, "--commit"],
                                     cwd=REPO, capture_output=True, text=True, timeout=3600)
