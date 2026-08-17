@@ -187,6 +187,22 @@ def main():
             log(f"!! series fallito (non blocca): {e}")
             modules["series"] = False
 
+    # SERIE INDICE dove il file emittente non la porta o la ferma (17 ago 2026, rilievo
+    # Linus IE00BDBRDM35): iShares dalla pagina prodotto (it→de→ch), Invesco per classe
+    # da performance/rolling. Scrivono solo i buchi (bench assente o fermo > 60 gg),
+    # golden interni; NON fatali, moduli |bench-ishares| e |bench-invesco| nel battito.
+    if not DRY:
+        for nome, script, tetto in (("bench-ishares", "scripts/ingest-etf-bench-ishares-pagina.mjs", 5400),
+                                    ("bench-invesco", "scripts/ingest-etf-bench-invesco-pagina.mjs", 2400)):
+            try:
+                bx = subprocess.run([NODE, script, "--commit"], cwd=REPO, capture_output=True, text=True, timeout=tetto)
+                for line in ((bx.stdout or "") + (bx.stderr or "")).strip().splitlines()[-3:]:
+                    log(f"  |{nome}| {line}")
+                modules[nome] = bx.returncode == 0
+            except Exception as e:
+                log(f"!! {nome} fallito (non blocca): {e}")
+                modules[nome] = False
+
     # Frequenza di distribuzione (dichiarata Vanguard + contata dagli archivi
     # serie iShares/UBS appena aggiornati). Non sovrascrive mai il dichiarato.
     if not DRY:
@@ -271,7 +287,7 @@ def main():
     if not DRY:
         try:
             dd = subprocess.run([NODE, "scripts/enrich-etf-documents.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=1200)
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)  # 16 ago: 14 emittenti con pause, il giro pieno supera i 20 min (ucciso a metà il 15 e il 16)
             for line in (dd.stdout or "").strip().splitlines()[-2:]:
                 log(f"  |documents| {line}")
             modules["documents"] = dd.returncode == 0
@@ -469,10 +485,13 @@ def main():
     # 10-11 ago): JPM, LGIM, UBS, Amundi. Nessun download: si rilegge l'ultimo
     # PDF in ~/backups/rebalix-docs-archivio (che il giro-documenti rinfresca).
     # exit 2 dei parser = piu' falliti che ok -> modulo rosso.
+    # 16 ago: JPM passa alla fonte emittente COMPLETA (product-data dailyHoldingsAll,
+    # tutte le posizioni, giornaliero) — il factsheet resta solo per LGIM/UBS/Amundi.
     if not DRY:
         for emittente in ("jpm", "lgim", "ubs", "amundi"):
             try:
-                hf = subprocess.run([NODE, f"scripts/ingest-etf-holdings-{emittente}-factsheet.mjs", "--commit"],
+                script = "scripts/ingest-etf-holdings-jpm.mjs" if emittente == "jpm" else f"scripts/ingest-etf-holdings-{emittente}-factsheet.mjs"
+                hf = subprocess.run([NODE, script, "--commit"],
                                     cwd=REPO, capture_output=True, text=True, timeout=2400)
                 for line in (hf.stdout or "").strip().splitlines()[-2:]:
                     log(f"  |holdings-{emittente}| {line}")
@@ -494,7 +513,9 @@ def main():
                                   ("xtrackers", "scripts/ingest-etf-distributions-xtrackers.mjs"),
                                   ("amundi", "scripts/ingest-etf-distributions-amundi.mjs"),   # API emittente dividendAmount (15 ago)
                                   ("ubs", "scripts/ingest-etf-distributions-ubs.mjs"),         # nav-details gia archiviato (15 ago)
-                                  ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs")):  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
+                                  ("jpm", "scripts/ingest-etf-distributions-jpm.mjs"),         # historicalData?cusip=ISIN, aperto (16 ago)
+                                  ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs"),  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
+                                  ("invesco", "scripts/ingest-etf-distributions-invesco.mjs")):  # storico dedotto NAV vs Adjusted NAV + buchi BI (16 ago), golden AT1 CoCo
             try:
                 dv = subprocess.run([NODE, script, "--commit"],
                                     cwd=REPO, capture_output=True, text=True, timeout=3600)
@@ -536,6 +557,18 @@ def main():
             modules["esma-mmf"] = mm.returncode == 0
             if mm.returncode != 0:
                 log("!! ESMA MMF: ritiro/sparizione o zero incroci - vedi righe sopra")
+            # il json rinnovato va COMMITTATO (16 ago 2026: restava sporco nell'albero
+            # e il `git pull --rebase` dell'ExecStartPre dei timer sarebbe fallito →
+            # daily 15:15 muto). Commit + rebase + push; se il push è respinto lo si
+            # vede nel log e nel giro dopo (l'albero resta pulito col commit locale).
+            ch = subprocess.run(["git", "status", "--porcelain", "lib/esma-mmf.json"], cwd=REPO, capture_output=True, text=True).stdout.strip()
+            if ch:
+                subprocess.run(["git", "add", "lib/esma-mmf.json"], cwd=REPO)
+                subprocess.run(["git", "-c", "user.name=rebalix-vps", "-c", "user.email=vps@rebalix.com", "commit", "-q", "-m",
+                                f"data(esma-mmf): rilevazione ESMA MMF {TODAY} (modulo |esma-mmf| del runner)"], cwd=REPO)
+                pr = subprocess.run(["git", "pull", "--rebase", "-q", "origin", "main"], cwd=REPO, capture_output=True, text=True)
+                ps = subprocess.run(["git", "push", "-q", "origin", "main"], cwd=REPO, capture_output=True, text=True)
+                log(f"  |esma-mmf| json committato · pull {'ok' if pr.returncode == 0 else 'KO'} · push {'ok' if ps.returncode == 0 else 'KO: ' + (ps.stderr or '')[:80]}")
         except Exception as e:
             log(f"!! esma-mmf fallito (non blocca): {e}")
             modules["esma-mmf"] = False
