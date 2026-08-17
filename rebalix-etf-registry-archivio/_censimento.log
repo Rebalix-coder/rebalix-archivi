@@ -76,3 +76,56 @@ Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
 ✓ Ingest completato.
 [2026-08-14 01:45] censimento OK
 {"ok":true,"name":"etf-registry-censimento","recorded_at":"2026-08-13T23:45:55.447Z"}[2026-08-14 01:45] [heartbeat] inviato
+[2026-08-17 07:45] === censimento meta mese avviato ===
+ingest-etf-registry — COMMIT (scrive su DB)
+→ ishares…
+  ishares: 1405 righe, 1377 con benchmark  ✓
+→ vanguard…
+  vanguard: 137 righe, 76 con benchmark  ✓
+→ amundi…
+  amundi: 665 righe, 662 con benchmark  ✓
+→ xtrackers…
+  xtrackers: 372 righe, 349 con benchmark  ✓
+→ spdr…
+  spdr: 176 righe, 176 con benchmark  ✓
+→ ubs…
+  ubs: SALTATO — file non trovato (usare --ubs <path>)
+→ jpm…
+  jpm: 96 righe, 90 con benchmark  ✓
+→ lgim…
+  lgim: 70 righe, 70 con benchmark  ✓
+→ 21shares…
+  21shares: 58 righe, 0 con benchmark  ✓
+→ avantis…
+  avantis: 6 righe, 6 con benchmark  ✓
+→ invesco…
+  …invesco 50/294
+  …invesco 100/294
+  …invesco 150/294
+  …invesco 200/294
+  …invesco 250/294
+  invesco: 294 righe, 294 con benchmark  ✓
+
+Totale: 3279 righe, 3100 con benchmark, 1575 indici distinti
+Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+  aum_eur: 1956/1956 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+  DB: 3279 righe upsertate
+  memoria: 0 fotografie nuove per 2026-08 in etf_registry_history
+  archivio: ishares-product-data.json già presente per 2026-08, non sovrascrivo
+  archivio: ishares-product-list.xls già presente per 2026-08, non sovrascrivo
+  archivio: vanguard-funds-graphql.json già presente per 2026-08, non sovrascrivo
+  archivio: vanguard-pro.pdf già presente per 2026-08, non sovrascrivo
+  archivio: amundi-products.json già presente per 2026-08, non sovrascrivo
+  archivio: xtrackers-benchmarks.json già presente per 2026-08, non sovrascrivo
+  archivio: xtrackers-sitemap.xml già presente per 2026-08, non sovrascrivo
+  archivio: spdr-product-data.xlsx già presente per 2026-08, non sovrascrivo
+  archivio: jpm-etf.json già presente per 2026-08, non sovrascrivo
+  archivio: lgim-fund-centre.json già presente per 2026-08, non sovrascrivo
+  archivio: 21shares-product-list.html già presente per 2026-08, non sovrascrivo
+  archivio: invesco-solr-products.json già presente per 2026-08, non sovrascrivo
+  archivio: invesco-products-listing.json già presente per 2026-08, non sovrascrivo
+  archivio: snapshot 2026-08 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-08
+
+✓ Ingest completato.
+[2026-08-17 08:00] censimento OK
+{"ok":true,"name":"etf-registry-censimento","recorded_at":"2026-08-17T06:00:36.941Z"}[2026-08-17 08:00] [heartbeat] inviato

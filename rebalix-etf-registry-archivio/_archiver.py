@@ -608,7 +608,9 @@ def main():
                                   ("xtrackers", "scripts/ingest-etf-distributions-xtrackers.mjs"),
                                   ("amundi", "scripts/ingest-etf-distributions-amundi.mjs"),   # API emittente dividendAmount (15 ago)
                                   ("ubs", "scripts/ingest-etf-distributions-ubs.mjs"),         # nav-details gia archiviato (15 ago)
-                                  ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs")):  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
+                                  ("jpm", "scripts/ingest-etf-distributions-jpm.mjs"),         # historicalData?cusip=ISIN, aperto (16 ago)
+                                  ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs"),  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
+                                  ("invesco", "scripts/ingest-etf-distributions-invesco.mjs")):  # storico dedotto NAV vs Adjusted NAV + buchi BI (16 ago), golden AT1 CoCo
             try:
                 dv = subprocess.run([NODE, script, "--commit"],
                                     cwd=REPO, capture_output=True, text=True, timeout=3600)
