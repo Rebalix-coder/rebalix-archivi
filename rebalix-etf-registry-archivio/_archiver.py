@@ -323,6 +323,39 @@ def main():
             log(f"!! kid-objectives fallito (non blocca): {e}")
             modules["kid-objectives"] = False
 
+    # Gestione attiva/passiva + replica di riserva (17 ago 2026, Lavoro A del brief
+    # guardiano): emittente -> KID (obiettivi appena estratti) -> Xetra, solo dichiarato.
+    # Golden 10+4 dentro lo script (exit 1 = non scrive); exit 2 = sentinella
+    # «Active nel nome senza fonte» (attesa, es. JPM IE000H0H26Q8): NON e' un guasto,
+    # l'elenco resta nel log. Va PRIMA del motore, che legge management/replication_fallback.
+    if not DRY:
+        try:
+            gs = subprocess.run([NODE, "scripts/enrich-etf-gestione.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (gs.stdout or "").strip().splitlines()[-8:]:
+                log(f"  |gestione| {line}")
+            modules["gestione"] = gs.returncode in (0, 2)
+        except Exception as e:
+            log(f"!! gestione fallito (non blocca): {e}")
+            modules["gestione"] = False
+
+    # Metriche obbligazionarie DICHIARATE (17 ago 2026, decisione Linus): duration
+    # (col tipo dell'emittente), ripartizione per rating e per scadenza — dai
+    # factsheet appena archiviati (Vanguard/SPDR/JPM/LGIM/UBS/Amundi) e dalle pagine
+    # prodotto (iShares UK, DWS via Chromium headless). Golden 8 dentro lo script
+    # (exit 1 = non scrive). Chi non ha il dato conserva il valore precedente.
+    # Va PRIMA del motore (che potra' leggerne il filtro duration).
+    if not DRY:
+        try:
+            bm = subprocess.run([NODE, "scripts/enrich-bond-metrics.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (bm.stdout or "").strip().splitlines()[-14:]:
+                log(f"  |bond-metrics| {line}")
+            modules["bond-metrics"] = bm.returncode == 0
+        except Exception as e:
+            log(f"!! bond-metrics fallito (non blocca): {e}")
+            modules["bond-metrics"] = False
+
     # Tracking difference 12 mesi (dalle serie appena aggiornate): fondo vs indice
     # col metodo dei rapporti, solo dove onesta (TR o classi acc). Golden DAX/C3M/
     # CSPX dentro lo script; rete di sanita' |TD|>3% = scarto, mai numeri falsi.
@@ -543,6 +576,14 @@ def main():
         except Exception as e:
             log(f"!! holdings-history fallito (non blocca): {e}")
             modules["holdings-history"] = False
+        # email a Linus quando esiste la SECONDA foto (17 ago 2026): anteprima «Cosa è
+        # cambiato» pronta da guardare prima di accendere HOLDINGS_CHANGES_LIVE. Non fatale.
+        try:
+            na = subprocess.run([NODE, "scripts/notifica-anteprima-cambi.mjs"], cwd=REPO, capture_output=True, text=True, timeout=300)
+            for line in ((na.stdout or "") + (na.stderr or "")).strip().splitlines()[-2:]:
+                log(f"  |anteprima-cambi| {line}")
+        except Exception as e:
+            log(f"!! anteprima-cambi (non blocca): {e}")
 
     # Registro ESMA MMF (Linus, 9 ago): la promessa del hub /etf-monetari.
     # Rilegge il registro ufficiale (Reg. UE 2017/1131) e rinnova l'incrocio
@@ -596,3 +637,15 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    # TD DICHIARATA dall'emittente — SPDR dalla pagina prodotto (17 ago 2026): fondo/indice
+    # per anno + cumulati month-end → etf_registry.td_dichiarata + td_1y. Golden SPY5. NON fatale.
+    if not DRY:
+        try:
+            ts = subprocess.run([NODE, "scripts/enrich-td-spdr.mjs", "--commit"], cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in ((ts.stdout or "") + (ts.stderr or "")).strip().splitlines()[-2:]:
+                log(f"  |td-spdr| {line}")
+            modules["td-spdr"] = ts.returncode == 0
+        except Exception as e:
+            log(f"!! td-spdr fallito (non blocca): {e}")
+            modules["td-spdr"] = False
