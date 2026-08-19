@@ -370,6 +370,35 @@ def main():
             log(f"!! tracking-difference fallita (non blocca): {e}")
             modules["tracking-difference"] = False
 
+    # I TRE LETTORI DEI DOCUMENTI IN ARCHIVIO (18 ago 2026, caso Xeon senza TER/politica/AUM
+    # trovato da Linus): il feed Xtrackers porta solo nome/indice/valuta e LGIM non dà AUM né
+    # politica, quindi TER, politica di distribuzione e patrimonio si leggono dai KID e dai
+    # factsheet gia' archiviati in ~/backups/rebalix-docs-archivio (senza rete per i primi
+    # tre, ~390 pdftotext
+    # locali). QUI, dopo tutti gli arricchimenti e PRIMA del motore, perche' il motore legge
+    # ter/dp/aum. Golden a mano dentro ogni script: se un golden fallisce lo script NON scrive
+    # nulla ed esce 2 -> modulo rosso e il guardiano lo segnala (comportamento voluto).
+    for nome, script in (("kid-xtrackers", "enrich-kid-xtrackers.mjs"),
+                         ("kid-politica", "enrich-kid-politica.mjs"),
+                         ("factsheet-aum", "enrich-factsheet-aum.mjs"),
+                         # 18 ago sera: anagrafica dei 58 ETP 21Shares (benchmark_raw,
+                         # kid_url IT, factsheet_url). UNICO del gruppo che tocca la RETE:
+                         # 58 HEAD sul CDN 21Shares, ~1 min.
+                         ("21shares-anagrafica", "enrich-21shares-anagrafica.mjs")):
+        if DRY:
+            continue
+        try:
+            d = subprocess.run([NODE, f"scripts/{script}", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (d.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |{nome}| {line}")
+            modules[nome] = d.returncode == 0
+            if d.returncode != 0:
+                log(f"!! {nome}: exit {d.returncode} (golden fallito? nulla scritto)")
+        except Exception as e:
+            log(f"!! {nome} fallito (non blocca): {e}")
+            modules[nome] = False
+
     # ULTIMO: ricostruisce le righe pronte del motore /cerca-etf (etf_search_rows)
     # da tutte le fonti appena aggiornate. Golden interni (Xeon, CSPX, numerosita')
     # dentro lo script: se violati esce 1 e il guardiano lo segnala.
@@ -383,6 +412,24 @@ def main():
         except Exception as e:
             log(f"!! motore fallito (non blocca): {e}")
             modules["motore"] = False
+
+    # GUARDIANO DI COMPLETEZZA delle schede (18 ago 2026): tabella emittente×campo dei
+    # buchi, soglia 2%, exit 2 se ci sono righe rosse. Sta QUI e non nel giro serale
+    # perche' la completezza dipende da censimento+arricchimenti (che girano qui), non
+    # dalle serie NAV quotidiane: nel daily avrebbe mandato un allarme ROSSO OGNI GIORNO
+    # con gli stessi buchi noti. Batte `etf-completezza` con ok=false e errors_count=N
+    # righe rosse: nel guardiano e' dichiarato 🟡 «da sapere» (digest del lunedi'),
+    # perche' i buchi sono un PIANO DI LAVORO, non un guasto da correre a curare.
+    if not DRY:
+        try:
+            cp = subprocess.run([NODE, "scripts/audit-completezza-schede.mjs"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (cp.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |completezza| {line}")
+            modules["completezza"] = cp.returncode in (0, 2)  # 2 = righe rosse: atteso, non guasto del modulo
+        except Exception as e:
+            log(f"!! completezza fallita (non blocca): {e}")
+            modules["completezza"] = False
 
     # Metal detector delle serie (Linus, 9 ago): audit post-ingest con la
     # pipeline di lettura completa (cure da lib/serie-riparazioni.json).
