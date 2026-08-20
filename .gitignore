@@ -7,3 +7,6 @@ rebalix-whitelist-docs
 # rumore
 .DS_Store
 _push-archivi.log
+# log operativi delle macchine: non sono archivio
+_backup-b2.log
+_censimento.log
