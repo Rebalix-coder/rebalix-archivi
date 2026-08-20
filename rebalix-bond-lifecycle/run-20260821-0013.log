@@ -1,0 +1,11 @@
+=== bond-lifecycle 2026-08-21T00:13:51+02:00 ===
+--- [bulk-corporate] 00:13:51
+== COMMIT: scriverò su bond_registry ==
+FULINS_D: 4 parti
+  parse FULINS_D_20260815_04of04.zip
+  parse FULINS_D_20260815_03of04.zip
+  parse FULINS_D_20260815_02of04.zip
+  parse FULINS_D_20260815_01of04.zip
+obbligazioni (DB, majors): 74,205
+emittenti da arricchire (GLEIF): 9,316
+  GLEIF 150/9316

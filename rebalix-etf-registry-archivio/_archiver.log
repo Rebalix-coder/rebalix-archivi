@@ -366,3 +366,7 @@
 2026-08-20 08:54    |td-spdr| 
 2026-08-20 08:54    |td-spdr| esito: TD dichiarate 141 · senza pagina 0 · pagina senza dati 35 · scritte 141
 2026-08-20 08:54  !! td-spdr fallito (non blocca): name 'modules' is not defined
+2026-08-20 23:30  già girato per 2026-08, esco (usa --force per rifare)
+2026-08-20 23:33    |td-spdr| 
+2026-08-20 23:33    |td-spdr| esito: TD dichiarate 141 · senza pagina 0 · pagina senza dati 35 · scritte 141
+2026-08-20 23:33  !! td-spdr fallito (non blocca): name 'modules' is not defined

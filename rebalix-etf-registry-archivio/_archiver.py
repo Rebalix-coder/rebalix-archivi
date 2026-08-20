@@ -356,6 +356,21 @@ def main():
             log(f"!! bond-metrics fallito (non blocca): {e}")
             modules["bond-metrics"] = False
 
+    # Eredita' duration/rating/scadenze dalle classi SORELLE (20 ago 2026): proprieta'
+    # del portafoglio, identico tra classi dello stesso fondo (principio della gestione).
+    # Solo-dove-vuoto, concordanza ±0,2 anni tra sorelle, eredita' in raw.bondMetricsSorella.
+    # Va DOPO bond-metrics (eredita cio' che il giro ha appena letto dai factsheet).
+    if not DRY:
+        try:
+            bs = subprocess.run([NODE, "scripts/enrich-bond-metrics-sorelle.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1200)
+            for line in (bs.stdout or "").strip().splitlines()[-4:]:
+                log(f"  |bond-metrics-sorelle| {line}")
+            modules["bond-metrics-sorelle"] = bs.returncode == 0
+        except Exception as e:
+            log(f"!! bond-metrics-sorelle fallito (non blocca): {e}")
+            modules["bond-metrics-sorelle"] = False
+
     # Tracking difference 12 mesi (dalle serie appena aggiornate): fondo vs indice
     # col metodo dei rapporti, solo dove onesta (TR o classi acc). Golden DAX/C3M/
     # CSPX dentro lo script; rete di sanita' |TD|>3% = scarto, mai numeri falsi.
@@ -369,6 +384,22 @@ def main():
         except Exception as e:
             log(f"!! tracking-difference fallita (non blocca): {e}")
             modules["tracking-difference"] = False
+
+    # TD DICHIARATA dall'emittente — SPDR dalla pagina prodotto (17 ago 2026): fondo/indice
+    # per anno + cumulati month-end -> etf_registry.td_dichiarata + td_1y. Golden SPY5. NON fatale.
+    # ⚠️ RIPOSIZIONATO 21 ago (verdetto prova generale): era stato incollato DOPO la chiamata
+    # a main(), dove nei giri veri non veniva MAI eseguito (main esce con sys.exit) e nei giri
+    # saltati crashava con NameError su `modules` (variabile locale di main). Ora sta qui,
+    # con gli altri arricchitori, prima del motore che legge i campi che scrive.
+    if not DRY:
+        try:
+            ts = subprocess.run([NODE, "scripts/enrich-td-spdr.mjs", "--commit"], cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in ((ts.stdout or "") + (ts.stderr or "")).strip().splitlines()[-2:]:
+                log(f"  |td-spdr| {line}")
+            modules["td-spdr"] = ts.returncode == 0
+        except Exception as e:
+            log(f"!! td-spdr fallito (non blocca): {e}")
+            modules["td-spdr"] = False
 
     # I TRE LETTORI DEI DOCUMENTI IN ARCHIVIO (18 ago 2026, caso Xeon senza TER/politica/AUM
     # trovato da Linus): il feed Xtrackers porta solo nome/indice/valuta e LGIM non dà AUM né
@@ -399,7 +430,17 @@ def main():
                          # muto: i fondi nuovi del censimento nascono gia' classificati.
                          ("sfdr-da-kid", "enrich-sfdr-da-kid.mjs"),
                          ("sfdr-da-prospetto", "enrich-sfdr-da-prospetto.mjs"),
-                         ("sfdr-normalizza", "normalizza-sfdr.mjs")):
+                         ("sfdr-normalizza", "normalizza-sfdr.mjs"),
+                         # 20 ago, chiusura rassegna orfani (specifica sessione Database ETF):
+                         # ter-21shares = TER dai KID PRIIPs, solo-dove-vuoto (oggi 58/58 pieni:
+                         # protegge gli ETP FUTURI — era il buco che il censimento azzerava,
+                         # incidente 18 ago); doc-langs = colonne *_en dopo |documents|;
+                         # replica-from-kid = replica di riserva dal KID, solo-dove-vuoto.
+                         # NON agganciati: rating-breakdown (valutare per g.17, decisione
+                         # aperta) e whitelist-tickers (fuori: ha il suo giro).
+                         ("21shares-ter", "enrich-ter-21shares.mjs"),
+                         ("doc-langs", "enrich-doc-langs.mjs"),
+                         ("replica-from-kid", "enrich-replica-from-kid.mjs")):
         if DRY:
             continue
         try:
@@ -699,15 +740,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    # TD DICHIARATA dall'emittente — SPDR dalla pagina prodotto (17 ago 2026): fondo/indice
-    # per anno + cumulati month-end → etf_registry.td_dichiarata + td_1y. Golden SPY5. NON fatale.
-    if not DRY:
-        try:
-            ts = subprocess.run([NODE, "scripts/enrich-td-spdr.mjs", "--commit"], cwd=REPO, capture_output=True, text=True, timeout=1800)
-            for line in ((ts.stdout or "") + (ts.stderr or "")).strip().splitlines()[-2:]:
-                log(f"  |td-spdr| {line}")
-            modules["td-spdr"] = ts.returncode == 0
-        except Exception as e:
-            log(f"!! td-spdr fallito (non blocca): {e}")
-            modules["td-spdr"] = False
