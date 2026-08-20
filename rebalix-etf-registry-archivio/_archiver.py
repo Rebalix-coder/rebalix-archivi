@@ -384,7 +384,22 @@ def main():
                          # 18 ago sera: anagrafica dei 58 ETP 21Shares (benchmark_raw,
                          # kid_url IT, factsheet_url). UNICO del gruppo che tocca la RETE:
                          # 58 HEAD sul CDN 21Shares, ~1 min.
-                         ("21shares-anagrafica", "enrich-21shares-anagrafica.mjs")):
+                         ("21shares-anagrafica", "enrich-21shares-anagrafica.mjs"),
+                         # 19 ago (fase 2 «campi», decisione Linus «prima i documenti, poi i
+                         # campi»): anagrafica Xtrackers dall'API pdp it-it (lancio, domicilio,
+                         # SRRI, AUM — rete: ~390 GET, ~4 min) e data di lancio 21Shares dal
+                         # JSON-LD delle pagine prodotto (rete: 58 GET). Scrivono solo dove vuoto.
+                         ("xtrackers-pdp", "enrich-xtrackers-pdp.mjs"),
+                         ("21shares-inception", "enrich-21shares-inception.mjs"),
+                         # SFDR (19 ago): dal KID/factsheet in archivio (art. 8/9 dichiarati;
+                         # silenzio = art. 6 ETICHETTATO solo per Xtrackers/iShares/SPDR/LGIM,
+                         # con guardia ESG-nel-nome), poi dagli allegati del prospetto-ombrello
+                         # (Vanguard/UBS), infine UNA sola forma nel campo (normalizza-sfdr, che
+                         # non tocca mai la provenienza). Tutti scrivono solo dove il campo e'
+                         # muto: i fondi nuovi del censimento nascono gia' classificati.
+                         ("sfdr-da-kid", "enrich-sfdr-da-kid.mjs"),
+                         ("sfdr-da-prospetto", "enrich-sfdr-da-prospetto.mjs"),
+                         ("sfdr-normalizza", "normalizza-sfdr.mjs")):
         if DRY:
             continue
         try:

@@ -362,3 +362,7 @@
 2026-08-16 06:29    |golden-esterno| 
 2026-08-16 06:29    |golden-esterno| golden esterno ✓ (metriche entro tolleranza sul roster)
 2026-08-16 06:29  [heartbeat] inviato (200)
+2026-08-20 08:51  già girato per 2026-08, esco (usa --force per rifare)
+2026-08-20 08:54    |td-spdr| 
+2026-08-20 08:54    |td-spdr| esito: TD dichiarate 141 · senza pagina 0 · pagina senza dati 35 · scritte 141
+2026-08-20 08:54  !! td-spdr fallito (non blocca): name 'modules' is not defined
