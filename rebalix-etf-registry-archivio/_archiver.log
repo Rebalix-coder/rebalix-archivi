@@ -499,3 +499,133 @@
 2026-08-21 09:18    |sfdr-normalizza| scritte 488/488
 2026-08-21 09:18    |21shares-ter| 
 2026-08-21 09:18    |21shares-ter| esito: TER letti 0 · senza KID 0 · KID senza costo 0 · scritte 0
+2026-08-21 09:22    |doc-langs| esito: 3031 fondi con lingua rilevata · KID non-it: 175 · factsheet non-it: 530
+2026-08-21 09:22    |doc-langs| colonne _en riempite dal primario inglese: 0
+2026-08-21 09:22    |replica-from-kid|   IE000H0H26Q8 (JPMorgan) → Gestione attiva (dal KID)  [«…gestione attiva…»]
+2026-08-21 09:22    |replica-from-kid|   IE000I687JU4 (Xtrackers) → Fisica (dal KID)  [«…acquistando tutti o un numero considerevole di titoli…»]
+2026-08-21 09:23    |motore| revalidate motore: HTTP 200
+2026-08-21 09:23    |motore| revalidate emittenti: HTTP 200
+2026-08-21 09:23    |completezza| 
+2026-08-21 09:23    |completezza| eccezioni DICHIARATE (non contano): ticker×23 · replica×118 · indice×56 · gestione×93 · factsheet×87 · bond_metrics×45 · classe×58 · domicilio×58 · politica×61 · aum×4
+2026-08-21 09:23    |completezza| [heartbeat] etf-completezza inviato (200)
+2026-08-21 09:23    |audit| serie dalla cache (/home/rebalix/cache/etf-series.json, 3021 righe, età 7.8h)
+2026-08-21 09:23    |audit| serie esaminate: 3021 · anomalie DURE: 0 · osservazioni morbide: 16 · benchmark fermi: 22 (attesi ≤ 35)
+2026-08-21 09:23    |audit| 
+2026-08-21 09:23    |audit| · FR0013346681  [monetario]  Amundi PEA Euro Court Terme UCITS ETF Acc
+2026-08-21 09:23    |audit|     → volatilità 5% (soglia 4% per monetario)
+2026-08-21 09:23    |audit| · IE0009W21NT4  [azionario]  UBS MSCI World Selection UCITS ETF hEUR acc
+2026-08-21 09:23    |audit|     → buco di 146 giorni nella serie
+2026-08-21 09:23    |audit| · IE000EPIJ442  [azionario]  UBS Solactive US Listed Gold & Silver Miners UCITS ETF 
+2026-08-21 09:23    |audit|     → annualizzato 96%/a (soglia ±80% per azionario)
+2026-08-21 09:23    |audit| · IE000PEAJOT0  [azionario]  Amundi MSCI USA ESG Selection UCITS ETF Acc
+2026-08-21 09:23    |audit|     → buco di 60 giorni nella serie
+2026-08-21 09:23    |audit| · IE000TG1LGI4  [azionario]  UBS MSCI World Selection UCITS ETF USD acc
+2026-08-21 09:23    |audit|     → buco di 146 giorni nella serie
+2026-08-21 09:23    |audit| · IE00B9MRHC27  [azionario]  Xtrackers Msci Nordic UCITS ETF 1d
+2026-08-21 09:23    |audit|     → buco di 148 giorni nella serie
+2026-08-21 09:23    |audit| · IE00BPVLQD13  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 1d
+2026-08-21 09:23    |audit|     → buco di 53 giorni nella serie
+2026-08-21 09:23    |audit| · IE00BQWJFQ70  [multi-asset]  State Street® SPDR® Morningstar Multi-Asset Global Infr
+2026-08-21 09:23    |audit|     → buco di 82 giorni nella serie
+2026-08-21 09:23    |audit| · IE00BRB36B93  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 3c Eur Hedged
+2026-08-21 09:23    |audit|     → buco di 53 giorni nella serie
+2026-08-21 09:23    |audit| · LU0290358497  [monetario]  Xtrackers Eur Overnight Rate Swap UCITS ETF 1c
+2026-08-21 09:23    |audit|     → buco di 90 giorni nella serie
+2026-08-21 09:23    |audit| · LU2109787635  [azionario]  Amundi MSCI EMU SRI Climate Paris Aligned UCITS ETF DR 
+2026-08-21 09:23    |audit|     → buco di 60 giorni nella serie
+2026-08-21 09:23    |audit| · IE00BDFGJ734  [obbligazionario]  iShares J.P. Morgan $ EM Bond UCITS ETF
+2026-08-21 09:23    |audit|     → benchmark fermo: indice dell'emittente fino al 2019-10-14 (NAV fino al 2026-08-19) — TD e confronto non pubblicati
+2026-08-21 09:23    |audit| · IE00BDFGJ841  [obbligazionario]  iShares US Aggregate Bond UCITS ETF
+2026-08-21 09:23    |audit|     → benchmark fermo: indice dell'emittente fino al 2019-10-14 (NAV fino al 2026-08-19) — TD e confronto non pubblicati
+2026-08-21 09:23    |audit| · IE00BDFJYL11  [obbligazionario]  iShares $ High Yield Corp Bond UCITS ETF
+2026-08-21 09:23    |audit|     → benchmark fermo: indice dell'emittente fino al 2019-10-14 (NAV fino al 2026-08-19) — TD e confronto non pubblicati
+2026-08-21 09:23    |audit| · IE00BDFJYM28  [obbligazionario]  iShares US Aggregate Bond UCITS ETF
+2026-08-21 09:23    |audit|     → benchmark fermo: indice dell'emittente fino al 2019-10-14 (NAV fino al 2026-08-19) — TD e confronto non pubblicati
+2026-08-21 09:23    |audit| · IE00BDFJYN35  [obbligazionario]  iShares Core € Corp Bond UCITS ETF
+2026-08-21 09:23    |audit|     → benchmark fermo: indice dell'emittente fino al 2019-10-14 (NAV fino al 2026-08-19) — TD e confronto non pubblicati
+2026-08-21 09:23    |audit-bench|   DE0005933923  1 tick (0 ai confini)  es: 2011-05-09
+2026-08-21 09:23    |audit-bench|   IE0005QL4147  1 tick (0 ai confini)  es: 2023-04-11
+2026-08-21 09:23    |audit-bench|   IE000OHHIBC6  1 tick (0 ai confini)  es: 2025-03-31
+2026-08-21 09:23    |audit-bench|   IE000V73IL86  1 tick (0 ai confini)  es: 2025-10-10
+2026-08-21 09:23    |audit-bench|   IE00B0M63177  1 tick (0 ai confini)  es: 2025-03-31
+2026-08-21 09:23    |audit-bench|   IE00B1YZSC51  1 tick (1 ai confini)  es: 2022-12-30
+2026-08-21 09:29    |holdings-xtrackers|   ✗ LU3386643970 testata non trovata
+2026-08-21 09:29    |holdings-xtrackers| 
+2026-08-21 09:29    |holdings-xtrackers| esito: ok 374 · senza file 1 · falliti 1
+2026-08-21 09:32    |holdings-spdr| SPDR da lavorare: 176 (COMMIT)
+2026-08-21 09:32    |holdings-spdr| 
+2026-08-21 09:32    |holdings-spdr| esito: ok 169 · senza file 7 · falliti 0
+2026-08-21 09:32    |holdings-avantis| Avantis: 6 fondi (COMMIT)
+2026-08-21 09:32    |holdings-avantis|   ✓ IE0003R87OG3 1781 pos · as_of 2026-08-20 · top: SM ENERGY CO COMMON STOCK USD. 0.89%
+2026-08-21 09:32    |holdings-avantis|   ✓ IE000K975W13 2942 pos · as_of 2026-08-20 · top: SK HYNIX INC COMMON STOCK KRW5 5.06%
+2026-08-21 09:32    |holdings-avantis|   ✓ IE000OW54ZX1 2206 pos · as_of 2026-08-20 · top: NVIDIA CORP COMMON STOCK USD.0 5.48%
+2026-08-21 09:32    |holdings-avantis|   ✓ IE000RJECXS5 4230 pos · as_of 2026-08-20 · top: NVIDIA CORP COMMON STOCK USD.0 3.77%
+2026-08-21 09:32    |holdings-avantis|   ✓ IE000SDFJUU0 1251 pos · as_of 2026-08-20 · top: ASML HOLDING NV NY REG SHS NY  3.1%
+2026-08-21 09:32    |holdings-avantis|   ✓ IE000T62NEO6 1313 pos · as_of 2026-08-20 · top: BHP GROUP LTD SPON ADR ADR 3.13%
+2026-08-21 09:32    |holdings-avantis| 
+2026-08-21 09:32    |holdings-avantis| esito: ok 6 · falliti 0
+2026-08-21 09:55    |holdings-invesco|   …275/285
+2026-08-21 09:55    |holdings-invesco| 
+2026-08-21 09:55    |holdings-invesco| esito: ok 283 · falliti 2
+2026-08-21 09:55    |copertura|   · JPMorgan · TD 1 anno: 0% (atteso: niente serie-indice nel feed JPM)
+2026-08-21 09:55    |copertura|   · LGIM · TD 1 anno: 0% (atteso: niente serie-indice nel feed LGIM)
+2026-08-21 09:55    |copertura|   · Avantis · TD 1 anno: 0% (atteso: attivi: TD non pertinente)
+2026-08-21 09:55    |copertura| 
+2026-08-21 09:55    |copertura| !! BUCHI DI COPERTURA NON DICHIARATI: 1
+2026-08-21 09:55    |copertura|   ✗ LGIM · freq. distribuzione (Dist): 0% mentre la mediana degli emittenti è 98% — modulo mai lanciato o ricetta mancante?
+2026-08-21 09:55    |xetra| 
+2026-08-21 09:55    |xetra| esito: TER trovati 0 · AUM trovati 5 · non quotati a Xetra 5 · falliti 0 · righe aggiornate 5
+2026-08-21 09:55    |xetra| per emittente: {"LGIM":2,"Xtrackers":3}
+2026-08-21 09:58    |holdings-vanguard| 
+2026-08-21 09:58    |holdings-vanguard| esito: ok 78 · falliti 3
+2026-08-21 09:59    |holdings-jpm| 
+2026-08-21 09:59    |holdings-jpm| esito: ok 96 · senza posizioni 0 · falliti 0
+2026-08-21 09:59    |holdings-lgim| 
+2026-08-21 09:59    |holdings-lgim| esito: ok 66 · senza pdf 3 · falliti 1
+2026-08-21 10:00    |holdings-ubs| 
+2026-08-21 10:00    |holdings-ubs| esito: ok 170 · senza pdf 3 · falliti 58
+2026-08-21 10:01    |holdings-amundi| 
+2026-08-21 10:01    |holdings-amundi| esito: ok 585 · senza pdf 53 · falliti 18
+2026-08-21 10:01    |dividendi-vanguard| 
+2026-08-21 10:01    |dividendi-vanguard| esito: ok 32 · senza distribuzioni 49 · falliti 0
+2026-08-21 10:20    |dividendi-ishares| 
+2026-08-21 10:20    |dividendi-ishares| esito: ok 373 · senza cedole 17 · falliti 0
+2026-08-21 10:20    |dividendi-spdr| dalla più antica 2011-07-29 alla più recente 2026-08-03
+2026-08-21 10:20    |dividendi-spdr| upsert completato: 1223 righe
+2026-08-21 10:21    |dividendi-xtrackers| 
+2026-08-21 10:21    |dividendi-xtrackers| esito: ok 103 (1637 cedole) · senza tabella 2 · falliti 0
+2026-08-21 10:22    |dividendi-amundi| 
+2026-08-21 10:22    |dividendi-amundi| esito: ok 204 (1643 cedole) · senza stacchi 28 · falliti 0
+2026-08-21 10:22    |dividendi-ubs| 
+2026-08-21 10:22    |dividendi-ubs| esito: ok 81 (1635 cedole) · senza stacchi 0 · falliti 0
+2026-08-21 10:22    |dividendi-jpm| 
+2026-08-21 10:22    |dividendi-jpm| esito: ok 16 (376 cedole) · senza stacchi 1 · falliti 0
+2026-08-21 10:22    |dividendi-borsaitaliana| 
+2026-08-21 10:22    |dividendi-borsaitaliana| esito: ok 9 (118 cedole) · senza stacchi 5 · stacchi senza importo su BI 0 (scartati) · falliti 0 · coda fuori Milano 32
+2026-08-21 10:22    |dividendi-invesco| DB: 441 cedole upsertate su 31 fondi
+2026-08-21 10:22    |dividendi-invesco| esito: fondi con deduzione 99 · senza 5 · da scrivere 31 fondi / 441 cedole
+2026-08-21 10:23    |holdings-history| foto 2026-08-01 (COMMIT) · già presenti: 2797
+2026-08-21 10:23    |holdings-history| esito: 2821 fondi letti · 24 fotografati
+2026-08-21 10:23    |holdings-history| verifica: 2821 righe nella foto 2026-08-01
+2026-08-21 10:23    |anteprima-cambi| fotografie mensili: 1 (2026-08) · ultima 2026-08 con 2821 fondi
+2026-08-21 10:23    |anteprima-cambi| meno di 2 foto: niente email (giusto così)
+2026-08-21 10:23    |esma-mmf| registro ESMA MMF: 672 fondi
+2026-08-21 10:23    |esma-mmf| ISIN dichiarati: 2166 · record senza ISIN (match per nome): 143
+2026-08-21 10:23    |esma-mmf| 
+2026-08-21 10:23    |esma-mmf| incroci col censimento: 4 (4 Authorised) → lib/esma-mmf.json
+2026-08-21 10:23    |esma-mmf|   ✓ LU3178805456  Standard VNAV · Authorised · match isin  «AMUNDI INDEX SOLUTIONS - AMUNDI EUR CASH ACTIVE»
+2026-08-21 10:23    |esma-mmf|   ✓ IE000SOORXS0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-08-21 10:23    |esma-mmf|   ✓ IE000JJPY166  Short-term VNAV · Authorised · match nome  «iShares EUR Cash UCITS ETF»
+2026-08-21 10:23    |esma-mmf|   ✓ IE000AFVKJZ0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-08-21 10:23    |esma-mmf| json committato · pull ok · push ok
+2026-08-21 10:23    |golden-esterno| ✓ SWDA    1a +21.5%|+21.5% · YTD +14.7%|+14.7% · MAX +660.3%|+660.5% · DD -33.9%|-33.9%
+2026-08-21 10:23    |golden-esterno| ✓ VWCE    1a +22.7%|+22.7% · YTD +15.4%|+15.4% · MAX +132.7%|+132.7% · DD -33.5%|-33.5%
+2026-08-21 10:23    |golden-esterno| ✓ VNGA60  1a +12.8%|+12.8% · YTD +8.2%|+8.2% · MAX +47.2%|+47.7% · DD -15.2%|-15.4%
+2026-08-21 10:23    |golden-esterno| ✓ VAGF    1a +0.1%|+0.7% · YTD -1.0%|-0.4% · MAX -5.9%|-5.6% · DD -19.6%|-19.5%
+2026-08-21 10:23    |golden-esterno| ✗ AGGH    1a +0.3%|+1.0% · YTD -0.7%|-0.2% · MAX -2.1%|-1.6% · DD -17.8%|-17.8%  ← 1a +0.3% vs +1.0%
+2026-08-21 10:23    |golden-esterno| ✓ SGLN    1a +34.5%|+34.5% · YTD +4.8%|+4.8% · MAX +265.3%|+266.4% · DD -37.4%|-37.2%
+2026-08-21 10:23    |golden-esterno| ✓ ORO-AM  1a +34.5%|+34.5% · YTD +4.8%|+4.8% · MAX +234.2%|+230.3% · DD -23.4%|-23.4%
+2026-08-21 10:23    |golden-esterno| 
+2026-08-21 10:23    |golden-esterno| ✗ GOLDEN ESTERNO VIOLATO (1): AGGH: 1a +0.3% vs +1.0%
+2026-08-21 10:23  !! GOLDEN ESTERNO: metriche fuori tolleranza - vedi righe sopra
+2026-08-21 10:23  [heartbeat] inviato (200)

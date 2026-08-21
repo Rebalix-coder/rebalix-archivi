@@ -18,8 +18,17 @@ if ! git pull --rebase -X theirs -q origin main >> "$LOG" 2>&1; then
   exit 1
 fi
 if git push -q origin main >> "$LOG" 2>&1; then
-  log "push OK"
+  log "push OK"; ESITO=0
 else
-  log "!! push FALLITO (restera nel prossimo giro)"
-  exit 1
+  log "!! push FALLITO (restera nel prossimo giro)"; ESITO=1
 fi
+# battito al guardiano (21 ago 2026: i push erano MUTI — 4 giorni di fallimenti invisibili)
+SECRET=$(grep '^CRON_SECRET=' "$HOME/progetti/rebalix/.env.local" | head -1 | cut -d= -f2- | tr -d '"' | tr -d "'")
+if [ -n "$SECRET" ]; then
+  OKB=$([ "$ESITO" -eq 0 ] && echo true || echo false)
+  ERRB=$([ "$ESITO" -eq 0 ] && echo 0 || echo 1)
+  curl -s -m 30 -X POST "https://rebalix.com/api/heartbeat" \
+    -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" \
+    -d "{\"name\":\"archivi-push-vps\",\"ok\":$OKB,\"errors_count\":$ERRB,\"metrics\":{\"host\":\"$(hostname)\",\"modules\":{\"push\":$OKB},\"data_date\":\"$(date +%F)\"}}" >/dev/null 2>&1
+fi
+exit "$ESITO"
