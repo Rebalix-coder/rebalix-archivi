@@ -370,3 +370,132 @@
 2026-08-20 23:33    |td-spdr| 
 2026-08-20 23:33    |td-spdr| esito: TD dichiarate 141 · senza pagina 0 · pagina senza dati 35 · scritte 141
 2026-08-20 23:33  !! td-spdr fallito (non blocca): name 'modules' is not defined
+2026-08-21 00:24  lancio: /usr/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-08-21 00:43    | 
+2026-08-21 00:43    | Totale: 3286 righe, 3104 con benchmark, 1576 indici distinti
+2026-08-21 00:43    | Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+2026-08-21 00:43    | 
+2026-08-21 00:43    | ⚠ PROBLEMI RILEVATI:
+2026-08-21 00:43    |   · vanguard: benchmark solo su 76/140 (attesi ≥ 55%)
+2026-08-21 00:43    |   aum_eur: 1808/1808 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+2026-08-21 00:43    |   DB: 3286 righe upsertate · guardia anti-cancellazione: conservati raw.bondMetricsSorella×26, aum_eur×590, aum×580, replication×1328, raw.sfdrFonte×2772, raw.tdNote×204, sfdr×688, raw.docNote×71, ter×430, distribution_policy×457, aum_currency×428, aum_as_of×428, srri×370, domicile×372, inception_date×430, asset_class×711, raw.politicaFonte×26, benchmark_raw×63 (il feed diceva null, la tabella aveva un valore)
+2026-08-21 00:43    |   memoria: 7 fotografie nuove per 2026-08 in etf_registry_history
+2026-08-21 00:43    |   archivio: ishares-product-data.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: ishares-product-list.xls già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: vanguard-funds-graphql.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: vanguard-pro.pdf già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: amundi-products.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: xtrackers-benchmarks.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: xtrackers-sitemap.xml già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: spdr-product-data.xlsx già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: jpm-etf.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: lgim-fund-centre.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: 21shares-product-list.html già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: invesco-solr-products.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: invesco-products-listing.json già presente per 2026-08, non sovrascrivo
+2026-08-21 00:43    |   archivio: snapshot 2026-08 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-08
+2026-08-21 00:43    | 
+2026-08-21 00:43    | ✓ Ingest completato.
+2026-08-21 00:43  esito: exit=0, emittenti ok=11/11
+2026-08-21 00:44    |etc|   ✓ DE000A2UDH63 Xtrackers IE Physical Platinum EUR Hedged ETC Se — fee 0,73% EUR Metalli preziosi
+2026-08-21 00:44    |etc|   ✓ DE000A1E0HS6 Xtrackers Physical Silver ETC (EUR) — fee 0,40% USD Metalli preziosi
+2026-08-21 00:44    |etc|   ✓ CH1492505164 Xtrackers Galaxy MSCI Physical Crypto Market ETC — fee 0,65% USD DIGITAL ASSET
+2026-08-21 00:44    |etc| Xtrackers ETC scritti: 18/18
+2026-08-21 00:44    |kid|   ✗ Xtrackers IE0000QMH1B4: nessuna variante URL ha funzionato
+2026-08-21 00:44    |kid|   ✗ Xtrackers IE000G5ERG83: nessuna variante URL ha funzionato
+2026-08-21 00:44    |kid|   ✗ Xtrackers IE000I687JU4: nessuna variante URL ha funzionato
+2026-08-21 00:44    |kid| ✓ aggiornate 8 righe (kid_transaction_costs).
+2026-08-21 00:45    |classif|   orfano → regione: Invesco IE00BK63RN45 «MSCI Kuwait 20/35 Index»
+2026-08-21 00:45    |classif|   orfano → regione: Invesco IE00BZ4BMM98 «EURO iSTOXX High Dividend Low Volitility 50 NTR Index»
+2026-08-21 00:45    |classif| ATTESA regione azionaria: 98.9% (1653/1672)
+2026-08-21 00:45    |classif| ✗ ATTESA VIOLATA: regione azionaria sotto il 99% — decidere i nuovi orfani prima di pubblicare
+2026-08-21 01:30    |listings| 
+2026-08-21 01:30    |listings| Fatto: 3092 ISIN con listing, 443 senza documenti FIRDS, 0 falliti; 100314 righe scritte
+2026-08-21 01:30    |listings| Listing non-attivi visti: 29239
+2026-08-21 01:33    |series|   serie dal DB: 2025
+2026-08-21 01:33    |series|   serie dal DB: 2525
+2026-08-21 01:33    |series|   serie dal DB: 3021
+2026-08-21 01:33    |series|   cache serie riscritta: 3021 righe → /home/rebalix/cache/etf-series.json
+2026-08-21 02:39    |bench-ishares|   ✗ IE00014E9P24 pagina: HTTP 404
+2026-08-21 02:39    |bench-ishares| 
+2026-08-21 02:39    |bench-ishares| esito: bench dalla pagina 0 · senza pagina/ajax 121 · pagina senza bench 27 · discordi 0 · hedged saltate 123 · scritte 0
+2026-08-21 02:45    |bench-invesco|   golden IE00B3YCGJ38: indice file 12m 21.61 vs rolling 21.61 → ✓
+2026-08-21 02:45    |bench-invesco| 
+2026-08-21 02:45    |bench-invesco| esito: indice dal rolling 0 · senza indice 22 · falliti 0 · discordi 0 · hedged saltate 45 · scritte 0
+2026-08-21 02:59    |distfreq|   Invesco dichiarate: 0
+2026-08-21 02:59    |distfreq| frequenze pronte: 730 — scritte (solo dove mancava): 730
+2026-08-21 03:29    |lending| prestito dichiarato: 8 — frase assente: 861 — KID non raggiunti: 4
+2026-08-21 03:29    |lending| golden UBS ✓ (dichiara il prestito)
+2026-08-21 03:33    |kidrisk| rischio estratto: 9 — KID letti senza numero: 203 — non raggiunti: 115
+2026-08-21 03:33    |kidrisk| golden CSPX ✓ (rischio 4)
+2026-08-21 04:23    |declared| aggiornati: 5 — azzerati (nessuna fonte): 0 — iShares non letti: 76
+2026-08-21 04:23    |declared|   borse fuori mappa (tenute col nome originale): Bolsa De Valores De Colombia×41, Santiago Stock Exchange×98, Cboe Europe×47, Bolsa Institucional de Valores×59, BATS Chi-X Europe×4, Tel Aviv Stock Exchange×23
+2026-08-21 04:23    |declared| golden ✓ MDAX=["SIX Zurigo","Xetra"] CSPX=["Bolsa De Valores De Colombia","Bolsa Mexicana","Borsa Italiana","Euronext Amsterdam","Londra (LSE)","SIX Zurigo","Santiago Stock Exchange","Tel Aviv Stock Exchange","Xetra"]
+2026-08-21 04:26    |venues|   CH1468906669/XETA: FLEX → FLEY
+2026-08-21 04:26    |venues|   CH1468906669/XETU: FLEX → FLEY
+2026-08-21 05:04    |tickers| collaudo whitelist↔openfigi: 18286 confronti, 497 divergenze (2.7%)
+2026-08-21 05:04    |tickers| scritte 31348 righe
+2026-08-21 05:04    |tickers| mappa tarata salvata in /tmp/figi-mic-map.json
+2026-08-21 05:34    |documents|   lingueMancanti: 168 slot con lingua non-madre da ricontrollare
+2026-08-21 05:34    |documents| LingueMancanti: 0 fondi con documenti (71s)
+2026-08-21 08:26    |doc-archive|   ✗ 1× www.amundietf.it · non raggiungibile
+2026-08-21 08:26    |doc-archive|     non raggiungibile  https://www.amundietf.it/pdfDocuments/kid-priips/LU1686831030/ITA/ITA
+2026-08-21 08:31    |kid-objectives| Invesco      ok  288/294 · EN ufficiale  288 (senza: 0)  marcatore inizio×1 · sezione corta×5
+2026-08-21 08:31    |kid-objectives| JPMorgan     ok   96/96 · EN ufficiale   96 (senza: 0)  
+2026-08-21 08:31    |kid-objectives| LGIM         ok   70/70 · EN ufficiale   67 (senza: 3)  en: lingua it ≠ kid_lang en×2
+2026-08-21 08:31    |kid-objectives| SPDR         ok  176/176 · EN ufficiale  176 (senza: 0)  
+2026-08-21 08:31    |kid-objectives| UBS          ok  231/231 · EN ufficiale  231 (senza: 0)  
+2026-08-21 08:31    |kid-objectives| Vanguard     ok  140/140 · EN ufficiale  137 (senza: 3)  
+2026-08-21 08:31    |kid-objectives| Xtrackers    ok  394/394 · EN ufficiale  394 (senza: 0)  
+2026-08-21 08:31    |kid-objectives| iShares      ok  900/900 · EN ufficiale  900 (senza: 0)  
+2026-08-21 08:31    |kid-objectives| 
+2026-08-21 08:31    |kid-objectives| rapporto con campioni: /tmp/kid-objectives-report.json
+2026-08-21 08:32    |gestione|    Amundi    HK0000286812 Amundi Hang Seng HK 35 Index ETF - Counter RMB
+2026-08-21 08:32    |gestione|    Amundi    HK0000308285 Amundi FTSE China A50 Index ETF - Counter RMB
+2026-08-21 08:32    |gestione|    Amundi    HK0000308293 Amundi FTSE China A50 Index ETF - Counter HKD
+2026-08-21 08:32    |gestione| 
+2026-08-21 08:32    |gestione| golden ✓ (gestione 10/10, replica di riserva 4/4)
+2026-08-21 08:32    |gestione| sentinella «Active» nel nome: nessun orfano ✓
+2026-08-21 08:32    |gestione| 
+2026-08-21 08:32    |gestione| DB: 1383 righe aggiornate, 0 errori
+2026-08-21 09:08    |bond-metrics|   ✓ golden IE00049TNTV6 (JPMorgan) dur=6.74 media as_of=2026-07-31 rating=6 scad=0
+2026-08-21 09:08    |bond-metrics|   ✓ golden IE0007EH5UK6 (LGIM) dur=4.31 modificata as_of=2026-06-30 rating=9 scad=8
+2026-08-21 09:08    |bond-metrics|   ℹ golden LU0721552973: documento più recente (2026-07-31 ≠ 2026-06-30) → confronto duration saltato (3.47)
+2026-08-21 09:08    |bond-metrics|   ✓ golden LU0721552973 (UBS) dur=3.47 modificata as_of=2026-07-31 rating=0 scad=0
+2026-08-21 09:08    |bond-metrics|   ✓ golden LU1285959885 (Amundi) dur=6.64 modificata as_of=2026-06-30 rating=5 scad=8
+2026-08-21 09:08    |bond-metrics|   ℹ golden IE0003HUCA83: documento più recente (2026-07-31 ≠ 2026-06-30) → confronto duration saltato (6.5)
+2026-08-21 09:08    |bond-metrics|   ✓ golden IE0003HUCA83 (Vanguard) dur=6.5 media as_of=2026-07-31 rating=5 scad=7
+2026-08-21 09:08    |bond-metrics|   ✓ golden IE0002OP0LA0 (SPDR) dur=2.75 effettiva as_of=2026-07-31 rating=3 scad=5
+2026-08-21 09:08    |bond-metrics|   ✓ golden IE0004KLW911 (Xtrackers) dur=6.7 modificata as_of=2026-08-19 rating=0 scad=8
+2026-08-21 09:08    |bond-metrics|   ✓ golden IE00004FVB93 (iShares) dur=1.71 effettiva as_of=2026-08-19 rating=5 scad=3
+2026-08-21 09:08    |bond-metrics|   ✓ golden IE000ZWSN3F7 (Invesco) dur=3.03 effettiva as_of=2026-07-31 rating=8 scad=7
+2026-08-21 09:08    |bond-metrics| golden: 9/9
+2026-08-21 09:08    |bond-metrics| scritte 1032 righe, errori 0
+2026-08-21 09:08    |bond-metrics| revalidate schede: HTTP 200
+2026-08-21 09:09    |bond-metrics-sorelle| COMMIT: da scrivere 0 · gruppi discordi 0
+2026-08-21 09:09    |bond-metrics-sorelle| scritte 0
+2026-08-21 09:10    |td| golden TD ✓
+2026-08-21 09:10    |td| COMMIT: 1920 td_1y scritte, 10 azzerate · motivi del trattino: 50 scritti, 0 tolti
+2026-08-21 09:10    |td| coperte ritirate per |TD|≥2 (indice non coperto nel feed): 46 — es. Xtrackers IE00028H9QJ8 TD=-2.22 · Xtrackers IE0002EI5AG0 TD=-2.66 · Xtrackers IE000IDLWOL4 TD=-2.64 · UBS IE000JHYO4T6 TD=-2.93 · Amundi IE000KTD59H4 TD=2.30 · iShares IE000QZ7JON9 TD=-2.59
+2026-08-21 09:13    |td-spdr| 
+2026-08-21 09:13    |td-spdr| esito: TD dichiarate 141 · senza pagina 0 · pagina senza dati 35 · scritte 141
+2026-08-21 09:13    |kid-xtrackers| esito: 5 fondi da scrivere · senza KID in archivio 0 · KID senza TER leggibile 18 · senza politica 26 · TER: {"<0,10":4,"0,10-0,30":1} · policy: Acc 2 / Dist 2
+2026-08-21 09:13    |kid-xtrackers| COMMIT: 5 righe aggiornate
+2026-08-21 09:13    |kid-politica|   · 21Shares CH1102728750 21shares Cardano ETP
+2026-08-21 09:13    |kid-politica| COMMIT: 0 righe aggiornate
+2026-08-21 09:13    |factsheet-aum| somma AUM letta: € 1.1 mld · massimo: 668.512.970
+2026-08-21 09:13    |factsheet-aum| COMMIT: 7 righe aggiornate
+2026-08-21 09:13    |21shares-anagrafica| 21Shares: 58 righe · da lavorare 58 (COMMIT)
+2026-08-21 09:13    |21shares-anagrafica| esito: benchmark 0 · kid_url IT 0 · factsheet 0 · righe aggiornate 0
+2026-08-21 09:15    |xtrackers-pdp| letti: inception 4 · domicilio 4 · srri 3 · aum 4 · indice 0 · sottostante ETC 0 · ter 0 · aum ETC 0 | vuoti 0 · errori 0 · da scrivere 4
+2026-08-21 09:15    |xtrackers-pdp| scritte 4/4
+2026-08-21 09:17    |21shares-inception| lette 58 · non trovate 0 · da scrivere 0
+2026-08-21 09:17    |21shares-inception| scritte 0/0
+2026-08-21 09:18    |sfdr-da-kid|   Xtrackers  8=0 9=0 6-dedotto=4 etc=0
+2026-08-21 09:18    |sfdr-da-kid| scritte 587/587
+2026-08-21 09:18    |sfdr-da-prospetto| note «non pubblicato dall'emittente» da scrivere: 0
+2026-08-21 09:18    |sfdr-da-prospetto| scritte 3/3 · note 0/0
+2026-08-21 09:18    |sfdr-normalizza| righe da riscrivere: 488
+2026-08-21 09:18    |sfdr-normalizza| scritte 488/488
+2026-08-21 09:18    |21shares-ter| 
+2026-08-21 09:18    |21shares-ter| esito: TER letti 0 · senza KID 0 · KID senza costo 0 · scritte 0
