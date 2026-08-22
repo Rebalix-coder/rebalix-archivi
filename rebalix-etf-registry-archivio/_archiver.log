@@ -629,3 +629,4 @@
 2026-08-21 10:23    |golden-esterno| ✗ GOLDEN ESTERNO VIOLATO (1): AGGH: 1a +0.3% vs +1.0%
 2026-08-21 10:23  !! GOLDEN ESTERNO: metriche fuori tolleranza - vedi righe sopra
 2026-08-21 10:23  [heartbeat] inviato (200)
+2026-08-22 09:00  lancio: /usr/bin/node scripts/ingest-etf-registry.mjs --commit
