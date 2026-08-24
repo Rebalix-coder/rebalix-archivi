@@ -145,3 +145,12 @@ lib/i18n.ts(74,20): error TS2307: Cannot find module '@/messages/generated/en.js
 2026-08-20 09:05  [deploy] produzione aggiornata
 2026-08-20 09:05  [heartbeat] inviato (errori=0)
 2026-08-20 09:05  === giro completato (0 errori) ===
+2026-08-24 07:40  === giro 2026-W35 avviato (dry=False) ===
+2026-08-24 07:40  [baskets:xspu] ok — 363/504 titoli, active share 57.2%
+2026-08-24 07:40  [baskets:world] ok — 517/1283 titoli, active share 61.3%
+2026-08-24 07:40  [td] ok — 1533 punti comuni, fine 2026-08-21, scarti +18pb, +21pb, +22pb, +24pb
+2026-08-24 07:40  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-08-24 07:40  [hybrid] ok — 755 titoli fisici, USA 0.5%; scarto vs fisico +51 pb/a su 426 sedute
+2026-08-24 07:42  [deploy] produzione aggiornata
+2026-08-24 07:42  [heartbeat] inviato (errori=0)
+2026-08-24 07:42  === giro completato (0 errori) ===
