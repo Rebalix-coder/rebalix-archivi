@@ -134,8 +134,13 @@ def main():
     # oscurare il giro principale — finisce nel battito come modulo dedicato.
     if not DRY:
         try:
-            k = subprocess.run([NODE, "scripts/enrich-kid-costs.mjs", "--commit"],
-                               cwd=REPO, capture_output=True, text=True, timeout=3600)
+            # cadenza MENSILE dal 26 ago (ok Linus: «su TER e costi di transazione ogni
+            # mese saremo aggiornati») — max-age 25: ogni giro rilegge TUTTI i KID
+            # (~3.160, ~80-100 min → tagliola a 2h30). Il modulo ora estrae anche la
+            # riga «commissioni di gestione» e ALLINEA il TER al KID quando il feed
+            # anagrafico resta indietro (caso UBS Core World, aprile→agosto).
+            k = subprocess.run([NODE, "scripts/enrich-kid-costs.mjs", "--commit", "--max-age", "25"],
+                               cwd=REPO, capture_output=True, text=True, timeout=9000)
             for line in (k.stdout or "").strip().splitlines()[-4:]:
                 log(f"  |kid| {line}")
             modules["kid-costs"] = k.returncode == 0
