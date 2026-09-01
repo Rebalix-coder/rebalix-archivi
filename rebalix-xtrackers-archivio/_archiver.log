@@ -2834,3 +2834,85 @@ Error: request to https://api.vercel.com/v13/deployments/dpl_D56dFVbPnE4wnnbqxZQ
 2026-08-30 10:33  [deploy] deploy prod OK (6887f2ba) al tentativo 1
 2026-08-30 10:33  [heartbeat] inviato (200)
 2026-08-30 10:33  fatto, tutto OK
+2026-08-31 10:30  --- avvio archiviatore Xtrackers  ---
+2026-08-31 10:30  xeq2: dato al 2026-08-27, 0 snapshot nuovi (gia' in archivio)
+2026-08-31 10:30  xeq2: NAV ufficiale, 149 punti
+2026-08-31 10:30  xeq4: dato al 2026-08-27, 0 snapshot nuovi (gia' in archivio)
+2026-08-31 10:30  xeq4: NAV ufficiale, 149 punti
+2026-08-31 10:30  xeq6: dato al 2026-08-27, 0 snapshot nuovi (gia' in archivio)
+2026-08-31 10:30  xeq6: NAV ufficiale, 149 punti
+2026-08-31 10:30  xeq8: dato al 2026-08-27, 0 snapshot nuovi (gia' in archivio)
+2026-08-31 10:30  xeq8: NAV ufficiale, 149 punti
+2026-08-31 10:30  xqui: dato al 2026-08-28, 0 snapshot nuovi (gia' in archivio)
+2026-08-31 10:30  xqui: NAV ufficiale, 4415 punti
+2026-08-31 10:30  magr: 36 posizioni, NUOVA composizione (impronta f5c5bd5680815e4a)
+2026-08-31 10:30  modr: 33 posizioni, NUOVA composizione (impronta 7476fa5584645707)
+2026-08-31 10:30  macv: 34 posizioni, NUOVA composizione (impronta bbc0fb6505f1c8e6)
+2026-08-31 10:30  spread: snapshot 2026-08-31 10:30, 4/11 book validi
+2026-08-31 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-08-31 10:30  [golden] XEQ2.MI: 124 date | cum Yahoo +1.23% vs NAV +0.75% (diff 0.49 pt) | rend. mediano 0.187 pt | livello max 1.75%
+2026-08-31 10:30  [golden] XEQ4.MI: 125 date | cum Yahoo +3.01% vs NAV +2.55% (diff 0.46 pt) | rend. mediano 0.228 pt | livello max 1.83%
+2026-08-31 10:30  [golden] XEQ6.MI: 127 date | cum Yahoo +5.64% vs NAV +5.30% (diff 0.34 pt) | rend. mediano 0.255 pt | livello max 1.92%
+2026-08-31 10:30  [golden] XEQ8.MI: 127 date | cum Yahoo +8.13% vs NAV +7.88% (diff 0.25 pt) | rend. mediano 0.314 pt | livello max 1.99%
+2026-08-31 10:30  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 149 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-08-31 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:30  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-08-31 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:30  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-08-31 10:30  [xd-hold] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-08-27) — 20: swap 0.0%, HY 5.1%+EM 15.1% dei bond | 40: swap 16.16%, HY 5.1%+EM 15.1% dei bond | 60: swap 30.75%, HY 5.1%+EM 15.1% dei bond | 80: swap 43.69%, HY 5.1%+EM 15.0% dei bond
+2026-08-31 10:30  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-08-31 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.27}, {'nome': 'Giappone', 'pct': 5.94}, {'nome': 'Taiwan', 'pct': 3.79}]
+2026-08-31 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 30.65}, {'nome': 'Finanza', 'pct': 17.14}, {'nome': 'Prodotti industriali', 'pct': 11.26}]
+2026-08-31 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.49}, {'nome': 'Giappone', 'pct': 7.56}, {'nome': 'Francia', 'pct': 5.09}]
+2026-08-31 10:30  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 47 giorni, ultimo (2026-08-31): 20%=1.998M, 40%=3.074M, 60%=3.832M, 80%=5.054M
+2026-08-31 10:30  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-08-31 10:30  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-08-31 10:30  [xd-costs] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-08-31
+2026-08-31 10:30  [xd-changes] invariato (4 eventi)
+2026-08-31 10:30  [deploy] commit dei moduli xd
+2026-08-31 10:32  !! [deploy] tentativo 1/3 fallito (exit 1)
+2026-08-31 10:35  !! [deploy] tentativo 2/3 fallito (exit 1)
+2026-08-31 10:37  !! [deploy] tentativo 3/3 fallito (exit 1)
+2026-08-31 10:37  !! [deploy] DEPLOY FALLITO dopo 3 tentativi (427d4b8d). Il commit è su Codeberg ma NON in produzione. Output vercel:
+
+npm warn allow-scripts 3 packages have install scripts not yet covered by allowScripts:
+npm warn allow-scripts   core-js@3.49.0 (postinstall: node -e "try{require('./postinstall')}catch(e){}")
+npm warn allow-scripts   esbuild@0.28.0 (postinstall: node install.js)
+npm warn allow-scripts   unrs-resolver@1.11.1 (postinstall: napi-postinstall unrs-resolver 1.11.1 check)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+Detected Next.js version: 16.3.3
+Running "npm run build"
+> rebalix@0.1.0 prebuild
+> node scripts/build-messages.mjs
+messages/generated: it.json (4244 chiavi) · en.json (4667 chiavi)
+> rebalix@0.1.0 build
+> next build
+▲ Next.js 16.3.3 (Turbopack)
+Applying modifyConfig from Vercel
+✓ Running next.config.ts took 93ms
+Creating an optimized production build ...
+✓ Compiled successfully in 22.7s
+Running TypeScript ...
+Finished TypeScript in 36.0s ...
+Collecting page data using 3 workers ...
+⚠ The "preferredRegion" route segment config is deprecated. Learn more: https://nextjs.org/docs/messages/preferred-region-deprecated
+Generating static pages using 3 workers (0/520) ...
+Generating static pages using 3 workers (130/520)
+Generating static pages using 3 workers (260/520)
+Generating static pages using 3 workers (390/520)
+✓ Generating static pages using 3 workers (520/520) in 28.7s
+Finalizing page optimization ...
+Running onBuildComplete from Vercel
+> Build error occurred
+Error: ENOENT: no such file or directory, open '/vercel/path0/.next/next-server.js.nft.json'
+at ignore-listed frames {
+errno: -2,
+code: 'ENOENT',
+syscall: 'open',
+path: '/vercel/path0/.next/next-server.js.nft.json'
+}
+Error: Command "npm run build" exited with 1
+Error: Command "npm run build" exited with 1
+2026-08-31 10:37  [heartbeat] inviato (200)
+2026-08-31 10:37  fatto (1 errori)

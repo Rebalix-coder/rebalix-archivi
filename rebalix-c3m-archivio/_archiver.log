@@ -808,3 +808,72 @@
 2026-08-30 10:45  [deploy] moduli dati invariati — nessun deploy.
 2026-08-30 10:45  [heartbeat] battito inviato
 2026-08-30 10:45  fatto, tutto OK
+2026-08-31 10:45  === giro C3M ===
+2026-08-31 10:45     composizione nuova per 2026-08-27 (55 strumenti nel paniere completo)
+2026-08-31 10:45     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-08-31 10:45     spread registrato per 2 simboli
+2026-08-31 10:45     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-08-31 10:45     [c3m-performance] scritto: 2338 sedute 2017-07-10→2026-08-27, TD -15bp/a, maxDD -3.634% (2022-09-20), golden ok (16 vs dichiarato)
+2026-08-31 10:45     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:53: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:45     d = datetime.datetime.utcfromtimestamp(p["date"] / 1000).date()
+2026-08-31 10:45     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:45     return {datetime.datetime.utcfromtimestamp(t).date(): c for t, c in zip(ts, close) if c}
+2026-08-31 10:45     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:87: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:45     mesi[datetime.datetime.utcfromtimestamp(t).date().isoformat()[:7]] = c
+2026-08-31 10:45     [c3m-composition] scritto: asof 2026-08-27, NAV 127.0877, AUM 913.1M, France 34.5% (tetto 34.5), somma paesi 100.0%
+2026-08-31 10:45     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_composition.py:143: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:45     navDate: '{datetime.datetime.utcfromtimestamp(car["NAV_DATE_DISPLAYED"] / 1000).date().isoformat() if car.get("NAV_DATE_DISPLAYED") else asof}',
+2026-08-31 10:45     [c3m-tax] scritto: C3M 4 semestri (corrente 98.94% → 12.64%), XEON 11 semestri (corrente 78.08% → 15.46%)
+2026-08-31 10:45     [c3m-aum] scritto: 110 mesi 2017-07→2026-08, AUM 913M, raccolta 12m +173M, anni flussi: ['2017']…['2026']
+2026-08-31 10:45     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_aum.py:26: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:45     d = datetime.datetime.utcfromtimestamp(p["date"] / 1000).date()
+2026-08-31 10:45     [c3m-xeon-series] scritto: 234 mesi 2007-01→2026-08, golden ok
+2026-08-31 10:45     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_xeon_series.py:48: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-08-31 10:45     dt = datetime.datetime.utcfromtimestamp(ts / 1000).date()
+2026-08-31 10:45  [deploy] commit dei moduli c3m
+2026-08-31 10:48  !! [deploy] tentativo 1/3 fallito (exit 1)
+2026-08-31 10:50  !! [deploy] tentativo 2/3 fallito (exit 1)
+2026-08-31 10:52  !! [deploy] tentativo 3/3 fallito (exit 1)
+2026-08-31 10:52  !! [deploy] DEPLOY FALLITO dopo 3 tentativi (dd7fbdb1). Commit su Codeberg ma NON in produzione. Output vercel:
+
+npm warn allow-scripts 3 packages have install scripts not yet covered by allowScripts:
+npm warn allow-scripts   core-js@3.49.0 (postinstall: node -e "try{require('./postinstall')}catch(e){}")
+npm warn allow-scripts   esbuild@0.28.0 (postinstall: node install.js)
+npm warn allow-scripts   unrs-resolver@1.11.1 (postinstall: napi-postinstall unrs-resolver 1.11.1 check)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+Detected Next.js version: 16.3.3
+Running "npm run build"
+> rebalix@0.1.0 prebuild
+> node scripts/build-messages.mjs
+messages/generated: it.json (4244 chiavi) · en.json (4667 chiavi)
+> rebalix@0.1.0 build
+> next build
+▲ Next.js 16.3.3 (Turbopack)
+Applying modifyConfig from Vercel
+✓ Running next.config.ts took 95ms
+Creating an optimized production build ...
+✓ Compiled successfully in 23.9s
+Running TypeScript ...
+Finished TypeScript in 37.9s ...
+Collecting page data using 3 workers ...
+⚠ The "preferredRegion" route segment config is deprecated. Learn more: https://nextjs.org/docs/messages/preferred-region-deprecated
+Generating static pages using 3 workers (0/520) ...
+Generating static pages using 3 workers (130/520)
+Generating static pages using 3 workers (260/520)
+Generating static pages using 3 workers (390/520)
+✓ Generating static pages using 3 workers (520/520) in 29.1s
+Finalizing page optimization ...
+Running onBuildComplete from Vercel
+> Build error occurred
+Error: ENOENT: no such file or directory, open '/vercel/path0/.next/next-server.js.nft.json'
+at ignore-listed frames {
+errno: -2,
+code: 'ENOENT',
+syscall: 'open',
+path: '/vercel/path0/.next/next-server.js.nft.json'
+}
+Error: Command "npm run build" exited with 1
+Error: Command "npm run build" exited with 1
+2026-08-31 10:53  [heartbeat] battito inviato
+2026-08-31 10:53  fatto (1 errori)
