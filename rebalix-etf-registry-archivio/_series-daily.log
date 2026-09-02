@@ -3326,3 +3326,94 @@
 2026-08-31 20:59  metal detector: exit 0 · serie esaminate: 3265 · anomalie DURE: 0 · osservazioni morbide: 15 · benchmark fermi: 3 (attesi ≤ 35)
 2026-08-31 20:59  [heartbeat] inviato (200)
 2026-08-31 20:59  fine giro: OK
+2026-09-01 20:15  giro quotidiano serie: avantis,xtrackers,spdr,ubs,jpmorgan,lgim,21shares,franklin
+2026-09-01 20:48    | ingest-etf-series — COMMIT
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → Xtrackers: 394 fondi, 394 da elaborare
+2026-09-01 20:48    |   …25/394 (0 falliti)
+2026-09-01 20:48    |   …50/394 (0 falliti)
+2026-09-01 20:48    |   …75/394 (0 falliti)
+2026-09-01 20:48    |   …100/394 (0 falliti)
+2026-09-01 20:48    |   …125/394 (0 falliti)
+2026-09-01 20:48    |   …150/394 (0 falliti)
+2026-09-01 20:48    |   …175/394 (0 falliti)
+2026-09-01 20:48    |   …200/394 (0 falliti)
+2026-09-01 20:48    |   …225/394 (0 falliti)
+2026-09-01 20:48    |   …250/394 (0 falliti)
+2026-09-01 20:48    |   …275/394 (0 falliti)
+2026-09-01 20:48    |   …300/394 (0 falliti)
+2026-09-01 20:48    |   …325/394 (0 falliti)
+2026-09-01 20:48    |   …350/394 (0 falliti)
+2026-09-01 20:48    |   …375/394 (0 falliti)
+2026-09-01 20:48    |   Xtrackers: 394 serie ok, 0 falliti, 354 con serie benchmark (TD), 0 con composizione · 8 neonati sotto i 30 punti fatti crescere
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → JPMorgan: 96 fondi, 96 da elaborare
+2026-09-01 20:48    |   …25/96 (0 falliti)
+2026-09-01 20:48    |   …50/96 (0 falliti)
+2026-09-01 20:48    |   …75/96 (0 falliti)
+2026-09-01 20:48    |   JPMorgan: 96 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione · 1 neonati sotto i 30 punti fatti crescere
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → LGIM: 70 fondi, 70 da elaborare
+2026-09-01 20:48    |   …25/70 (0 falliti)
+2026-09-01 20:48    |   …50/70 (0 falliti)
+2026-09-01 20:48    |   LGIM: 70 serie ok, 0 falliti, 61 con serie benchmark (TD), 0 con composizione · 1 neonati sotto i 30 punti fatti crescere
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → SPDR: 176 fondi, 176 da elaborare
+2026-09-01 20:48    |   …25/176 (0 falliti)
+2026-09-01 20:48    |   ✗ IE000P60WPS6: navhist non trovato (provati: swwd-ln)
+2026-09-01 20:48    |   …50/176 (1 falliti)
+2026-09-01 20:48    |   …75/176 (1 falliti)
+2026-09-01 20:48    |   …100/176 (1 falliti)
+2026-09-01 20:48    |   …125/176 (1 falliti)
+2026-09-01 20:48    |   …150/176 (1 falliti)
+2026-09-01 20:48    |   …175/176 (1 falliti)
+2026-09-01 20:48    |   SPDR: 175 serie ok, 1 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → UBS: 418 fondi, 418 da elaborare
+2026-09-01 20:48    |   …25/418 (0 falliti)
+2026-09-01 20:48    |   …50/418 (0 falliti)
+2026-09-01 20:48    |   …75/418 (0 falliti)
+2026-09-01 20:48    |   …100/418 (0 falliti)
+2026-09-01 20:48    |   …125/418 (0 falliti)
+2026-09-01 20:48    |   …150/418 (0 falliti)
+2026-09-01 20:48    |   …175/418 (0 falliti)
+2026-09-01 20:48    |   …200/418 (0 falliti)
+2026-09-01 20:48    |   …225/418 (0 falliti)
+2026-09-01 20:48    |   …250/418 (0 falliti)
+2026-09-01 20:48    |   …275/418 (0 falliti)
+2026-09-01 20:48    |   …300/418 (0 falliti)
+2026-09-01 20:48    |   …325/418 (0 falliti)
+2026-09-01 20:48    |   …350/418 (0 falliti)
+2026-09-01 20:48    |   …375/418 (0 falliti)
+2026-09-01 20:48    |   …400/418 (0 falliti)
+2026-09-01 20:48    |   UBS: 418 serie ok, 0 falliti, 412 con serie benchmark (TD), 0 con composizione · 4 neonati sotto i 30 punti fatti crescere
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → Avantis: 6 fondi, 6 da elaborare
+2026-09-01 20:48    |   Avantis: 6 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → 21Shares: 58 fondi, 58 da elaborare
+2026-09-01 20:48    |   …25/58 (0 falliti)
+2026-09-01 20:48    |   …50/58 (0 falliti)
+2026-09-01 20:48    |   21Shares: 58 serie ok, 0 falliti, 57 con serie benchmark (TD), 0 con composizione
+2026-09-01 20:48    | 
+2026-09-01 20:48    | → Franklin Templeton: 48 fondi, 48 da elaborare
+2026-09-01 20:48    |   …25/48 (0 falliti)
+2026-09-01 20:48    |   Franklin Templeton: 48 serie ok, 0 falliti, 29 con serie benchmark (TD), 0 con composizione
+2026-09-01 20:48    |   serie dal DB: 25  serie dal DB: 525  serie dal DB: 1025  serie dal DB: 1525  serie dal DB: 2025  serie dal DB: 2525  serie dal DB: 3025  cache serie riscritta: 3265 righe → /home/rebalix/cache/etf-series.json
+2026-09-01 20:48  ok Avantis: 6/6 serie rinfrescate · dato più fresco 2026-08-31
+2026-09-01 20:48  ok Xtrackers: 394/394 serie rinfrescate · dato più fresco 2026-08-31
+2026-09-01 20:48  ok SPDR (con avviso): 1/176 non rinfrescati, entro tolleranza — 1 neonato in attesa del primo NAV (IE000P60WPS6)
+2026-09-01 20:48  ok UBS: 418/418 serie rinfrescate · dato più fresco 2026-08-31
+2026-09-01 20:48  ok JPMorgan: 96/96 serie rinfrescate · dato più fresco 2026-08-31
+2026-09-01 20:48  ok LGIM: 70/70 serie rinfrescate · dato più fresco 2026-08-31
+2026-09-01 20:48  ok 21Shares: 58/0 serie rinfrescate · dato più fresco 2026-09-01
+2026-09-01 20:48  ok Franklin Templeton: 48/48 serie rinfrescate · dato più fresco 2026-09-01
+2026-09-01 20:49  ok iShares (coda screener): 875 punti aggiunti · 26 già freschi/respinti · 0 falliti
+2026-09-01 20:50  ok Amundi (coda batch): 658 punti aggiunti · 0 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-09-01 20:50  ok Vanguard (coda GraphQL): 140 punti aggiunti · 560 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-09-01 21:02  ok Invesco (coda browser): 271 punti aggiunti · 23 fermi/respinti · 0 falliti · 0 scartati per valuta · cedole viste 99, nuove 0
+2026-09-01 21:02  cache serie riscritta: 3265 righe
+2026-09-01 21:03  metal detector: exit 2 · serie esaminate: 3265 · anomalie DURE: 1 · osservazioni morbide: 17 · benchmark fermi: 47 (attesi ≤ 35)
+2026-09-01 21:03    ‼ —  [_default]  benchmark fermi: 47 (attesi ≤ 35)
+2026-09-01 21:03  [heartbeat] inviato (200)
+2026-09-01 21:03  fine giro: PROBLEMI (1)

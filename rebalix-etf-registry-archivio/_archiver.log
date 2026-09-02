@@ -897,3 +897,42 @@
 2026-08-22 20:30    |golden-esterno| ✗ GOLDEN ESTERNO VIOLATO (1): SGLN: 1a +36.3% vs +37.1%
 2026-08-22 20:30  !! GOLDEN ESTERNO: metriche fuori tolleranza - vedi righe sopra
 2026-08-22 20:30  [heartbeat] inviato (200)
+2026-09-02 07:45  lancio: /usr/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-09-02 08:05    |   jpm: 96 righe, 90 con benchmark  ✓
+2026-09-02 08:05    | → lgim…
+2026-09-02 08:05    |   lgim: 70 righe, 70 con benchmark  ✓
+2026-09-02 08:05    | → 21shares…
+2026-09-02 08:05    |   21shares: 58 righe, 0 con benchmark  ✓
+2026-09-02 08:05    | → avantis…
+2026-09-02 08:05    |   avantis: 6 righe, 6 con benchmark  ✓
+2026-09-02 08:05    | → invesco…
+2026-09-02 08:05    |   …invesco 50/295
+2026-09-02 08:05    |   …invesco 100/295
+2026-09-02 08:05    |   …invesco 150/295
+2026-09-02 08:05    |   …invesco 200/295
+2026-09-02 08:05    |   …invesco 250/295
+2026-09-02 08:05    |   invesco: 295 righe, 295 con benchmark  ✓
+2026-09-02 08:05    | → franklin…
+2026-09-02 08:05    |   franklin: 48 righe, 48 con benchmark  ✓
+2026-09-02 08:05    | 
+2026-09-02 08:05    | Totale: 3760 righe, 3578 con benchmark, 1925 indici distinti
+2026-09-02 08:05    | Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+2026-09-02 08:05    |   aum_eur: 2013/2013 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+2026-09-02 08:05    |   DB: 3760 righe upsertate · guardia anti-cancellazione: conservati raw.bondMetricsSorella×26, replication×1399, raw.sfdrFonte×3011, raw.tdNote×471, benchmark_raw×67, sfdr×706, raw.docNote×72, ter×496, distribution_policy×461, aum_eur×676, aum×670, aum_currency×670, aum_as_of×439, srri×373, domicile×376, inception_date×434, asset_class×942, raw.politicaFonte×26 (il feed diceva null, la tabella aveva un valore)
+2026-09-02 08:05    |   memoria: 3778 fotografie nuove per 2026-09 in etf_registry_history
+2026-09-02 08:05    |   archivio: snapshot 2026-09 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-09
+2026-09-02 08:05    | 
+2026-09-02 08:05    | ✓ Ingest completato.
+2026-09-02 08:05  esito: exit=0, emittenti ok=13/13
+2026-09-02 08:06    |etc|   ✓ DE000A2UDH63 Xtrackers IE Physical Platinum EUR Hedged ETC Se — fee 0,73% EUR Metalli preziosi
+2026-09-02 08:06    |etc|   ✓ DE000A1E0HS6 Xtrackers Physical Silver ETC (EUR) — fee 0,40% USD Metalli preziosi
+2026-09-02 08:06    |etc|   ✓ CH1492505164 Xtrackers Galaxy MSCI Physical Crypto Market ETC — fee 0,65% USD DIGITAL ASSET
+2026-09-02 08:06    |etc| Xtrackers ETC scritti: 18/18
+2026-09-02 08:45    |kid|   ↺ TER LU1600334798: 0.13 → 0.09 (dal KID)
+2026-09-02 08:45    |kid|   ↺ TER LU1645380368: 0.1 → 0.08 (dal KID)
+2026-09-02 08:45    |kid|   ↺ TER LU1805389258: 0.12 → 0.06 (dal KID)
+2026-09-02 08:45    |kid| ✓ aggiornate 2691 righe (kid_transaction_costs + kid_management_costs) · TER allineati al KID: 63
+2026-09-02 08:45    |classif|   orfano → regione: Franklin Templeton IE0003WEWAX4 «Solactive Sustainable Health and Wellness Index-NR»
+2026-09-02 08:45    |classif|   orfano → regione: Franklin Templeton IE000ZOKLHY7 «Solactive Sustainable Food Index-NR»
+2026-09-02 08:45    |classif| ATTESA regione azionaria: 99.9% (1711/1713)
+2026-09-02 08:45    |classif| ✓ attese rispettate
