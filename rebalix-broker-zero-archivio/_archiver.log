@@ -62,3 +62,17 @@
 2026-08-27 08:31  liste invariate rispetto al giro precedente — indice fermo, nessun deploy
 2026-08-27 08:31  [heartbeat] inviato (200)
 2026-08-27 08:31  === giro completato (invariato) ===
+2026-09-03 08:30  === giro 2026-09 avviato (dry=False) ===
+2026-09-03 08:30  [fineco] ok: 478 ISIN
+2026-09-03 08:30  [moneyfarm] ok: 783 ISIN
+2026-09-03 08:30  [bgsaxo] ok: 255 ISIN
+2026-09-03 08:30  [directa] ok: 1284 ISIN
+2026-09-03 08:30  [xtb] ok: 1421 ISIN
+2026-09-03 08:30  [diff] fineco: +16 −21
+2026-09-03 08:30  [diff] moneyfarm: +218 −0
+2026-09-03 08:30  [diff] directa: +3 −0
+2026-09-03 08:30  indice rigenerato: 2372 ISIN, 1981 nomi; counts {'fineco': 478, 'directa': 848, 'bgsaxo': 255, 'moneyfarm': 783}
+2026-09-03 08:30  [deploy] commit dei dati rigenerati
+2026-09-03 08:32  [deploy] deploy prod OK (9ae3f32e) al tentativo 1
+2026-09-03 08:32  [heartbeat] inviato (200)
+2026-09-03 08:32  === giro completato (0 errori) ===

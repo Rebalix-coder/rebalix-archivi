@@ -936,3 +936,237 @@
 2026-09-02 08:45    |classif|   orfano → regione: Franklin Templeton IE000ZOKLHY7 «Solactive Sustainable Food Index-NR»
 2026-09-02 08:45    |classif| ATTESA regione azionaria: 99.9% (1711/1713)
 2026-09-02 08:45    |classif| ✓ attese rispettate
+2026-09-02 09:36    |listings| 
+2026-09-02 09:36    |listings| Fatto: 3332 ISIN con listing, 446 senza documenti FIRDS, 0 falliti; 104838 righe scritte
+2026-09-02 09:36    |listings| Listing non-attivi visti: 31478
+2026-09-02 11:24    |series|   serie dal DB: 2025
+2026-09-02 11:24    |series|   serie dal DB: 2525
+2026-09-02 11:24    |series|   serie dal DB: 3025
+2026-09-02 11:24    |series|   cache serie riscritta: 3271 righe → /home/rebalix/cache/etf-series.json
+2026-09-02 11:39    |bench-ishares| 
+2026-09-02 11:39    |bench-ishares| esito: bench dalla pagina 1 [via API UK 210 · API UK ko 0] · senza pagina/ajax 37 [pid assente 0 · HTTP 404 25 · altri HTTP 0 · pagina senza grafico 12] · pagina senza bench 27 · discordi 0 · hedged saltate 208 · scritte 1
+2026-09-02 11:39    |bench-ishares| cache serie riscritta
+2026-09-02 11:46    |bench-invesco|   golden IE00B3YCGJ38: indice file 12m 21.61 vs rolling 21.61 → ✓
+2026-09-02 11:46    |bench-invesco| 
+2026-09-02 11:46    |bench-invesco| esito: indice dal rolling 0 · senza indice 23 · falliti 0 · discordi 0 · hedged saltate 45 · scritte 0
+2026-09-02 11:59    |distfreq|   Invesco dichiarate: 0
+2026-09-02 11:59    |distfreq| frequenze pronte: 794 — scritte (solo dove mancava): 794
+2026-09-02 12:38    |lending| prestito dichiarato: 141 — frase assente: 966 — KID non raggiunti: 1
+2026-09-02 12:38    |lending| golden UBS ✓ (dichiara il prestito)
+2026-09-02 12:46    |kidrisk| rischio estratto: 324 — KID letti senza numero: 203 — non raggiunti: 31
+2026-09-02 12:46    |kidrisk| golden CSPX ✓ (rischio 4)
+2026-09-02 13:40    |declared| aggiornati: 20 — azzerati (nessuna fonte): 0 — iShares non letti: 77
+2026-09-02 13:40    |declared|   borse fuori mappa (tenute col nome originale): Bolsa De Valores De Colombia×41, Santiago Stock Exchange×98, Cboe Europe×47, Bolsa Institucional de Valores×59, BATS Chi-X Europe×4, Tel Aviv Stock Exchange×23
+2026-09-02 13:40    |declared| golden ✓ MDAX=["SIX Zurigo","Xetra"] CSPX=["Bolsa De Valores De Colombia","Bolsa Mexicana","Borsa Italiana","Euronext Amsterdam","Londra (LSE)","SIX Zurigo","Santiago Stock Exchange","Tel Aviv Stock Exchange","Xetra"]
+2026-09-02 13:41    |venues| xetra: 4952 strumenti attivi con simbolo nel listino ufficiale
+2026-09-02 13:41    |venues| righe gruppo-Xetra: 4212 — aggiornate 98, già allineate 4104, ISIN fuori listino 10
+2026-09-02 14:23    |tickers| collaudo whitelist↔openfigi: 18892 confronti, 498 divergenze (2.6%)
+2026-09-02 14:23    |tickers| scritte 32398 righe
+2026-09-02 14:23    |tickers| mappa tarata salvata in /tmp/figi-mic-map.json
+2026-09-02 15:23  !! documents fallito (non blocca): Command '['/usr/bin/node', 'scripts/enrich-etf-documents.mjs', '--commit']' timed out after 3600 seconds
+2026-09-02 19:47    |doc-archive|     non raggiungibile  https://www.amundietf.it/pdfDocuments/monthly-factsheet/LU1681038839/ENG/GBR/INSTITUTIONNEL/ETF
+2026-09-02 19:47    |doc-archive|     non raggiungibile  https://www.amundietf.it/pdfDocuments/kid-priips/LU2780871310/ENG/NLD
+2026-09-02 19:53    |kid-objectives| Invesco      ok  289/295 · EN ufficiale  289 (senza: 0)  marcatore inizio×1 · sezione corta×5
+2026-09-02 19:53    |kid-objectives| JPMorgan     ok   96/96 · EN ufficiale   96 (senza: 0)  
+2026-09-02 19:53    |kid-objectives| LGIM         ok   70/70 · EN ufficiale   67 (senza: 3)  en: lingua it ≠ kid_lang en×2
+2026-09-02 19:53    |kid-objectives| SPDR         ok  176/176 · EN ufficiale  176 (senza: 0)  
+2026-09-02 19:53    |kid-objectives| UBS          ok  419/419 · EN ufficiale  281 (senza: 138)  
+2026-09-02 19:53    |kid-objectives| Vanguard     ok  140/140 · EN ufficiale  137 (senza: 3)  
+2026-09-02 19:53    |kid-objectives| Xtrackers    ok  394/394 · EN ufficiale  394 (senza: 0)  
+2026-09-02 19:53    |kid-objectives| iShares      ok  903/903 · EN ufficiale  903 (senza: 0)  
+2026-09-02 19:53    |kid-objectives| 
+2026-09-02 19:53    |kid-objectives| rapporto con campioni: /tmp/kid-objectives-report.json
+2026-09-02 19:53    |gestione|    Amundi    HK0000286812 Amundi Hang Seng HK 35 Index ETF - Counter RMB
+2026-09-02 19:53    |gestione|    Amundi    HK0000308285 Amundi FTSE China A50 Index ETF - Counter RMB
+2026-09-02 19:53    |gestione|    Amundi    HK0000308293 Amundi FTSE China A50 Index ETF - Counter HKD
+2026-09-02 19:53    |gestione| 
+2026-09-02 19:53    |gestione| golden ✓ (gestione 10/10, replica di riserva 4/4)
+2026-09-02 19:53    |gestione| sentinella «Active» nel nome: nessun orfano ✓
+2026-09-02 19:53    |gestione| 
+2026-09-02 19:53    |gestione| DB: 178 righe aggiornate, 0 errori
+2026-09-02 20:30    |bond-metrics|   ✓ golden IE00049TNTV6 (JPMorgan) dur=6.74 media as_of=2026-07-31 rating=6 scad=0
+2026-09-02 20:30    |bond-metrics|   ℹ golden IE0007EH5UK6: documento più recente (2026-07-31 ≠ 2026-06-30) → confronto duration saltato (4.26)
+2026-09-02 20:30    |bond-metrics|   ✓ golden IE0007EH5UK6 (LGIM) dur=4.26 modificata as_of=2026-07-31 rating=9 scad=8
+2026-09-02 20:30    |bond-metrics|   ℹ golden LU0721552973: documento più recente (2026-07-31 ≠ 2026-06-30) → confronto duration saltato (3.47)
+2026-09-02 20:30    |bond-metrics|   ✓ golden LU0721552973 (UBS) dur=3.47 modificata as_of=2026-07-31 rating=0 scad=0
+2026-09-02 20:30    |bond-metrics|   ✗ GOLDEN LU1285959885 (Amundi): duration 6.42 ≠ 6.64; rating BBB=53.14 non trovato in [{"label":"AAA","pct":0.96},{"label":"AA","pct":5.71},{"label":"A","pct":40.89},{"label":"BBB","pct":51.97},{"label":"Altri","pct":0.47}]; scadenze Breve termine=7.72 non trovato in [{"label":"Breve termine","pct":8.07},{"label":"2 anni","pct":19.7},{"label":"5 anni","pct":18.81},{"label":"7 anni","pct":15.72},{"label":"10 anni","pct":10.21},{"label":"15 anni","pct":6.28},{"label":"20 anni","pct":12.57},{"label":"30 anni","pct":8.66}]
+2026-09-02 20:30    |bond-metrics|   ℹ golden IE0003HUCA83: documento più recente (2026-07-31 ≠ 2026-06-30) → confronto duration saltato (6.5)
+2026-09-02 20:30    |bond-metrics|   ✓ golden IE0003HUCA83 (Vanguard) dur=6.5 media as_of=2026-07-31 rating=5 scad=7
+2026-09-02 20:30    |bond-metrics|   ✓ golden IE0002OP0LA0 (SPDR) dur=2.75 effettiva as_of=2026-07-31 rating=3 scad=5
+2026-09-02 20:30    |bond-metrics|   ✓ golden IE0004KLW911 (Xtrackers) dur=6.59 modificata as_of=2026-09-01 rating=0 scad=8
+2026-09-02 20:30    |bond-metrics|   ✓ golden IE00004FVB93 (iShares) dur=1.76 effettiva as_of=2026-07-31 rating=5 scad=3
+2026-09-02 20:30    |bond-metrics|   ✓ golden IE000ZWSN3F7 (Invesco) dur=3.03 effettiva as_of=2026-07-31 rating=8 scad=7
+2026-09-02 20:30    |bond-metrics| golden: 8/9
+2026-09-02 20:30    |bond-metrics| golden KO → nessuna scrittura
+2026-09-02 20:30    |bond-metrics-sorelle| COMMIT: da scrivere 0 · gruppi discordi 0
+2026-09-02 20:30    |bond-metrics-sorelle| scritte 0
+2026-09-02 20:33    |td| ripiego su TD dichiarata a 12 mesi: 15
+2026-09-02 20:33    |td| COMMIT: 1831 td_1y scritte, 12 azzerate · motivi del trattino: 339 scritti, 7 tolti
+2026-09-02 20:33    |td| coperte ritirate per |TD|≥2 (indice non coperto nel feed): 57 — es. Xtrackers IE00028H9QJ8 TD=-2.19 · Xtrackers IE0002EI5AG0 TD=-2.56 · Xtrackers IE000IDLWOL4 TD=-2.55 · Amundi IE000KTD59H4 TD=2.59 · LGIM IE000MINO564 TD=-2.49 · LGIM IE000NA8E2W0 TD=-2.37
+2026-09-02 20:35    |td-spdr| 
+2026-09-02 20:35    |td-spdr| esito: TD dichiarate 141 · senza pagina 0 · pagina senza dati 35 · scritte 141
+2026-09-02 20:35    |kid-xtrackers| esito: 0 fondi da scrivere · senza KID in archivio 0 · KID senza TER leggibile 18 · senza politica 26 · TER: {} · policy: Acc 0 / Dist 0
+2026-09-02 20:35    |kid-xtrackers| COMMIT: 0 righe aggiornate
+2026-09-02 20:35    |kid-politica|   · 21Shares CH1102728750 21shares Cardano ETP
+2026-09-02 20:35    |kid-politica| COMMIT: 0 righe aggiornate
+2026-09-02 20:35    |factsheet-aum|   golden IE00BF0M2Z96: USD 781.200.000 vs atteso USD 916.400.000 → ✗
+2026-09-02 20:35    |factsheet-aum| golden FALLITO → non scrivo nulla
+2026-09-02 20:35  !! factsheet-aum: exit 2 (golden fallito? nulla scritto)
+2026-09-02 20:35    |21shares-anagrafica| 21Shares: 58 righe · da lavorare 58 (COMMIT)
+2026-09-02 20:35    |21shares-anagrafica| esito: benchmark 0 · kid_url IT 0 · factsheet 0 · righe aggiornate 0
+2026-09-02 20:37    |xtrackers-pdp| letti: inception 0 · domicilio 0 · srri 0 · aum 0 · indice 0 · sottostante ETC 0 · ter 0 · aum ETC 0 | vuoti 0 · errori 0 · da scrivere 0
+2026-09-02 20:37    |xtrackers-pdp| scritte 0/0
+2026-09-02 20:38    |21shares-inception| lette 58 · non trovate 0 · da scrivere 0
+2026-09-02 20:38    |21shares-inception| scritte 0/0
+2026-09-02 20:39    |sfdr-da-kid|   iShares    8=2 9=0 6-dedotto=12 etc=0
+2026-09-02 20:39    |sfdr-da-kid| scritte 587/587
+2026-09-02 20:40    |sfdr-da-prospetto| note «non pubblicato dall'emittente» da scrivere: 0
+2026-09-02 20:40    |sfdr-da-prospetto| scritte 0/0 · note 0/0
+2026-09-02 20:40    |sfdr-normalizza| righe da riscrivere: 938
+2026-09-02 20:40    |sfdr-normalizza| scritte 938/938
+2026-09-02 20:40    |21shares-ter| 
+2026-09-02 20:40    |21shares-ter| esito: TER letti 0 · senza KID 0 · KID senza costo 0 · scritte 0
+2026-09-02 20:45    |doc-langs| esito: 3273 fondi con lingua rilevata · KID non-it: 227 · factsheet non-it: 530
+2026-09-02 20:45    |doc-langs| colonne _en riempite dal primario inglese: 50
+2026-09-02 20:45    |replica-from-kid|   IE000XGYMCA8 (iShares) → Fisica - ottimizzazione (dal KID)  [«…tecniche di ottimizzazione…»]
+2026-09-02 20:45    |replica-from-kid|   IE000Z8J6487 (iShares) → Fisica - ottimizzazione (dal KID)  [«…optimising techniques…»]
+2026-09-02 20:45    |motore| revalidate motore: HTTP 200
+2026-09-02 20:45    |motore| revalidate emittenti: HTTP 200
+2026-09-02 20:45    |completezza| 
+2026-09-02 20:45    |completezza| eccezioni DICHIARATE (non contano): ticker×140 · bond_metrics×62 · settore_paniere×405 · aum×6 · factsheet×93 · indice×56 · politica×61 · replica×118 · gestione×93 · classe×58 · domicilio×58 · kid_it×1
+2026-09-02 20:45    |completezza| [heartbeat] etf-completezza inviato (200)
+2026-09-02 20:46    |audit| serie dalla cache (/home/rebalix/cache/etf-series.json, 3271 righe, età 9.1h)
+2026-09-02 20:46    |audit| benchmark fermi su classi HEDGED (indice coperto non pubblicato, atteso): 64 — fuori dal conteggio
+2026-09-02 20:46    |audit| serie esaminate: 3271 · anomalie DURE: 2 · osservazioni morbide: 17 · benchmark fermi: 47 (attesi ≤ 35)
+2026-09-02 20:46    |audit| 
+2026-09-02 20:46    |audit| · FR0013346681  [monetario]  Amundi PEA Euro Court Terme UCITS ETF Acc
+2026-09-02 20:46    |audit|     → volatilità 5% (soglia 4% per monetario)
+2026-09-02 20:46    |audit| · IE0009W21NT4  [azionario]  UBS MSCI World Selection UCITS ETF hEUR acc
+2026-09-02 20:46    |audit|     → buco di 146 giorni nella serie
+2026-09-02 20:46    |audit| · IE000EPIJ442  [azionario]  UBS Solactive US Listed Gold & Silver Miners UCITS ETF 
+2026-09-02 20:46    |audit|     → annualizzato 90%/a (soglia ±80% per azionario)
+2026-09-02 20:46    |audit| · IE000F0DNOJ1  [azionario]  UBS MSCI World Selection UCITS ETF hCHF acc
+2026-09-02 20:46    |audit|     → buco di 146 giorni nella serie
+2026-09-02 20:46    |audit| · IE000PEAJOT0  [azionario]  Amundi MSCI USA ESG Selection UCITS ETF Acc
+2026-09-02 20:46    |audit|     → buco di 60 giorni nella serie
+2026-09-02 20:46    |audit| · IE000TG1LGI4  [azionario]  UBS MSCI World Selection UCITS ETF USD acc
+2026-09-02 20:46    |audit|     → buco di 146 giorni nella serie
+2026-09-02 20:46    |audit| · IE00B9MRHC27  [azionario]  Xtrackers Msci Nordic UCITS ETF 1d
+2026-09-02 20:46    |audit|     → buco di 148 giorni nella serie
+2026-09-02 20:46    |audit| · IE00BPVLQD13  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 1d
+2026-09-02 20:46    |audit|     → buco di 53 giorni nella serie
+2026-09-02 20:46    |audit| · IE00BQWJFQ70  [multi-asset]  State Street® SPDR® Morningstar Multi-Asset Global Infr
+2026-09-02 20:46    |audit|     → buco di 82 giorni nella serie
+2026-09-02 20:46    |audit| · IE00BRB36B93  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 3c Eur Hedged
+2026-09-02 20:46    |audit|     → buco di 53 giorni nella serie
+2026-09-02 20:46    |audit| · LU0290358497  [monetario]  Xtrackers Eur Overnight Rate Swap UCITS ETF 1c
+2026-09-02 20:46    |audit|     → buco di 90 giorni nella serie
+2026-09-02 20:46    |audit| · LU2109787635  [azionario]  Amundi MSCI EMU SRI Climate Paris Aligned UCITS ETF Acc
+2026-09-02 20:46    |audit|     → buco di 60 giorni nella serie
+2026-09-02 20:46    |audit| · IE0002TSINW6  [_default]  ?
+2026-09-02 20:46    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-06-30 (NAV fino al 2026-08-31) — TD e confronto non pubblicati
+2026-09-02 20:46    |audit| · IE00034DN7Y5  [_default]  ?
+2026-09-02 20:46    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-06-30 (NAV fino al 2026-08-31) — TD e confronto non pubblicati
+2026-09-02 20:46    |audit| · IE0007201266  [_default]  ?
+2026-09-02 20:46    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-06-30 (NAV fino al 2026-08-31) — TD e confronto non pubblicati
+2026-09-02 20:46    |audit| · IE0007286036  [_default]  ?
+2026-09-02 20:46    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-06-30 (NAV fino al 2026-08-31) — TD e confronto non pubblicati
+2026-09-02 20:46    |audit| · IE0007471471  [_default]  ?
+2026-09-02 20:46    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-06-30 (NAV fino al 2026-08-31) — TD e confronto non pubblicati
+2026-09-02 20:46    |audit| ‼ IE00BLF5J545  [obbligazionario]  iShares $ Corp Bond Interest Rate Hedged UCITS ETF
+2026-09-02 20:46    |audit|     → tracking difference fuori scala (2022: 5.4 pp · 2023: 6.6 pp · 2024: 6.0 pp · 2025: 4.7 pp) — valuta serie/benchmark hedged/gradino da istruire, o aggiungere a tdQuarantena
+2026-09-02 20:46    |audit| ‼ —  [_default]  benchmark fermi: 47 (attesi ≤ 35)
+2026-09-02 20:46    |audit|     → un file emittente ha smesso di aggiornare la serie indice: controllare i moduli |bench-ishares|/|bench-invesco| e i feed
+2026-09-02 20:46  !! AUDIT: anomalie DURE nelle serie appena ingerite - vedi righe |audit| sopra
+2026-09-02 20:46    |audit-bench|   DE0005933923  1 tick (0 ai confini)  es: 2011-05-09
+2026-09-02 20:46    |audit-bench|   IE0005QL4147  1 tick (0 ai confini)  es: 2023-04-11
+2026-09-02 20:46    |audit-bench|   IE000OHHIBC6  1 tick (0 ai confini)  es: 2025-03-31
+2026-09-02 20:46    |audit-bench|   IE000V73IL86  1 tick (0 ai confini)  es: 2025-10-10
+2026-09-02 20:46    |audit-bench|   IE00B0M63177  1 tick (0 ai confini)  es: 2025-03-31
+2026-09-02 20:46    |audit-bench|   IE00B1YZSC51  1 tick (1 ai confini)  es: 2022-12-30
+2026-09-02 20:51    |holdings-xtrackers| Xtrackers da lavorare: 376 (COMMIT)
+2026-09-02 20:51    |holdings-xtrackers| 
+2026-09-02 20:51    |holdings-xtrackers| esito: ok 375 · senza file 1 · falliti 0
+2026-09-02 20:54    |holdings-spdr| SPDR da lavorare: 176 (COMMIT)
+2026-09-02 20:54    |holdings-spdr| 
+2026-09-02 20:54    |holdings-spdr| esito: ok 169 · senza file 7 · falliti 0
+2026-09-02 20:54    |holdings-avantis| Avantis: 6 fondi (COMMIT)
+2026-09-02 20:54    |holdings-avantis|   ✓ IE0003R87OG3 1821 pos · as_of 2026-09-01 · top: SM ENERGY CO COMMON STOCK USD. 0.88%
+2026-09-02 20:54    |holdings-avantis|   ✓ IE000K975W13 2924 pos · as_of 2026-09-01 · top: TAIWAN SEMICONDUCTOR MANUFAC C 5.27%
+2026-09-02 20:54    |holdings-avantis|   ✓ IE000OW54ZX1 2235 pos · as_of 2026-09-01 · top: NVIDIA CORP COMMON STOCK USD.0 5.53%
+2026-09-02 20:54    |holdings-avantis|   ✓ IE000RJECXS5 4285 pos · as_of 2026-09-01 · top: NVIDIA CORP COMMON STOCK USD.0 3.74%
+2026-09-02 20:54    |holdings-avantis|   ✓ IE000SDFJUU0 1254 pos · as_of 2026-09-01 · top: ASML HOLDING NV NY REG SHS NY  3.08%
+2026-09-02 20:54    |holdings-avantis|   ✓ IE000T62NEO6 1313 pos · as_of 2026-09-01 · top: BHP GROUP LTD SPON ADR ADR 3.06%
+2026-09-02 20:54    |holdings-avantis| 
+2026-09-02 20:54    |holdings-avantis| esito: ok 6 · falliti 0
+2026-09-02 21:18    |holdings-invesco|   …275/286
+2026-09-02 21:18    |holdings-invesco| 
+2026-09-02 21:18    |holdings-invesco| esito: ok 286 · falliti 0
+2026-09-02 21:18    |copertura|   ✗ UBS · KID en: 67% mentre la mediana degli emittenti è 100% — modulo mai lanciato o ricetta mancante?
+2026-09-02 21:18    |copertura|   ✗ UBS · obiettivi KID en: 67% mentre la mediana degli emittenti è 100% — modulo mai lanciato o ricetta mancante?
+2026-09-02 21:18    |copertura|   ✗ UBS · factsheet (it o en): 54% mentre la mediana degli emittenti è 98% — modulo mai lanciato o ricetta mancante?
+2026-09-02 21:18    |copertura|   ✗ UBS · composizione: 53% mentre la mediana degli emittenti è 99% — modulo mai lanciato o ricetta mancante?
+2026-09-02 21:18    |copertura|   ✗ UBS · TD 1 anno: 18% mentre la mediana degli emittenti è 69% — modulo mai lanciato o ricetta mancante?
+2026-09-02 21:18    |copertura|   ✗ Franklin Templeton · freq. distribuzione (Dist): 0% mentre la mediana degli emittenti è 98% — modulo mai lanciato o ricetta mancante?
+2026-09-02 21:18    |xetra| 
+2026-09-02 21:18    |xetra| esito: TER trovati 0 · AUM trovati 0 · non quotati a Xetra 193 · falliti 0 · righe aggiornate 0
+2026-09-02 21:18    |xetra| per emittente: {}
+2026-09-02 21:21    |holdings-vanguard| 
+2026-09-02 21:21    |holdings-vanguard| esito: ok 78 · falliti 3
+2026-09-02 21:22    |holdings-jpm| 
+2026-09-02 21:22    |holdings-jpm| esito: ok 96 · senza posizioni 0 · falliti 0
+2026-09-02 21:22    |holdings-lgim| 
+2026-09-02 21:22    |holdings-lgim| esito: ok 66 · senza pdf 3 · falliti 1
+2026-09-02 21:23    |holdings-ubs| 
+2026-09-02 21:23    |holdings-ubs| esito: ok 137 · senza pdf 191 · falliti 91
+2026-09-02 21:24    |holdings-amundi| 
+2026-09-02 21:24    |holdings-amundi| esito: ok 586 · senza pdf 54 · falliti 18
+2026-09-02 21:24    |dividendi-vanguard| 
+2026-09-02 21:24    |dividendi-vanguard| esito: ok 32 · senza distribuzioni 49 · falliti 0
+2026-09-02 21:43    |dividendi-ishares| 
+2026-09-02 21:43    |dividendi-ishares| esito: ok 373 · senza cedole 19 · falliti 0
+2026-09-02 21:43    |dividendi-spdr| dalla più antica 2011-07-29 alla più recente 2026-09-01
+2026-09-02 21:43    |dividendi-spdr| upsert completato: 1227 righe
+2026-09-02 21:45    |dividendi-xtrackers| 
+2026-09-02 21:45    |dividendi-xtrackers| esito: ok 103 (1637 cedole) · senza tabella 2 · falliti 0
+2026-09-02 21:45    |dividendi-amundi| 
+2026-09-02 21:45    |dividendi-amundi| esito: ok 210 (1700 cedole) · senza stacchi 455 · falliti 0
+2026-09-02 21:45    |dividendi-ubs| 
+2026-09-02 21:45    |dividendi-ubs| esito: ok 81 (1635 cedole) · senza stacchi 1 · falliti 0
+2026-09-02 21:46    |dividendi-jpm| 
+2026-09-02 21:46    |dividendi-jpm| esito: ok 16 (376 cedole) · senza stacchi 1 · falliti 0
+2026-09-02 21:46    |dividendi-borsaitaliana| 
+2026-09-02 21:46    |dividendi-borsaitaliana| esito: ok 1 (29 cedole) · senza stacchi 6 · stacchi senza importo su BI 0 (scartati) · falliti 0 · coda fuori Milano 36
+2026-09-02 21:46    |dividendi-invesco| DB: 458 cedole upsertate su 32 fondi
+2026-09-02 21:46    |dividendi-invesco| esito: fondi con deduzione 99 · senza 5 · da scrivere 32 fondi / 458 cedole
+2026-09-02 21:46    |holdings-history| foto 2026-09-01 (COMMIT) · già presenti: 0
+2026-09-02 21:46    |holdings-history| esito: 2908 fondi letti · 2908 fotografati
+2026-09-02 21:46    |holdings-history| verifica: 2908 righe nella foto 2026-09-01
+2026-09-02 21:46    |anteprima-cambi| fotografie mensili: 1 (2026-08) · ultima 2026-08 con 2822 fondi
+2026-09-02 21:46    |anteprima-cambi| meno di 2 foto: niente email (giusto così)
+2026-09-02 21:46    |esma-mmf| registro ESMA MMF: 672 fondi
+2026-09-02 21:46    |esma-mmf| ISIN dichiarati: 2166 · record senza ISIN (match per nome): 143
+2026-09-02 21:46    |esma-mmf| 
+2026-09-02 21:46    |esma-mmf| incroci col censimento: 4 (4 Authorised) → lib/esma-mmf.json
+2026-09-02 21:46    |esma-mmf|   ✓ LU3178805456  Standard VNAV · Authorised · match isin  «AMUNDI INDEX SOLUTIONS - AMUNDI EUR CASH ACTIVE»
+2026-09-02 21:46    |esma-mmf|   ✓ IE000AFVKJZ0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-09-02 21:46    |esma-mmf|   ✓ IE000JJPY166  Short-term VNAV · Authorised · match nome  «iShares EUR Cash UCITS ETF»
+2026-09-02 21:46    |esma-mmf|   ✓ IE000SOORXS0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-09-02 21:46    |esma-mmf| json committato · pull ok · push ok
+2026-09-02 21:46    |golden-esterno| ↳ despike justETF su SWDA: 31 blip di 1 giorno ≥2 tick (prezzo 126.83, tick 0.01%) tolti dalla LORO serie
+2026-09-02 21:46    |golden-esterno| ✓ SWDA    1a +20.3%|+20.5% · YTD +13.9%|+14.1% · MAX +655.1%|+656.5% · DD -33.9%|-33.9%
+2026-09-02 21:46    |golden-esterno|   ↳ despike justETF su VWCE: 8 blip di 1 giorno ≥2 tick (prezzo 166.83, tick 0.01%) tolti dalla LORO serie
+2026-09-02 21:46    |golden-esterno| ✓ VWCE    1a +22.4%|+22.4% · YTD +15.3%|+15.3% · MAX +132.5%|+132.6% · DD -33.5%|-33.5%
+2026-09-02 21:46    |golden-esterno|   ↳ despike justETF su VNGA60: 39 blip di 1 giorno ≥2 tick (prezzo 36.89, tick 0.03%) tolti dalla LORO serie
+2026-09-02 21:46    |golden-esterno| ✓ VNGA60  1a +12.9%|+13.2% · YTD +8.2%|+8.5% · MAX +47.2%|+48.2% · DD -15.2%|-15.4%
+2026-09-02 21:46    |golden-esterno|   ↳ despike justETF su VAGF: 86 blip di 1 giorno ≥2 tick (prezzo 23.39, tick 0.04%) tolti dalla LORO serie
+2026-09-02 21:46    |golden-esterno| ✓ VAGF    1a -0.7%|-0.9% · YTD -1.5%|-1.4% · MAX -6.4%|-6.4% · DD -19.6%|-19.5%
+2026-09-02 21:46    |golden-esterno|   ↳ despike justETF su AGGH: 42 blip di 1 giorno ≥2 tick (prezzo 4.87, tick 0.21%) tolti dalla LORO serie
+2026-09-02 21:46    |golden-esterno| ✓ AGGH    1a -0.2%|-0.8% · YTD -1.0%|-1.0% · MAX -2.4%|-2.4% · DD -17.8%|-17.8%
+2026-09-02 21:46    |golden-esterno|   ↳ despike justETF su SGLN: 37 blip di 1 giorno ≥2 tick (prezzo 73.15, tick 0.01%) tolti dalla LORO serie
+2026-09-02 21:46    |golden-esterno| ✓ SGLN    1a +27.5%|+27.9% · YTD +2.4%|+2.6% · MAX +256.9%|+259.0% · DD -37.4%|-37.2%
+2026-09-02 21:46    |golden-esterno|   ↳ despike justETF su ORO-AM: 7 blip di 1 giorno ≥2 tick (prezzo 149.39, tick 0.01%) tolti dalla LORO serie
+2026-09-02 21:46    |golden-esterno| ✓ ORO-AM  1a +35.6%|+35.6% · YTD +7.7%|+7.7% · MAX +243.7%|+239.6% · DD -23.4%|-23.4%
+2026-09-02 21:46    |golden-esterno| 
+2026-09-02 21:46    |golden-esterno| golden esterno ✓ (metriche entro tolleranza sul roster)
+2026-09-02 21:46  [heartbeat] inviato (200)

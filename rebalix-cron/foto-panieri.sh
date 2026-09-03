@@ -18,7 +18,8 @@ log(){ echo "$(date '+%F %H:%M:%S') $*" | tee -a "$LOG"; }
 
 log "inizio foto panieri → $BASE"
 pg_dump "$C" -Fc -t public.etf_holdings -f "$BASE.dump"
-psql "$C" -tAc "\\copy (select isin, as_of, n_positions, positions, breakdowns from etf_holdings order by isin) to '$BASE.tsv'"
+printf 'isin\tas_of\tn_positions\tpositions\tbreakdowns\n' > "$BASE.tsv"
+psql "$C" -tAc "\\copy (select isin, as_of, n_positions, positions, breakdowns from etf_holdings order by isin) to stdout" >> "$BASE.tsv"
 gzip -f "$BASE.tsv"
 RIGHE=$(zcat "$BASE.tsv.gz" | wc -l)
 ASOF=$(psql "$C" -tAc "select min(as_of)||' → '||max(as_of) from etf_holdings")

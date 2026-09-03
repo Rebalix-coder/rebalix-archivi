@@ -906,3 +906,33 @@ Error: Command "npm run build" exited with 1
 2026-09-01 10:47  [deploy] deploy prod OK (cba71f4c) al tentativo 1
 2026-09-01 10:47  [heartbeat] battito inviato
 2026-09-01 10:47  fatto, tutto OK
+2026-09-02 21:49  === giro C3M ===
+2026-09-02 21:49     composizione nuova per 2026-08-31 (55 strumenti nel paniere completo)
+2026-09-02 21:49     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-09-02 21:49     spread: mercato chiuso (21:49), salto
+2026-09-02 21:49     [retry 1/3] HTTP Error 404: Not Found
+2026-09-02 21:49     [retry 2/3] HTTP Error 404: Not Found
+2026-09-02 21:49     [retry 3/3] HTTP Error 404: Not Found
+2026-09-02 21:49     factsheet 20260831: non ancora pubblicato — si ritenta domani (lag normale Amundi)
+2026-09-02 21:49     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-09-02 21:49     [c3m-performance] scritto: 2340 sedute 2017-07-10→2026-08-31, TD -15bp/a, maxDD -3.634% (2022-09-20), golden ok (16 vs dichiarato)
+2026-09-02 21:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:53: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-02 21:49     d = datetime.datetime.utcfromtimestamp(p["date"] / 1000).date()
+2026-09-02 21:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-02 21:49     return {datetime.datetime.utcfromtimestamp(t).date(): c for t, c in zip(ts, close) if c}
+2026-09-02 21:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:87: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-02 21:49     mesi[datetime.datetime.utcfromtimestamp(t).date().isoformat()[:7]] = c
+2026-09-02 21:49     [c3m-composition] scritto: asof 2026-08-31, NAV 127.1046, AUM 913.2M, France 34.5% (tetto 34.5), somma paesi 100.0%
+2026-09-02 21:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_composition.py:143: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-02 21:49     navDate: '{datetime.datetime.utcfromtimestamp(car["NAV_DATE_DISPLAYED"] / 1000).date().isoformat() if car.get("NAV_DATE_DISPLAYED") else asof}',
+2026-09-02 21:49     [c3m-tax] scritto: C3M 4 semestri (corrente 98.94% → 12.64%), XEON 11 semestri (corrente 78.08% → 15.46%)
+2026-09-02 21:49     [c3m-aum] scritto: 111 mesi 2017-07→2026-09, AUM 913M, raccolta 12m +173M, anni flussi: ['2017']…['2026']
+2026-09-02 21:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_aum.py:26: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-02 21:49     d = datetime.datetime.utcfromtimestamp(p["date"] / 1000).date()
+2026-09-02 21:49     [c3m-xeon-series] scritto: 235 mesi 2007-01→2026-09, golden ok
+2026-09-02 21:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_xeon_series.py:48: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-02 21:49     dt = datetime.datetime.utcfromtimestamp(ts / 1000).date()
+2026-09-02 21:49  [deploy] commit dei moduli c3m
+2026-09-02 21:51  [deploy] deploy prod OK (ed0a18bb) al tentativo 1
+2026-09-02 21:51  [heartbeat] battito inviato
+2026-09-02 21:51  fatto, tutto OK
