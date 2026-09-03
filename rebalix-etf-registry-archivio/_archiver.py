@@ -15,7 +15,7 @@ Uso: python3 _archiver.py [--dry-run] [--force]
 Cadenza: launchd il giorno 2 del mese alle 07:45 (RunAtLoad recupera i mesi col
 Mac spento; _state.json evita i doppi giri nello stesso mese).
 """
-import os, re, sys, json, shutil, datetime, subprocess, urllib.request
+import os, re, sys, glob, json, shutil, datetime, subprocess, urllib.request
 
 os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH", "")
 
@@ -292,7 +292,7 @@ def main():
     if not DRY:
         try:
             dd = subprocess.run([NODE, "scripts/enrich-etf-documents.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=3600)  # 16 ago: 14 emittenti con pause, il giro pieno supera i 20 min (ucciso a metà il 15 e il 16)
+                                cwd=REPO, capture_output=True, text=True, timeout=4*3600)  # 16 ago: il giro pieno supera i 20 min; 2 set (debutto VPS): a inizio mese l'archivio del mese è VERGINE e l'ora piena non basta (morto a metà, ripreso a mano) → 4h
             for line in (dd.stdout or "").strip().splitlines()[-2:]:
                 log(f"  |documents| {line}")
             modules["documents"] = dd.returncode == 0
@@ -445,7 +445,11 @@ def main():
                          # aperta) e whitelist-tickers (fuori: ha il suo giro).
                          ("21shares-ter", "enrich-ter-21shares.mjs"),
                          ("doc-langs", "enrich-doc-langs.mjs"),
-                         ("replica-from-kid", "enrich-replica-from-kid.mjs")):
+                         ("replica-from-kid", "enrich-replica-from-kid.mjs"),
+                         # 3 set (agenda Database ETF): indice dichiarato NEL KID dove
+                         # benchmark_raw e' vuoto (caso Vanguard 18 ago: fondi nuovi non
+                         # ancora nel PDF pro ma gia' nel KID). Solo-dove-vuoto, mai dedotto.
+                         ("benchmark-da-kid", "enrich-benchmark-da-kid.mjs")):
         if DRY:
             continue
         try:
@@ -628,14 +632,29 @@ def main():
     # exit 2 dei parser = piu' falliti che ok -> modulo rosso.
     # 16 ago: JPM passa alla fonte emittente COMPLETA (product-data dailyHoldingsAll,
     # tutte le posizioni, giornaliero) — il factsheet resta solo per LGIM/UBS/Amundi.
+    # 3 set (agenda Database ETF, dopo la notte del 22-23 ago che porto' la copertura
+    # al 98,3%): anche Amundi/LGIM/UBS passano alle fonti-API a LISTA COMPLETA
+    # (Amundi getProductsData+composition, LGIM CSV Fundholdings, UBS getConstituentsExcel
+    # GraphQL); il factsheet resta RIPIEGO se l'API esce male — mai perdere il raccolto
+    # del mese. Franklin (emittente n.15, 28 ago) entra col suo dailyholdings GraphQL.
     if not DRY:
-        for emittente in ("jpm", "lgim", "ubs", "amundi"):
+        for emittente, primario, ripiego in (
+                ("jpm", "scripts/ingest-etf-holdings-jpm.mjs", None),
+                ("lgim", "scripts/ingest-etf-holdings-lgim-api.mjs", "scripts/ingest-etf-holdings-lgim-factsheet.mjs"),
+                ("ubs", "scripts/ingest-etf-holdings-ubs-api.mjs", "scripts/ingest-etf-holdings-ubs-factsheet.mjs"),
+                ("amundi", "scripts/ingest-etf-holdings-amundi-api.mjs", "scripts/ingest-etf-holdings-amundi-factsheet.mjs"),
+                ("franklin", "scripts/ingest-etf-holdings-franklin.mjs", None)):
             try:
-                script = "scripts/ingest-etf-holdings-jpm.mjs" if emittente == "jpm" else f"scripts/ingest-etf-holdings-{emittente}-factsheet.mjs"
-                hf = subprocess.run([NODE, script, "--commit"],
-                                    cwd=REPO, capture_output=True, text=True, timeout=2400)
+                hf = subprocess.run([NODE, primario, "--commit"],
+                                    cwd=REPO, capture_output=True, text=True, timeout=3600)
                 for line in (hf.stdout or "").strip().splitlines()[-2:]:
                     log(f"  |holdings-{emittente}| {line}")
+                if hf.returncode != 0 and ripiego:
+                    log(f"!! holdings-{emittente}: fonte API exit {hf.returncode} — ripiego sul factsheet")
+                    hf = subprocess.run([NODE, ripiego, "--commit"],
+                                        cwd=REPO, capture_output=True, text=True, timeout=2400)
+                    for line in (hf.stdout or "").strip().splitlines()[-2:]:
+                        log(f"  |holdings-{emittente}| (ripiego) {line}")
                 modules[f"holdings-{emittente}"] = hf.returncode == 0
                 if hf.returncode != 0:
                     log(f"!! HOLDINGS {emittente.upper()}: troppi falliti - vedi righe sopra")
@@ -655,6 +674,7 @@ def main():
                                   ("amundi", "scripts/ingest-etf-distributions-amundi.mjs"),   # API emittente dividendAmount (15 ago)
                                   ("ubs", "scripts/ingest-etf-distributions-ubs.mjs"),         # nav-details gia archiviato (15 ago)
                                   ("jpm", "scripts/ingest-etf-distributions-jpm.mjs"),         # historicalData?cusip=ISIN, aperto (16 ago)
+                                  ("franklin", "scripts/ingest-etf-distributions-franklin.mjs"),  # GraphQL DistributionHistory: ex+record+pay dall'emittente (28 ago, agganciato 3 set)
                                   ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs"),  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
                                   ("invesco", "scripts/ingest-etf-distributions-invesco.mjs")):  # storico dedotto NAV vs Adjusted NAV + buchi BI (16 ago), golden AT1 CoCo
             try:
@@ -668,6 +688,21 @@ def main():
             except Exception as e:
                 log(f"!! dividendi-{emittente} fallito (non blocca): {e}")
                 modules[f"dividendi-{emittente}"] = False
+
+    # DATE delle cedole Invesco dallo storico XLSX ufficiale (23 ago, trovato da Linus:
+    # «Export data» sulla pagina prodotto): riempie record/pay dove vuoti e aggiunge
+    # stacchi mancanti (fonte emittente, vince su nav-adjusted). Chromium headless (WAF):
+    # sta QUI, mensile e da solo — mai due Chromium in parallelo sulla VPS. NON fatale.
+    if not DRY:
+        try:
+            di = subprocess.run([NODE, "scripts/enrich-distributions-date-invesco.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (di.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |dividendi-date-invesco| {line}")
+            modules["dividendi-date-invesco"] = di.returncode == 0
+        except Exception as e:
+            log(f"!! dividendi-date-invesco fallito (non blocca): {e}")
+            modules["dividendi-date-invesco"] = False
 
     # FOTO MENSILE composizioni -> etf_holdings_history (10 ago): DOPO i raccolti
     # holdings, cosi' la foto e' del mese fresco. Idempotente: rilanci nello
@@ -692,6 +727,75 @@ def main():
                 log(f"  |anteprima-cambi| {line}")
         except Exception as e:
             log(f"!! anteprima-cambi (non blocca): {e}")
+
+    # DIFF DEI PANIERI + FOTO SU DISCO (decisione Linus 21 ago: «foto complete su disco
+    # VPS, nel DB solo il derivato»; agganciato il 3 set dopo il collaudo su SWDA).
+    # L'ORDINE e' la sostanza: PRIMA il diff (ultima foto in cassaforte vs DB appena
+    # raccolto -> etf_holdings_diff), POI la foto nuova, che diventa la «prima» del mese
+    # prossimo. Solo dove esiste la cassaforte (VPS): il gemello Mac salta senza rosso.
+    # ⚠️ contratto foto: TSV.gz CON riga d'intestazione (foto-panieri.sh la scrive dal
+    # 2 set — leggiFoto del diff la esige, lezione del primo demo).
+    FOTO_SH = os.path.expanduser("~/backups/rebalix-cron/foto-panieri.sh")
+    FOTO_DIR = os.path.expanduser("~/backups/rebalix-holdings-foto")
+    if not DRY and os.path.exists(FOTO_SH):
+        try:
+            foto = sorted(glob.glob(os.path.join(FOTO_DIR, "etf_holdings-*.tsv.gz")))
+            if not foto:
+                raise RuntimeError("nessuna foto in cassaforte")
+            df = subprocess.run([NODE, "scripts/diff-etf-holdings.mjs", "--prima", foto[-1], "--dopo", "db", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (df.stdout or "").strip().splitlines()[-8:]:
+                log(f"  |diff-panieri| {line}")
+            modules["diff-panieri"] = df.returncode == 0
+        except Exception as e:
+            log(f"!! diff-panieri fallito (non blocca): {e}")
+            modules["diff-panieri"] = False
+        try:
+            fp = subprocess.run(["/bin/bash", FOTO_SH], capture_output=True, text=True, timeout=1800)
+            for line in ((fp.stdout or "") + (fp.stderr or "")).strip().splitlines()[-3:]:
+                log(f"  |foto-panieri| {line}")
+            modules["foto-panieri"] = fp.returncode == 0
+        except Exception as e:
+            log(f"!! foto-panieri fallita (non blocca): {e}")
+            modules["foto-panieri"] = False
+
+    # CRONOLOGIA MENSILE dei panieri (23 ago, decisione Linus «partire subito»): una
+    # riga per isin×mese in etf_holdings_mensile + revalidate on-demand delle schede a
+    # fine corsa — per quello il figlio deve avere CRON_SECRET nell'ambiente.
+    if not DRY:
+        try:
+            envx = dict(os.environ)
+            with open(os.path.join(REPO, ".env.local")) as f:
+                for line in f:
+                    if line.startswith("CRON_SECRET="):
+                        envx["CRON_SECRET"] = line.split("=", 1)[1].strip().strip('"').strip("'")
+                        break
+            rp = subprocess.run([NODE, "scripts/riepilogo-panieri-mensile.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800, env=envx)
+            for line in (rp.stdout or "").strip().splitlines()[-3:]:
+                log(f"  |riepilogo-panieri| {line}")
+            modules["riepilogo-panieri"] = rp.returncode == 0
+        except Exception as e:
+            log(f"!! riepilogo-panieri fallito (non blocca): {e}")
+            modules["riepilogo-panieri"] = False
+
+    # SETTORE DAL PANIERE + TEMA DAL NOME (cantiere classificazione 21-22 ago, regola
+    # «dichiarato batte dedotto»): si ricalcolano sui panieri appena raccolti. Scrivono
+    # nel registro; il motore (che in questo giro e' gia' passato) li raccoglie al giro
+    # successivo — lag di un mese noto e accettato. exit 2 = etichette orfane/fuori
+    # tassonomia -> modulo rosso a verbale, decisione umana.
+    if not DRY:
+        for nome, script in (("settori-paniere", "enrich-settori-paniere.mjs"),
+                             ("temi", "enrich-temi.mjs")):
+            try:
+                sx = subprocess.run([NODE, f"scripts/{script}", "--commit"],
+                                    cwd=REPO, capture_output=True, text=True, timeout=1800)
+                for line in (sx.stdout or "").strip().splitlines()[-2:]:
+                    log(f"  |{nome}| {line}")
+                modules[nome] = sx.returncode == 0
+            except Exception as e:
+                log(f"!! {nome} fallito (non blocca): {e}")
+                modules[nome] = False
 
     # Registro ESMA MMF (Linus, 9 ago): la promessa del hub /etf-monetari.
     # Rilegge il registro ufficiale (Reg. UE 2017/1131) e rinnova l'incrocio
