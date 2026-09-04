@@ -675,7 +675,7 @@ def main():
                                   ("ubs", "scripts/ingest-etf-distributions-ubs.mjs"),         # nav-details gia archiviato (15 ago)
                                   ("jpm", "scripts/ingest-etf-distributions-jpm.mjs"),         # historicalData?cusip=ISIN, aperto (16 ago)
                                   ("franklin", "scripts/ingest-etf-distributions-franklin.mjs"),  # GraphQL DistributionHistory: ex+record+pay dall'emittente (28 ago, agganciato 3 set)
-                                  ("borsaitaliana", "scripts/ingest-etf-distributions-borsaitaliana.mjs"),  # BOOTSTRAP storico residui a Milano, ogni emittente (15 ago; ex -invesco)
+                                  ("lgim", "scripts/ingest-etf-distributions-lgim.mjs"),  # Dividend Calendar XLSX del fund centre (lit 1131): log cumulativo di gamma dal 2014, golden ±1% (4 set; il lettore Borsa Italiana e DECLASSATO a sentinella: mai piu fonte scritta)
                                   ("invesco", "scripts/ingest-etf-distributions-invesco.mjs")):  # storico dedotto NAV vs Adjusted NAV + buchi BI (16 ago), golden AT1 CoCo
             try:
                 dv = subprocess.run([NODE, script, "--commit"],
@@ -703,6 +703,20 @@ def main():
         except Exception as e:
             log(f"!! dividendi-date-invesco fallito (non blocca): {e}")
             modules["dividendi-date-invesco"] = False
+
+    # DURATION Invesco dall'API dell'emittente (4 set 2026, regola Linus: API -> factsheet ->
+    # pagina -> NULL, nessuna stima): characteristics.effectiveDuration, giornaliera, kind
+    # effettiva. Chromium (WAF): qui, mensile, da solo, DOPO le date Invesco. NON fatale.
+    if not DRY:
+        try:
+            dm = subprocess.run([NODE, "scripts/enrich-bond-metrics-invesco-api.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (dm.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |bond-metrics-invesco-api| {line}")
+            modules["bond-metrics-invesco-api"] = dm.returncode == 0
+        except Exception as e:
+            log(f"!! bond-metrics-invesco-api fallito (non blocca): {e}")
+            modules["bond-metrics-invesco-api"] = False
 
     # FOTO MENSILE composizioni -> etf_holdings_history (10 ago): DOPO i raccolti
     # holdings, cosi' la foto e' del mese fresco. Idempotente: rilanci nello

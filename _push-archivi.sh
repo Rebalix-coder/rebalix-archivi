@@ -28,7 +28,14 @@ fi
 if git push -q origin main >> "$LOG" 2>&1; then
   log "push OK"; ESITO=0
 else
-  log "!! push FALLITO (resterà nel prossimo giro)"; ESITO=1
+  # 4 set 2026: gara persa col pusher VPS (pull lento 25 min, push VPS in mezzo) —
+  # un secondo giro pull+push chiude la finestra invece di aspettare domani
+  if git pull --rebase -X theirs -q origin main >> "$LOG" 2>&1 && git push -q origin main >> "$LOG" 2>&1; then
+    log "push OK (al secondo tentativo dopo pull)"; ESITO=0
+  else
+    git rebase --abort >> "$LOG" 2>&1
+    log "!! push FALLITO anche al secondo tentativo (resterà nel prossimo giro)"; ESITO=1
+  fi
 fi
 # battito al guardiano (21 ago 2026: i push erano MUTI — 4 giorni di fallimenti invisibili)
 SECRET=$(grep '^CRON_SECRET=' "$HOME/progetti/rebalix/.env.local" | head -1 | cut -d= -f2- | tr -d '"' | tr -d "'")
