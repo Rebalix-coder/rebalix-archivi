@@ -1,36 +1,100 @@
 {
- "factsheetAsOf": "2026-07-31",
+ "factsheetAsOf": "2026-08-31",
  "factsheetDati": {
-  "constituents": 1282,
-  "asOf": "2026-07-31",
-  "top10Pct": 26.41,
-  "divYieldPct": 1.53,
-  "pe": 24.25,
-  "peFwd": 18.76,
-  "pb": 4.13,
+  "constituents": 1280,
+  "asOf": "2026-08-31",
+  "top10Pct": 26.61,
+  "divYieldPct": 1.5,
+  "pe": 23.2,
+  "peFwd": 18.55,
+  "pb": 4.12,
   "turnoverPct": 2.95,
   "sectors": {
-   "Information Technology": 28.87,
-   "Financials": 16.81,
-   "Industrials": 11.45,
-   "Health Care": 9.17,
-   "Consumer Discretionary": 9.02,
-   "Communication Services": 8.04,
-   "Consumer Staples": 5.1,
-   "Energy": 4.02,
-   "Materials": 3.26,
-   "Utilities": 2.54,
-   "Real Estate": 1.71
+   "Information Technology": 29.81,
+   "Financials": 16.58,
+   "Industrials": 11.13,
+   "Health Care": 9.27,
+   "Consumer Discretionary": 8.82,
+   "Communication Services": 7.9,
+   "Consumer Staples": 4.91,
+   "Energy": 4.09,
+   "Materials": 3.47,
+   "Utilities": 2.39,
+   "Real Estate": 1.64
   },
   "countries": {
-   "United States": 72.03,
-   "Japan": 5.73,
-   "United Kingdom": 3.61,
-   "Canada": 3.41,
-   "France": 2.44,
-   "Other": 12.78
+   "United States": 72.14,
+   "Japan": 5.78,
+   "United Kingdom": 3.53,
+   "Canada": 3.46,
+   "France": 2.36,
+   "Other": 12.74
   }
  },
  "page:consultations": "b4fc040bed1fda558b146df8ca232f0e60a7e57dbbd68048b775ffc3f8c9b323",
- "page:market-classification": "b4fc040bed1fda558b146df8ca232f0e60a7e57dbbd68048b775ffc3f8c9b323"
+ "page:market-classification": "b4fc040bed1fda558b146df8ca232f0e60a7e57dbbd68048b775ffc3f8c9b323",
+ "factsheetAsOf:acwi": "2026-08-31",
+ "factsheetDati:acwi": {
+  "constituents": 2458,
+  "asOf": "2026-08-31",
+  "top10Pct": 24.26,
+  "divYieldPct": 1.56,
+  "pe": 21.85,
+  "peFwd": 16.87,
+  "pb": 3.8,
+  "turnoverPct": 3.21,
+  "sectors": {
+   "Information Technology": 31.2,
+   "Financials": 16.95,
+   "Industrials": 10.59,
+   "Health Care": 8.49,
+   "Consumer Discretionary": 8.72,
+   "Communication Services": 7.69,
+   "Consumer Staples": 4.65,
+   "Energy": 4.01,
+   "Materials": 3.8,
+   "Utilities": 2.33,
+   "Real Estate": 1.56
+  },
+  "countries": {
+   "United States": 63.59,
+   "Japan": 5.09,
+   "United Kingdom": 3.11,
+   "Canada": 3.05,
+   "Taiwan": 3.25,
+   "Other": 21.91
+  }
+ },
+ "factsheetAsOf:acwi-imi": "2026-08-31",
+ "factsheetDati:acwi-imi": {
+  "constituents": 8162,
+  "asOf": "2026-08-31",
+  "top10Pct": 21.65,
+  "divYieldPct": 1.6,
+  "pe": 22.11,
+  "peFwd": 16.76,
+  "pb": 3.48,
+  "turnoverPct": 2.6,
+  "sectors": {
+   "Information Technology": 29.55,
+   "Financials": 16.64,
+   "Industrials": 11.49,
+   "Health Care": 8.74,
+   "Consumer Discretionary": 8.87,
+   "Communication Services": 7.19,
+   "Consumer Staples": 4.6,
+   "Energy": 4.09,
+   "Materials": 4.31,
+   "Utilities": 2.35,
+   "Real Estate": 2.17
+  },
+  "countries": {
+   "United States": 62.48,
+   "Japan": 5.71,
+   "United Kingdom": 3.2,
+   "Canada": 3.12,
+   "Taiwan": 3.31,
+   "Other": 22.18
+  }
+ }
 }
