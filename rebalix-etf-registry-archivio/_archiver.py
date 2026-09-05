@@ -718,6 +718,20 @@ def main():
             log(f"!! bond-metrics-invesco-api fallito (non blocca): {e}")
             modules["bond-metrics-invesco-api"] = False
 
+    # MODIFIED DURATION UBS dalla pagina prodotto (HA4 getAmrFundAttributes, 4 set 2026): plain
+    # fetch con token pubblico, niente Chromium. Colma le classi il cui factsheet IT ha solo il
+    # glossario; un «0» senza data non si scrive. NON fatale.
+    if not DRY:
+        try:
+            du = subprocess.run([NODE, "scripts/enrich-bond-metrics-ubs-api.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (du.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |bond-metrics-ubs-api| {line}")
+            modules["bond-metrics-ubs-api"] = du.returncode == 0
+        except Exception as e:
+            log(f"!! bond-metrics-ubs-api fallito (non blocca): {e}")
+            modules["bond-metrics-ubs-api"] = False
+
     # FOTO MENSILE composizioni -> etf_holdings_history (10 ago): DOPO i raccolti
     # holdings, cosi' la foto e' del mese fresco. Idempotente: rilanci nello
     # stesso mese completano i buchi. exit 2 = foto incompleta -> guardiano.
