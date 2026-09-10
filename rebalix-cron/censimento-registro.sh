@@ -16,6 +16,11 @@ if node scripts/ingest-etf-registry.mjs --commit >> "$LOG" 2>&1; then OK=true; E
 # aggiornato + motore vecchio = tabelle divergenti -> il guardiano di coerenza delle
 # 17:30 canta scarti DURI (TER motore != registro). Nel runner mensile il motore e'
 # l'ultimo passo apposta; qui lo stesso principio. Modulo proprio nel battito.
+# TD anche a meta mese (9 set 2026, deciso Linus): le cedole UBS entrate il 4/9 hanno
+# lasciato 16 classi Dist con TD sbagliata in scheda fino al ricalcolo del 9/9 — con la
+# TD anche il 17 la finestra si dimezza. PRIMA del motore (che legge td_1y). Non blocca.
+TD=false
+if timeout 1h node scripts/enrich-tracking-difference.mjs --commit >> "$LOG" 2>&1; then TD=true; log "tracking-difference OK"; else log "!! tracking-difference FALLITA (non blocca)"; fi
 MT=false
 if [ "$OK" = true ] && timeout 2h node scripts/build-motore-dataset.mjs --commit >> "$LOG" 2>&1; then MT=true; log "motore ricostruito OK"; else ERR=$((ERR+1)); log "!! motore NON ricostruito (registro e motore possono divergere)"; fi
 # factsheet freschi degli obbligazionari (solo hash cambiati) + metriche dichiarate
@@ -25,5 +30,5 @@ if timeout 3h node scripts/archive-etf-documents.mjs --commit --solo-factsheet -
 if timeout 1h node scripts/enrich-bond-metrics.mjs --commit >> "$LOG" 2>&1; then BM=true; log "bond-metrics OK"; else log "!! bond-metrics FALLITO (non blocca)"; fi
 SECRET=$(grep "^CRON_SECRET=" "$REPO/.env.local" | head -1 | cut -d= -f2- | tr -d "\"" | tr -d "'")
 curl -s -m 30 -X POST https://rebalix.com/api/heartbeat -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" \
-  -d "{\"name\":\"etf-registry-censimento\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"host\":\"$(hostname)\",\"modules\":{\"censimento\":$OK,\"motore\":$MT,\"factsheet-bond\":$FS,\"bond-metrics\":$BM},\"data_date\":\"$(date +%F)\"}}" >> "$LOG" 2>&1 && log "[heartbeat] inviato"
+  -d "{\"name\":\"etf-registry-censimento\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"host\":\"$(hostname)\",\"modules\":{\"censimento\":$OK,\"motore\":$MT,\"tracking-difference\":$TD,\"factsheet-bond\":$FS,\"bond-metrics\":$BM},\"data_date\":\"$(date +%F)\"}}" >> "$LOG" 2>&1 && log "[heartbeat] inviato"
 [ "$OK" = true ]

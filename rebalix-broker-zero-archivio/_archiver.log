@@ -76,3 +76,15 @@
 2026-09-03 08:32  [deploy] deploy prod OK (9ae3f32e) al tentativo 1
 2026-09-03 08:32  [heartbeat] inviato (200)
 2026-09-03 08:32  === giro completato (0 errori) ===
+2026-09-10 08:30  === giro 2026-09 avviato (dry=False) ===
+2026-09-10 08:30  [fineco] ok: 478 ISIN
+2026-09-10 08:30  [moneyfarm] ok: 783 ISIN
+2026-09-10 08:30  [bgsaxo] ok: 255 ISIN
+2026-09-10 08:30  [directa] ok: 1298 ISIN
+2026-09-10 08:30  [xtb] ok: 1421 ISIN
+2026-09-10 08:30  [diff] directa: +14 −0
+2026-09-10 08:30  indice rigenerato: 2380 ISIN, 1984 nomi; counts {'fineco': 478, 'directa': 857, 'bgsaxo': 255, 'moneyfarm': 783}
+2026-09-10 08:30  [deploy] commit dei dati rigenerati
+2026-09-10 08:33  [deploy] deploy prod OK (a01eebf5) al tentativo 1
+2026-09-10 08:33  [heartbeat] inviato (200)
+2026-09-10 08:33  === giro completato (0 errori) ===
