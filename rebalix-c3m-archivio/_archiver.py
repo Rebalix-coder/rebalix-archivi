@@ -329,18 +329,21 @@ def autodeploy():
             vsrc = os.path.join(REPO, ".vercel")
             if os.path.isdir(vsrc):
                 shutil.copytree(vsrc, os.path.join(wt, ".vercel"))
-            r = None
-            for attempt in range(1, 4):
-                r = subprocess.run([VERCEL, "--prod", "--yes"], cwd=wt, capture_output=True, text=True, timeout=900)
-                if r.returncode == 0:
-                    log(f"[deploy] deploy prod OK ({head[:8]}) al tentativo {attempt}")
-                    return True
-                log(f"!! [deploy] tentativo {attempt}/3 fallito (exit {r.returncode})")
-                if attempt < 3:
-                    time.sleep(20)
-            out = ((r.stdout or "") + "\n" + (r.stderr or "")).strip()[-1800:] if r else "(nessun output)"
-            log(f"!! [deploy] DEPLOY FALLITO dopo 3 tentativi ({head[:8]}). Commit su Codeberg "
-                f"ma NON in produzione. Output vercel:\n{out}")
+            # 9 set 2026 (porta unica, ok Linus — secondo del calendario dopo Xtrackers):
+            # il deploy passa da scripts/deploy-prod.sh --no-push — prova negativa,
+            # typecheck e SUITE INTERA come cancello prima del build, poi prebuilt + sonde.
+            # Suite rossa = moduli committati e pushati ma NON deployati (return False ->
+            # battito rosso, il guardiano avvisa). node_modules e .env.local dal clone.
+            shutil.copy2(os.path.join(REPO, ".env.local"), os.path.join(wt, ".env.local"))
+            os.symlink(os.path.join(REPO, "node_modules"), os.path.join(wt, "node_modules"))
+            r = subprocess.run(["/bin/bash", "scripts/deploy-prod.sh", "--no-push"],
+                               cwd=wt, capture_output=True, text=True, timeout=2400)
+            for line in ((r.stdout or "") + (r.stderr or "")).strip().splitlines()[-12:]:
+                log("[deploy] " + line.strip())
+            if r.returncode == 0:
+                log(f"[deploy] deploy prod OK via deploy-prod.sh ({head[:8]})")
+                return True
+            log(f"!! [deploy] CANCELLO deploy-prod.sh: exit {r.returncode} ({head[:8]}) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)")
             return False
         finally:
             subprocess.run([GIT, "-C", REPO, "worktree", "remove", "--force", wt])
