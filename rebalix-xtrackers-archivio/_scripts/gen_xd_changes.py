@@ -12,7 +12,10 @@ giorno: le derive lente non sfuggono).
 EVENTI (soglie dichiarate in pagina):
 - mattoncino che ENTRA/ESCE dal paniere: sempre segnalato (kind in/out)
 - peso di un mattoncino: |Δ| ≥ 1,0 punti rispetto all'ultimo stato segnalato (kind weight)
-Si tracciano solo le posizioni con ISIN (i mattoncini); la riga cash non è un evento.
+La CASSA (riga valuta «_…» + veicoli di liquidità interni DWS) è aggregata in un'unica voce
+«Liquidità» e conta come evento solo se il NETTO si muove ≥ soglia: così un vero spostamento
+verso la liquidità si vede, ma la comparsa/scomparsa contabile del monetario (compensata da un
+saldo EUR negativo, netto ~0) NON è un evento (analisi 18/9/2026).
 
 NB nomi: il feed DWS non risolve i mattoncini non-ETF (caso monetario interno,
 nome «--») → NAME_OVERRIDE, da tenere allineato all'OVERRIDE di gen_xd_holdings.
@@ -25,7 +28,11 @@ DEST = os.path.join(REPO, "lib", "blog", "xd-changes.ts")
 
 PROFILI = {"20": "xeq2", "40": "xeq4", "60": "xeq6", "80": "xeq8"}
 SOGLIA_PESO = 1.0
-NAME_OVERRIDE = {"IE00BZ3FDF20": "Deutsche Managed Euro Fund Z (monetario DWS)"}
+NAME_OVERRIDE = {"IE00BZ3FDF20": "Deutsche Managed Euro Fund Z (monetario DWS)",
+                 "IE00BYQNZ507": "Deutsche Global Liquidity Series (liquidità DWS)"}
+# Veicoli di LIQUIDITÀ interni DWS: il feed li marca «Azionari» e spesso senza nome, ma sono
+# CASSA → nettati con la riga valuta, non contati come mattoncini (vedi mattoncini()).
+CASH_LIKE = {"IE00BZ3FDF20", "IE00BYQNZ507"}
 
 
 def snapshots(key):
@@ -41,14 +48,20 @@ def snapshots(key):
 
 
 def mattoncini(snap):
-    """isin → (nome, peso) delle sole posizioni con ISIN."""
+    """isin → (nome, peso). Le posizioni-cassa (riga valuta «_…» + veicoli di liquidità interni
+    DWS) sono aggregate in un'unica voce «__CASH»: un ribilanciamento REALE verso la liquidità si
+    vede (peso del netto), ma la comparsa/scomparsa contabile del monetario (netto ~0) non è evento."""
     out = {}
+    cassa = 0.0
     for p in snap["posizioni"]:
         isin = p.get("isin")
-        if not isin or isin.startswith("_"):
+        peso = p.get("peso") or 0
+        if not isin or isin.startswith("_") or isin in CASH_LIKE:
+            cassa += peso
             continue
         nome = NAME_OVERRIDE.get(isin) or p.get("nome") or ""
-        out[isin] = (nome if nome.strip() not in ("", "--") else isin, p["peso"] or 0)
+        out[isin] = (nome if nome.strip() not in ("", "--") else isin, peso)
+    out["__CASH"] = ("Liquidità", round(cassa, 2))
     return out
 
 

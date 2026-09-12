@@ -160,7 +160,7 @@ def main():
         # CASH_LIKE: mattoncini che il feed marca Azionari ma sono LIQUIDITÀ (1 ago 2026:
         # IE00BZ3FDF20 = Deutsche Managed Euro Fund Z, monetario interno DWS) → "altro",
         # fuori dalle falde per metodologia (come oro e cash), niente radiografia attesa.
-        CASH_LIKE = {"IE00BZ3FDF20"}
+        CASH_LIKE = {"IE00BZ3FDF20", "IE00BYQNZ507"}  # + Deutsche Global Liquidity Series (liquidità DWS)
         pos = [{"isin": p["isin"], "nome": p["nome"], "peso": p["peso"] or 0,
                 "classe": "altro" if p["isin"] in CASH_LIKE else
                           {"Azionari": "azioni", "Obbligazionari": "obbligazioni"}.get(p.get("classe"), "altro")}

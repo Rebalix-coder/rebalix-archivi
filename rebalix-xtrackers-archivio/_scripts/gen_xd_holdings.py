@@ -25,6 +25,8 @@ CLASSI = {"Azionari": "azioni", "Obbligazionari": "obbligazioni",
 # classe Z istituzionale, lanciato 2015, mai quotato → ignoto a FIRDS/OpenFIGI e allo
 # stesso feed ETF di DWS, che lo dava «--» e Azionari!). Nome dal KID PRIIPs (Linus).
 OVERRIDE = {"IE00BZ3FDF20": {"nome": "Deutsche Managed Euro Fund Z (monetario DWS)",
+                             "classe": "liquidita"},
+            "IE00BYQNZ507": {"nome": "Deutsche Global Liquidity Series (liquidità DWS)",
                              "classe": "liquidita"}}
 
 def e_hy(nome):
