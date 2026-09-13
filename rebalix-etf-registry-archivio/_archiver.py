@@ -287,6 +287,23 @@ def main():
             log(f"!! tickers fallito (non blocca): {e}")
             modules["tickers"] = False
 
+    # MODELLO fondo→classe→listing (12 set 2026, Fase 1/2/2b): dopo registro e ticker, le classi
+    # NUOVE ricevono fund_id (build-etf-fund, golden), le sedi le linee dichiarate dagli emittenti
+    # (enrich-listings-emittente: il listino della borsa vince sempre) e la tabella delle linee si
+    # rinfresca (build-listing-lines, golden). Idempotenti, NON bloccano: modulo proprio ciascuno.
+    if not DRY:
+        for nome, script, tetto in (("fondo", "scripts/build-etf-fund.mjs", 1200),
+                                    ("listing-emittente", "scripts/enrich-listings-emittente.mjs", 1800),
+                                    ("linee", "scripts/build-listing-lines.mjs", 900)):
+            try:
+                m = subprocess.run([NODE, script, "--commit"], cwd=REPO, capture_output=True, text=True, timeout=tetto)
+                for line in ((m.stdout or "") + (m.stderr or "")).strip().splitlines()[-2:]:
+                    log(f"  |{nome}| {line}")
+                modules[nome] = m.returncode == 0
+            except Exception as e:
+                log(f"!! {nome} fallito (non blocca): {e}")
+                modules[nome] = False
+
     # Documenti ufficiali (prospetto+factsheet): aggancia i fondi nuovi e vigila
     # sugli schemi-URL. Gli URL emittente sono stabili e aggiornati sul posto.
     if not DRY:
