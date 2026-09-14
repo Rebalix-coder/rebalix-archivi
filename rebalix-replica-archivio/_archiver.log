@@ -204,3 +204,12 @@ Running build in Cleve
 2026-09-07 07:42  [deploy] produzione aggiornata
 2026-09-07 07:42  [heartbeat] inviato (errori=0)
 2026-09-07 07:42  === giro completato (0 errori) ===
+2026-09-14 07:40  === giro 2026-W38 avviato (dry=False) ===
+2026-09-14 07:40  [baskets:xspu] ok — 352/504 titoli, active share 61.8%
+2026-09-14 07:40  [baskets:world] ok — 490/1283 titoli, active share 64.3%
+2026-09-14 07:40  [td] ok — 1548 punti comuni, fine 2026-09-11, scarti +16pb, +21pb, +22pb, +24pb
+2026-09-14 07:40  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-09-14 07:40  [hybrid] ok — 737 titoli fisici, USA 0.4%; scarto vs fisico +48 pb/a su 441 sedute
+2026-09-14 07:43  [deploy] produzione aggiornata
+2026-09-14 07:43  [heartbeat] inviato (errori=0)
+2026-09-14 07:43  === giro completato (0 errori) ===
