@@ -756,13 +756,23 @@ def autodeploy(files):
             vsrc = os.path.join(REPO, ".vercel")
             if os.path.isdir(vsrc):
                 shutil.copytree(vsrc, os.path.join(wt, ".vercel"))
-            vercel = shutil.which("vercel") or "/usr/local/bin/vercel"
-            for attempt in range(1, 4):
-                r = subprocess.run([vercel, "--prod", "--yes"], cwd=wt, capture_output=True, text=True, timeout=900)
-                if r.returncode == 0:
-                    log("[deploy] produzione aggiornata")
-                    return True
-                log(f"!! [deploy] tentativo {attempt} fallito: {(r.stderr or r.stdout)[:300]}")
+            # 14 set 2026 (porta unica, ok Linus — chiusura del giro dei 5 archiviatori;
+            # la sveglia del 13 sera non e' scattata, patch recuperata il 14 mattina):
+            # il deploy passa da scripts/deploy-prod.sh --no-push — prova negativa,
+            # typecheck e SUITE INTERA come cancello prima del build, poi prebuilt + sonde.
+            # Suite rossa = moduli committati e pushati ma NON deployati (battito rosso,
+            # il guardiano avvisa). node_modules e .env.local dal clone.
+            shutil.copy2(os.path.join(REPO, ".env.local"), os.path.join(wt, ".env.local"))
+            os.symlink(os.path.join(REPO, "node_modules"), os.path.join(wt, "node_modules"))
+            r = subprocess.run(["/bin/bash", "scripts/deploy-prod.sh", "--no-push"],
+                               cwd=wt, capture_output=True, text=True, timeout=2400)
+            for line in ((r.stdout or "") + (r.stderr or "")).strip().splitlines()[-12:]:
+                log("[deploy] " + line.strip())
+            if r.returncode == 0:
+                log(f"[deploy] deploy prod OK via deploy-prod.sh ({head[:8]})")
+                return True
+            log(f"!! [deploy] CANCELLO deploy-prod.sh: exit {r.returncode} ({head[:8]}) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)")
+
         finally:
             subprocess.run([GIT, "-C", REPO, "worktree", "remove", "--force", wt], capture_output=True)
         return False

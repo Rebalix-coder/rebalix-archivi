@@ -294,7 +294,11 @@ def main():
     if not DRY:
         for nome, script, tetto in (("fondo", "scripts/build-etf-fund.mjs", 1200),
                                     ("listing-emittente", "scripts/enrich-listings-emittente.mjs", 1800),
-                                    ("linee", "scripts/build-listing-lines.mjs", 900)):
+                                    ("linee", "scripts/build-listing-lines.mjs", 900),
+                                    # (13 set 2026, cantiere con l'auditor, doc §5.4) il ticker della white list come regola:
+                                    # riempie ticker/tickers_by_mic SOLO dove null (eredita' dall'ISIN + etf_listings), mai rete;
+                                    # va lanciato anche a mano subito dopo ogni ingest semestrale. Nel battito dopo il 1o giro verde (2/10).
+                                    ("whitelist-ticker", "scripts/enrich-whitelist-ticker-interno.mjs", 900)):
             try:
                 m = subprocess.run([NODE, script, "--commit"], cwd=REPO, capture_output=True, text=True, timeout=tetto)
                 for line in ((m.stdout or "") + (m.stderr or "")).strip().splitlines()[-2:]:
