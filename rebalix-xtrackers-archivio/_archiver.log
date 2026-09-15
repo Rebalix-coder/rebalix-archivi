@@ -3643,3 +3643,59 @@ Error: Command "npm run build" exited with 1
 2026-09-13 10:33  [deploy] deploy prod OK via deploy-prod.sh (953370f2)
 2026-09-13 10:33  [heartbeat] inviato (200)
 2026-09-13 10:33  fatto, tutto OK
+2026-09-14 10:30  --- avvio archiviatore Xtrackers  ---
+2026-09-14 10:30  xeq2: dato al 2026-09-10, 0 snapshot nuovi (gia' in archivio)
+2026-09-14 10:30  xeq2: NAV ufficiale, 159 punti
+2026-09-14 10:30  xeq4: dato al 2026-09-10, 0 snapshot nuovi (gia' in archivio)
+2026-09-14 10:30  xeq4: NAV ufficiale, 159 punti
+2026-09-14 10:30  xeq6: dato al 2026-09-10, 0 snapshot nuovi (gia' in archivio)
+2026-09-14 10:30  xeq6: NAV ufficiale, 159 punti
+2026-09-14 10:30  xeq8: dato al 2026-09-10, 0 snapshot nuovi (gia' in archivio)
+2026-09-14 10:30  xeq8: NAV ufficiale, 159 punti
+2026-09-14 10:30  xqui: dato al 2026-09-11, 0 snapshot nuovi (gia' in archivio)
+2026-09-14 10:30  xqui: NAV ufficiale, 4425 punti
+2026-09-14 10:30  magr: composizione invariata (impronta 7aa7f70468d10493) — niente da fare
+2026-09-14 10:30  modr: composizione invariata (impronta 4c5738ff0215866e) — niente da fare
+2026-09-14 10:30  macv: composizione invariata (impronta 1c7676f4a38b8744) — niente da fare
+2026-09-14 10:30  spread: snapshot 2026-09-14 10:30, 4/11 book validi
+2026-09-14 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-09-14 10:30  !! lookthrough IE00BYQNZ507: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-09-14 10:30  !! lookthrough IE00BZ3FDF20: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-09-14 10:30  !! Factsheet IE00BYQNZ507: non scaricabile (it/de) — salto
+2026-09-14 10:30  !! Factsheet IE00BZ3FDF20: non scaricabile (it/de) — salto
+2026-09-14 10:30  factsheet+kid 2026-09: scaricati 0/2 nuovi
+2026-09-14 10:30  [golden] XEQ2.MI: 134 date | cum Yahoo -0.04% vs NAV -0.72% (diff 0.68 pt) | rend. mediano 0.186 pt | livello max 1.75%
+2026-09-14 10:30  [golden] XEQ4.MI: 135 date | cum Yahoo +1.79% vs NAV +1.05% (diff 0.75 pt) | rend. mediano 0.229 pt | livello max 1.83%
+2026-09-14 10:30  [golden] XEQ6.MI: 137 date | cum Yahoo +4.26% vs NAV +3.74% (diff 0.52 pt) | rend. mediano 0.274 pt | livello max 1.92%
+2026-09-14 10:30  [golden] XEQ8.MI: 137 date | cum Yahoo +6.64% vs NAV +6.28% (diff 0.36 pt) | rend. mediano 0.310 pt | livello max 1.99%
+2026-09-14 10:30  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 159 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-09-14 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-14 10:30  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-09-14 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-09-14 10:30  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-09-14 10:30  [xd-hold] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-09-10) — 20: swap 0.0%, HY 5.0%+EM 15.0% dei bond | 40: swap 16.03%, HY 5.0%+EM 15.0% dei bond | 60: swap 30.67%, HY 5.0%+EM 15.0% dei bond | 80: swap 43.83%, HY 5.0%+EM 15.0% dei bond
+2026-09-14 10:30  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-09-14 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 59.5}, {'nome': 'Giappone', 'pct': 6.11}, {'nome': 'Taiwan', 'pct': 4.13}]
+2026-09-14 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 31.0}, {'nome': 'Finanza', 'pct': 17.24}, {'nome': 'Prodotti industriali', 'pct': 11.03}]
+2026-09-14 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.35}, {'nome': 'Giappone', 'pct': 7.97}, {'nome': 'Francia', 'pct': 5.12}]
+2026-09-14 10:30  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 61 giorni, ultimo (2026-09-14): 20%=3.026M, 40%=3.259M, 60%=6.03M, 80%=6.251M
+2026-09-14 10:30  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-09-14 10:30  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-09-14 10:30  [xd-costs] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.3% · verificato 2026-09-14
+2026-09-14 10:30  [xd-changes] invariato (0 eventi)
+2026-09-14 10:30  [deploy] commit dei moduli xd
+2026-09-14 10:33  [deploy] Production      https://rebalix-2nnfyzmpu-rebalixs-projects.vercel.app
+2026-09-14 10:33  [deploy] [2K[1A[2K[G  Production      https://rebalix-2nnfyzmpu-rebalixs-projects.vercel.app
+2026-09-14 10:33  [deploy] ▲ Aliased         https://rebalix.com
+2026-09-14 10:33  [deploy] status	● Ready
+2026-09-14 10:33  [deploy] created	Mon Sep 14 2026 10:32:44 GMT+0200 (Central European Summer Time) [48s ago]
+2026-09-14 10:33  [deploy] 
+2026-09-14 10:33  [deploy] ── 8 · sonde (home doppia anti-MISS + pagine richieste) ──
+2026-09-14 10:33  [deploy] it?x=1 → 200
+2026-09-14 10:33  [deploy] it?x=2 → 200
+2026-09-14 10:33  [deploy] 
+2026-09-14 10:33  [deploy] DEPLOY COMPLETO · log: /tmp/deploy-prod-20260914-103027.log
+2026-09-14 10:33  [deploy] ESITO: ok commit=da80e3d7 deploy=https://rebalix-2nnfyzmpu-rebalixs-projects.vercel.app log=/tmp/deploy-prod-20260914-103027.log
+2026-09-14 10:33  [deploy] deploy prod OK via deploy-prod.sh (da80e3d7)
+2026-09-14 10:33  [heartbeat] inviato (200)
+2026-09-14 10:33  fatto, tutto OK
