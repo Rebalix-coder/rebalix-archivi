@@ -59,6 +59,10 @@ def main():
 
     if len(top10) != 10:
         sys.exit(f"[c3m-composition] GOLDEN FALLITO: Top10 fondo con {len(top10)} voci — NON scrivo")
+    # 15 set 2026: FUND_RATINGS tornato vuoto dall'API → il file scritto conteneva «ratings: [ , ]» (typecheck rosso su
+    # main, deploy fermato dal cancello). Una tabella dichiarata vuota non si scrive sopra l'ultima buona: occhio umano.
+    if not rating or not scadenze:
+        sys.exit(f"[c3m-composition] GOLDEN FALLITO: rating {len(rating)} voci, scadenze {len(scadenze)} voci — NON scrivo")
     somma_paesi = sum(v["pct"] for v in paesi)
     if not (98 <= somma_paesi <= 102):
         sys.exit(f"[c3m-composition] GOLDEN FALLITO: somma paesi {somma_paesi:.1f}% — NON scrivo")
@@ -101,6 +105,8 @@ def main():
                 for t in tickers if t.split()[-1] in EXCHANGES]
 
     def js(arr):
+        if not arr:
+            return "[]"  # mai «[ , ]»: una lista vuota è un array vuoto valido
         return "[\n    " + ",\n    ".join(
             f"{{ name: {json.dumps(v['name'], ensure_ascii=False)}, pct: {v['pct']} }}" for v in arr) + ",\n  ]"
 
