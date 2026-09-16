@@ -1,0 +1,810 @@
+{
+ "il": "2026-09-15T11:04:03.415Z",
+ "per_stato": {
+  "COMMENTARY_NOT_DECLARED": 52,
+  "COMMENTARY_FOUND": 43,
+  "PRODUCT_PAGE_NOT_FOUND_GB": 1
+ },
+ "righe": [
+  {
+   "isin": "IE00004PGEY9",
+   "name": "Eurozone Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE0000BNORX6",
+   "name": "Europe Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE0000EAPBT6",
+   "name": "US Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE0000J0F3C5",
+   "name": "USD IG Corporate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-usd-corporate-bond-research-enhanced-index-esg-ucits-etf-commentary.pdf",
+   "sha1": "e9b1619df26d02a725ecf02979cc2d7b244c2cdd",
+   "last_modified": "Thu, 20 Aug 2026 09:31:54 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE0000UW95D6",
+   "name": "Global Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpmorgan-etfs-ireland-icav-global-rei-index-equity-active-ucits-etf-performance-commentary.pdf",
+   "sha1": "755204af09fa06dc7517c1a83d4a26db849cffc3",
+   "last_modified": "Wed, 28 Jan 2026 10:33:36 GMT",
+   "nuovo": false,
+   "n_docs": 33
+  },
+  {
+   "isin": "IE0001JABD69",
+   "name": "All Country Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE0002VU15G5",
+   "name": "All Country Research Enhanced Index Equity Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE0003UN5CT1",
+   "name": "Europe Research Enhanced Index Equity SRI Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE0003UVYC20",
+   "name": "Global Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-etf-global-equity-premium-income-active-commentary-ce-en.pdf",
+   "sha1": "29fc0c6e5d915c3977e80fc59f77f8df69b3f199",
+   "last_modified": "Thu, 20 Aug 2026 09:31:23 GMT",
+   "nuovo": false,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE00048C5NZ0",
+   "name": "Global IG Corporate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00049TNTV6",
+   "name": "EUR Aggregate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE0005CH3U28",
+   "name": "US Growth Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE0005MWBFR7",
+   "name": "Global Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpmorgan-etfs-ireland-icav-global-rei-index-equity-active-ucits-etf-performance-commentary.pdf",
+   "sha1": "755204af09fa06dc7517c1a83d4a26db849cffc3",
+   "last_modified": "Wed, 28 Jan 2026 10:33:36 GMT",
+   "nuovo": false,
+   "n_docs": 33
+  },
+  {
+   "isin": "IE00063SATO1",
+   "name": "All Country Research Enhanced Index Equity Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE00064TWYK9",
+   "name": "Europe Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE00069JGT58",
+   "name": "US Research Enhanced Index Equity SRI Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-us-research-enhanced-index-equity-sri-paris-aligned-etf-commentary-ce-en.pdf",
+   "sha1": "9997cd1b6f9efa6833eb2aecc105c1982e2cb038",
+   "last_modified": "Thu, 20 Aug 2026 09:32:02 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE0006CJGQR9",
+   "name": "Nasdaq Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE0006FBEDB6",
+   "name": "Global ex US Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE0006FIW9Z0",
+   "name": "Nasdaq Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE0006HMLPV6",
+   "name": "US Research Enhanced Index Equity SRI Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-us-research-enhanced-index-equity-sri-paris-aligned-etf-commentary-ce-en.pdf",
+   "sha1": "9997cd1b6f9efa6833eb2aecc105c1982e2cb038",
+   "last_modified": "Thu, 20 Aug 2026 09:32:02 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE0006MM8VN6",
+   "name": "Global Aggregate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-active-global-aggregate-bond-ucits-etf-commentary-ce-en.pdf",
+   "sha1": "0cc2d7717d38920340687926de2cc027e873541c",
+   "last_modified": "Thu, 20 Aug 2026 09:31:33 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE0006SEWKA2",
+   "name": "Global Emerging Markets Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-global-emerging-markets-research-enhanced-index-equity-esg-commentary.pdf",
+   "sha1": "02ce2cbdaf37c015198cb79cb150c55dcbac29e5",
+   "last_modified": "Thu, 20 Aug 2026 09:31:51 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE0006YCYW06",
+   "name": "US Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE0008DO91F6",
+   "name": "Global ex US Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE0008EMOWT3",
+   "name": "Emerging Markets Local Currency Bond Active UCITS ETF",
+   "stato": "PRODUCT_PAGE_NOT_FOUND_GB",
+   "commentary": null
+  },
+  {
+   "isin": "IE0008P6LL15",
+   "name": "Global Government Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-global-government-bond-active-ucits-etf-commentary.pdf",
+   "sha1": "21f4dc51fa04f2272bee0ab092798350a446242b",
+   "last_modified": "Thu, 20 Aug 2026 09:31:53 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE0009OCO2W4",
+   "name": "Global Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE0009TJ5T70",
+   "name": "Carbon Transition Global Equity (CTB) UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-carbon-transition-global-equity-ctb-ucits-etf-commentary-ce-en.pdf",
+   "sha1": "a11a989dc8ad25b948a1a3af6d7e32c14ec2feaa",
+   "last_modified": "Thu, 20 Aug 2026 09:31:35 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000A7N3IV0",
+   "name": "All Country Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000ANHU3J3",
+   "name": "Global Emerging Markets Research Enhanced Index Equity SRI Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE000AP27VA7",
+   "name": "Global Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-etf-global-equity-premium-income-active-commentary-ce-en.pdf",
+   "sha1": "29fc0c6e5d915c3977e80fc59f77f8df69b3f199",
+   "last_modified": "Thu, 20 Aug 2026 09:31:23 GMT",
+   "nuovo": false,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE000BHH6TY7",
+   "name": "Global Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000BXC49I6",
+   "name": "Global Research Enhanced Index Equity SRI Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-global-research-enhanced-index-equity-sri-paris-aligned-etf-commentary-ce-en.pdf",
+   "sha1": "ff204aca4631d2c622a6342c081ba8563165ed85",
+   "last_modified": "Thu, 20 Aug 2026 09:31:29 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE000BZFW5H7",
+   "name": "US Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-etfs-ireland-icav-us-equity-active-ucits-etf-performance-commentary.pdf",
+   "sha1": "537e519198455bb330ea76b5c69177144e971a60",
+   "last_modified": "Fri, 07 Aug 2026 11:06:58 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE000CN8T855",
+   "name": "US Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-us-research-enhanced-index-equity-esg-ucits-etf-performance-commentary.pdf",
+   "sha1": "28dcc320db16fffc73db3f41bf4190eb069f3432",
+   "last_modified": "Fri, 07 Aug 2026 11:12:58 GMT",
+   "nuovo": false,
+   "n_docs": 33
+  },
+  {
+   "isin": "IE000CQMYME2",
+   "name": "USD High Yield Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-cm-usd-high-yield-bond-active-ucits-etf.pdf",
+   "sha1": "15c1109dd70fff7a0a32cc6f8f14e1f67c27504f",
+   "last_modified": "Thu, 20 Aug 2026 09:31:39 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000CQQ22C8",
+   "name": "US Value Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000FASRFS4",
+   "name": "Strategic Allocation Conservative Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000H0H26Q8",
+   "name": "All Country Research Enhanced Index Equity Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 27
+  },
+  {
+   "isin": "IE000IEOQSJ3",
+   "name": "EUR High Yield Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-cm-eur-high-yield-bond-active-ucits-etf.pdf",
+   "sha1": "18a3bd70dc04529860155a58357af5f3384b5a69",
+   "last_modified": "Thu, 20 Aug 2026 09:31:37 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000JIPY1U8",
+   "name": "Nasdaq Hedged Equity Laddered Overlay Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000JLILKH0",
+   "name": "All Country Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000JNKVS10",
+   "name": "BetaBuilders US Small Cap Equity UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000JS4ANL9",
+   "name": "Global Government Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-global-government-bond-active-ucits-etf-commentary.pdf",
+   "sha1": "21f4dc51fa04f2272bee0ab092798350a446242b",
+   "last_modified": "Thu, 20 Aug 2026 09:31:53 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000JUREXG2",
+   "name": "EUR Government Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-eur-government-bond-active-fund-commentary-ce-en.pdf",
+   "sha1": "e621149b3f2e61bf94461d9ec5b6881953af4c4d",
+   "last_modified": "Thu, 20 Aug 2026 09:31:45 GMT",
+   "nuovo": false,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE000LZI2UH4",
+   "name": "USD High Yield Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-cm-usd-high-yield-bond-active-ucits-etf.pdf",
+   "sha1": "15c1109dd70fff7a0a32cc6f8f14e1f67c27504f",
+   "last_modified": "Thu, 20 Aug 2026 09:31:39 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000MTYM4K8",
+   "name": "Global Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000MVWFDH1",
+   "name": "Strategic Allocation Growth Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000N6I8IU2",
+   "name": "Nasdaq Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE000O8S1EX4",
+   "name": "Climate Change Solutions Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-climate-change-solutions-etf-usd-commentary-ce-en.pdf",
+   "sha1": "b8be2150b8bd9fab2662d2c8d429f1ca292a8be3",
+   "last_modified": "Thu, 20 Aug 2026 09:31:21 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE000PQQLZM7",
+   "name": "Global Aggregate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-active-global-aggregate-bond-ucits-etf-commentary-ce-en.pdf",
+   "sha1": "0cc2d7717d38920340687926de2cc027e873541c",
+   "last_modified": "Thu, 20 Aug 2026 09:31:33 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000QGWZZO0",
+   "name": "Japan Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-japan-research-enhanced-index-equity-esg-ucits-etf-commentary.pdf",
+   "sha1": "1355ac8e9a8564259533c8a67a6a0fa6c920137b",
+   "last_modified": "Fri, 17 Jul 2026 09:47:07 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE000QOLLXO2",
+   "name": "Europe Research Enhanced Index Equity SRI Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE000R7DCW45",
+   "name": "USD High Yield Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-cm-usd-high-yield-bond-active-ucits-etf.pdf",
+   "sha1": "15c1109dd70fff7a0a32cc6f8f14e1f67c27504f",
+   "last_modified": "Thu, 20 Aug 2026 09:31:39 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000RE0SQM6",
+   "name": "US Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000RSCXLM4",
+   "name": "US Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-etfs-ireland-icav-us-equity-active-ucits-etf-performance-commentary.pdf",
+   "sha1": "537e519198455bb330ea76b5c69177144e971a60",
+   "last_modified": "Fri, 07 Aug 2026 11:06:58 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE000S2QZKI8",
+   "name": "Global IG Corporate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000TD3TI26",
+   "name": "US Value Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000TGCBXG8",
+   "name": "Emerging Markets Local Currency Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-emerging-market-local-currency-bond-active-ucits-etf-commentary.pdf",
+   "sha1": "4b2562e2243454a66f7adb3854b269d71e78e404",
+   "last_modified": "Thu, 20 Aug 2026 09:31:41 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000TWAN2K7",
+   "name": "Strategic Allocation Moderate Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000U5MJOZ6",
+   "name": "US Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000U9J8HX9",
+   "name": "Nasdaq Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE000UZIKD07",
+   "name": "Global Research Enhanced Index Equity SRI Paris Aligned Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-global-research-enhanced-index-equity-sri-paris-aligned-etf-commentary-ce-en.pdf",
+   "sha1": "ff204aca4631d2c622a6342c081ba8563165ed85",
+   "last_modified": "Thu, 20 Aug 2026 09:31:29 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE000UZZ5SU2",
+   "name": "US Growth Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000VAZZYM3",
+   "name": "US Hedged Equity Laddered Overlay Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 28
+  },
+  {
+   "isin": "IE000W85O7M4",
+   "name": "US Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-us-research-enhanced-index-equity-esg-ucits-etf-performance-commentary.pdf",
+   "sha1": "28dcc320db16fffc73db3f41bf4190eb069f3432",
+   "last_modified": "Fri, 07 Aug 2026 11:12:58 GMT",
+   "nuovo": false,
+   "n_docs": 33
+  },
+  {
+   "isin": "IE000W95TAE6",
+   "name": "Carbon Transition Global Equity (CTB) UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-carbon-transition-global-equity-ctb-ucits-etf-commentary-ce-en.pdf",
+   "sha1": "a11a989dc8ad25b948a1a3af6d7e32c14ec2feaa",
+   "last_modified": "Thu, 20 Aug 2026 09:31:35 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000WX7BVB0",
+   "name": "Global Equity Premium Income Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-etf-global-equity-premium-income-active-commentary-ce-en.pdf",
+   "sha1": "29fc0c6e5d915c3977e80fc59f77f8df69b3f199",
+   "last_modified": "Thu, 20 Aug 2026 09:31:23 GMT",
+   "nuovo": false,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE000YK1TO74",
+   "name": "Global High Yield Corporate Bond Multi-Factor Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE000ZAJ6XQ2",
+   "name": "India Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 30
+  },
+  {
+   "isin": "IE00BD9MMD49",
+   "name": "BetaBuilders US Treasury Bond 1-3 yr UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE00BD9MMF62",
+   "name": "EUR Ultra-Short Income Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-eur-ultra-short-income-ucits-etf-commentary.pdf",
+   "sha1": "208005aec15408d681f53b6ae60f749aada1ee08",
+   "last_modified": "Thu, 20 Aug 2026 09:31:47 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BDDRDY39",
+   "name": "USD Emerging Markets Sovereign Bond UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-usd-emerging-markets-sovereign-bond-ucits-etf-commentary.pdf",
+   "sha1": "d5132abb67e8ae04fd485745eaf4a22b64ec563b",
+   "last_modified": "Thu, 20 Aug 2026 09:31:56 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BDFC6G93",
+   "name": "USD Emerging Markets Sovereign Bond UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-usd-emerging-markets-sovereign-bond-ucits-etf-commentary.pdf",
+   "sha1": "d5132abb67e8ae04fd485745eaf4a22b64ec563b",
+   "last_modified": "Thu, 20 Aug 2026 09:31:56 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BDFC6Q91",
+   "name": "USD Ultra-Short Income Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-usd-ultra-short-income-ucits-etf-commentary.pdf",
+   "sha1": "a67227973f3b3a6cd9275e7a236492c455ca6b92",
+   "last_modified": "Thu, 20 Aug 2026 09:31:58 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00BF4G6Y48",
+   "name": "Global Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpmorgan-etfs-ireland-icav-global-rei-index-equity-active-ucits-etf-performance-commentary.pdf",
+   "sha1": "755204af09fa06dc7517c1a83d4a26db849cffc3",
+   "last_modified": "Wed, 28 Jan 2026 10:33:36 GMT",
+   "nuovo": false,
+   "n_docs": 33
+  },
+  {
+   "isin": "IE00BF4G6Z54",
+   "name": "Global Emerging Markets Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-global-emerging-markets-research-enhanced-index-equity-esg-commentary.pdf",
+   "sha1": "02ce2cbdaf37c015198cb79cb150c55dcbac29e5",
+   "last_modified": "Thu, 20 Aug 2026 09:31:51 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BF4G7076",
+   "name": "US Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-us-research-enhanced-index-equity-esg-ucits-etf-performance-commentary.pdf",
+   "sha1": "28dcc320db16fffc73db3f41bf4190eb069f3432",
+   "last_modified": "Fri, 07 Aug 2026 11:12:58 GMT",
+   "nuovo": false,
+   "n_docs": 33
+  },
+  {
+   "isin": "IE00BF4G7183",
+   "name": "Europe Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-europe-research-enhanced-index-equity-esg-ucits-etf-commentary.pdf",
+   "sha1": "df91583dd72f7585d6e8bb3c727e673cc74047b2",
+   "last_modified": "Thu, 20 Aug 2026 09:31:25 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BF59RV63",
+   "name": "USD IG Corporate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-usd-corporate-bond-research-enhanced-index-esg-ucits-etf-commentary.pdf",
+   "sha1": "e9b1619df26d02a725ecf02979cc2d7b244c2cdd",
+   "last_modified": "Thu, 20 Aug 2026 09:31:54 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BF59RW70",
+   "name": "EUR 1-5 yr IG Corporate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00BF59RX87",
+   "name": "EUR IG Corporate Bond Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-eur-corporate-bond-research-enhanced-index-esg-ucits-etf-commentary.pdf",
+   "sha1": "1d4e9e773e9158a7ea6f84756fadae94efa98c27",
+   "last_modified": "Thu, 20 Aug 2026 09:31:43 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BG8BCY43",
+   "name": "USD Ultra-Short Income Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-usd-ultra-short-income-ucits-etf-commentary.pdf",
+   "sha1": "a67227973f3b3a6cd9275e7a236492c455ca6b92",
+   "last_modified": "Thu, 20 Aug 2026 09:31:58 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00BJ06C937",
+   "name": "USD Emerging Markets Sovereign Bond UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-usd-emerging-markets-sovereign-bond-ucits-etf-commentary.pdf",
+   "sha1": "d5132abb67e8ae04fd485745eaf4a22b64ec563b",
+   "last_modified": "Thu, 20 Aug 2026 09:31:56 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BJK3WF00",
+   "name": "BetaBuilders US Treasury Bond 0-1 yr UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE00BJK9H753",
+   "name": "BetaBuilders US Equity UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE00BJK9H860",
+   "name": "BetaBuilders US Equity UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE00BJK9HD13",
+   "name": "BetaBuilders EUR Govt Bond UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE00BJK9HH50",
+   "name": "BetaBuilders US Treasury Bond UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE00BJRCLL96",
+   "name": "Global Equity Multi-Factor UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  },
+  {
+   "isin": "IE00BKKCKJ46",
+   "name": "Global High Yield Corporate Bond Multi-Factor Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00BMDV7354",
+   "name": "AC Asia Pacific ex Japan Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00BMDV7578",
+   "name": "China A Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00BMDWYZ92",
+   "name": "Carbon Transition Global Equity (CTB) UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-carbon-transition-global-equity-ctb-ucits-etf-commentary-ce-en.pdf",
+   "sha1": "a11a989dc8ad25b948a1a3af6d7e32c14ec2feaa",
+   "last_modified": "Thu, 20 Aug 2026 09:31:35 GMT",
+   "nuovo": false,
+   "n_docs": 31
+  },
+  {
+   "isin": "IE00BP2NF958",
+   "name": "Japan Research Enhanced Index Equity Active UCITS ETF",
+   "stato": "COMMENTARY_FOUND",
+   "commentary": "https://am.jpmorgan.com/content/dam/jpm-am-aem/emea/regional/en/literature/commentary/jpm-japan-research-enhanced-index-equity-esg-ucits-etf-commentary.pdf",
+   "sha1": "1355ac8e9a8564259533c8a67a6a0fa6c920137b",
+   "last_modified": "Fri, 17 Jul 2026 09:47:07 GMT",
+   "nuovo": false,
+   "n_docs": 32
+  },
+  {
+   "isin": "IE00BYVZV757",
+   "name": "BetaBuilders EUR Govt Bond 1-3 yr UCITS ETF",
+   "stato": "COMMENTARY_NOT_DECLARED",
+   "commentary": null,
+   "n_docs": 29
+  }
+ ]
+}
