@@ -25,5 +25,5 @@ RIGHE=$(zcat "$BASE.tsv.gz" | wc -l)
 ASOF=$(psql "$C" -tAc "select min(as_of)||' → '||max(as_of) from etf_holdings")
 log "fatto: $RIGHE righe, as_of $ASOF, $(du -h "$BASE.dump" | cut -f1) dump + $(du -h "$BASE.tsv.gz" | cut -f1) tsv"
 md5sum "$BASE.dump" "$BASE.tsv.gz" >> "$DEST/_md5.txt"
-# rotazione: le foto restano 24 MESI (convenzione 21 ago sera: ~28 MB a foto, ~340 MB/anno; il diff è ricalcolabile solo finché ci sono le foto)
-find "$DEST" -name "etf_holdings-*" -mtime +730 -type f -delete || true
+# NESSUNA rotazione (decisione Linus 16 set 2026: «conserviamo tutto, può diventare oro un giorno»): le foto complete
+# restano per sempre (~60 MB a foto, ~0,7 GB/anno, in B2 col backup). Fino al 16/9 c'era una cancellazione a 24 mesi.

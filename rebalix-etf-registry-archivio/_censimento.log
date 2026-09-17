@@ -129,3 +129,313 @@ Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
 ✓ Ingest completato.
 [2026-08-17 08:00] censimento OK
 {"ok":true,"name":"etf-registry-censimento","recorded_at":"2026-08-17T06:00:36.941Z"}[2026-08-17 08:00] [heartbeat] inviato
+[2026-09-17 07:45] === censimento meta mese avviato ===
+ingest-etf-registry — COMMIT (scrive su DB)
+→ ishares…
+  ishares: 1413 righe, 1383 con benchmark  ✓
+→ vanguard…
+  vanguard: 140 righe, 78 con benchmark  ✓
+→ amundi…
+  amundi: 669 righe, 666 con benchmark  ✓
+→ xtrackers…
+  xtrackers: 376 righe, 356 con benchmark  ✓
+→ spdr…
+  spdr: 176 righe, 176 con benchmark  ✓
+→ ubs…
+  ⚠ UBS CH0105994401: colonna TER 0.97 vs flat fee 0.25 (scarto > 0,10 pp, controllo): decide il KID in fase di scrittura
+  ⚠ UBS CH0116014934: colonna TER 0.35 vs flat fee 0.17 (scarto > 0,10 pp, controllo): decide il KID in fase di scrittura
+  ⚠ UBS CH0124758522: colonna TER 0.79 vs flat fee 0.25 (scarto > 0,10 pp, controllo): decide il KID in fase di scrittura
+  ubs: 421 righe, 419 con benchmark  ✓
+→ jpm…
+  jpm: 96 righe, 90 con benchmark  ✓
+→ lgim…
+  lgim: 71 righe, 71 con benchmark  ✓
+→ 21shares…
+  21shares: 58 righe, 0 con benchmark  ✓
+→ avantis…
+  avantis: 6 righe, 6 con benchmark  ✓
+→ invesco…
+  …invesco 50/295
+  …invesco 100/295
+  …invesco 150/295
+  …invesco 200/295
+  …invesco 250/295
+  invesco: 295 righe, 295 con benchmark  ✓
+→ franklin…
+  franklin: 48 righe, 48 con benchmark  ✓
+
+Totale: 3769 righe, 3588 con benchmark, 1930 indici distinti
+Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+  aum_eur: 2017/2017 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+  ↳ UBS CH0105994401: colonna 0.97 / flat 0.25 / KID 1.04 → COLLISIONE: KID non coincide con nessuna delle due, resta la colonna (fonte primaria), non arbitrato
+  ↳ UBS CH0124758522: colonna 0.79 / flat 0.25 / KID 0.82 → COLLISIONE: KID non coincide con nessuna delle due, resta la colonna (fonte primaria), non arbitrato
+  DB: 3769 righe upsertate · guardia anti-cancellazione: conservati raw.bondMetricsSorella×59, replication×1403, raw.sfdrFonte×3248, raw.tdNote×330, benchmark_raw×64, sfdr×706, raw.docNote×74, ter×434, distribution_policy×391, aum_eur×676, aum×670, aum_currency×670, aum_as_of×439, srri×373, domicile×376, inception_date×434, asset_class×942, raw.politicaFonte×26 (il feed diceva null, la tabella aveva un valore)
+  iShares: 1 ISIN marcati delisted_at=2026-09-17: IE00B3B2KT45
+  memoria: 10 fotografie nuove per 2026-09 in etf_registry_history
+  archivio: ishares-product-data.json già presente per 2026-09, non sovrascrivo
+  archivio: ishares-product-list.xls già presente per 2026-09, non sovrascrivo
+  archivio: vanguard-funds-graphql.json già presente per 2026-09, non sovrascrivo
+  archivio: vanguard-pro.pdf già presente per 2026-09, non sovrascrivo
+  archivio: amundi-products.json già presente per 2026-09, non sovrascrivo
+  archivio: xtrackers-benchmarks.json già presente per 2026-09, non sovrascrivo
+  archivio: xtrackers-sitemap.xml già presente per 2026-09, non sovrascrivo
+  archivio: spdr-product-data.xlsx già presente per 2026-09, non sovrascrivo
+  archivio: ubs-etf-product-overview-it.xlsx già presente per 2026-09, non sovrascrivo
+  archivio: ubs-etf-product-overview-ch.xlsx già presente per 2026-09, non sovrascrivo
+  archivio: jpm-etf.json già presente per 2026-09, non sovrascrivo
+  archivio: lgim-fund-centre.json già presente per 2026-09, non sovrascrivo
+  archivio: 21shares-product-list.html già presente per 2026-09, non sovrascrivo
+  archivio: invesco-solr-products.json già presente per 2026-09, non sovrascrivo
+  archivio: invesco-products-listing.json già presente per 2026-09, non sovrascrivo
+  archivio: snapshot 2026-09 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-09
+
+✓ Ingest completato.
+[2026-09-17 08:05] censimento OK
+enrich-tracking-difference — COMMIT
+  serie dalla cache (/home/rebalix/cache/etf-series.json, 3273 righe, età 9.0h)
+cedole in casa: 1060 fondi
+  serie caricate: 3273
+serie: 3273
+serie indice prestata a classi sorelle (stesso emittente/benchmark/valuta, non hedged): 26
+indice non più coerente (trattino con motivo): 73
+TD calcolate: 2123 (di cui Dist con TR sintetico dalle cedole: 313) — senza benchmark: 619 — dist senza TR (trattino): 84 — finestra corta: 192 — scartate per sanità: 43 (di cui TR sintetico: 1)
+  fuori sanità (prime): 21Shares CH1471826029 TD=-3.3 | Amundi FR001400SDK4 TD=3.2 | Amundi FR001400SDN8 TD=3.2 | Amundi FR001400SDO6 TD=3.0 | Invesco IE0000FCGYF9 TD=12.8 | LGIM IE00022GJEG1 TD=-3.2 | LGIM IE0006BISQN7 TD=-6.1 | LGIM IE0007EH5UK6 TD=-5.0
+⚠ SENTINELLA BENCHMARK FERMO: 74 serie con indice che finisce > 30 gg prima del NAV → TD non pubblicata (file emittente da controllare):
+  Amundi DE000ETF7011 indice fino al 2022-10-31 | Amundi DE000ETF7029 indice fino al 2022-10-31 | Amundi DE000ETF7037 indice fino al 2022-10-31 | Amundi DE000ETF9082 indice fino al 2026-08-06 | Amundi FR0013416716 indice fino al 2026-08-12 | Invesco IE000U07IGB1 indice fino al 2026-08-13
+  golden DAX: TD 0.09 %/a (atteso -0.8…0.6)
+  golden C3M: TD -0.12 %/a (atteso -0.45…0.05)
+  golden CSPX: TD 0.14 %/a (atteso -0.4…0.6)
+  golden Amundi S&P 500 Dist (TR sintetico): TD 0.29 %/a (atteso -0.6…0.8)
+golden TD ✓
+ripiego su TD dichiarata a 12 mesi: 17
+COMMIT: 2140 td_1y scritte, 5 azzerate · motivi del trattino: 83 scritti, 3 tolti
+coperte ritirate per |TD|≥2 (indice non coperto nel feed): 65 — es. Xtrackers IE0000MMQ5M5 TD=-2.92 · Xtrackers IE00028H9QJ8 TD=-2.12 · Xtrackers IE0002EI5AG0 TD=-2.44 · Xtrackers IE000IDLWOL4 TD=-2.41 · Amundi IE000KTD59H4 TD=2.59 · LGIM IE000MINO564 TD=-2.49
+[2026-09-17 08:07] tracking-difference OK
+build-motore-dataset — carico le fonti…
+  registro (perimetro vivo): 3224
+  politica discrezionale dichiarata: 29 classi (12 con distribuzioni osservate, 2 senza etichetta di classe)
+  whitelist: quote correnti 11916, con ticker 2974
+  listini FIRDS attivi: 3196 ISIN
+  serie dalla cache (/home/rebalix/cache/etf-series.json, 3273 righe, età 9.1h)
+  serie lette: 3214
+composizioni con paesi: 2779
+righe costruite: 3223
+politica dei proventi: acc 2055 · dist 1079 · null 60 · acc/classe 15 · dist/classe 12 · discrezionale/discrezionale 2
+politica dei proventi: nessuna contraddizione dichiarazione↔classe ✓
+⚠ ESCLUSI PERCHÉ SENZA BORSA: 28 — rientrano da soli quando la borsa arriva:
+   21Shares   CH0508793459 Sygnum Platform Winners Index ETP
+   iShares    DE000A2QP4G5 iShares Brazil BRL Govt Bond UCITS ETF (DE)
+   iShares    IE00004FVB93 iShares iBonds Dec 2028 Term $ Corp UCITS ETF
+   iShares    IE00008UMP12 iShares U.S. Equity High Income Active UCITS ETF
+   iShares    IE00019GPKX6 iShares MSCI All Country World UCITS ETF
+   iShares    IE0001DYLX87 iShares $ Treasury Bond UCITS ETF
+   LGIM       IE0004QLGLF6 L&G Market Neutral Commodities UCITS ETF
+   iShares    IE000A68ELD0 iShares iBonds Dec 2027 Term $ Corp UCITS ETF
+   iShares    IE000AKFKBQ9 iShares $ TIPS 0-5 UCITS ETF
+   iShares    IE000AZDOJT1 iShares iBonds Dec 2026 Term $ Corp UCITS ETF
+   iShares    IE000BCCS0X1 iShares Global Aggregate Bond ESG SRI UCITS ETF
+   iShares    IE000CZ86N65 iShares $ Treasury Bond 0-3 Month UCITS ETF
+   iShares    IE000E5H5AN1 iShares Core Global Aggregate Bond UCITS ETF
+   iShares    IE000MYK0IT4 iShares $ EM Bond Active UCITS ETF
+   iShares    IE000N40JO74 iShares Europe Equity Enhanced Active UCITS ETF
+   iShares    IE000OH3HT45 iShares Global Aggregate Bond ESG SRI UCITS ETF
+   iShares    IE000TCMASP9 iShares $ EM Bond Active UCITS ETF
+   UBS        IE000TGK2UK9 UBS Global Equity Income Plus UCITS ETF USD dis
+   SPDR       IE000W566ZX2 State Street® SPDR FTSE® Global Convertible Bond USD Hd
+   iShares    IE000X08RX14 iShares MSCI World CTB Enhanced ESG UCITS ETF
+   iShares    IE000X1JN6A2 iShares J.P. Morgan $ EM Bond UCITS ETF
+   iShares    IE000Z0Z10N9 iShares $ Asia Investment Grade Corp Bond UCITS ETF
+   iShares    IE000Z8J6487 iShares $ EM Bond UCITS ETF
+   iShares    IE000ZIGXVF2 iShares Global Aggregate Bond ESG SRI UCITS ETF
+   iShares    IE00BMV3LT73 iShares € Corp Bond 0-3Yr ESG SRI UCITS ETF
+   iShares    IE00BMVJSD83 iShares UK Gilts 0-5yr UCITS ETF
+   Amundi     LU3332966244 Amundi Core MSCI USA Swap UCITS ETF GBP Hedged Dist
+   Amundi     LU3375309823 Amundi Smart Overnight Return UCITS ETF JPY Hedged Acc
+golden interni ✓ (Xeon ticker, CSPX completo, numerosità, copertura valutaria 10/10, politica proventi 17/17)
+copertura valutaria: 793 classi coperte, nessuna orfana ✓
+sentinella hub S&P 500: 59 (prima 59) · nessuna variazione
+sentinella hub oro fisico: 15 (prima 15) · nessuna variazione
+sentinella hub oro minatori: 5 (prima 5) · nessuna variazione
+sentinella hub MSCI World: 38 (prima 37)
+  ⊕ ENTRA  IE000B4NK9I9  UBS Global Equity Income Plus UCITS ETF USD acc  [MSCI World Total Return Net]  ← verificare che sia davvero in perimetro
+sentinella hub MSCI ACWI: 13 (prima 16)
+  ⊖ ESCE   IE0002FCUS29  iShares MSCI ACWI UCITS ETF
+  ⊖ ESCE   IE000CYC2B65  iShares MSCI ACWI Swap UCITS ETF
+  ⊖ ESCE   IE00B6R52259  iShares MSCI ACWI UCITS ETF
+sentinella hub ACWI IMI: 15 (prima 15) · nessuna variazione
+sentinella hub FTSE All-World: 10 (prima 10) · nessuna variazione
+sentinella hub governativi: 489 (prima 489) · nessuna variazione
+sentinella moduli multi-asset: tutte le classi delle famiglie con articolo coperte dai moduli
+COMMIT: 3195 righe in etf_search_rows
+revalidate motore: HTTP 200
+revalidate emittenti: HTTP 200
+[2026-09-17 08:08] motore ricostruito OK
+archive-etf-documents — COMMIT → /home/rebalix/backups/rebalix-docs-archivio
+documenti unici da controllare: 1839 (per 1443 fondi)
+  …25/1839 (nuovi 25 · invariati 0 · falliti 0)
+  …50/1839 (nuovi 50 · invariati 0 · falliti 0)
+  …75/1839 (nuovi 75 · invariati 0 · falliti 0)
+  …100/1839 (nuovi 100 · invariati 0 · falliti 0)
+  …125/1839 (nuovi 125 · invariati 0 · falliti 0)
+  …150/1839 (nuovi 150 · invariati 0 · falliti 0)
+  …175/1839 (nuovi 174 · invariati 1 · falliti 0)
+  …200/1839 (nuovi 199 · invariati 1 · falliti 0)
+  …225/1839 (nuovi 224 · invariati 1 · falliti 0)
+  …250/1839 (nuovi 249 · invariati 1 · falliti 0)
+  …275/1839 (nuovi 273 · invariati 2 · falliti 0)
+  …300/1839 (nuovi 297 · invariati 3 · falliti 0)
+  …325/1839 (nuovi 322 · invariati 3 · falliti 0)
+  …350/1839 (nuovi 347 · invariati 3 · falliti 0)
+  …375/1839 (nuovi 372 · invariati 3 · falliti 0)
+  …400/1839 (nuovi 397 · invariati 3 · falliti 0)
+  …425/1839 (nuovi 420 · invariati 5 · falliti 0)
+  …450/1839 (nuovi 445 · invariati 5 · falliti 0)
+  …475/1839 (nuovi 470 · invariati 5 · falliti 0)
+  …500/1839 (nuovi 495 · invariati 5 · falliti 0)
+  …525/1839 (nuovi 520 · invariati 5 · falliti 0)
+  …550/1839 (nuovi 545 · invariati 5 · falliti 0)
+  …575/1839 (nuovi 570 · invariati 5 · falliti 0)
+  …600/1839 (nuovi 595 · invariati 5 · falliti 0)
+  …625/1839 (nuovi 618 · invariati 7 · falliti 0)
+  …650/1839 (nuovi 640 · invariati 10 · falliti 0)
+  …675/1839 (nuovi 663 · invariati 12 · falliti 0)
+  …700/1839 (nuovi 688 · invariati 12 · falliti 0)
+  …725/1839 (nuovi 713 · invariati 12 · falliti 0)
+  …750/1839 (nuovi 732 · invariati 18 · falliti 0)
+  …775/1839 (nuovi 755 · invariati 20 · falliti 0)
+  …800/1839 (nuovi 780 · invariati 20 · falliti 0)
+  …825/1839 (nuovi 805 · invariati 20 · falliti 0)
+  …850/1839 (nuovi 830 · invariati 20 · falliti 0)
+  …875/1839 (nuovi 855 · invariati 20 · falliti 0)
+  …900/1839 (nuovi 880 · invariati 20 · falliti 0)
+  …925/1839 (nuovi 905 · invariati 20 · falliti 0)
+  …950/1839 (nuovi 930 · invariati 20 · falliti 0)
+  …975/1839 (nuovi 955 · invariati 20 · falliti 0)
+  …1000/1839 (nuovi 980 · invariati 20 · falliti 0)
+  …1025/1839 (nuovi 1005 · invariati 20 · falliti 0)
+  …1050/1839 (nuovi 1030 · invariati 20 · falliti 0)
+  …1075/1839 (nuovi 1055 · invariati 20 · falliti 0)
+  …1100/1839 (nuovi 1077 · invariati 23 · falliti 0)
+  …1125/1839 (nuovi 1096 · invariati 29 · falliti 0)
+  …1150/1839 (nuovi 1119 · invariati 31 · falliti 0)
+  …1175/1839 (nuovi 1144 · invariati 31 · falliti 0)
+  …1200/1839 (nuovi 1169 · invariati 31 · falliti 0)
+  …1225/1839 (nuovi 1194 · invariati 31 · falliti 0)
+  …1250/1839 (nuovi 1219 · invariati 31 · falliti 0)
+  …1275/1839 (nuovi 1244 · invariati 31 · falliti 0)
+  …1300/1839 (nuovi 1269 · invariati 31 · falliti 0)
+  …1325/1839 (nuovi 1294 · invariati 31 · falliti 0)
+  …1350/1839 (nuovi 1319 · invariati 31 · falliti 0)
+  …1375/1839 (nuovi 1344 · invariati 31 · falliti 0)
+  …1400/1839 (nuovi 1365 · invariati 35 · falliti 0)
+  …1425/1839 (nuovi 1390 · invariati 35 · falliti 0)
+  …1450/1839 (nuovi 1415 · invariati 35 · falliti 0)
+  …1475/1839 (nuovi 1438 · invariati 37 · falliti 0)
+  …1500/1839 (nuovi 1463 · invariati 37 · falliti 0)
+  …1525/1839 (nuovi 1488 · invariati 37 · falliti 0)
+  …1550/1839 (nuovi 1512 · invariati 38 · falliti 0)
+  …1575/1839 (nuovi 1535 · invariati 40 · falliti 0)
+  …1600/1839 (nuovi 1560 · invariati 40 · falliti 0)
+  …1625/1839 (nuovi 1583 · invariati 42 · falliti 0)
+  …1650/1839 (nuovi 1608 · invariati 42 · falliti 0)
+  …1675/1839 (nuovi 1633 · invariati 42 · falliti 0)
+  …1700/1839 (nuovi 1657 · invariati 43 · falliti 0)
+  …1725/1839 (nuovi 1682 · invariati 43 · falliti 0)
+  …1750/1839 (nuovi 1707 · invariati 43 · falliti 0)
+  …1775/1839 (nuovi 1732 · invariati 43 · falliti 0)
+  …1800/1839 (nuovi 1756 · invariati 43 · falliti 1)
+  …1825/1839 (nuovi 1781 · invariati 43 · falliti 1)
+nuove versioni archiviate: 1795 (638 MB) | invariati: 43 | falliti: 1
+  ✗ 1× www.amundietf.it · non raggiungibile
+    non raggiungibile  https://www.amundietf.it/pdfDocuments/monthly-factsheet/LU2924149862/ENG/GBR/INSTITUTIONNEL/ETF
+[2026-09-17 08:34] factsheet obbligazionari OK
+enrich-bond-metrics — COMMIT — 1159 obbligazionari
+  ⚠ FR001400SDP3 scadenze non sommano a 100: [{"label":"Breve termine","pct":8.86}]
+  ⚠ FR001400SDQ1 scadenze non sommano a 100: [{"label":"Breve termine","pct":9.01}]
+  ⚠ FR001400SQV3 scadenze non sommano a 100: [{"label":"Breve termine","pct":9.01}]
+  … 100/1159
+  … 200/1159
+  ⚠ IE000MINO564 rating non somma a 100: [{"label":"A","pct":15.4},{"label":"BBB","pct":35.3},{"label":"BB","pct":28.3},{"label":"B+","pct":0.3},{"label":"CCC","pct":4.4},{"label":"C","pct":0.6},{"label":"D","pct":0.4}]
+  ⚠ IE000NA8E2W0 rating non somma a 100: [{"label":"AAA","pct":0.6},{"label":"AA","pct":6.9},{"label":"A+","pct":0.1},{"label":"A","pct":48.5},{"label":"BB","pct":1}]
+  … 300/1159
+  ⚠ IE000W566ZX2 scadenze non sommano a 100: [{"label":"0 - 1 Anno","pct":7.36},{"label":"1 - 3 Anni","pct":33.81},{"label":"3 - 5 Anni","pct":46.5},{"label":"5 - 7 Anni","pct":11.65},{"label":"7 - 10 Anni","pct":0.68},{"label":"USD","pct":73},{"label":"EUR","pct":14.51},{"label":"JPY","pct":7.53},{"label":"HKD","pct":4.01},{"label":"CNY","pct":0.45},{"label":"AUD","pct":0.21},{"label":"GBP","pct":0.15},{"label":"CHF","pct":0.13}]
+  ⚠ IE000ZO4CUT7 rating non somma a 100: [{"label":"AA","pct":5.7},{"label":"A+","pct":0.3},{"label":"A","pct":25.2},{"label":"BBB","pct":32.2},{"label":"B","pct":8.9},{"label":"CCC","pct":1},{"label":"CC","pct":0.1}]
+  … 400/1159
+  … 500/1159
+  ⚠ IE00BDT6FP91 rating non somma a 100: [{"label":"A+","pct":14.16},{"label":"A","pct":10.38},{"label":"BBB+","pct":15.51}]
+  ⚠ IE00BDT6FP91 scadenze non sommano a 100: [{"label":"0 - 1 Anno","pct":7.36},{"label":"CHF","pct":0.13}]
+  ⚠ IE00BDT6FR16 rating non somma a 100: [{"label":"A+","pct":14.16},{"label":"A","pct":10.38},{"label":"BBB+","pct":15.51}]
+  ⚠ IE00BDT6FR16 scadenze non sommano a 100: [{"label":"0 - 1 Anno","pct":7.36},{"label":"CHF","pct":0.13}]
+  ⚠ IE00BDT6FS23 rating non somma a 100: [{"label":"A+","pct":14.16},{"label":"A","pct":10.38},{"label":"BBB+","pct":15.51}]
+  ⚠ IE00BDT6FS23 scadenze non sommano a 100: [{"label":"0 - 1 Anno","pct":7.36},{"label":"CHF","pct":0.13}]
+  ⚠ IE00BDT6FT30 rating non somma a 100: [{"label":"A+","pct":14.16},{"label":"A","pct":10.38},{"label":"BBB+","pct":15.51}]
+  ⚠ IE00BDT6FT30 scadenze non sommano a 100: [{"label":"0 - 1 Anno","pct":7.36},{"label":"CHF","pct":0.13}]
+  … 600/1159
+  ⚠ IE00BLRPQM83 rating non somma a 100: [{"label":"AAA","pct":0.6},{"label":"AA","pct":9.7},{"label":"A+","pct":0.4},{"label":"A","pct":43.6}]
+  ⚠ IE00BLRPQP15 rating non somma a 100: [{"label":"A","pct":15.4},{"label":"BBB","pct":35.3},{"label":"BB","pct":28.3},{"label":"B+","pct":0.3},{"label":"CCC","pct":4.4},{"label":"C","pct":0.6},{"label":"D","pct":0.4}]
+  ⚠ IE00BLRPRD67 rating non somma a 100: [{"label":"AAA","pct":0.6},{"label":"AA","pct":6.9},{"label":"A+","pct":0.1},{"label":"A","pct":48.5},{"label":"BBB-","pct":0.1},{"label":"BB","pct":1}]
+  … 700/1159
+  ⚠ IE00BNH72088 rating non somma a 100: [{"label":"A+","pct":14.16},{"label":"A","pct":10.38},{"label":"BBB+","pct":15.51}]
+  ⚠ IE00BNH72088 scadenze non sommano a 100: [{"label":"0 - 1 Anno","pct":7.36},{"label":"CHF","pct":0.13}]
+  … 800/1159
+  ⚠ LU1287023268 scadenze non sommano a 100: [{"label":"Liquidità","pct":0.01}]
+  ⚠ LU1287023342 scadenze non sommano a 100: [{"label":"1-3 anni","pct":23.24},{"label":"3-5 anni","pct":20.44},{"label":"5-7 anni","pct":12.09},{"label":"7-10 anni","pct":17.13},{"label":"10-15 anni","pct":9.73},{"label":"Liquidità","pct":0.01}]
+  ⚠ LU1407890547 scadenze non sommano a 100: [{"label":"10-15 anni","pct":11.85},{"label":"Liquidità","pct":0.01}]
+  ⚠ LU1407890620 scadenze non sommano a 100: [{"label":"10-15 anni","pct":11.85},{"label":"Liquidità","pct":0.01}]
+  ⚠ LU1407890976 scadenze non sommano a 100: [{"label":"10-15 anni","pct":11.85},{"label":"Liquidità","pct":0.01}]
+  ⚠ LU1407891271 scadenze non sommano a 100: [{"label":"10-15 anni","pct":11.85},{"label":"Liquidità","pct":0.01}]
+  ⚠ LU1407893301 scadenze non sommano a 100: [{"label":"1-3 anni","pct":15.12},{"label":"3-5 anni","pct":7.32},{"label":"5-7 anni","pct":5.06},{"label":"7-10 anni","pct":15.64},{"label":"10-15 anni","pct":19.68},{"label":"Monetario","pct":0.01}]
+  … 900/1159
+  ⚠ LU1563454310 scadenze non sommano a 100: [{"label":"1-3 anni","pct":1.52},{"label":"1-3 anni","pct":18.58},{"label":"3-5 anni","pct":21.35}]
+  ⚠ LU1563454401 scadenze non sommano a 100: [{"label":"1-3 anni","pct":1.52},{"label":"1-3 anni","pct":18.58},{"label":"3-5 anni","pct":21.35}]
+  ⚠ LU1563454823 scadenze non sommano a 100: [{"label":"1-3 anni","pct":1.52},{"label":"1-3 anni","pct":18.58},{"label":"3-5 anni","pct":21.35}]
+  ⚠ LU1563455713 scadenze non sommano a 100: [{"label":"1-3 anni","pct":1.52},{"label":"1-3 anni","pct":18.58},{"label":"3-5 anni","pct":21.35}]
+  ⚠ LU1829218822 scadenze non sommano a 100: [{"label":"1-3 anni","pct":1.91},{"label":"1-3 anni","pct":28.66},{"label":"3-5 anni","pct":23.57}]
+  ⚠ LU1829219127 scadenze non sommano a 100: [{"label":"1-3 anni","pct":1.32},{"label":"1-3 anni","pct":31.22},{"label":"3-5 anni","pct":28.57}]
+  … 1000/1159
+  ⚠ LU2090062782 scadenze non sommano a 100: [{"label":"Monetario","pct":0.01}]
+  ⚠ LU2099288503 scadenze non sommano a 100: [{"label":"3-12 mesi","pct":0.47},{"label":"1-3 anni","pct":27.78},{"label":"3-5 anni","pct":20.26},{"label":"5-7 anni","pct":12.1},{"label":"Liquidità","pct":0.11}]
+  ⚠ LU2099289147 scadenze non sommano a 100: [{"label":"3-12 mesi","pct":0.47},{"label":"1-3 anni","pct":27.78},{"label":"3-5 anni","pct":20.26},{"label":"5-7 anni","pct":12.1},{"label":"Liquidità","pct":0.11}]
+  ⚠ LU2356220926 scadenze non sommano a 100: [{"label":"1-3 anni","pct":9.09},{"label":"3-5 anni","pct":8.57},{"label":"5-7 anni","pct":13.01},{"label":"7-10 anni","pct":8.32},{"label":"10-15 anni","pct":26.71}]
+  ⚠ LU2370241684 scadenze non sommano a 100: [{"label":"1-3 anni","pct":6.44},{"label":"1-3 anni","pct":31.6},{"label":"3-5 anni","pct":24.54}]
+  ⚠ LU2439733507 scadenze non sommano a 100: [{"label":"Altri","pct":6.74},{"label":"Altri","pct":0.01}]
+  ⚠ LU2439735890 scadenze non sommano a 100: [{"label":"1-3 anni","pct":31.78},{"label":"3-5 anni","pct":20.75},{"label":"5-7 anni","pct":15.02},{"label":"Liquidità","pct":1.03}]
+  … 1100/1159
+┌────────────────────┬─────┬─────┬─────┬─────┬───────┬─────┬──────┬──────┬──────┐
+│ (index)            │ n   │ dur │ rat │ mat │ nulla │ err │ dur% │ rat% │ mat% │
+├────────────────────┼─────┼─────┼─────┼─────┼───────┼─────┼──────┼──────┼──────┤
+│ UBS                │ 111 │ 61  │ 0   │ 0   │ 50    │ 0   │ 55   │ 0    │ 0    │
+│ iShares            │ 426 │ 419 │ 419 │ 419 │ 2     │ 0   │ 98   │ 98   │ 98   │
+│ Amundi             │ 207 │ 175 │ 162 │ 132 │ 32    │ 0   │ 85   │ 78   │ 64   │
+│ Vanguard           │ 33  │ 33  │ 33  │ 33  │ 0     │ 0   │ 100  │ 100  │ 100  │
+│ JPMorgan           │ 31  │ 31  │ 28  │ 0   │ 0     │ 0   │ 100  │ 90   │ 0    │
+│ SPDR               │ 73  │ 64  │ 65  │ 64  │ 8     │ 0   │ 88   │ 89   │ 88   │
+│ Invesco            │ 126 │ 105 │ 107 │ 107 │ 19    │ 0   │ 83   │ 85   │ 85   │
+│ Franklin Templeton │ 10  │ 10  │ 0   │ 0   │ 0     │ 0   │ 100  │ 0    │ 0    │
+│ Xtrackers          │ 125 │ 117 │ 0   │ 115 │ 8     │ 0   │ 94   │ 0    │ 92   │
+│ LGIM               │ 17  │ 17  │ 8   │ 16  │ 0     │ 0   │ 100  │ 47   │ 94   │
+└────────────────────┴─────┴─────┴─────┴─────┴───────┴─────┴──────┴──────┴──────┘
+senza factsheet in archivio: 75 (CH0118923876, CH0118923892, CH1415798458, CH1415798466, DE000A2QP4G5, IE0006MHC136, IE0006WZF7C2, IE0008GO35B5…)
+  ℹ golden IE00049TNTV6: documento più recente (2026-08-31 ≠ 2026-06-30) → confronto duration saltato (6.2)
+  ✓ golden IE00049TNTV6 (JPMorgan) dur=6.2 media as_of=2026-08-31 rating=6 scad=0
+  ℹ golden IE00049TNTV6: documento più recente (2026-08-31 ≠ 2026-07-31) → confronto duration saltato (6.2)
+  ✓ golden IE00049TNTV6 (JPMorgan) dur=6.2 media as_of=2026-08-31 rating=6 scad=0
+  ℹ golden IE0007EH5UK6: documento più recente (2026-07-31 ≠ 2026-06-30) → confronto duration saltato (4.26)
+  ✓ golden IE0007EH5UK6 (LGIM) dur=4.26 modificata as_of=2026-07-31 rating=9 scad=8
+  ℹ golden LU0721552973: documento più recente (2026-08-31 ≠ 2026-06-30) → confronto duration saltato (3.45)
+  ✓ golden LU0721552973 (UBS) dur=3.45 modificata as_of=2026-08-31 rating=0 scad=0
+  ℹ golden LU1285959885: documento più recente (2026-08-31 ≠ 2026-06-30) → confronto duration saltato (6.42)
+  ✓ golden LU1285959885 (Amundi) dur=6.42 modificata as_of=2026-08-31 rating=6 scad=8
+  ℹ golden IE0003HUCA83: documento più recente (2026-08-31 ≠ 2026-06-30) → confronto duration saltato (6.5)
+  ✓ golden IE0003HUCA83 (Vanguard) dur=6.5 media as_of=2026-08-31 rating=5 scad=7
+  ℹ golden IE0002OP0LA0: documento più recente (2026-08-31 ≠ 2026-07-31) → confronto duration saltato (2.69)
+  ✓ golden IE0002OP0LA0 (SPDR) dur=2.69 effettiva as_of=2026-08-31 rating=2 scad=5
+  ✓ golden IE0004KLW911 (Xtrackers) dur=6.46 modificata as_of=2026-09-15 rating=0 scad=8
+  ✓ golden IE00004FVB93 (iShares) dur=1.69 effettiva as_of=2026-08-31 rating=5 scad=3
+  ℹ golden IE000ZWSN3F7: documento più recente (2026-08-31 ≠ 2026-07-31) → confronto duration saltato (3)
+  ✓ golden IE000ZWSN3F7 (Invesco) dur=3 effettiva as_of=2026-08-31 rating=9 scad=7
+golden: 10/10
+scritte 1040 righe, errori 0
+revalidate schede: HTTP 200
+[2026-09-17 09:12] bond-metrics OK
+{"ok":true,"name":"etf-registry-censimento","recorded_at":"2026-09-17T07:12:10.691Z"}[2026-09-17 09:12] [heartbeat] inviato

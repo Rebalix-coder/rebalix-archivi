@@ -21,6 +21,10 @@ os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH"
 
 ARCHIVE = os.path.expanduser("~/backups/rebalix-etf-registry-archivio")
 REPO = os.path.expanduser("~/progetti/rebalix")
+# (16 set 2026, Linus «conserviamo tutto») ARCHIVIO RAW delle risposte delle fonti di composizione: i lettori che
+# accettano --raw-dir salvano la risposta com'è (gz + indice) prima del parsing; i lettori senza il flag lo ignorano.
+RAW_DIR = os.path.expanduser("~/backups/rebalix-raw-archivio")
+os.makedirs(RAW_DIR, exist_ok=True)
 NODE = shutil.which("node") or "/usr/local/bin/node"
 STATE = os.path.join(ARCHIVE, "_state.json")
 
@@ -555,7 +559,7 @@ def main():
     # (paniere sostitutivo, niente mappa). Rifacimento mensile completo.
     if not DRY:
         try:
-            hx = subprocess.run([NODE, "scripts/ingest-etf-holdings-xtrackers.mjs", "--commit"],
+            hx = subprocess.run([NODE, "scripts/ingest-etf-holdings-xtrackers.mjs", "--commit", "--raw-dir", RAW_DIR],
                                 cwd=REPO, capture_output=True, text=True, timeout=1800)
             for line in (hx.stdout or "").strip().splitlines()[-3:]:
                 log(f"  |holdings-xtrackers| {line}")
@@ -570,7 +574,7 @@ def main():
     # con verifica ISIN-nel-file (impossibile ingerire il fondo sbagliato).
     if not DRY:
         try:
-            hs = subprocess.run([NODE, "scripts/ingest-etf-holdings-spdr.mjs", "--commit"],
+            hs = subprocess.run([NODE, "scripts/ingest-etf-holdings-spdr.mjs", "--commit", "--raw-dir", RAW_DIR],
                                 cwd=REPO, capture_output=True, text=True, timeout=2400)
             for line in (hs.stdout or "").strip().splitlines()[-3:]:
                 log(f"  |holdings-spdr| {line}")
@@ -597,7 +601,7 @@ def main():
     # headless (WAF anti-bot, lib-invesco-fetch) — timeout largo: ~290 fondi.
     if not DRY:
         try:
-            hi = subprocess.run([NODE, "scripts/ingest-etf-holdings-invesco.mjs", "--commit"],
+            hi = subprocess.run([NODE, "scripts/ingest-etf-holdings-invesco.mjs", "--commit", "--raw-dir", RAW_DIR],
                                 cwd=REPO, capture_output=True, text=True, timeout=3600)
             for line in (hi.stdout or "").strip().splitlines()[-3:]:
                 log(f"  |holdings-invesco| {line}")
@@ -636,7 +640,7 @@ def main():
     # (borHoldings paginato + marketAllocation + sectorDiversification).
     if not DRY:
         try:
-            hv = subprocess.run([NODE, "scripts/ingest-etf-holdings-vanguard.mjs", "--commit"],
+            hv = subprocess.run([NODE, "scripts/ingest-etf-holdings-vanguard.mjs", "--commit", "--raw-dir", RAW_DIR],
                                 cwd=REPO, capture_output=True, text=True, timeout=2400)
             for line in (hv.stdout or "").strip().splitlines()[-2:]:
                 log(f"  |holdings-vanguard| {line}")
@@ -666,7 +670,7 @@ def main():
                 ("amundi", "scripts/ingest-etf-holdings-amundi-api.mjs", "scripts/ingest-etf-holdings-amundi-factsheet.mjs"),
                 ("franklin", "scripts/ingest-etf-holdings-franklin.mjs", None)):
             try:
-                hf = subprocess.run([NODE, primario, "--commit"],
+                hf = subprocess.run([NODE, primario, "--commit", "--raw-dir", RAW_DIR],
                                     cwd=REPO, capture_output=True, text=True, timeout=3600)
                 for line in (hf.stdout or "").strip().splitlines()[-2:]:
                     log(f"  |holdings-{emittente}| {line}")

@@ -2,3 +2,7 @@
 {"date": "2026-09-11", "kind": "rating", "name": "A+", "from": 42.78, "to": 0}
 {"date": "2026-09-11", "kind": "rating", "name": "AAA", "from": 22.47, "to": 0}
 {"date": "2026-09-11", "kind": "rating", "name": "BBB+", "from": 21.13, "to": 0}
+{"date": "2026-09-14", "kind": "rating", "name": "A", "from": 0, "to": 12.99}
+{"date": "2026-09-14", "kind": "rating", "name": "A+", "from": 0, "to": 44.35}
+{"date": "2026-09-14", "kind": "rating", "name": "AAA", "from": 0, "to": 19.89}
+{"date": "2026-09-14", "kind": "rating", "name": "BBB+", "from": 0, "to": 22.76}

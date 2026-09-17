@@ -88,3 +88,12 @@
 2026-09-10 08:33  [deploy] deploy prod OK (a01eebf5) al tentativo 1
 2026-09-10 08:33  [heartbeat] inviato (200)
 2026-09-10 08:33  === giro completato (0 errori) ===
+2026-09-17 09:12  === giro 2026-09 avviato (dry=False) ===
+2026-09-17 09:12  [fineco] ok: 478 ISIN
+2026-09-17 09:12  [moneyfarm] ok: 783 ISIN
+2026-09-17 09:12  [bgsaxo] ok: 255 ISIN
+2026-09-17 09:12  [directa] ok: 1298 ISIN
+2026-09-17 09:12  [xtb] ok: 1421 ISIN
+2026-09-17 09:12  liste invariate rispetto al giro precedente — indice fermo, nessun deploy
+2026-09-17 09:12  [heartbeat] inviato (200)
+2026-09-17 09:12  === giro completato (invariato) ===
