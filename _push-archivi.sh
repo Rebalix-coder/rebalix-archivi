@@ -20,7 +20,7 @@ if ! git diff --cached --quiet; then
   git commit -q -m "Snapshot archivi $(date '+%Y-%m-%d') (Mac)" >> "$LOG" 2>&1
   log "commit dello snapshot"
 fi
-if ! git pull --rebase -X theirs -q origin main >> "$LOG" 2>&1; then
+if ! git pull --rebase --autostash -X theirs -q origin main >> "$LOG" 2>&1; then
   git rebase --abort >> "$LOG" 2>&1
   log "!! pull --rebase FALLITO — push saltato (riproverà domani)"
   exit 1
@@ -30,7 +30,7 @@ if git push -q origin main >> "$LOG" 2>&1; then
 else
   # 4 set 2026: gara persa col pusher VPS (pull lento 25 min, push VPS in mezzo) —
   # un secondo giro pull+push chiude la finestra invece di aspettare domani
-  if git pull --rebase -X theirs -q origin main >> "$LOG" 2>&1 && git push -q origin main >> "$LOG" 2>&1; then
+  if git pull --rebase --autostash -X theirs -q origin main >> "$LOG" 2>&1 && git push -q origin main >> "$LOG" 2>&1; then
     log "push OK (al secondo tentativo dopo pull)"; ESITO=0
   else
     git rebase --abort >> "$LOG" 2>&1
