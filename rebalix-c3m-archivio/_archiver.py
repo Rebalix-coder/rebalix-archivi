@@ -62,9 +62,11 @@ FACTSHEET = "https://www.amundietf.it/pdfDocuments/monthly-factsheet/FR001075420
 GIT = shutil.which("git") or "/usr/bin/git"
 VERCEL = shutil.which("vercel") or "/usr/local/bin/vercel"
 GENERATORI = ["gen_c3m_performance.py", "gen_c3m_composition.py", "gen_c3m_tax.py",
-              "gen_c3m_aum.py", "gen_c3m_xeon_series.py"]  # gen_c3m_changes gira già nel passo variazioni
+              "gen_c3m_aum.py", "gen_c3m_xeon_series.py",
+              "gen_c3m_xeon_compare.py"]  # (19/9/2026) lato XEON del confronto + «se vendi» da etf_series; gen_c3m_changes gira già nel passo variazioni
 DATA_FILES = ["lib/blog/c3m-performance.ts", "lib/blog/c3m-composition.ts", "lib/blog/c3m-tax.ts",
-              "lib/blog/c3m-aum.ts", "lib/blog/c3m-xeon-series.ts", "lib/blog/c3m-changes.ts"]
+              "lib/blog/c3m-aum.ts", "lib/blog/c3m-xeon-series.ts", "lib/blog/c3m-changes.ts",
+              "lib/blog/c3m-xeon-dati.ts"]
 
 
 def log(msg):

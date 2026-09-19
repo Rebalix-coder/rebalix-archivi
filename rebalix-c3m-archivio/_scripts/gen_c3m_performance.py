@@ -21,9 +21,11 @@ Regole metriche: serie >1 anno → annualizzato ammesso; acc = total return; TD 
 solare = rendimento fondo − rendimento indice sull'ultima seduta comune dell'anno.
 """
 import json, os, sys, datetime, statistics, urllib.request, urllib.error
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import lib_drawdown   # _scripts/lib_drawdown.py (proposta: docs/…/lib_drawdown.proposto.py)
 
-ARCHIVE = os.path.expanduser("~/backups/rebalix-c3m-archivio")
-REPO = os.path.expanduser("~/progetti/rebalix")
+ARCHIVE = os.path.expanduser(os.environ.get("C3M_ARCHIVE", "~/backups/rebalix-c3m-archivio"))
+REPO = os.path.expanduser(os.environ.get("C3M_REPO", "~/progetti/rebalix"))   # override solo per le prove a vuoto
 DEST = os.path.join(REPO, "lib", "blog", "c3m-performance.ts")
 
 SOGLIA_DICHIARATO = 0.05   # punti: |nostro anno solare − dichiarato Amundi|
@@ -67,46 +69,60 @@ def yahoo_serie(sym):
     return {datetime.datetime.utcfromtimestamp(t).date(): c for t, c in zip(ts, close) if c}
 
 
-def dd_storico_completo():
-    """Drawdown sull'INTERO storico (Parigi mensile dal 2009, stessa fonte della rotta
-    live): numeri per la prosa della sez. 6. SENTINELLA sull'episodio raccontato: la
-    narrativa dell'articolo descrive il picco 2014-15 → minimo estate 2022; se un
-    nuovo episodio lo supera, i numeri nuovi sotto la vecchia storia sarebbero una
-    bugia → fail-loud, riscrittura umana (pattern «mai cambi muti»)."""
-    EPISODIO_RACCONTATO = {"trough": "2022-08", "max_dd_circa": -4.9, "tolleranza_pt": 0.5}
-    url = "https://query1.finance.yahoo.com/v8/finance/chart/C3M.PA?range=max&interval=1mo"
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+def env_locale():
+    """Chiavi Supabase dal .env.local del repo (stesso file che legge _archiver.py)."""
+    out = {}
+    p = os.path.join(REPO, ".env.local")
+    if not os.path.exists(p):
+        sys.exit(f"[c3m-performance] {p} assente: NON scrivo")
+    with open(p) as f:
+        for l in f:
+            l = l.strip()
+            if "=" in l and not l.startswith("#"):
+                k, v = l.split("=", 1)
+                out[k] = v.strip().strip('"').strip("'")
+    return out
+
+
+def serie_da_etf_series():
+    """NAV ufficiale GIORNALIERO e serie dell'INDICE di C3M da etf_series, grezzi (la scheda e la
+    rotta live /api/blog/c3m-drawdown leggono la stessa serie con le cure di lettura; per C3M
+    coincidono): {date: v} × 2. Dal 18/9/2026 il NAV copre l'emissione (22/6/2009→): il tratto
+    2009→2017 è l'archivio fornito da Amundi ETF su richiesta di Rebalix (provenienza
+    nav_serie_integrazione). L'indice (dal 2012) serve a DEFINIRE la finestra dei tassi negativi."""
+    env = env_locale()
+    key = env.get("NEXT_PUBLIC_SUPABASE_ANON_KEY") or env.get("SUPABASE_SERVICE_ROLE_KEY")   # minimo privilegio: etf_series è leggibile in sola lettura con la anon
+    if not env.get("NEXT_PUBLIC_SUPABASE_URL") or not key:
+        sys.exit("[c3m-performance] chiavi Supabase assenti in .env.local: NON scrivo")
+    url = f"{env['NEXT_PUBLIC_SUPABASE_URL']}/rest/v1/etf_series?isin=eq.FR0010754200&select=nav,bench_return,first_date"
+    req = urllib.request.Request(url, headers={"apikey": key, "Authorization": f"Bearer {key}"})
     def _go():
         with urllib.request.urlopen(req, timeout=60) as r:
             return json.load(r)
-    d = net_retry(_go)["chart"]["result"][0]
-    ts, close = d["timestamp"], d["indicators"]["quote"][0]["close"]
-    mesi = {}
-    for t, c in zip(ts, close):
-        if c is not None:
-            mesi[datetime.datetime.utcfromtimestamp(t).date().isoformat()[:7]] = c
-    yms = sorted(mesi)
-    picco, picco_ym = -1e9, yms[0]
-    min_dd, trough_ym, peak_of_trough = 0.0, yms[0], yms[0]
-    streak, longest = 0, 0
-    for ym in yms:
-        v = mesi[ym]
-        if v >= picco:
-            picco, picco_ym, streak = v, ym, 0
-        else:
-            streak += 1
-            longest = max(longest, streak)
-        dd = (v / picco - 1) * 100
-        if dd < min_dd:
-            min_dd, trough_ym, peak_of_trough = dd, ym, picco_ym
-    min_dd = round(min_dd, 2)
-    if (trough_ym != EPISODIO_RACCONTATO["trough"]
-            or abs(min_dd - EPISODIO_RACCONTATO["max_dd_circa"]) > EPISODIO_RACCONTATO["tolleranza_pt"]):
-        sys.exit(f"[c3m-performance] SENTINELLA EPISODIO: max drawdown ora {min_dd}% ({trough_ym}), "
-                 f"raccontato {EPISODIO_RACCONTATO['max_dd_circa']}% ({EPISODIO_RACCONTATO['trough']}) — "
-                 f"la NARRATIVA della sez. 6 va riscritta a mano, NON scrivo")
-    return {"maxDdPct": min_dd, "troughYm": trough_ym, "peakYm": peak_of_trough,
-            "monthsUnderwater": longest, "firstYm": yms[0], "lastYm": yms[-1]}
+    righe = net_retry(_go)
+    if not righe or not righe[0].get("nav") or not righe[0].get("bench_return"):
+        sys.exit("[c3m-performance] etf_series FR0010754200: NAV o indice assenti — NON scrivo")
+    ms = lambda t: datetime.datetime.fromtimestamp(t / 1000, datetime.timezone.utc).date()
+    nav = {ms(t): float(v) for t, v in righe[0]["nav"] if v is not None and v > 0}
+    idx = {ms(t): float(v) for t, v in righe[0]["bench_return"] if v is not None and v > 0}
+    if min(nav) > datetime.date(2009, 6, 30):
+        sys.exit(f"[c3m-performance] la serie NAV parte da {min(nav)}, non dall'emissione (giugno 2009): NON scrivo")
+    return nav, idx
+
+
+def dd_storico_completo():
+    """Drawdown sull'INTERO storico dal NAV UFFICIALE GIORNALIERO (stesso calcolo della FAQ della
+    scheda) + l'EPISODIO DEI TASSI NEGATIVI definito dai dati (lib_drawdown): la prosa della
+    sez. 6 è un template a rami che legge `classe`, `coincide` e le date — nessuna sentinella che
+    chieda una persona (19/9/2026). Guardia solo sul dato rotto (finestra non trovata)."""
+    nav, idx = serie_da_etf_series()
+    try:
+        r = lib_drawdown.racconto(nav, idx, finestra_precedente=lib_drawdown.finestra_nel_file(DEST))
+    except lib_drawdown.DatoRotto as e:
+        sys.exit(f"[c3m-performance] {e}: dato rotto, NON scrivo")
+    if not r["tassiNegativi"]:
+        sys.exit("[c3m-performance] finestra dei tassi negativi non trovata nell'indice: dato rotto, NON scrivo")
+    return r
 
 
 def dichiarate_da_raw():
@@ -228,6 +244,8 @@ def main():
  * FILE VERSIONATO E AGGIORNATO AUTOMATICAMENTE da `_scripts/gen_c3m_performance.py`
  * (archivio C3M). Non modificare a mano.
  */
+import type {{ Racconto }} from './drawdown-racconto'
+
 export type C3mPerformance = {{
   updated: string
   start: string // prima seduta comune NAV/indice (base = 0%)
@@ -236,9 +254,9 @@ export type C3mPerformance = {{
   cumIndex: number[] // rendimento cumulato indice %
   dd: number[] // drawdown % dal massimo (fondo)
   maxDd: {{ pct: number; date: string }}
-  // drawdown sull'INTERO storico (prezzi Parigi mensili dal 2009, fonte della rotta live);
-  // una SENTINELLA nel generatore blocca la riscrittura se l'episodio raccontato cambia
-  fullDd: {{ maxDdPct: number; troughYm: string; peakYm: string; monthsUnderwater: number; firstYm: string; lastYm: string }}
+  // drawdown sull'INTERO storico dal NAV ufficiale GIORNALIERO dall'emissione 2009 (stesso calcolo della FAQ della scheda)
+  // + episodio dei tassi negativi DEFINITO dai dati (finestra in cui l'indice rende ≤ 0 su 3 mesi) e classe dell'episodio massimo;
+  fullDd: Racconto
   annualized: {{ fund: number; index: number; tdBp: number; years: number }}
   byYear: Record<string, {{ fund: number; index: number; tdBp: number }}> // anno solare
 }}
@@ -251,7 +269,7 @@ export const C3M_PERFORMANCE: C3mPerformance = {{
   cumIndex: {json.dumps(cum_i)},
   dd: {json.dumps(dd)},
   maxDd: {{ pct: {max_dd}, date: '{max_dd_date.isoformat()}' }},
-  fullDd: {json.dumps(full_dd)},
+  fullDd: {json.dumps({**full_dd['massimo'], 'tassiNegativi': full_dd['tassiNegativi'], 'coincide': full_dd['coincide'], 'soglie': full_dd['soglie']})},
   annualized: {{ fund: {ann_f:.3f}, index: {ann_i:.3f}, tdBp: {round((ann_f - ann_i) * 100)}, years: {anni_tot:.1f} }},
   byYear: {{
     {anni_righe},

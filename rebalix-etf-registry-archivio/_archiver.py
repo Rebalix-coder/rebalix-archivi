@@ -15,7 +15,7 @@ Uso: python3 _archiver.py [--dry-run] [--force]
 Cadenza: launchd il giorno 2 del mese alle 07:45 (RunAtLoad recupera i mesi col
 Mac spento; _state.json evita i doppi giri nello stesso mese).
 """
-import os, re, sys, glob, json, shutil, datetime, subprocess, urllib.request
+import os, re, sys, json, shutil, datetime, subprocess, urllib.request
 
 os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH", "")
 
@@ -32,6 +32,9 @@ DRY = "--dry-run" in sys.argv
 FORCE = "--force" in sys.argv
 TODAY = datetime.date.today()
 YM = f"{TODAY:%Y-%m}"
+# provenienza del CODICE DI ACQUISIZIONE (18 set 2026): chi ha prodotto la «dopo» dell'edizione, oltre al commit del repo
+GIRO_AVVIATO_IL = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+ARCHIVIATORE_MD5 = __import__("hashlib").md5(open(os.path.abspath(__file__), "rb").read()).hexdigest()
 
 
 def log(msg):
@@ -43,6 +46,76 @@ def log(msg):
 
 
 DELISTED = []  # riempito dal main col riepilogo dei delisting del giro
+HOST_VPS = "rebalix-vps"  # dove esistono baseline, semaforo e l'edizione: lì l'edizione è OBBLIGATORIA
+
+
+def gate_acquisizione(nome, returncode, esiti_path):
+    """GATE DI ACQUISIZIONE (Linus, 18 set 2026): un writer previsto dall'edizione deve aver TERMINATO e DICHIARATO il proprio
+    esito. Una dichiarazione negativa prodotta correttamente (DATA_NON_DISPONIBILE, FONDO_DI_FONDI) è accettabile; l'assenza
+    della dichiarazione perché il lettore è morto non lo è. Torna (ok, motivo)."""
+    if returncode != 0:
+        return False, f"{nome}: exit {returncode}"
+    try:
+        d = json.load(open(esiti_path))
+    except Exception as e:
+        return False, f"{nome}: --out mancante o illeggibile ({esiti_path}: {str(e)[:60]})"
+    c, per = d.get("conteggi") or {}, (d.get("perimetro") or {}).get("n")
+    chiavi = ("fotografabili", "fondi_di_fondi", "senza_data", "falliti")
+    if per is None or any(k not in c for k in chiavi):
+        return False, f"{nome}: --out senza perimetro o conteggi completi"
+    somma = sum(c[k] for k in chiavi)
+    if somma != per:
+        return False, f"{nome}: universo non contabilizzato: perimetro {per} ≠ {' + '.join(str(c[k]) for k in chiavi)} = {somma}"
+    esiti = d.get("esiti") or []
+    if len(esiti) != per - c["falliti"]:
+        return False, f"{nome}: {len(esiti)} esiti per {per - c['falliti']} fondi attesi (perimetro − falliti)"
+    dich = d.get("dichiarazioni") or {}
+    if len(dich.get("FONDO_DI_FONDI", [])) != c["fondi_di_fondi"] or len(dich.get("DATA_NON_DISPONIBILE", [])) != c["senza_data"]:
+        return False, f"{nome}: dichiarazioni non coerenti coi conteggi"
+    return True, f"{nome}: exit 0 · perimetro {per} = {' + '.join(f'{c[k]} {k}' for k in chiavi)}"
+
+
+def edizione_mensile(ym, acquisizioni, esegui, leggi_stato, ed_dir, f_dopo, f_acq, node, log):
+    """L'EDIZIONE del mese, con i comandi INIETTATI (testabile senza VPS). `acquisizioni` = {nome: (returncode, esiti_path)} dei
+    writer previsti; se uno non passa il gate, NESSUN passo parte (né apri, né esporta, né congela-dopo). Torna (stato, errore)."""
+    dich = []
+    for nome, (rc, esiti_path) in acquisizioni.items():
+        ok, motivo = gate_acquisizione(nome, rc, esiti_path)
+        log(f"  |edizione:gate| {'✓' if ok else '✗'} {motivo}")
+        if not ok:
+            return None, f"gate di acquisizione: {motivo} — l'edizione non si congela su una fotografia stantia"
+        dich += ["--dichiarazioni", esiti_path]
+    try:
+        esegui("apri", [node, "scripts/edizione.mjs", "apri", "--mese", ym])
+        stato = leggi_stato()
+        if stato and stato.get("dopo"):
+            log(f"  |edizione:esporta| la «dopo» è già congelata ({stato['dopo']['sha256'][:12]}…): non si riesporta")
+        else:
+            esegui("esporta", [node, "scripts/esporta-foto-completa.mjs", "--out", f_dopo, "--acquisizione", f_acq] + dich)
+            esegui("congela-dopo", [node, "scripts/edizione.mjs", "congela-dopo", "--mese", ym, "--file", f_dopo, "--acquisizione", f_acq])
+        esegui("confronta", [node, "scripts/edizione.mjs", "confronta", "--mese", ym, "--commit"])
+        esegui("completa", [node, "scripts/edizione.mjs", "completa", "--mese", ym, "--commit"])   # COMPARED → COMPLETE nel DB (secondo testimone)
+        st = leggi_stato()
+        return (st or {}).get("stato"), None
+    except Exception as e:
+        st = leggi_stato()
+        return (st or {}).get("stato"), str(e)
+
+
+def marcatore_fine_giro(state, ym, modules, edizione_richiesta, edizione_stato, errore, adesso, archiviatore_md5, avviato_il):
+    """Che cosa scrivere in _state.json in fondo al giro (contratto dell'edizione, Linus 18 set 2026).
+
+    `last_ym = ym` SOLO se il giro è davvero concluso: se l'edizione era richiesta (VPS), deve essere arrivata a COMPLETE.
+    Altrimenti il mese resta RECUPERABILE alla sveglia successiva: si conservano `in_corso_ym`, i moduli già eseguiti e
+    l'errore, ma il mese NON si dichiara concluso (il `last_ym` precedente resta quello che era).
+    """
+    concluso = (not edizione_richiesta) or edizione_stato == "COMPLETE"
+    base = {k: v for k, v in state.items() if k not in ("in_corso_ym", "iniziato_il", "moduli", "errore", "edizione")}
+    if concluso:
+        return {**base, "last_ym": ym, "at": adesso, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5,
+                "moduli": modules, "edizione": edizione_stato}
+    return {**base, "in_corso_ym": ym, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5, "moduli": modules,
+            "edizione": edizione_stato, "errore": errore or "edizione non arrivata a COMPLETE"}
 
 
 def send_heartbeat(ok, errori, modules):
@@ -113,9 +186,12 @@ def main():
         log(f"  ISIN marcati chiusi in questo giro: {sum(d['n'] for d in delisted)}")
     DELISTED.extend(delisted)
 
-    if ok and not DRY:
+    # (18 set 2026, contratto dell'edizione) il mese NON si marca «fatto» qui, dopo il primo modulo: si marca in FONDO al
+    # giro. Un giro interrotto a metà ripartirà alla sveglia successiva; i moduli sono upsert idempotenti e l'edizione dei
+    # confronti riprende dal proprio stato (stessa impronta = si salta, impronta diversa = errore).
+    if not DRY:
         with open(STATE, "w") as f:
-            json.dump({"last_ym": YM, "at": f"{datetime.datetime.now():%Y-%m-%d %H:%M}"}, f)
+            json.dump({**state, "in_corso_ym": YM, "iniziato_il": GIRO_AVVIATO_IL}, f)
     log(f"esito: exit={p.returncode}, emittenti ok={sum(1 for v in modules.values() if v)}/{len(modules)}")
 
     # ETC/ETP (Xtrackers da etc.dws.com, ricetta a parte: la sitemap ETF non li ha).
@@ -636,6 +712,29 @@ def main():
             log(f"!! xetra fallito (non blocca): {e}")
             modules["xetra"] = False
 
+    # Composizioni iShares dal componente `holdings` dell'API (18 set 2026, Linus «un writer, un ritmo»): UNICO writer
+    # delle composizioni iShares — il file fundDownload del modulo |series| alimenta solo serie e benchmark (regola in
+    # scripts/lib-composizioni-writer.mjs). Fotografia ancorata alla FINE DEL MESE PRECEDENTE (target = ultimo giorno;
+    # ripiego dichiarato all'indietro ≤ 5 giorni; oltre, nessuna scrittura e DATA_NON_DISPONIBILE esplicito); i 9 Portfolio
+    # (fondi di fondi) non si scrivono per regola. L'esito per OGNI fondo va in --out: l'edizione (più sotto) lo legge come
+    # DICHIARAZIONI (NON_CONFRONTABILE:FONDO_DI_FONDI / DATA_NON_DISPONIBILE). Prova a vuoto del 18/9 sui 910: 37 min, 171 MB.
+    MESE_PRECEDENTE = (TODAY.replace(day=1) - datetime.timedelta(days=1)).strftime("%Y-%m")
+    ISHARES_RC = None   # exit del lettore: None = mai terminato (eccezione/timeout) → il gate dell'edizione lo tratta come morto
+    ISHARES_ESITI = os.path.join(os.path.expanduser("~/backups/rebalix-edizioni"), YM, "acquisizione", "ishares-api.json")
+    if not DRY:
+        try:
+            os.makedirs(os.path.dirname(ISHARES_ESITI), exist_ok=True)
+            hh_is = subprocess.run([NODE, "scripts/ingest-etf-holdings-ishares-api.mjs", "--min-pos", "0", "--mese", MESE_PRECEDENTE,
+                                    "--raw-dir", RAW_DIR, "--out", ISHARES_ESITI, "--commit"],
+                                   cwd=REPO, capture_output=True, text=True, timeout=3*3600)
+            for line in (hh_is.stdout or "").strip().splitlines()[-9:]:
+                log(f"  |holdings-ishares| {line}")
+            modules["holdings-ishares"] = hh_is.returncode == 0
+            ISHARES_RC = hh_is.returncode
+        except Exception as e:
+            log(f"!! holdings-ishares fallito (non blocca il giro; blocca l'EDIZIONE: gate di acquisizione): {e}")
+            modules["holdings-ishares"] = False
+
     # Composizioni Vanguard (Fase B/3, notte 10-11 ago): GraphQL gpx ufficiale
     # (borHoldings paginato + marketAllocation + sectorDiversification).
     if not DRY:
@@ -781,28 +880,59 @@ def main():
         except Exception as e:
             log(f"!! anteprima-cambi (non blocca): {e}")
 
-    # DIFF DEI PANIERI + FOTO SU DISCO (decisione Linus 21 ago: «foto complete su disco
-    # VPS, nel DB solo il derivato»; agganciato il 3 set dopo il collaudo su SWDA).
-    # L'ORDINE e' la sostanza: PRIMA il diff (ultima foto in cassaforte vs DB appena
-    # raccolto -> etf_holdings_diff), POI la foto nuova, che diventa la «prima» del mese
-    # prossimo. Solo dove esiste la cassaforte (VPS): il gemello Mac salta senza rosso.
-    # ⚠️ contratto foto: TSV.gz CON riga d'intestazione (foto-panieri.sh la scrive dal
-    # 2 set — leggiFoto del diff la esige, lezione del primo demo).
+    # EDIZIONE MENSILE DEI CONFRONTI (contratto runner ↔ baseline ↔ motore, Linus 18 set 2026; sostituisce il diff
+    # «ultima foto per glob vs --dopo db» del 3 set). Il runner decide QUALE coppia: la baseline ASSEGNATA a questo mese
+    # (~/backups/rebalix-baseline/<YM>/: manifest + file + atto, per impronta) e la «dopo» esportata ADESSO dal DB appena
+    # raccolto e congelata su disco con impronta e provenienza PRIMA del confronto. Il motore decide SE ogni coppia è
+    # confrontabile e scrive un esito per OGNI fondo. Stato esplicito PREPARING→FROZEN→COMPARED→COMPLETE in
+    # ~/backups/rebalix-edizioni/<YM>/stato.json: un rilancio riprende dal primo passo mancante, mai riscrive.
+    # In fondo, «completa» congela la baseline del mese prossimo (= la «dopo» di oggi, manifest ORIGINAL_ACQUIRED_IN_RUN).
+    # Solo sulla VPS (dove esistono baseline e semaforo): il gemello Mac salta senza rosso.
+    BASELINE_DIR = os.path.expanduser("~/backups/rebalix-baseline")
+    EDIZIONI_DIR = os.path.expanduser("~/backups/rebalix-edizioni")
+    EDIZIONE_RICHIESTA = os.uname().nodename == HOST_VPS   # sulla VPS l'edizione è obbligatoria: senza baseline assegnata non esiste un giro valido
+    edizione_stato, edizione_errore = None, None
+    if not DRY and EDIZIONE_RICHIESTA and not os.path.isdir(os.path.join(BASELINE_DIR, YM)):
+        edizione_errore = f"nessuna baseline assegnata a {YM} in {BASELINE_DIR}: l'edizione non può esistere (il motore non cerca alternative)"
+        log(f"!! EDIZIONE {YM} BLOCCATA: {edizione_errore}")
+        modules["edizione"] = False
+    if not DRY and os.path.isdir(os.path.join(BASELINE_DIR, YM)):
+        ed_dir = os.path.join(EDIZIONI_DIR, YM)
+        esport = os.path.join(ed_dir, "esportazione")
+        os.makedirs(esport, exist_ok=True)
+        f_dopo, f_acq = os.path.join(esport, "foto-dopo.tsv.gz"), os.path.join(esport, "acquisizione.json")
+        env_ed = dict(os.environ, REBALIX_ARCHIVIATORE_MD5=ARCHIVIATORE_MD5, REBALIX_GIRO_AVVIATO_IL=GIRO_AVVIATO_IL,
+                      REBALIX_MODULI=json.dumps(modules))
+
+        def passo_edizione(nome, cmd, tetto=3600):
+            r = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, timeout=tetto, env=env_ed)
+            for line in ((r.stdout or "") + (r.stderr or "")).strip().splitlines()[-8:]:
+                log(f"  |edizione:{nome}| {line}")
+            if r.returncode != 0:
+                raise RuntimeError(f"{nome} → exit {r.returncode}")
+
+        def stato_edizione():
+            try:
+                return json.load(open(os.path.join(ed_dir, "stato.json")))
+            except Exception:
+                return None
+
+        # GATE DI ACQUISIZIONE: i writer previsti dall'edizione (oggi: iShares API, unico writer delle composizioni iShares)
+        # devono aver terminato e dichiarato l'esito di TUTTO il loro perimetro; altrimenti l'edizione resta in HOLD, il mese
+        # non si marca «fatto» e il prossimo lancio riprende (Linus 18/9: «un reader crashato è diverso da un reader che
+        # termina dicendo “questi 8 fondi non hanno una fotografia disponibile”»).
+        acquisizioni = {"holdings-ishares": (ISHARES_RC if ISHARES_RC is not None else -1, ISHARES_ESITI)}
+        edizione_stato, edizione_errore = edizione_mensile(YM, acquisizioni, passo_edizione, stato_edizione, ed_dir, f_dopo, f_acq, NODE, log)
+        modules["edizione"] = edizione_stato == "COMPLETE" and edizione_errore is None
+        if edizione_errore:
+            log(f"!! EDIZIONE {YM} {'BLOCCATA' if edizione_stato is None else 'interrotta allo stato ' + str(edizione_stato)} (il resto del giro prosegue; il mese NON sarà marcato «fatto»: riprende al prossimo lancio): {edizione_errore}")
+    elif not DRY and not EDIZIONE_RICHIESTA:
+        log(f"  |edizione| nessuna baseline assegnata a {YM} in {BASELINE_DIR}: edizione saltata (atteso fuori dalla VPS)")
+
+    # CASSAFORTE delle foto complete (21 ago / 16 set: «conserviamo tutto», nessuna rotazione). Resta com'è: dopo il
+    # contratto dell'edizione non è più letta da nessun confronto (la «dopo» congelata vive nell'edizione).
     FOTO_SH = os.path.expanduser("~/backups/rebalix-cron/foto-panieri.sh")
-    FOTO_DIR = os.path.expanduser("~/backups/rebalix-holdings-foto")
     if not DRY and os.path.exists(FOTO_SH):
-        try:
-            foto = sorted(glob.glob(os.path.join(FOTO_DIR, "etf_holdings-*.tsv.gz")))
-            if not foto:
-                raise RuntimeError("nessuna foto in cassaforte")
-            df = subprocess.run([NODE, "scripts/diff-etf-holdings.mjs", "--prima", foto[-1], "--dopo", "db", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=3600)
-            for line in (df.stdout or "").strip().splitlines()[-8:]:
-                log(f"  |diff-panieri| {line}")
-            modules["diff-panieri"] = df.returncode == 0
-        except Exception as e:
-            log(f"!! diff-panieri fallito (non blocca): {e}")
-            modules["diff-panieri"] = False
         try:
             fp = subprocess.run(["/bin/bash", FOTO_SH], capture_output=True, text=True, timeout=1800)
             for line in ((fp.stdout or "") + (fp.stderr or "")).strip().splitlines()[-3:]:
@@ -896,6 +1026,16 @@ def main():
             log(f"!! golden-esterno fallito (non blocca): {e}")
             modules["golden-esterno"] = False
 
+    # il mese è «fatto» solo QUI, in fondo al giro, e solo se l'edizione (dove è richiesta) è COMPLETE (18 set 2026): prima, un
+    # giro interrotto dopo il registro risultava concluso. Un mese non concluso resta recuperabile alla sveglia successiva.
+    if not DRY:
+        nuovo = marcatore_fine_giro(state, YM, modules, EDIZIONE_RICHIESTA, edizione_stato, edizione_errore,
+                                    f"{datetime.datetime.now():%Y-%m-%d %H:%M}", ARCHIVIATORE_MD5, GIRO_AVVIATO_IL)
+        with open(STATE, "w") as f:
+            json.dump(nuovo, f)
+        if nuovo.get("last_ym") != YM:
+            log(f"!! mese {YM} NON marcato «fatto» ({nuovo.get('errore')}): il prossimo lancio lo riprende")
+            ok = False
     send_heartbeat(ok, falliti + (0 if p.returncode == 0 else 1), modules)
     sys.exit(0 if ok else 1)
 

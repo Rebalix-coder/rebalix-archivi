@@ -1,0 +1,259 @@
+#!/usr/bin/env python3
+"""Rigenera `lib/blog/c3m-xeon-dati.ts`: il lato XEON del confronto C3M ↔ XEON e i lordi
+«se vendi» di ENTRAMBI, dai dati in casa (19/9/2026, GO di Linus). Prima erano un modulo
+CURATO A MANO fermo al 27/07/2026: la riga «2026 (parziale)» confrontava C3M al 16/9 con
+XEON al 27/7 e stampava un divario fra date diverse.
+
+FONTI: XEON = etf_series (NAV ufficiale DWS + serie dell'indice, `xtrackers-performancechart`,
+dal 2007, rinfrescata ogni sera); C3M = archivio C3M (`nav/officialNav.json`, NAV ufficiale
+Amundi, 10:45). L'anno parziale si chiude all'ULTIMA DATA COMUNE dei due NAV: stessa data
+per entrambi, sempre. L'indice DWS arriva con qualche giorno di ritardo: la TD dell'anno
+parziale si calcola all'ultima data comune fondo/indice e la dichiara.
+
+GOLDEN (fail-loud, il modulo NON viene scritto):
+  a) FONTE VIVA: ogni giorno TUTTI gli anni chiusi (dal 2018) di XEON, fondo e indice, ricalcolati
+     dal DB devono combaciare al centesimo con gli stessi anni ricalcolati dalla serie che DWS
+     espone in quel momento via API (`performancechart`): nessuna lista di attesi da aggiornare
+     a mano — un anno nuovo entra nel golden da solo il 1° gennaio (verificato 19/9/2026: gli
+     8 anni 2018→2025 combaciano, ed erano i valori triangolati a mano il 28/07/2026);
+  b) FRESCHEZZA: data comune ≤ 7 giorni; XEON_FULL_DD con SENTINELLA sull'episodio
+     raccontato nell'articolo XEON (minimo 2022-09, ≈ −3,7 ± 0,5): se cambia, riscrittura umana.
+Nessun run-date nell'output: `asOf` = data del dato → deploy solo quando i dati cambiano.
+"""
+import json, os, sys, datetime, urllib.request, urllib.error
+
+ARCHIVE = os.path.expanduser(os.environ.get("C3M_ARCHIVE", "~/backups/rebalix-c3m-archivio"))
+REPO = os.path.expanduser(os.environ.get("C3M_REPO", "~/progetti/rebalix"))   # override solo per le prove a vuoto
+DEST = os.path.join(REPO, "lib", "blog", "c3m-xeon-dati.ts")
+XEON = "LU0290358497"
+BASE_SE_VENDI = datetime.date(2024, 12, 31)   # storico white list di C3M in DB dal 2025: niente semestri ricostruiti
+FRESCHEZZA_GIORNI = 7
+SOGLIA_DICHIARATO = 0.005   # al centesimo (arrotondamento a 2 decimali)
+PRIMO_ANNO = 2018            # primo anno chiuso nel confronto (l'articolo parte da lì)
+DWS_API = f"https://etf.dws.com/api/pdp/it-it/etf/{XEON}/performancechart"   # la stessa fonte ufficiale, letta in diretta
+EPISODIO_RACCONTATO = {"trough": "2022-09", "max_dd_circa": -3.7, "tolleranza_pt": 0.5}
+
+NET_ERR = (urllib.error.URLError, OSError)
+
+
+def net_retry(fn):
+    import time
+    for i, pausa in enumerate((5, 20, 0)):
+        try:
+            return fn()
+        except NET_ERR as e:
+            if i == 2:
+                raise
+            print(f"   rete instabile ({type(e).__name__}) — ritento tra {pausa}s")
+            time.sleep(pausa)
+
+
+def env_locale():
+    p = os.path.join(REPO, ".env.local")
+    if not os.path.exists(p):
+        sys.exit(f"[c3m-xeon-dati] {p} assente: NON scrivo")
+    out = {}
+    with open(p) as f:
+        for l in f:
+            l = l.strip()
+            if "=" in l and not l.startswith("#"):
+                k, v = l.split("=", 1)
+                out[k] = v.strip().strip('"').strip("'")
+    return out
+
+
+def data_ms(t):
+    return datetime.datetime.fromtimestamp(t / 1000, datetime.timezone.utc).date()
+
+
+def xeon_da_db():
+    """→ (nav {date: v}, indice {date: v}) di XEON da etf_series (chiave anon: sola lettura)."""
+    env = env_locale()
+    key = env.get("NEXT_PUBLIC_SUPABASE_ANON_KEY") or env.get("SUPABASE_SERVICE_ROLE_KEY")
+    if not env.get("NEXT_PUBLIC_SUPABASE_URL") or not key:
+        sys.exit("[c3m-xeon-dati] chiavi Supabase assenti in .env.local: NON scrivo")
+    url = f"{env['NEXT_PUBLIC_SUPABASE_URL']}/rest/v1/etf_series?isin=eq.{XEON}&select=nav,bench_return,source"
+    req = urllib.request.Request(url, headers={"apikey": key, "Authorization": f"Bearer {key}"})
+    def _go():
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)
+    righe = net_retry(_go)
+    if not righe or not righe[0].get("nav") or not righe[0].get("bench_return"):
+        sys.exit(f"[c3m-xeon-dati] etf_series {XEON}: NAV o indice assenti — NON scrivo")
+    nav = {data_ms(t): float(v) for t, v in righe[0]["nav"] if v is not None and v > 0}
+    idx = {data_ms(t): float(v) for t, v in righe[0]["bench_return"] if v is not None and v > 0}
+    return nav, idx
+
+
+def xeon_da_dws_api():
+    """→ (nav {date: v}, indice {date: v}) letti IN DIRETTA dall'API DWS: la controprova viva
+    del golden a). L'indice è in due tratti (Deutsche Bank Euro Overnight fino a nov 2023, poi
+    Solactive €STR +8,5): si prende il Solactive dove c'è, altrimenti l'altro."""
+    req = urllib.request.Request(DWS_API, headers={"User-Agent": "Mozilla/5.0"})
+    def _go():
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)
+    d = net_retry(_go)
+    nav, idx = {}, {}
+    for ts, row in d["values"]:
+        dt = data_ms(ts)
+        if row[0][0] is not None:
+            nav[dt] = float(row[0][0])
+        i = row[2][0] if len(row) > 2 and row[2][0] is not None else row[1][0]
+        if i is not None:
+            idx[dt] = float(i)
+    if len(nav) < 1000 or len(idx) < 1000:
+        sys.exit(f"[c3m-xeon-dati] API DWS: serie troppo corta ({len(nav)} NAV, {len(idx)} indice) — NON scrivo")
+    return nav, idx
+
+
+def c3m_da_archivio():
+    punti = json.load(open(os.path.join(ARCHIVE, "nav", "officialNav.json")))
+    return {data_ms(p["date"]): float(p["data"]) for p in punti if p.get("data") is not None}
+
+
+def al(serie, d):
+    """Valore all'ultima data ≤ d (fine anno/semestre cadono anche nel weekend)."""
+    ks = [k for k in serie if k <= d]
+    if not ks:
+        sys.exit(f"[c3m-xeon-dati] nessun dato fino al {d} — NON scrivo")
+    return serie[max(ks)]
+
+
+def rendimento(serie, da, a):
+    return (al(serie, a) / al(serie, da) - 1) * 100
+
+
+def full_dd(nav):
+    """Max drawdown GIORNALIERO dal NAV (stesso calcolo della FAQ della scheda e di C3M)."""
+    punti = sorted(nav.items())
+    picco, picco_d = -1e9, punti[0][0]
+    min_dd, trough_d, peak_of_trough = 0.0, punti[0][0], punti[0][0]
+    for d, v in punti:
+        if v >= picco:
+            picco, picco_d = v, d
+        dd = (v / picco - 1) * 100
+        if dd < min_dd:
+            min_dd, trough_d, peak_of_trough = dd, d, picco_d
+    picco_v = nav[peak_of_trough]
+    recupero = next((d for d, v in punti if d > trough_d and v >= picco_v), None)
+    fine = recupero or punti[-1][0]
+    min_dd = round(min_dd, 2)
+    trough_ym = trough_d.isoformat()[:7]
+    if (trough_ym != EPISODIO_RACCONTATO["trough"]
+            or abs(min_dd - EPISODIO_RACCONTATO["max_dd_circa"]) > EPISODIO_RACCONTATO["tolleranza_pt"]):
+        sys.exit(f"[c3m-xeon-dati] SENTINELLA EPISODIO: max drawdown XEON ora {min_dd}% ({trough_ym}), "
+                 f"raccontato {EPISODIO_RACCONTATO['max_dd_circa']}% ({EPISODIO_RACCONTATO['trough']}) — "
+                 f"la narrativa dell'articolo XEON va riscritta a mano, NON scrivo")
+    return {"maxDdPct": min_dd, "troughYm": trough_ym, "troughDate": trough_d.isoformat(),
+            "peakYm": peak_of_trough.isoformat()[:7], "peakDate": peak_of_trough.isoformat(),
+            "recoveryDate": recupero.isoformat() if recupero else None,
+            "monthsUnderwater": round((fine - peak_of_trough).days / 30.4375),
+            "firstYm": punti[0][0].isoformat()[:7], "lastYm": punti[-1][0].isoformat()[:7]}
+
+
+def main():
+    if not os.path.isdir(os.path.dirname(DEST)):
+        print("[c3m-xeon-dati] repo non trovato — salto."); return
+    xnav, xidx = xeon_da_db()
+    anav, aidx = xeon_da_dws_api()
+    cnav = c3m_da_archivio()
+    comune = max(set(xnav) & set(cnav))
+    eta = (datetime.date.today() - comune).days
+    if eta > FRESCHEZZA_GIORNI:
+        sys.exit(f"[c3m-xeon-dati] ultima data comune C3M/XEON {comune} ({eta}gg): fonte ferma, NON scrivo")
+    comune_idx = max(d for d in xidx if d <= comune)   # l'indice DWS arriva in ritardo
+
+    # anni chiusi + parziale (alla data comune); golden a) VIVO sugli anni chiusi: DB vs API DWS di oggi
+    by_year, anno_parziale = {}, str(comune.year)
+    for anno in range(PRIMO_ANNO, comune.year + 1):
+        da = datetime.date(anno - 1, 12, 31)
+        a = comune if anno == comune.year else datetime.date(anno, 12, 31)
+        f = round(rendimento(xnav, da, a), 2)                 # fondo alla data comune C3M/XEON (per la tabella testa a testa)
+        if anno != comune.year and comune_idx < a:
+            sys.exit(f"[c3m-xeon-dati] indice DWS non ancora al {a} (arriva al {comune_idx}): l'anno {anno} uscirebbe troncato — NON scrivo (riprovo domani)")
+        a_idx = min(a, comune_idx)                              # TD fondo−indice: entrambi all'ultima data comune fondo/indice
+        i = round(rendimento(xidx, da, a_idx), 2)
+        f_idx = round(rendimento(xnav, da, a_idx), 2)
+        by_year[str(anno)] = {"fund": f, "index": i, "tdBp": round((f_idx - i) * 100)}
+        if anno != comune.year:
+            af = round(rendimento(anav, da, a), 2)
+            ai = round(rendimento(aidx, da, a), 2)
+            if abs(f - af) > SOGLIA_DICHIARATO or abs(i - ai) > SOGLIA_DICHIARATO:
+                sys.exit(f"[c3m-xeon-dati] GOLDEN a) FALLITO {anno}: DB fondo {f} / indice {i} vs API DWS {af} / {ai} — NON scrivo")
+    anni_chiusi = [a for a in by_year if a != anno_parziale]
+
+    # «se vendi»: lordi cumulati dal 31/12/2024 a ogni fine semestre ≤ data comune + ultimo punto comune
+    semestri = []
+    y = BASE_SE_VENDI.year + 1
+    while True:
+        for md in ((6, 30), (12, 31)):
+            d = datetime.date(y, *md)
+            if d < comune:
+                semestri.append(d)
+        if datetime.date(y, 12, 31) >= comune:
+            break
+        y += 1
+    punti = [{"saleDate": d.isoformat(), "c3mGross": round(rendimento(cnav, BASE_SE_VENDI, d), 3),
+              "xeonGross": round(rendimento(xnav, BASE_SE_VENDI, d), 3)} for d in semestri]
+    punti.append({"saleDate": comune.isoformat(), "c3mGross": round(rendimento(cnav, BASE_SE_VENDI, comune), 3),
+                  "xeonGross": round(rendimento(xnav, BASE_SE_VENDI, comune), 3), "isLatest": True})
+
+    dd = full_dd(xnav)
+    c3m_parziale = round(rendimento(cnav, datetime.date(comune.year - 1, 12, 31), comune), 2)
+
+    righe = "\n    ".join(
+        f"'{a}': {{ fund: {v['fund']}, index: {v['index']}, tdBp: {v['tdBp']} }}," + (f"   // parziale al {comune}" + (f" (indice al {comune_idx})" if comune_idx != comune else "") if a == anno_parziale else "")
+        for a, v in by_year.items())
+    punti_ts = ",\n    ".join(json.dumps(p).replace('"', "'").replace("'saleDate'", "saleDate").replace("'c3mGross'", "c3mGross").replace("'xeonGross'", "xeonGross").replace("'isLatest'", "isLatest") for p in punti)
+    ts = f"""/**
+ * Lato XEON del confronto C3M ↔ XEON + lordi «se vendi» di ENTRAMBI, dai dati in casa
+ * (dal 19/9/2026; prima: modulo curato a mano fermo al 27/07/2026).
+ * XEON: NAV ufficiale DWS + indice (etf_series, `xtrackers-performancechart`, dal 2007);
+ * C3M: NAV ufficiale Amundi (archivio C3M). L'anno parziale e l'ultimo punto «se vendi»
+ * si chiudono all'ULTIMA DATA COMUNE dei due NAV ({comune}): stessa data per entrambi.
+ * L'indice DWS arriva in ritardo: la TD dell'anno parziale è all'ultima data comune
+ * fondo/indice ({comune_idx}). Golden VIVO: ogni giorno tutti gli anni chiusi (dal {PRIMO_ANNO}), fondo e
+ * indice, ricalcolati dal DB = gli stessi ricalcolati dalla serie esposta oggi dall'API DWS, al
+ * centesimo; sentinella sull'episodio di drawdown raccontato.
+ *
+ * FILE VERSIONATO E AGGIORNATO AUTOMATICAMENTE da `_scripts/gen_c3m_xeon_compare.py`
+ * (archivio C3M). Non modificare a mano. I FATTI (TER, indice, replica) restano a mano in
+ * `c3m-xeon-compare.ts`: sono da documento, non da serie.
+ */
+/** Rendimenti per anno solare di XEON e del suo indice (%, TD in punti base). */
+export const XEON_BY_YEAR: Record<string, {{ fund: number; index: number; tdBp: number }}> = {{
+    {righe}
+}}
+
+/** Anno parziale in XEON_BY_YEAR (etichettarlo «parziale» nelle tabelle) e la data a cui è chiuso. */
+export const XEON_PARTIAL_YEAR = '{anno_parziale}'
+export const XEON_PARTIAL_AS_OF = '{comune}'
+/** Lato C3M dell'anno parziale ALLA STESSA DATA (l'archivio C3M può essere avanti di un giorno sul DB di XEON). */
+export const C3M_PARTIAL_AT_COMMON = {{ year: '{anno_parziale}', asOf: '{comune}', fund: {c3m_parziale} }}
+
+/**
+ * «Quanto ti rimane se vendi»: lordi cumulati di ENTRAMBI dal {BASE_SE_VENDI} a ogni
+ * fine semestre (ultimo punto = ultima data comune). Il netto si calcola nel
+ * componente con l'aliquota del semestre di VENDITA da `c3m-tax.ts`.
+ */
+export const NET_IF_SOLD = {{
+  baseDate: '{BASE_SE_VENDI}',
+  asOf: '{comune}',
+  points: [
+    {punti_ts},
+  ] as {{ saleDate: string; c3mGross: number; xeonGross: number; isLatest?: boolean }}[],
+}}
+
+/** Max drawdown GIORNALIERO di XEON dal NAV ufficiale (stesso calcolo della scheda e di C3M): per FAQ e riassunto dell'articolo XEON. */
+export const XEON_FULL_DD: {{ maxDdPct: number; troughYm: string; troughDate: string; peakYm: string; peakDate: string; recoveryDate: string | null; monthsUnderwater: number; firstYm: string; lastYm: string }} = {json.dumps(dd)}
+"""
+    os.makedirs(os.path.dirname(DEST), exist_ok=True)
+    with open(DEST, "w") as f:
+        f.write(ts)
+    print(f"[c3m-xeon-dati] scritto: data comune {comune}, {anno_parziale} parziale XEON {by_year[anno_parziale]['fund']}% · "
+          f"se vendi {len(punti)} punti · maxDD XEON {dd['maxDdPct']}% ({dd['troughDate']}) · golden a) ok ({len(anni_chiusi)} anni chiusi vs API DWS)")
+
+
+if __name__ == "__main__":
+    main()
