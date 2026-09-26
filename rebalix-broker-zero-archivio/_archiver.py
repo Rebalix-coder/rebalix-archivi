@@ -121,6 +121,11 @@ def src_moneyfarm(snap):
     pdf = os.path.join(snap, "moneyfarm-tc.pdf")
     fetch(link, pdf, min_size=100_000)
     txt = pdf_text(pdf)
+    # Set 2026: il PDF Moneyfarm e' cosparso di caratteri a larghezza zero (U+200B e
+    # simili) usati anche AL POSTO degli spazi veri: sostituirli con uno spazio (NON
+    # rimuoverli: "valida(zw)(zw)dal" diventerebbe "validadal") ripristina date,
+    # marcatori LISTA e colonne dei nomi. Senza questa pulizia: 0 promo leggibili.
+    txt = re.sub(r"[\u200b\u200c\u200d\ufeff\u00ad]+", " ", txt)
     parts = re.split(r"REGOLAMENTO DELL.INIZIATIVA", txt)[1:]
     if not parts:
         # documento sbagliato (es. la promo pricing generale): meglio un errore parlante
@@ -128,7 +133,10 @@ def src_moneyfarm(snap):
         raise RuntimeError(f"PDF senza sezioni REGOLAMENTO ({link}): non è il bundle per-ISIN")
     entries, names = {}, {}
     for part in parts:
-        v = re.search(r"valida dal\s+(.{4,30}?)\s+(?:fino\s+)?al\s+(.{4,30}?)\s*\(", part)
+        # la riga di validita' puo' avere spazi multipli (residuo degli zero-width)
+        # o andare a capo: si cerca sul testo appiattito, con spazi tolleranti
+        flat = re.sub(r"\s+", " ", part)
+        v = re.search(r"valida\s+dal\s+(.{4,30}?)\s+(?:fino\s+)?al\s+(.{4,30}?)\s*\(", flat)
         fine = parse_data_it(v.group(2)) if v else None
         if not fine or fine < TODAY:
             continue  # promo scaduta o data illeggibile: fuori (come da T&C)

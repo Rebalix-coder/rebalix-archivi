@@ -121,3 +121,28 @@
 2026-09-24 08:34  [deploy] deploy prod OK via deploy-prod.sh (dcdc7974)
 2026-09-24 08:34  [heartbeat] inviato (200)
 2026-09-24 08:34  === giro completato (1 errori) ===
+2026-09-25 11:20  === giro 2026-09 avviato (dry=False) ===
+2026-09-25 11:20  [fineco] ok: 478 ISIN
+2026-09-25 11:20  [moneyfarm] ok: 784 ISIN
+2026-09-25 11:20  [bgsaxo] ok: 255 ISIN
+2026-09-25 11:21  [directa] ok: 1304 ISIN
+2026-09-25 11:21  [xtb] ok: 1421 ISIN
+2026-09-25 11:21  [diff] moneyfarm: +1 −0
+2026-09-25 11:21  [diff] directa: +3 −0
+2026-09-25 11:21  indice rigenerato: 2386 ISIN, 2041 nomi; counts {'fineco': 478, 'directa': 857, 'bgsaxo': 255, 'moneyfarm': 784}
+2026-09-25 11:21  [deploy] commit dei dati rigenerati
+2026-09-25 11:24  [deploy] Production      https://rebalix-f5wkkhnvb-rebalixs-projects.vercel.app
+2026-09-25 11:24  [deploy] [2K[1A[2K[G  Production      https://rebalix-f5wkkhnvb-rebalixs-projects.vercel.app
+2026-09-25 11:24  [deploy] ▲ Aliased         https://rebalix.com
+2026-09-25 11:24  [deploy] status	● Ready
+2026-09-25 11:24  [deploy] created	Fri Sep 25 2026 11:24:03 GMT+0200 (Central European Summer Time) [52s ago]
+2026-09-25 11:24  [deploy] 
+2026-09-25 11:24  [deploy] ── 8 · sonde (home doppia anti-MISS + pagine richieste) ──
+2026-09-25 11:24  [deploy] it?x=1 → 200
+2026-09-25 11:24  [deploy] it?x=2 → 200
+2026-09-25 11:24  [deploy] 
+2026-09-25 11:24  [deploy] DEPLOY COMPLETO · log: /tmp/deploy-prod-20260925-112130.log
+2026-09-25 11:24  [deploy] ESITO: ok commit=5957eed2 deploy=https://rebalix-f5wkkhnvb-rebalixs-projects.vercel.app log=/tmp/deploy-prod-20260925-112130.log
+2026-09-25 11:24  [deploy] deploy prod OK via deploy-prod.sh (5957eed2)
+2026-09-25 11:24  [heartbeat] inviato (200)
+2026-09-25 11:24  === giro completato (0 errori) ===
