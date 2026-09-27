@@ -1,0 +1,288 @@
+=== bond-lifecycle 2026-09-27T07:30:11+02:00 ===
+--- [bulk-corporate] 07:30:11
+== COMMIT: scriverò su bond_registry ==
+FULINS_D: 4 parti
+  parse FULINS_D_20260926_04of04.zip
+  parse FULINS_D_20260926_03of04.zip
+  parse FULINS_D_20260926_02of04.zip
+  parse FULINS_D_20260926_01of04.zip
+obbligazioni (DB, majors): 75,833
+emittenti da arricchire (GLEIF): 9,342
+  GLEIF 150/9342
+  GLEIF 3150/9342
+  GLEIF 6150/9342
+  GLEIF 9150/9342
+per tipo: { supranational: 401, corporate: 68422, agency: 2644, sovereign: 2643 }
+CFI «X» → AUTO-FIXED: {
+  candidati: 8106,
+  riclassificato: 1452,
+  fltg: 83,
+  conflitto: 0,
+  'senza-fxd': 6562,
+  'inflazione-dal-nome': 9
+}
+da scrivere: 71,066 · saltati (sovrani + 19 sovranazionali curati): 3,044
+ESCLUSI perché già cessati ovunque (richiamati/delistati): 32
+QUARANTENA: 1,691 ISIN non scritti (verifica fallita)
+  ⚠️ XS3498906232 cedola nel nome (1) ≠ campo (4.67) | INTERNATIONAL B/1EMTN 20310909
+  ⚠️ FR001400IZD3 cedola nel nome (4.8) ≠ campo (0) | NATIXIS STRUCTU/4.8 Bd 20280707
+  ⚠️ FR001400J3E0 cedola nel nome (1.575) ≠ campo (0) | NATIXIS STRUCTU/1.575 Bd 20330824
+  ⚠️ FR001400J6Z8 cedola nel nome (1.8125) ≠ campo (0) | NATIXIS STRUCTU/1.8125 Bd 20330817
+  ⚠️ FR001400UU61 cedola nel nome (6) ≠ campo (0.06) | NATIXIS STRUCTU/6.0 BD 20370430
+  ⚠️ FR001400X5P3 cedola nel nome (2.05) ≠ campo (0) | NATIXIS STRUCTU/2.05 Bd 20350314
+  ⚠️ FR001400X7G8 cedola nel nome (3.6) ≠ campo (0) | NATIXIS STRUCTU/3.6 Bd 20300212
+  ⚠️ FR001400XMW0 cedola nel nome (0.9334) ≠ campo (0) | Natixis Structu/0.9334 Bd 20350329
+  ⚠️ FR001400XNZ1 cedola nel nome (2.125) ≠ campo (0) | Natixis Structu/2.125 Bd 20350411
+  ⚠️ FR001400XR89 cedola nel nome (3.0625) ≠ campo (0) | Natixis Structu/3.0625 Bd 20350418
+  ⚠️ FR001400XTW5 cedola nel nome (3.125) ≠ campo (0) | Natixis Structu/3.125 Bd 20350613
+  ⚠️ FR001400XZH3 cedola nel nome (7.08) ≠ campo (0) | Natixis Structu/7.08 Bd 20290313
+  ⚠️ FR001400YL19 cedola nel nome (6) ≠ campo (0) | NATIXIS STRUCTU/6.0 BD 20351015
+  ⚠️ FR001400YUM2 cedola nel nome (7.05) ≠ campo (0) | Natixis Structu/7.05 Bd 20290416
+  ⚠️ FR001400YX64 cedola nel nome (1.85) ≠ campo (0) | Natixis Structu/1.85 Bd 20350709
+  … e altri 1676 in bond-corporate-quarantine.json
+  upsert 0/71066
+  upsert 5000/71066
+  upsert 10000/71066
+  upsert 15000/71066
+  upsert 20000/71066
+  upsert 25000/71066
+  upsert 30000/71066
+  upsert 35000/71066
+  upsert 40000/71066
+  upsert 45000/71066
+  upsert 50000/71066
+  upsert 55000/71066
+  upsert 60000/71066
+  upsert 65000/71066
+  upsert 70000/71066
+COMMIT ok: 71,066 righe upsertate.
+quarantena aggiornata: 1,691 in quarantena, risanamento su 71,066 vivi.
+--- [bulk-corporate] OK
+--- [sovrani] 07:32:05
+AT  listing=1067  isin=49  VIVI=40  scartati=0  cessati-esclusi=0  (4s)
+BE  listing=2966  isin=89  VIVI=73  scartati=0  cessati-esclusi=1  (6s)
+BG  listing=138  isin=10  VIVI=9  scartati=0  cessati-esclusi=0  (1s)
+HR  listing=24  isin=5  VIVI=3  scartati=0  cessati-esclusi=0  (0s)
+CY  listing=1  isin=1  VIVI=0  scartati=0  cessati-esclusi=0  (0s)
+CZ  listing=348  isin=23  VIVI=17  scartati=0  cessati-esclusi=0  (2s)
+DK  listing=1464  isin=15  VIVI=12  scartati=1  cessati-esclusi=0  (5s)
+EE  listing=2  isin=1  VIVI=0  scartati=0  cessati-esclusi=0  (0s)
+FI  listing=810  isin=38  VIVI=32  scartati=1  cessati-esclusi=0  (3s)
+FR  listing=10894  isin=155  VIVI=116  scartati=0  cessati-esclusi=0  (24s)
+DE  listing=3812  isin=107  VIVI=87  scartati=5  cessati-esclusi=0  (10s)
+GR  listing=2298  isin=62  VIVI=24  scartati=23  cessati-esclusi=0  (9s)
+HU  listing=2471  isin=41  VIVI=32  scartati=1  cessati-esclusi=0  (8s)
+IE  listing=408  isin=28  VIVI=27  scartati=0  cessati-esclusi=0  (2s)
+IT  listing=5869  isin=180  VIVI=148  scartati=2  cessati-esclusi=0  (16s)
+LV  listing=76  isin=6  VIVI=6  scartati=0  cessati-esclusi=0  (1s)
+LT  listing=467  isin=13  VIVI=11  scartati=0  cessati-esclusi=0  (2s)
+LU  listing=17  isin=2  VIVI=2  scartati=0  cessati-esclusi=0  (0s)
+MT  listing=40  isin=18  VIVI=12  scartati=2  cessati-esclusi=0  (0s)
+NL  listing=1153  isin=36  VIVI=23  scartati=6  cessati-esclusi=0  (3s)
+PL  listing=4205  isin=47  VIVI=41  scartati=0  cessati-esclusi=0  (11s)
+PT  listing=932  isin=33  VIVI=29  scartati=0  cessati-esclusi=0  (2s)
+RO  listing=445  isin=43  VIVI=32  scartati=0  cessati-esclusi=0  (1s)
+SK  listing=320  isin=15  VIVI=13  scartati=0  cessati-esclusi=0  (1s)
+SI  listing=68  isin=10  VIVI=9  scartati=0  cessati-esclusi=0  (0s)
+ES  listing=11135  isin=234  VIVI=218  scartati=0  cessati-esclusi=0  (14s)
+SE  listing=639  isin=27  VIVI=20  scartati=0  cessati-esclusi=0  (2s)
+IS  listing=98  isin=24  VIVI=21  scartati=1  cessati-esclusi=0  (0s)
+NO  listing=617  isin=12  VIVI=10  scartati=0  cessati-esclusi=0  (1s)
+GB  listing=2790  isin=92  VIVI=64  scartati=1  cessati-esclusi=0  (4s)
+CH  listing=292  isin=16  VIVI=14  scartati=0  cessati-esclusi=0  (1s)
+
+Totale vivi inseriti: 1145
+
+══ REPORT QUARANTENA (43 titoli NON scritti — verifica fallita) ══
+  XS3425713792  [Ministry of Finance (Kingdom of Denmark)]  DEN DANSKE STAT/1 MTN 20280630
+    → cedola nel nome (1) ≠ campo (2.625)
+  XS3396019336  [Republic of Finland / Suomen valtio]  REPUBLIC OF FIN/1EMTN 20360603  GTE
+    → cedola nel nome (1) ≠ campo (4.5)
+  DE000A1X3MD9  [Bundesrepublik Deutschland]  GEBR.SANDERS/8.75 IHS 20181022 USEC
+    → nome datato (2018-10-22) ma scadenza in campo sentinella (9999-12-31): possibile default/ristrutturazione
+  DE000BU22130  [Bundesrepublik Deutschland]  Bundesrepublik Deutschland  Bond
+    → cedole discordi tra borse: 0 vs 2.5
+  DE000BU2Z072  [Bundesrepublik Deutschland]  BUND DEUTSCHLAN/ ANL 20360815 GGAR
+    → cedole discordi tra borse: 0 vs 3
+  DE000BU22148  [Bundesrepublik Deutschland]  Bundesrepublik Deutschland  Bond
+    → cedole discordi tra borse: 0 vs 2.7
+  DE000BU25075  [Bundesrepublik Deutschland]  BUND DEUTSCHLAN/ BO 20311008 S. 194
+    → cedole discordi tra borse: 0 vs 2.9
+  GR0002287564  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20261023 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.12
+  GR0004144706  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20270604 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.41
+  GR0002288570  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20261127 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.21
+  GR0133007204  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20290224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133008210  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20300224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133010232  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20320224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138005716  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20330224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138006722  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20340224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138007738  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20350224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138009759  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20370224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138010765  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20380224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0128014710  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20270224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133006198  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20280224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138014809  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20420224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138012787  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20400224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138013793  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20410224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138011771  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20390224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0133009226  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20310224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0138008744  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/2BD 20360224 GOVT GTD
+    → cedola nel nome (2) ≠ campo (4.3)
+  GR0002291608  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20270122 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.32
+  GR0000249558  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 202610096 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.16
+  GR0002289586  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20261228 GOVT GTD
+    → scadenze discordi tra borse: 2026-09-25 vs 2026-12-28 | cedole discordi tra borse: 0 vs 2.24
+  GR0004145711  [Ελληνική Δημοκρατία - Υπουργείο Οικονομικών]  GR GOVT/TB 20270903 GOVT GTD
+    → cedole discordi tra borse: 0 vs 2.62
+  HU0000407598  [Magyarország]  Magyar Allam/DBT 20330727
+    → cedole discordi tra borse: 0 vs 6
+  IT0001174611  [Repubblica Italiana]  ITALIA/6.5 BTP 20271101
+    → cedola nel nome (6.5) ≠ campo (3.25)
+  XS3358406075  [Repubblica Italiana]  REPUBBLICA ITAL/4EMTN 20380428  GTE
+    → cedole discordi tra borse: 0 vs 4
+  MT0000012675  [Republic of Malta]  GOVMALTA/7 DBT 20361231 GOVT GTD
+    → scadenze discordi tra borse: 2026-12-31 vs 2036-12-31
+  MT0000012873  [Republic of Malta]  GOVMALTA/7 DBT 20361236 GOVT GTD
+    → scadenze discordi tra borse: 2027-12-31 vs 2036-12-31
+  NL0015614579  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/1 Bd 20520115
+    → cedola nel nome (1) ≠ campo (0)
+  NL0015001RG8  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/0 Bd 20440115
+    → cedola nel nome (0) ≠ campo (3.25)
+  NL0015073VV8  [Ministerie van Financiën (Netherlands)]  STAAT DER NEDER/0 BD 20360715
+    → cedola nel nome (0) ≠ campo (2.75)
+  NL0015002F72  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/0 Bd 20350715
+    → cedola nel nome (0) ≠ campo (2.5)
+  NL00150012X2  [Ministerie van Financiën (Netherlands)]  Staat der Neder/0.0 Bd 20540115
+    → cedola nel nome (0) ≠ campo (2)
+  NL0015001XZ6  [Ministerie van Financiën (Netherlands)]  De Staat der Ne/0 Bd 20340715
+    → cedola nel nome (0) ≠ campo (2.5)
+  XS3081371554  [Endurlán ríkissjóðs (Iceland)]  REPUBLIC OF ICE/2.265EMTN 20300527
+    → cedola nel nome (2.265) ≠ campo (2.625)
+  GB00BSQNRD01  [His Majesty's Treasury]  HIS MAJE/4 LN STK 20300307 GOVT GTD
+    → cedola nel nome (4) ≠ campo (4.375)
+--- [sovrani] OK
+--- [sovranazionali] 07:34:19
+European Investment Bank (EIB)  listing=1419  isin=98  VIVI=82  scartati=3  cessati-esclusi=0  (4s)
+European Union (NextGenerationEU / SURE)  listing=2054  isin=70  VIVI=61  scartati=0  cessati-esclusi=0  (4s)
+World Bank — IBRD  listing=803  isin=125  VIVI=93  scartati=3  cessati-esclusi=1  (3s)
+European Stability Mechanism (ESM)  listing=466  isin=23  VIVI=11  scartati=0  cessati-esclusi=0  (1s)
+European Financial Stability Facility (EFSF)  listing=342  isin=11  VIVI=7  scartati=0  cessati-esclusi=0  (1s)
+European Bank for Reconstruction and Development (EBRD)  listing=901  isin=74  VIVI=64  scartati=3  cessati-esclusi=0  (2s)
+Asian Development Bank (ADB)  listing=773  isin=98  VIVI=64  scartati=3  cessati-esclusi=1  (2s)
+Asian Infrastructure Investment Bank (AIIB)  listing=93  isin=17  VIVI=11  scartati=1  cessati-esclusi=0  (0s)
+African Development Bank (AfDB)  listing=150  isin=23  VIVI=15  scartati=1  cessati-esclusi=0  (1s)
+Inter-American Development Bank (IADB)  listing=277  isin=25  VIVI=14  scartati=0  cessati-esclusi=0  (1s)
+International Finance Corporation (IFC)  listing=334  isin=40  VIVI=23  scartati=4  cessati-esclusi=0  (1s)
+CAF — Development Bank of Latin America  listing=52  isin=10  VIVI=9  scartati=0  cessati-esclusi=0  (0s)
+Council of Europe Development Bank (CEB)  listing=339  isin=21  VIVI=16  scartati=0  cessati-esclusi=0  (1s)
+Nordic Investment Bank (NIB)  listing=102  isin=30  VIVI=21  scartati=4  cessati-esclusi=0  (1s)
+West African Development Bank (BOAD)  listing=9  isin=1  VIVI=1  scartati=0  cessati-esclusi=0  (0s)
+Caribbean Development Bank (CDB)  listing=0  isin=0  VIVI=0  scartati=0  cessati-esclusi=0  (0s)
+International Development Association (IDA)  listing=22  isin=5  VIVI=2  scartati=1  cessati-esclusi=0  (0s)
+EUROFIMA  listing=168  isin=7  VIVI=4  scartati=0  cessati-esclusi=0  (1s)
+Central American Bank for Economic Integration (CABEI)  listing=14  isin=6  VIVI=4  scartati=2  cessati-esclusi=0  (0s)
+North American Development Bank (NADB)  listing=23  isin=1  VIVI=0  scartati=0  cessati-esclusi=0  (0s)
+OPEC Fund for International Development  listing=11  isin=2  VIVI=2  scartati=0  cessati-esclusi=0  (0s)
+
+Totale vivi inseriti: 504
+
+══ REPORT QUARANTENA (25 titoli NON scritti — verifica fallita) ══
+  EU000A4ETDB8  [European Investment Bank (EIB)]  BEI/3.13 MTN 20330404
+    → scadenze discordi tra borse: 2033-04-04 vs 2033-04-14
+  EU000A4EDR50  [European Investment Bank (EIB)]  EUROPEAN INV.BK/11.7 DWM 20310929
+    → cedola nel nome (11.7) ≠ campo (11)
+  EU000A3L6Q18  [European Investment Bank (EIB)]  EUROPEAN INV.BK/4 MTN 20300729 MTP
+    → cedola nel nome (4) ≠ campo (4.125)
+  XS3298822688  [World Bank — IBRD]  INTERNATIONAL B/2EMTN 20310331
+    → cedola nel nome (2) ≠ campo (1.95)
+  XS1586710698  [World Bank — IBRD]  INTERNATIONAL B/2.7EMTN FM WC
+    → cedole discordi tra borse: 2.7 vs 2.8
+  XS2822584475  [World Bank — IBRD]  INTERNATIONAL B/3.65EMTN FM WC
+    → cedole discordi tra borse: 3.6 vs 3.65
+  XS3057398128  [European Bank for Reconstruction and Development (EBRD)]  EUROPEAN BANK F/4.89EMTN 20350424
+    → cedola nel nome (4.89) ≠ campo (5.15)
+  XS3415056749  [European Bank for Reconstruction and Development (EBRD)]  EUROPEAN BANK F/1EMTN 20280619
+    → cedola nel nome (1) ≠ campo (5.85)
+  XS2436693670  [European Bank for Reconstruction and Development (EBRD)]  EUROPEAN BANK F/VAREMTN 20320731
+    → cedole discordi tra borse: 0.65 vs 0.85
+  XS3368998269  [Asian Development Bank (ADB)]  ASIAN DEVELOPME/2.66EMTN 20290514
+    → cedola nel nome (2.66) ≠ campo (2.6)
+  XS3446500475  [Asian Development Bank (ADB)]  ASIAN DEVELOPME/17EMTN 20271022
+    → cedola nel nome (17) ≠ campo (16)
+  XS3427672145  [Asian Development Bank (ADB)]  ASIAN DEVELOPME/1EMTN 20270707
+    → cedola nel nome (1) ≠ campo (15.25)
+  XS3433841817  [Asian Infrastructure Investment Bank (AIIB)]  ASIAN INFRASTRU/1EMTN 20270706
+    → cedola nel nome (1) ≠ campo (7.25)
+  XS3412704135  [African Development Bank (AfDB)]  AFRICAN DEVELOP/7.6EMTN 20281218
+    → scadenze discordi tra borse: 2028-12-18 vs 9999-12-31 | nome datato (2028-12-18) ma scadenza in campo sentinella (9999-12-31): possibile default/ristrutturazione
+  XS3056158549  [International Finance Corporation (IFC)]  INTERNATIONAL F/8EMTN 20450421 REST
+    → cedola nel nome (8) ≠ campo (0)
+  XS3429207130  [International Finance Corporation (IFC)]  INTERNATIONAL F/1EMTN 20280630 REST
+    → cedola nel nome (1) ≠ campo (7)
+  XS3272371520  [International Finance Corporation (IFC)]  INTERNATIONAL F/1EMTN 20290116 REST
+    → cedola nel nome (1) ≠ campo (11.5)
+  XS3440163569  [International Finance Corporation (IFC)]  INTERNATIONAL F/3EMTN 20330815
+    → cedola nel nome (3) ≠ campo (3.125)
+  XS2793358305  [Nordic Investment Bank (NIB)]  NORDIC INVESTME/5.13EMTN 20290402
+    → cedola nel nome (5.13) ≠ campo (5.03)
+  XS3391770743  [Nordic Investment Bank (NIB)]  NORDIC INVESTME/1EMTN 20330530
+    → cedole discordi tra borse: 0 vs 3.125 | cedola nel nome (1) ≠ campo (3.125)
+  XS2845233423  [Nordic Investment Bank (NIB)]  NORDIC INVESTME/3.9EMTN 20340620
+    → cedola nel nome (3.9) ≠ campo (0)
+  XS2671143829  [Nordic Investment Bank (NIB)]  NORDIC INVESTME/1EMTN 20310825
+    → cedola nel nome (1) ≠ campo (3.825)
+  XS3383867374  [International Development Association (IDA)]  INTERNATIONAL D/1EMTN 20410520
+    → cedola nel nome (1) ≠ campo (3.625)
+  XS3280518773  [Central American Bank for Economic Integration (CABEI)]  CNTRL.AMER(CABE/1 MTN 20290202 REGS
+    → cedola nel nome (1) ≠ campo (4.125)
+  XS3444936697  [Central American Bank for Economic Integration (CABEI)]  CNTRL.AMER(CABE/7.1 MTN 20290723
+    → cedola nel nome (7.1) ≠ campo (7.25)
+--- [sovranazionali] OK
+--- [marcatura] 07:34:44
+auto-guarigione: 0 titoli tornati vivi
+candidati alla marcatura 'termination': 33
+marcati: 33
+--- [marcatura] OK
+--- [call-watch] 07:34:44
+allarmi date esatte (entro 90 gg): 0
+coda perpetui stimata (>5 anni, mai verificati): 810
+  · FR0010499111  partito 2007-07-13  SocTourEiffel/VAR  SOCIETE DE LA TOUR EIFFEL
+  · US370835AB62  partito 2010-11-11  GeneralShopFin/10 BD  GENERAL SHOPPING FINANCE LIMIT
+  · US370837AA46  partito 2012-05-14  GeneralShoppInv/VAR  GENERAL SHOPPING INVESTMENTS L
+  · XS0942093401  partito 2013-06-25  UBS AG/ZERO CPN MTN  UBS AG
+  · BE3884021440  partito 2014-12-05  OBK/VAR BD PERP SUB  ONDERLING BEROEPSKREDIET
+  · AT000B112909  partito 2014-12-18  OBERBK/VAR SUB BD PERP 2014  Oberbank AG
+  · CH0004724545  partito 2015-01-30  NORDIC INVEST B/VAR BD PERP SR  Nordic Investment Bank (NIB)
+  · AT0000A10B73  partito 2015-04-10  TIH/5 SUB BD PERP 2014  TiH GmbH
+  · AT0000A1VNV3  partito 2017-06-28  BKS/VAR SUB BD PERP 2017  BKS Bank AG
+  · NO0010794373  partito 2017-07-07  KOMMUNALBANKEN/VAR BD PERP  KOMMUNALBANKEN AS
+  · US693475AQ81  partito 2017-07-11  PNC FINL SVCS G/VAR RATE NT PERP S  THE PNC FINANCIAL SERVICES GRO
+  · US808513AR62  partito 2017-10-30  SCHWAB CHARLES/FXD FR SR SUB NT  THE CHARLES SCHWAB CORPORATION
+  · US05967DAC56  partito 2017-12-07  BANCO VOTORANTI/SUB NT PERP SUB SUB  BANCO VOTORANTIM S.A.
+  · XS1294342792  partito 2018-01-03  OMV AG/5.25 BD PERP JR SUB SER-NC6  OMV AKTIENGESELLSCHAFT
+  · FR0010096826  partito 2018-01-17  CREDIT MUTUEL A/VAR BD 21001231  CREDIT MUTUEL ARKEA
+email inviata
+--- [call-watch] OK
+{"ok":true,"name":"bond-lifecycle","recorded_at":"2026-09-27T05:34:45.870Z"}
+[heartbeat] inviato (ok=true, errori=0)
+=== fine 2026-09-27T07:34:45+02:00, errori=0 ===
