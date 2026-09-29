@@ -1,0 +1,1554 @@
+{
+ "productId": "FR0010754200",
+ "characteristics": {
+  "NAV": 127.2895,
+  "NAV_DATE_DISPLAYED": 1790294400000,
+  "AUM": 929209658.6045,
+  "AUM_IN_EURO": 929209658.6045,
+  "FUND_AUM": 929209824.29,
+  "FUND_AUM_IN_EURO": 929209824.29,
+  "TER": 0.14,
+  "TOTAL_EXPENSE_RATIO": 0.14,
+  "SRRI": 1,
+  "POSITION_AS_OF_DATE": "2026-09-24",
+  "FUND_BREAKDOWNS_AS_OF_DATE": "2026-09-24",
+  "BENCHMARK_NAME": "FTSE Eurozone Government Bill 0-6 Month Capped Index",
+  "BENCHMARK_TICKER": "EMTT6CC",
+  "BENCHMARK_NUMBER_OF_COMPONENTS": 53,
+  "FUND_REPLICATION_METHODOLOGY": "Direct(Physical)",
+  "FUND_SECURITIES_LENDING": false,
+  "DISTRIBUTION_POLICY": "Capitalisation",
+  "MNEMO": "C3M",
+  "SHARE_MARKETING_NAME": "Amundi Euro Government Bond 0-6 M UCITS ETF Acc",
+  "FUND_SFDR_CLASSIFICATION": "Article 6",
+  "PASSPORTED_COUNTRIES": [
+   {
+    "passportingCountryCode": "CHE",
+    "passportingCountryName": "Switzerland",
+    "passportingDate": "2009-06-22T00:00:00.000+00:00",
+    "deactivationDate": null,
+    "distributionProfil": "Institutionnal Only",
+    "amundiRetailLink": null,
+    "amundiProLink": null,
+    "amundiProLinkCheDe": null
+   },
+   {
+    "passportingCountryCode": "DEU",
+    "passportingCountryName": "Germany",
+    "passportingDate": "2009-11-26T00:00:00.000+00:00",
+    "deactivationDate": null,
+    "distributionProfil": "All",
+    "amundiRetailLink": null,
+    "amundiProLink": null,
+    "amundiProLinkCheDe": null
+   },
+   {
+    "passportingCountryCode": "FIN",
+    "passportingCountryName": "Finland",
+    "passportingDate": "2023-07-07T00:00:00.000+00:00",
+    "deactivationDate": null,
+    "distributionProfil": "All",
+    "amundiRetailLink": null,
+    "amundiProLink": null,
+    "amundiProLinkCheDe": null
+   },
+   {
+    "passportingCountryCode": "FRA",
+    "passportingCountryName": "France",
+    "passportingDate": "2009-06-22T00:00:00.000+00:00",
+    "deactivationDate": null,
+    "distributionProfil": "All",
+    "amundiRetailLink": null,
+    "amundiProLink": null,
+    "amundiProLinkCheDe": null
+   },
+   {
+    "passportingCountryCode": "GBR",
+    "passportingCountryName": "United Kingdom",
+    "passportingDate": "2024-12-13T00:00:00.000+00:00",
+    "deactivationDate": null,
+    "distributionProfil": "All",
+    "amundiRetailLink": null,
+    "amundiProLink": null,
+    "amundiProLinkCheDe": null
+   },
+   {
+    "passportingCountryCode": "ITA",
+    "passportingCountryName": "Italy",
+    "passportingDate": "2010-04-09T00:00:00.000+00:00",
+    "deactivationDate": null,
+    "distributionProfil": "All",
+    "amundiRetailLink": null,
+    "amundiProLink": null,
+    "amundiProLinkCheDe": null
+   },
+   {
+    "passportingCountryCode": "NLD",
+    "passportingCountryName": "Netherlands",
+    "passportingDate": "2010-03-02T00:00:00.000+00:00",
+    "deactivationDate": null,
+    "distributionProfil": "All",
+    "amundiRetailLink": null,
+    "amundiProLink": null,
+    "amundiProLinkCheDe": null
+   }
+  ],
+  "MAIN_LISTINGS": {
+   "AUT": "C3M FP",
+   "SWE": "C3M FP",
+   "DNK": "C3M FP",
+   "CHE": "C3M FP",
+   "OTH": "C3M FP",
+   "ESP": "C3M FP",
+   "HKG": "C3M FP",
+   "NLD": "C3M FP",
+   "BEL": "C3M FP",
+   "FIN": "C3M FP",
+   "TWN": "C3M FP",
+   "POL": "C3M FP",
+   "LUX": "C3M FP",
+   "NOR": "C3M FP",
+   "FRA": "C3M FP",
+   "DEU": "C3MGR GY",
+   "Asia": "C3M FP",
+   "GBR": "C3M FP",
+   "ITA": "C3M IM",
+   "SGP": "C3M FP"
+  }
+ },
+ "productType": "PRODUCT",
+ "currencies": {
+  "CURRENCY": "EUR",
+  "BASE_CURRENCY": "EUR",
+  "INDEX_CURRENCY": "EUR"
+ },
+ "metrics": [
+  {
+   "period": "2016",
+   "indicator": "shareCalendarPerformance",
+   "value": -0.005473544534748798
+  },
+  {
+   "period": "2017",
+   "indicator": "shareCalendarPerformance",
+   "value": -0.00758839226150787
+  },
+  {
+   "period": "2018",
+   "indicator": "shareCalendarPerformance",
+   "value": -0.0072262835055881824
+  },
+  {
+   "period": "2019",
+   "indicator": "shareCalendarPerformance",
+   "value": -0.005840033855268434
+  },
+  {
+   "period": "2020",
+   "indicator": "shareCalendarPerformance",
+   "value": -0.006044610931380756
+  },
+  {
+   "period": "2021",
+   "indicator": "shareCalendarPerformance",
+   "value": -0.007451820128479447
+  },
+  {
+   "period": "2022",
+   "indicator": "shareCalendarPerformance",
+   "value": -0.004573696927856363
+  },
+  {
+   "period": "2023",
+   "indicator": "shareCalendarPerformance",
+   "value": 0.02886866059817894
+  },
+  {
+   "period": "2024",
+   "indicator": "shareCalendarPerformance",
+   "value": 0.03530502190765272
+  },
+  {
+   "period": "2025",
+   "indicator": "shareCalendarPerformance",
+   "value": 0.020916415723933213
+  },
+  {
+   "period": "2026",
+   "indicator": "shareCalendarPerformance",
+   "value": null
+  },
+  {
+   "period": "2016",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": -0.0033275511566767113
+  },
+  {
+   "period": "2017",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": -0.0054498847376772686
+  },
+  {
+   "period": "2018",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": -0.005100324288021207
+  },
+  {
+   "period": "2019",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": -0.0038103720887152637
+  },
+  {
+   "period": "2020",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": -0.004661497233858336
+  },
+  {
+   "period": "2021",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": -0.006398621732168097
+  },
+  {
+   "period": "2022",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": -0.002875826694744288
+  },
+  {
+   "period": "2023",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": 0.029942419075455362
+  },
+  {
+   "period": "2024",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": 0.036471720517875506
+  },
+  {
+   "period": "2025",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": 0.02230230443859793
+  },
+  {
+   "period": "2026",
+   "indicator": "benchmarkCalendarPerformance",
+   "value": null
+  },
+  {
+   "period": "YTD",
+   "indicator": "shareAnnualizedPerformance",
+   "value": null
+  },
+  {
+   "period": "ONE_YEAR",
+   "indicator": "shareAnnualizedPerformance",
+   "value": 0.019628264701168074
+  },
+  {
+   "period": "THREE_YEARS",
+   "indicator": "shareAnnualizedPerformance",
+   "value": 0.026981749543879996
+  },
+  {
+   "period": "FIVE_YEARS",
+   "indicator": "shareAnnualizedPerformance",
+   "value": 0.018496268154253537
+  },
+  {
+   "period": "TEN_YEARS",
+   "indicator": "shareAnnualizedPerformance",
+   "value": 0.005785562968291247
+  },
+  {
+   "period": "SINCE_INCEPTION",
+   "indicator": "shareAnnualizedPerformance",
+   "value": null
+  },
+  {
+   "period": "YTD",
+   "indicator": "benchmarkAnnualizedPerformance",
+   "value": null
+  },
+  {
+   "period": "ONE_YEAR",
+   "indicator": "benchmarkAnnualizedPerformance",
+   "value": 0.02086567271939943
+  },
+  {
+   "period": "THREE_YEARS",
+   "indicator": "benchmarkAnnualizedPerformance",
+   "value": 0.028234557842897745
+  },
+  {
+   "period": "FIVE_YEARS",
+   "indicator": "benchmarkAnnualizedPerformance",
+   "value": 0.019736892811308415
+  },
+  {
+   "period": "TEN_YEARS",
+   "indicator": "benchmarkAnnualizedPerformance",
+   "value": 0.007337803939899024
+  },
+  {
+   "period": "SINCE_INCEPTION",
+   "indicator": "benchmarkAnnualizedPerformance",
+   "value": null
+  }
+ ],
+ "historics": [],
+ "passportingCountries": null,
+ "composition": {
+  "totalNumberOfInstruments": 54,
+  "compositionData": [
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 30959000.0,
+     "bbg": "DC7515943",
+     "name": "FEDERAL REPUB TBIP % 13Jan27",
+     "weight": 0.0331807814645938,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "DE000BU0E360",
+     "countryOfRisk": "Germany"
+    },
+    "weight": 0.0331807814645938
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 28666299.999999996,
+     "bbg": "YK8403114",
+     "name": "FEDERAL REPUB TBIP % 14Oct26",
+     "weight": 0.030930041844632276,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "DE000BU0E345",
+     "countryOfRisk": "Germany"
+    },
+    "weight": 0.030930041844632276
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 28670300.0,
+     "bbg": "DA3079831",
+     "name": "FEDERAL REPUB TBIP % 18Nov26",
+     "weight": 0.03085819592391966,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "DE000BU0E352",
+     "countryOfRisk": "Germany"
+    },
+    "weight": 0.03085819592391966
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 27293000.0,
+     "bbg": "DC1420280",
+     "name": "REPUBLIC OF I BOT % 14Dec26",
+     "weight": 0.02931560779877981,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005684888",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.02931560779877981
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 25232899.999999996,
+     "bbg": "DC9808692",
+     "name": "FEDERAL REPUB TBIP % 09Dec26",
+     "weight": 0.02711544105110215,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "DE000BU0E378",
+     "countryOfRisk": "Germany"
+    },
+    "weight": 0.02711544105110215
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 25231000.000000004,
+     "bbg": "YI9384433",
+     "name": "FEDERAL REPUB TBIP % 17Feb27",
+     "weight": 0.026963508727028792,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "DE000BU0E386",
+     "countryOfRisk": "Germany"
+    },
+    "weight": 0.026963508727028792
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 24904000.0,
+     "bbg": "DN6634741",
+     "name": "REPUBLIC OF I BOT % 29Jan27",
+     "weight": 0.026645382361781322,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005725236",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.026645382361781322
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 23619999.999999996,
+     "bbg": "DC8268088",
+     "name": "REPUBLIC OF I BOT % 14Jan27",
+     "weight": 0.025304707979794738,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005689887",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.025304707979794738
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 22902000.0,
+     "bbg": "YS9386717",
+     "name": "KINGDOM OF SP TBIP % 09Oct26",
+     "weight": 0.024714995720753228,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "ES0L02610092",
+     "countryOfRisk": "Spain"
+    },
+    "weight": 0.024714995720753228
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 22706000.0,
+     "bbg": "YK8583204",
+     "name": "REPUBLIC OF I BOT % 14Oct26",
+     "weight": 0.024495627374383572,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005674335",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.024495627374383572
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 22936000.0,
+     "bbg": "DG5073300",
+     "name": "FEDERAL REPUB TBIP % 17Mar27",
+     "weight": 0.024455128765075988,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "DE000BU0E394",
+     "countryOfRisk": "Germany"
+    },
+    "weight": 0.024455128765075988
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 21801000.0,
+     "bbg": "DH0962844",
+     "name": "FRENCH REPUBL BTF % 24Mar27",
+     "weight": 0.023206023110885845,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129437598",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.023206023110885845
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 21447000.0,
+     "bbg": "YI8731360",
+     "name": "REPUBLIC OF I BOT % 12Feb27",
+     "weight": 0.02292390629370695,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005695256",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.02292390629370695
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 21073900.0,
+     "bbg": "YK7239121",
+     "name": "FRENCH REPUBL BTF % 07Oct26",
+     "weight": 0.022739092983837264,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129287316",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.022739092983837264
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 21278000.0,
+     "bbg": "DF7259149",
+     "name": "FRENCH REPUBL BTF % 24Feb27",
+     "weight": 0.022706696943228858,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129437580",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.022706696943228858
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 20930000.0,
+     "bbg": "DL0954149",
+     "name": "REPUBLIC OF I BOT % 30Nov26",
+     "weight": 0.02250387657515885,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005711749",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.02250387657515885
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 20871000.0,
+     "bbg": "YS9386774",
+     "name": "KINGDOM OF SP TBIP % 04Dec26",
+     "weight": 0.022434168223456466,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "ES0L02612049",
+     "countryOfRisk": "Spain"
+    },
+    "weight": 0.022434168223456466
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 20616000.0,
+     "bbg": "YS9386758",
+     "name": "KINGDOM OF SP TBIP % 06Nov26",
+     "weight": 0.022205290661707178,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "ES0L02611066",
+     "countryOfRisk": "Spain"
+    },
+    "weight": 0.022205290661707178
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 19772999.999999996,
+     "bbg": "YI2783540",
+     "name": "KINGDOM OF SP TBIP % 05Mar27",
+     "weight": 0.021097388619947016,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "ES0L02703053",
+     "countryOfRisk": "Spain"
+    },
+    "weight": 0.021097388619947016
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 19716000.0,
+     "bbg": "YI2778763",
+     "name": "KINGDOM OF SP TBIP % 05Feb27",
+     "weight": 0.02108532558814756,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "ES0L02702055",
+     "countryOfRisk": "Spain"
+    },
+    "weight": 0.02108532558814756
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 19493000.0,
+     "bbg": "DA2177248",
+     "name": "REPUBLIC OF I BOT % 13Nov26",
+     "weight": 0.02098477046519615,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005678492",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.02098477046519615
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 19462300.0,
+     "bbg": "DH9010934",
+     "name": "FRENCH REPUBL BTF % 21Oct26",
+     "weight": 0.020979744533141453,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129570588",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.020979744533141453
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 19246000.0,
+     "bbg": "YI3549247",
+     "name": "FRENCH REPUBL BTF % 27Jan27",
+     "weight": 0.020588776663987608,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129437572",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.020588776663987608
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 19090000.0,
+     "bbg": "DC6628424",
+     "name": "FRENCH REPUBL BTF % 30Dec26",
+     "weight": 0.020475872637488207,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129287340",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.020475872637488207
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 18786500.0,
+     "bbg": "DJ9923181",
+     "name": "FRENCH REPUBL BTF % 18Nov26",
+     "weight": 0.02020970534710909,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129570596",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.02020970534710909
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 18441400.0,
+     "bbg": "DA9678057",
+     "name": "FRENCH REPUBL BTF % 02Dec26",
+     "weight": 0.019817279866832738,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129287332",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.019817279866832738
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 18409000.0,
+     "bbg": "YR0406268",
+     "name": "KINGDOM OF SP TBIP % 15Jan27",
+     "weight": 0.01972275857094668,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "ES0L02701156",
+     "countryOfRisk": "Spain"
+    },
+    "weight": 0.01972275857094668
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 18191100.0,
+     "bbg": "YJ8572275",
+     "name": "FRENCH REPUBL BTF % 04Nov26",
+     "weight": 0.019589939629820464,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129287324",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.019589939629820464
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 18350000.0,
+     "bbg": "DG4012564",
+     "name": "REPUBLIC OF I BOT % 12Mar27",
+     "weight": 0.01957271200682844,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005699340",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.01957271200682844
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 18070000.0,
+     "bbg": "DL3083276",
+     "name": "FRENCH REPUBL BTF % 16Dec26",
+     "weight": 0.01939786753190295,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129570604",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.01939786753190295
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 17163500.0,
+     "bbg": "YT9293697",
+     "name": "KINGDOM OF BE % 15Oct26",
+     "weight": 0.018514612916802346,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "BE0312817894",
+     "countryOfRisk": "Belgium"
+    },
+    "weight": 0.018514612916802346
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 16952000.0,
+     "bbg": "DO8551412",
+     "name": "FRENCH REPUBL BTF % 10Mar27",
+     "weight": 0.0180663536276824,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704153",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.0180663536276824
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 16759199.999999998,
+     "bbg": "YT9300369",
+     "name": "KINGDOM OF BE % 10Dec26",
+     "weight": 0.01800459654972924,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "BE0312819916",
+     "countryOfRisk": "Belgium"
+    },
+    "weight": 0.01800459654972924
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 16789000.0,
+     "bbg": "DN6489849",
+     "name": "FRENCH REPUBL BTF % 10Feb27",
+     "weight": 0.01793757889161105,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704146",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.01793757889161105
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 16518400.000000002,
+     "bbg": "YT9293820",
+     "name": "KINGDOM OF BE % 12Nov26",
+     "weight": 0.01778374350623989,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "BE0312818900",
+     "countryOfRisk": "Belgium"
+    },
+    "weight": 0.01778374350623989
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 16274000.000000002,
+     "bbg": "DM4757835",
+     "name": "FRENCH REPUBL BTF % 13Jan27",
+     "weight": 0.017428737266267272,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129570612",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.017428737266267272
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 15357999.999999998,
+     "bbg": "DN9175411",
+     "name": "FRENCH REPUBL BTF % 11Nov26",
+     "weight": 0.016529949058581142,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704096",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.016529949058581142
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 14813100.0,
+     "bbg": "DJ7086148",
+     "name": "GOVERNMENT OF % 29Oct26",
+     "weight": 0.01596370871686696,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "NL00150742K1",
+     "countryOfRisk": "Netherlands"
+    },
+    "weight": 0.01596370871686696
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 14603000.0,
+     "bbg": "DM7728270",
+     "name": "FRENCH REPUBL BTF % 14Oct26",
+     "weight": 0.015749323880782894,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704203",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.015749323880782894
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 14034799.999999998,
+     "bbg": "DL1198134",
+     "name": "GOVERNMENT OF % 27Nov26",
+     "weight": 0.015093513019155073,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "NL00150744Z5",
+     "countryOfRisk": "Netherlands"
+    },
+    "weight": 0.015093513019155073
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 13319000.0,
+     "bbg": "DN3380611",
+     "name": "FRENCH REPUBL BTF % 28Oct26",
+     "weight": 0.014350247358548758,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704088",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.014350247358548758
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 13238000.000000002,
+     "bbg": "DQ1244812",
+     "name": "FRENCH REPUBL BTF % 09Dec26",
+     "weight": 0.01421806561874613,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704112",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.01421806561874613
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 12369000.0,
+     "bbg": "DO5576917",
+     "name": "FRENCH REPUBL BTF % 25Nov26",
+     "weight": 0.013298932004035438,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704104",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.013298932004035438
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 10761000.000000002,
+     "bbg": "DM2499455",
+     "name": "REPUBLIC OF I BOT % 31Dec26",
+     "weight": 0.011543280835153918,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "IT0005719536",
+     "countryOfRisk": "Italy"
+    },
+    "weight": 0.011543280835153918
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 10595000.0,
+     "bbg": "DC8973448",
+     "name": "KINGDOM OF BE % 14Jan27",
+     "weight": 0.011351166455865211,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "BE0312820922",
+     "countryOfRisk": "Belgium"
+    },
+    "weight": 0.011351166455865211
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 9367000.0,
+     "bbg": "DC8974842",
+     "name": "KINGDOM OF BE % 11Feb27",
+     "weight": 0.010011632493718385,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "BE0312821938",
+     "countryOfRisk": "Belgium"
+    },
+    "weight": 0.010011632493718385
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 9014000.0,
+     "bbg": "DC8973489",
+     "name": "KINGDOM OF BE % 11Mar27",
+     "weight": 0.00961115365961093,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "BE0312822944",
+     "countryOfRisk": "Belgium"
+    },
+    "weight": 0.00961115365961093
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 7475000.0,
+     "bbg": "DN7358027",
+     "name": "GOVERNMENT OF % 28Jan27",
+     "weight": 0.008000085826496394,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "NL0015074B12",
+     "countryOfRisk": "Netherlands"
+    },
+    "weight": 0.008000085826496394
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 7148000.0,
+     "bbg": "DQ6426539",
+     "name": "FRENCH REPUBL BTF % 23Dec26",
+     "weight": 0.007668442479472504,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "FR0129704120",
+     "countryOfRisk": "France"
+    },
+    "weight": 0.007668442479472504
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 6851999.999999999,
+     "bbg": "DG6620364",
+     "name": "PORTUGAL TBIP % 19Mar27",
+     "weight": 0.007301465557127018,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "PTPBTFGE0069",
+     "countryOfRisk": "Portugal"
+    },
+    "weight": 0.007301465557127018
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 5587000.0,
+     "bbg": "YI0814875",
+     "name": "PORTUGAL TBIP % 22Jan27",
+     "weight": 0.005981369783096851,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "PTPBTZGE0032",
+     "countryOfRisk": "Portugal"
+    },
+    "weight": 0.005981369783096851
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 5336100.0,
+     "bbg": "DC6345607",
+     "name": "PORTUGAL TBIP % 20Nov26",
+     "weight": 0.005741407266202222,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "PTPBTCGE0070",
+     "countryOfRisk": "Portugal"
+    },
+    "weight": 0.005741407266202222
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 3466000.0,
+     "bbg": "DQ2381712",
+     "name": "GOVERNMENT OF % 25Feb27",
+     "weight": 0.0037009258312960228,
+     "currency": "EUR",
+     "type": "TREASURY_BILL",
+     "sector": "Government",
+     "isin": "NL0015074CG7",
+     "countryOfRisk": "Netherlands"
+    },
+    "weight": 0.0037009258312960228
+   },
+   {
+    "compositionCharacteristics": {
+     "date": "2026-09-24",
+     "quantity": 1.0,
+     "bbg": null,
+     "name": null,
+     "weight": -7.090786826326058e-05,
+     "currency": "EUR",
+     "type": "CASH",
+     "sector": null,
+     "isin": null,
+     "countryOfRisk": null
+    },
+    "weight": -7.090786826326058e-05
+   }
+  ]
+ },
+ "breakDowns": [
+  {
+   "aggregationField": "FUND_TOP10",
+   "breakDownData": [
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 13Jan27",
+     "weight": 0.0,
+     "adjustedWeight": 0.03318078146459,
+     "additionalProperties": {
+      "quantity": 30959000.0,
+      "bbg": "DC7515943",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E360",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 14Oct26",
+     "weight": 0.0,
+     "adjustedWeight": 0.03093004184463,
+     "additionalProperties": {
+      "quantity": 28666299.999999996,
+      "bbg": "YK8403114",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E345",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 18Nov26",
+     "weight": 0.0,
+     "adjustedWeight": 0.03085819592392,
+     "additionalProperties": {
+      "quantity": 28670300.0,
+      "bbg": "DA3079831",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E352",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 14Dec26",
+     "weight": 0.0,
+     "adjustedWeight": 0.02931560779878,
+     "additionalProperties": {
+      "quantity": 27293000.0,
+      "bbg": "DC1420280",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005684888",
+      "countryOfRisk": "Italy"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 09Dec26",
+     "weight": 0.0,
+     "adjustedWeight": 0.0271154410511,
+     "additionalProperties": {
+      "quantity": 25232899.999999996,
+      "bbg": "DC9808692",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E378",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 17Feb27",
+     "weight": 0.0,
+     "adjustedWeight": 0.02696350872703,
+     "additionalProperties": {
+      "quantity": 25231000.000000004,
+      "bbg": "YI9384433",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E386",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 29Jan27",
+     "weight": 0.0,
+     "adjustedWeight": 0.02664538236178,
+     "additionalProperties": {
+      "quantity": 24904000.0,
+      "bbg": "DN6634741",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005725236",
+      "countryOfRisk": "Italy"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 14Jan27",
+     "weight": 0.0,
+     "adjustedWeight": 0.02530470797979,
+     "additionalProperties": {
+      "quantity": 23619999.999999996,
+      "bbg": "DC8268088",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005689887",
+      "countryOfRisk": "Italy"
+     }
+    },
+    {
+     "aggregationName": "KINGDOM OF SP TBIP % 09Oct26",
+     "weight": 0.0,
+     "adjustedWeight": 0.02471499572075,
+     "additionalProperties": {
+      "quantity": 22902000.0,
+      "bbg": "YS9386717",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "ES0L02610092",
+      "countryOfRisk": "Spain"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 14Oct26",
+     "weight": 0.0,
+     "adjustedWeight": 0.02449562737438,
+     "additionalProperties": {
+      "quantity": 22706000.0,
+      "bbg": "YK8583204",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005674335",
+      "countryOfRisk": "Italy"
+     }
+    }
+   ]
+  },
+  {
+   "aggregationField": "FUND_RATINGS",
+   "breakDownData": [
+    {
+     "aggregationName": "A+",
+     "weight": 0.44922792382791,
+     "adjustedWeight": 0.44922792382791,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "AAA",
+     "weight": 0.21624599762745,
+     "adjustedWeight": 0.21624599762745,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "BBB+",
+     "weight": 0.2032754578614,
+     "adjustedWeight": 0.2032754578614,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "A",
+     "weight": 0.13125062068324,
+     "adjustedWeight": 0.13125062068324,
+     "additionalProperties": null
+    }
+   ]
+  },
+  {
+   "aggregationField": "FUND_MATURITIES",
+   "breakDownData": [
+    {
+     "aggregationName": "0-1Y",
+     "weight": 1.0,
+     "adjustedWeight": 1.0,
+     "additionalProperties": null
+    }
+   ]
+  },
+  {
+   "aggregationField": "FUND_COUNTRIES",
+   "breakDownData": [
+    {
+     "aggregationName": "France",
+     "weight": 0.34493417088721,
+     "adjustedWeight": 0.34493417088721,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Italy",
+     "weight": 0.2032754578614,
+     "adjustedWeight": 0.2032754578614,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Germany",
+     "weight": 0.17349079591385,
+     "adjustedWeight": 0.17349079591385,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Spain",
+     "weight": 0.13125062068324,
+     "adjustedWeight": 0.13125062068324,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Belgium",
+     "weight": 0.08527085920711,
+     "adjustedWeight": 0.08527085920711,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Netherlands",
+     "weight": 0.0427552017136,
+     "adjustedWeight": 0.0427552017136,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Portugal",
+     "weight": 0.01902289373358,
+     "adjustedWeight": 0.01902289373358,
+     "additionalProperties": null
+    }
+   ]
+  },
+  {
+   "aggregationField": "INDEX_TOP10",
+   "breakDownData": [
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 13Jan27",
+     "weight": 0.0,
+     "adjustedWeight": 0.03317608685074,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "DC7515943",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E360",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 14Oct26",
+     "weight": 0.0,
+     "adjustedWeight": 0.03092558123891,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "YK8403114",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E345",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 18Nov26",
+     "weight": 0.0,
+     "adjustedWeight": 0.03085189499679,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "DA3079831",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E352",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 14Dec26",
+     "weight": 0.0,
+     "adjustedWeight": 0.02931003086951,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "DC1420280",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005684888",
+      "countryOfRisk": "Italy"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 09Dec26",
+     "weight": 0.0,
+     "adjustedWeight": 0.0271105952624,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "DC9808692",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E378",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "FEDERAL REPUB TBIP % 17Feb27",
+     "weight": 0.0,
+     "adjustedWeight": 0.02695847675832,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "YI9384433",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "DE000BU0E386",
+      "countryOfRisk": "Germany"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 29Jan27",
+     "weight": 0.0,
+     "adjustedWeight": 0.02664050087953,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "DN6634741",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005725236",
+      "countryOfRisk": "Italy"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 14Jan27",
+     "weight": 0.0,
+     "adjustedWeight": 0.0253011509835,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "DC8268088",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005689887",
+      "countryOfRisk": "Italy"
+     }
+    },
+    {
+     "aggregationName": "KINGDOM OF SP TBIP % 09Oct26",
+     "weight": 0.0,
+     "adjustedWeight": 0.02471049875596,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "YS9386717",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "ES0L02610092",
+      "countryOfRisk": "Spain"
+     }
+    },
+    {
+     "aggregationName": "REPUBLIC OF I BOT % 14Oct26",
+     "weight": 0.0,
+     "adjustedWeight": 0.02449098788772,
+     "additionalProperties": {
+      "quantity": 0.0,
+      "bbg": "YK8583204",
+      "currency": "EUR",
+      "sector": "Government",
+      "isin": "IT0005674335",
+      "countryOfRisk": "Italy"
+     }
+    }
+   ]
+  },
+  {
+   "aggregationField": "INDEX_RATINGS",
+   "breakDownData": [
+    {
+     "aggregationName": "A",
+     "weight": 0.58051964747266,
+     "adjustedWeight": 0.58051964747266,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "AAA",
+     "weight": 0.21622513216367,
+     "adjustedWeight": 0.21622513216367,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "BBB",
+     "weight": 0.20325522036367,
+     "adjustedWeight": 0.20325522036367,
+     "additionalProperties": null
+    }
+   ]
+  },
+  {
+   "aggregationField": "INDEX_MATURITIES",
+   "breakDownData": [
+    {
+     "aggregationName": "0-1Y",
+     "weight": 1.0,
+     "adjustedWeight": 1.0,
+     "additionalProperties": null
+    }
+   ]
+  },
+  {
+   "aggregationField": "INDEX_COUNTRIES",
+   "breakDownData": [
+    {
+     "aggregationName": "France",
+     "weight": 0.3449967611453,
+     "adjustedWeight": 0.3449967611453,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Italy",
+     "weight": 0.20325522036367,
+     "adjustedWeight": 0.20325522036367,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Germany",
+     "weight": 0.1734732557492,
+     "adjustedWeight": 0.1734732557492,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Spain",
+     "weight": 0.13123763914482,
+     "adjustedWeight": 0.13123763914482,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Belgium",
+     "weight": 0.08526333050925,
+     "adjustedWeight": 0.08526333050925,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Netherlands",
+     "weight": 0.04275187641446,
+     "adjustedWeight": 0.04275187641446,
+     "additionalProperties": null
+    },
+    {
+     "aggregationName": "Portugal",
+     "weight": 0.01902191667329,
+     "adjustedWeight": 0.01902191667329,
+     "additionalProperties": null
+    }
+   ]
+  }
+ ]
+}
