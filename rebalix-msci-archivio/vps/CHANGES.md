@@ -33,3 +33,11 @@
 - top10Pct: None → 21.65
 - pe: None → 22.11
 - turnoverPct: None → 2.6
+
+## 2026-10-02
+
+📕 Metodologia «gimi-ago2026» non più raggiungibile (HTTP Error 403: Forbidden): probabile NUOVA EDIZIONE pubblicata da MSCI. Cercarla, rileggerla (diff col nostro archivio in docs/indici/msci-world-base-fattuale.md) e aggiornare l'articolo se serve.
+
+📕 Metodologia «calc-mag2026» non più raggiungibile (HTTP Error 403: Forbidden): probabile NUOVA EDIZIONE pubblicata da MSCI. Cercarla, rileggerla (diff col nostro archivio in docs/indici/msci-world-base-fattuale.md) e aggiornare l'articolo se serve.
+
+📕 Metodologia «ce-ago2026» non più raggiungibile (HTTP Error 403: Forbidden): probabile NUOVA EDIZIONE pubblicata da MSCI. Cercarla, rileggerla (diff col nostro archivio in docs/indici/msci-world-base-fattuale.md) e aggiornare l'articolo se serve.

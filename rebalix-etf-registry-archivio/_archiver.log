@@ -1170,3 +1170,42 @@
 2026-09-02 21:46    |golden-esterno| 
 2026-09-02 21:46    |golden-esterno| golden esterno ✓ (metriche entro tolleranza sul roster)
 2026-09-02 21:46  [heartbeat] inviato (200)
+2026-10-02 07:45  lancio: /usr/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-10-02 08:06    | → 21shares…
+2026-10-02 08:06    |   21shares: 60 righe, 0 con benchmark  ✓
+2026-10-02 08:06    | → avantis…
+2026-10-02 08:06    |   avantis: 6 righe, 6 con benchmark  ✓
+2026-10-02 08:06    | → invesco…
+2026-10-02 08:06    |   …invesco 50/300
+2026-10-02 08:06    |   …invesco 100/300
+2026-10-02 08:06    |   …invesco 150/300
+2026-10-02 08:06    |   …invesco 200/300
+2026-10-02 08:06    |   …invesco 250/300
+2026-10-02 08:06    |   …invesco 300/300
+2026-10-02 08:06    |   invesco: 300 righe, 299 con benchmark  ✓
+2026-10-02 08:06    | → franklin…
+2026-10-02 08:06    |   franklin: 48 righe, 48 con benchmark  ✓
+2026-10-02 08:06    | 
+2026-10-02 08:06    | Totale: 3780 righe, 3600 con benchmark, 1940 indici distinti
+2026-10-02 08:06    | Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+2026-10-02 08:06    |   aum_eur: 2026/2026 convertiti dai cambi BCE (GBP, USD, EUR, JPY, CHF, SEK, MXN, NZD, NOK, SGD, AUD, HKD)
+2026-10-02 08:06    |   ↳ UBS CH0105994401: colonna 0.97 / flat 0.25 / KID 1.04 → COLLISIONE: KID non coincide con nessuna delle due, resta la colonna (fonte primaria), non arbitrato
+2026-10-02 08:06    |   ↳ UBS CH0124758522: colonna 0.79 / flat 0.25 / KID 0.82 → COLLISIONE: KID non coincide con nessuna delle due, resta la colonna (fonte primaria), non arbitrato
+2026-10-02 08:06    |   DB: 3780 righe upsertate · guardia anti-cancellazione: conservati raw.bondMetricsSorella×59, replication×1403, raw.sfdrFonte×3248, raw.tdNote×339, sfdr×706, raw.docNote×74, ter×434, distribution_policy×391, aum_eur×676, aum×670, aum_currency×670, aum_as_of×439, srri×373, domicile×376, inception_date×434, asset_class×944, raw.politicaFonte×26, benchmark_raw×60, raw.nomeDaApi×3 (il feed diceva null, la tabella aveva un valore)
+2026-10-02 08:06    |   memoria: 3799 fotografie nuove per 2026-10 in etf_registry_history
+2026-10-02 08:06    |   archivio: snapshot 2026-10 in /home/rebalix/backups/rebalix-etf-registry-archivio/snapshots/2026-10
+2026-10-02 08:06    | 
+2026-10-02 08:06    | ✓ Ingest completato.
+2026-10-02 08:06  esito: exit=0, emittenti ok=13/13
+2026-10-02 08:06    |etc|   ✓ DE000A2UDH63 Xtrackers IE Physical Platinum EUR Hedged ETC Se — fee 0,73% EUR Metalli preziosi
+2026-10-02 08:06    |etc|   ✓ DE000A1E0HS6 Xtrackers Physical Silver ETC (EUR) — fee 0,40% USD Metalli preziosi
+2026-10-02 08:06    |etc|   ✓ CH1492505164 Xtrackers Galaxy MSCI Physical Crypto Market ETC — fee 0,65% USD DIGITAL ASSET
+2026-10-02 08:06    |etc| Xtrackers ETC scritti: 18/18
+2026-10-02 08:51    |kid| promuovi-eventi — COMMIT
+2026-10-02 08:51    |kid| eventi in esame: 0 → verified 0 · dismissed 0 · needs_review 0 (—) · restano detected 0
+2026-10-02 08:51    |kid| 
+2026-10-02 08:51    |kid| ✓ promotore: 0/0 eventi aggiornati
+2026-10-02 08:51    |classif|   orfano → regione: Invesco IE00068R3DX9 «Invesco Japan Enhanced Equity UCITS ETF Acc»
+2026-10-02 08:51    |classif|   orfano → regione: Franklin Templeton IE000ZOKLHY7 «Solactive Sustainable Food Index-NR»
+2026-10-02 08:51    |classif| ATTESA regione azionaria: 99.8% (1720/1723)
+2026-10-02 08:51    |classif| ✓ attese rispettate

@@ -120,3 +120,5 @@
 {"chiave": "2026-09-29|XEON.MI", "symbol": "XEON.MI", "bid": 147.278, "ask": 147.2968, "spread_pct": 0.0128, "aum": 23844069400.0, "price": 150.3399}
 {"chiave": "2026-09-30|C3M.MI", "symbol": "C3M.MI", "bid": 124.6, "ask": 124.86, "spread_pct": 0.2085, "aum": 913207680.0, "price": 127.31}
 {"chiave": "2026-09-30|XEON.MI", "symbol": "XEON.MI", "bid": 147.278, "ask": 147.2968, "spread_pct": 0.0128, "aum": 23844069400.0, "price": 150.3499}
+{"chiave": "2026-10-01|C3M.MI", "symbol": "C3M.MI", "bid": 124.6, "ask": 124.86, "spread_pct": 0.2085, "aum": 913207680.0, "price": 127.38}
+{"chiave": "2026-10-01|XEON.MI", "symbol": "XEON.MI", "bid": 147.278, "ask": 147.2968, "spread_pct": 0.0128, "aum": 23844069400.0, "price": 150.3603}
