@@ -1209,3 +1209,289 @@
 2026-10-02 08:51    |classif|   orfano → regione: Franklin Templeton IE000ZOKLHY7 «Solactive Sustainable Food Index-NR»
 2026-10-02 08:51    |classif| ATTESA regione azionaria: 99.8% (1720/1723)
 2026-10-02 08:51    |classif| ✓ attese rispettate
+2026-10-02 09:45    |listings| 
+2026-10-02 09:45    |listings| Fatto: 3355 ISIN con listing, 443 senza documenti FIRDS, 0 falliti; 107458 righe scritte
+2026-10-02 09:45    |listings| Listing non-attivi visti: 30689
+2026-10-02 11:34    |series|   serie dal DB: 2025
+2026-10-02 11:34    |series|   serie dal DB: 2525
+2026-10-02 11:34    |series|   serie dal DB: 3025
+2026-10-02 11:34    |series|   cache serie riscritta: 3291 righe → /home/rebalix/cache/etf-series.json
+2026-10-02 11:49    |bench-ishares|   ✗ IE00095FLAP4 pagina: HTTP 404
+2026-10-02 11:49    |bench-ishares| 
+2026-10-02 11:49    |bench-ishares| esito: bench dalla pagina 0 [via API UK 210 · API UK ko 0] · senza pagina/ajax 41 [pid assente 0 · HTTP 404 29 · altri HTTP 0 · pagina senza grafico 12] · pagina senza bench 26 · discordi 0 · hedged saltate 209 · scritte 0
+2026-10-02 11:57    |bench-invesco| 
+2026-10-02 11:57    |bench-invesco| esito: indice dal rolling 6 · senza indice 25 · falliti 0 · discordi 0 · hedged saltate 45 · scritte 6
+2026-10-02 11:57    |bench-invesco| cache serie riscritta
+2026-10-02 12:10    |distfreq|   Franklin dichiarate: 0
+2026-10-02 12:10    |distfreq| frequenze pronte: 795 — scritte (solo dove mancava): 795
+2026-10-02 12:49    |lending| prestito dichiarato: 7 — frase assente: 974 — KID non raggiunti: 5
+2026-10-02 12:49    |lending| golden UBS ✓ (dichiara il prestito)
+2026-10-02 12:53    |kidrisk| rischio estratto: 11 — KID letti senza numero: 203 — non raggiunti: 37
+2026-10-02 12:53    |kidrisk| golden CSPX ✓ (rischio 4)
+2026-10-02 13:55    |declared| aggiornati: 31 — azzerati (nessuna fonte): 13 — iShares non letti: 91
+2026-10-02 13:55    |declared|   borse fuori mappa (tenute col nome originale): Bolsa De Valores De Colombia×41, Santiago Stock Exchange×98, Cboe Europe×46, Bolsa Institucional de Valores×59, BATS Chi-X Europe×4, Tel Aviv Stock Exchange×23
+2026-10-02 13:55    |declared| golden ✓ MDAX=["SIX Zurigo","Xetra"] CSPX=["Bolsa De Valores De Colombia","Bolsa Mexicana","Borsa Italiana","Euronext Amsterdam","Londra (LSE)","SIX Zurigo","Santiago Stock Exchange","Tel Aviv Stock Exchange","Xetra"]
+2026-10-02 13:58    |venues|   CH1492505164/XETA: XBSE → XBSK
+2026-10-02 13:58    |venues|   CH1492505164/XETU: XBSE → XBSK
+2026-10-02 14:47    |tickers| collaudo whitelist↔openfigi: 22680 confronti, 532 divergenze (2.3%)
+2026-10-02 14:47    |tickers| scritte 40209 righe
+2026-10-02 14:47    |tickers| mappa tarata salvata in /tmp/figi-mic-map.json
+2026-10-02 14:47    |fondo| 
+2026-10-02 14:47    |fondo| ✓ etf_fund: 1864 fondi upsertati, 2 orfani cancellati · etf_registry.fund_id: 24 classi scritte, 3210 già giuste
+2026-10-02 14:48    |listing-emittente| 
+2026-10-02 14:48    |listing-emittente| ✓ 663 righe aggiornate · 38 righe nuove · 0 righe nate dal feed portate a terminated (sede corroborabile senza FIRDS attiva)
+2026-10-02 14:48    |linee| in tabella prima: 3995
+2026-10-02 14:48    |linee| ✗ contatori mancate, lotto 0: null value in column "isin" of relation "etf_listing_lines" violates not-null constraint
+2026-10-02 14:48    |whitelist-ticker| 
+2026-10-02 14:48    |whitelist-ticker| ✓ whitelist-ticker: 0 righe aggiornate (ticker 0, mappa 0) · valori esistenti toccati dal riempimento 0 · correzioni dichiarato 0 · correzioni IOB 0 · correzioni Milano non corroborata 0 · conflitti residui visibili 0
+2026-10-02 15:18    |documents|   lingueMancanti: 168 slot con lingua non-madre da ricontrollare
+2026-10-02 15:18    |documents| LingueMancanti: 0 fondi con documenti (65s)
+2026-10-02 18:22    |doc-archive|     non raggiungibile  https://www.ubs.com/2/e/priip/PRIIPSEU_LU3254394912_en_IE.pdf
+2026-10-02 18:22    |doc-archive|     non raggiungibile  https://www.ubs.com/2/e/priip/PRIIPSEU_LU3254395307_en_IE.pdf
+2026-10-02 18:28    |kid-objectives| Invesco      ok  292/298 · EN ufficiale  292 (senza: 0)  marcatore inizio×1 · sezione corta×5
+2026-10-02 18:28    |kid-objectives| JPMorgan     ok   96/96 · EN ufficiale   96 (senza: 0)  
+2026-10-02 18:28    |kid-objectives| LGIM         ok   71/71 · EN ufficiale   71 (senza: 0)  
+2026-10-02 18:28    |kid-objectives| SPDR         ok  176/176 · EN ufficiale  176 (senza: 0)  
+2026-10-02 18:28    |kid-objectives| UBS          ok  422/422 · EN ufficiale  281 (senza: 141)  
+2026-10-02 18:28    |kid-objectives| Vanguard     ok  140/140 · EN ufficiale  137 (senza: 3)  
+2026-10-02 18:28    |kid-objectives| Xtrackers    ok  394/394 · EN ufficiale  394 (senza: 0)  
+2026-10-02 18:28    |kid-objectives| iShares      ok  911/911 · EN ufficiale  911 (senza: 0)  
+2026-10-02 18:28    |kid-objectives| 
+2026-10-02 18:28    |kid-objectives| rapporto con campioni: /tmp/kid-objectives-report.json
+2026-10-02 18:28    |gestione|    Amundi    HK0000286812 Amundi Hang Seng HK 35 Index ETF - Counter RMB
+2026-10-02 18:28    |gestione|    Amundi    HK0000308285 Amundi FTSE China A50 Index ETF - Counter RMB
+2026-10-02 18:28    |gestione|    Amundi    HK0000308293 Amundi FTSE China A50 Index ETF - Counter HKD
+2026-10-02 18:28    |gestione| 
+2026-10-02 18:28    |gestione| golden ✓ (gestione 10/10, replica di riserva 4/4)
+2026-10-02 18:28    |gestione| sentinella «Active» nel nome: nessun orfano ✓
+2026-10-02 18:28    |gestione| 
+2026-10-02 18:28    |gestione| DB: 24 righe aggiornate, 0 errori
+2026-10-02 19:05    |bond-metrics|   ℹ golden LU0721552973: documento più recente (2026-08-31 ≠ 2026-06-30) → confronto duration saltato (3.45)
+2026-10-02 19:05    |bond-metrics|   ✓ golden LU0721552973 (UBS) dur=3.45 modificata as_of=2026-08-31 rating=0 scad=0
+2026-10-02 19:05    |bond-metrics|   ℹ golden LU1285959885: documento più recente (2026-08-31 ≠ 2026-06-30) → confronto duration saltato (6.42)
+2026-10-02 19:05    |bond-metrics|   ✓ golden LU1285959885 (Amundi) dur=6.42 modificata as_of=2026-08-31 rating=6 scad=8
+2026-10-02 19:05    |bond-metrics|   ℹ golden IE0003HUCA83: documento più recente (2026-08-31 ≠ 2026-06-30) → confronto duration saltato (6.5)
+2026-10-02 19:05    |bond-metrics|   ✓ golden IE0003HUCA83 (Vanguard) dur=6.5 media as_of=2026-08-31 rating=5 scad=7
+2026-10-02 19:05    |bond-metrics|   ℹ golden IE0002OP0LA0: documento più recente (2026-08-31 ≠ 2026-07-31) → confronto duration saltato (2.69)
+2026-10-02 19:05    |bond-metrics|   ✓ golden IE0002OP0LA0 (SPDR) dur=2.69 effettiva as_of=2026-08-31 rating=2 scad=5
+2026-10-02 19:05    |bond-metrics|   ✓ golden IE0004KLW911 (Xtrackers) dur=6.39 modificata as_of=2026-10-01 rating=0 scad=8
+2026-10-02 19:05    |bond-metrics|   ✓ golden IE00004FVB93 (iShares) dur=1.69 effettiva as_of=2026-08-31 rating=5 scad=3
+2026-10-02 19:05    |bond-metrics|   ℹ golden IE000ZWSN3F7: documento più recente (2026-08-31 ≠ 2026-07-31) → confronto duration saltato (3)
+2026-10-02 19:05    |bond-metrics|   ✓ golden IE000ZWSN3F7 (Invesco) dur=3 effettiva as_of=2026-08-31 rating=9 scad=7
+2026-10-02 19:05    |bond-metrics| golden: 9/10
+2026-10-02 19:05    |bond-metrics| golden KO → nessuna scrittura
+2026-10-02 19:05    |bond-metrics-sorelle|   IE000TCMASP9 iShares $ EM Bond Active UCITS ETF                   ← IE000D9S4LT3 (dur 5.96 effettiva)
+2026-10-02 19:05    |bond-metrics-sorelle|   IE000VXEZ486 iShares Global Securitised Index Fund (IE)           ← IE00000IFTU0 (dur 5.27987 )
+2026-10-02 19:05    |bond-metrics-sorelle| COMMIT: da scrivere 3 · gruppi discordi 0
+2026-10-02 19:05    |bond-metrics-sorelle| scritte 3
+2026-10-02 19:07    |td| ripiego su TD dichiarata a 12 mesi: 16
+2026-10-02 19:07    |td| COMMIT: 2137 td_1y scritte, 23 azzerate · motivi del trattino: 189 scritti, 15 tolti
+2026-10-02 19:07    |td| coperte ritirate per |TD|≥2 (indice non coperto nel feed): 69 — es. Amundi IE0000CRTTJ9 TD=-2.37 · Xtrackers IE0000MMQ5M5 TD=-2.72 · iShares IE0001JK8FV4 TD=2.15 · Xtrackers IE00028H9QJ8 TD=-2.05 · Xtrackers IE0002EI5AG0 TD=-2.33 · Xtrackers IE000IDLWOL4 TD=-2.28
+2026-10-02 19:10    |td-spdr| 
+2026-10-02 19:10    |td-spdr| esito: TD dichiarate 143 · soppresse {"classe-coperta-indice-non-coperto":1} · zeri tolti 0 · quarantena 1 · senza pagina 0 · pagina senza dati 32 · scritte 144
+2026-10-02 19:10    |kid-xtrackers| esito: 0 fondi da scrivere · senza KID in archivio 0 · KID senza TER leggibile 18 · senza politica 26 · TER: {} · policy: Acc 0 / Dist 0
+2026-10-02 19:10    |kid-xtrackers| COMMIT: 0 righe aggiornate
+2026-10-02 19:10    |kid-politica|   · 21Shares CH1102728750 21shares Cardano ETP
+2026-10-02 19:10    |kid-politica| COMMIT: 0 righe aggiornate
+2026-10-02 19:10    |factsheet-aum|   golden IE00BF0M2Z96: USD 820.200.000 vs atteso USD 916.400.000 → ✗
+2026-10-02 19:10    |factsheet-aum| golden FALLITO → non scrivo nulla
+2026-10-02 19:10  !! factsheet-aum: exit 2 (golden fallito? nulla scritto)
+2026-10-02 19:10    |21shares-anagrafica|   CH1608218819 ETHFI  {"benchmark_raw":"Prezzo di riferimento di ETHFI — CCData Aggregated Index (fonte: 21Shares)","kid_url":"https://cdn.21shares.com/uploads/product_documents/KIDS/ETHFI_CH1608218819_it.pdf","factsheet_url":"https://cdn.21shares.com/uploads/current-documents/factsheets/all/Factsheet_ETHFI.pdf"}
+2026-10-02 19:10    |21shares-anagrafica| esito: benchmark 2 · kid_url IT 2 · factsheet 2 · righe aggiornate 2
+2026-10-02 19:12    |xtrackers-pdp| letti: inception 0 · domicilio 0 · srri 0 · aum 0 · indice 0 · sottostante ETC 0 · ter 0 · aum ETC 0 | vuoti 0 · errori 0 · da scrivere 376
+2026-10-02 19:12    |xtrackers-pdp| scritte 376/376
+2026-10-02 19:14    |21shares-inception| lette 60 · non trovate 0 · da scrivere 2
+2026-10-02 19:14    |21shares-inception| scritte 2/2
+2026-10-02 19:16    |sfdr-da-kid|   LGIM       8=0 9=0 6-dedotto=1 etc=0
+2026-10-02 19:16    |sfdr-da-kid| scritte 593/593
+2026-10-02 19:16    |sfdr-da-prospetto| note «non pubblicato dall'emittente» da scrivere: 0
+2026-10-02 19:16    |sfdr-da-prospetto| scritte 0/0 · note 0/0
+2026-10-02 19:16    |sfdr-normalizza| righe da riscrivere: 884
+2026-10-02 19:16    |sfdr-normalizza| scritte 884/884
+2026-10-02 19:16    |21shares-ter| 
+2026-10-02 19:16    |21shares-ter| esito: TER letti 2 · senza KID 0 · KID senza costo 0 · scritte 2
+2026-10-02 19:21    |doc-langs| esito: 3290 fondi con lingua rilevata · KID non-it: 227 · factsheet non-it: 551
+2026-10-02 19:21    |doc-langs| colonne _en riempite dal primario inglese: 0
+2026-10-02 19:21    |replica-from-kid|   IE000A4VTN36 (iShares) → Fisica - ottimizzazione (dal KID)  [«…tecniche di ottimizzazione…»]
+2026-10-02 19:21    |replica-from-kid|   IE000N40JO74 (iShares) → Gestione attiva (dal KID)  [«…gestito in modo attiv…»]
+2026-10-02 19:21    |benchmark-da-kid| 
+2026-10-02 19:21    |benchmark-da-kid| senza benchmark esaminati: 59 · indice trovato nel KID: 0 · scritte: 0
+2026-10-02 19:21    |motore| revalidate motore: HTTP 200
+2026-10-02 19:21    |motore| revalidate emittenti: HTTP 200
+2026-10-02 19:21    |completezza| 
+2026-10-02 19:21    |completezza| eccezioni DICHIARATE (non contano): ticker×136 · bond_metrics×32 · aum×3 · factsheet×85 · indice×59 · politica×63 · replica×122 · gestione×95 · classe×60 · domicilio×60 · kid_it×2
+2026-10-02 19:21    |completezza| [heartbeat] etf-completezza inviato (200)
+2026-10-02 19:22    |audit| serie dalla cache (/home/rebalix/cache/etf-series.json, 3291 righe, età 7.4h)
+2026-10-02 19:22    |audit| benchmark fermi su classi HEDGED (indice coperto non pubblicato, atteso): 64 — fuori dal conteggio
+2026-10-02 19:22    |audit| benchmark fermi su FONDI COMUNI (mensile pubblicato in ritardo dall'emittente, atteso): 44 — fuori dal conteggio
+2026-10-02 19:22    |audit| serie esaminate: 3291 · anomalie DURE: 0 · osservazioni morbide: 14 · benchmark fermi: 3 (attesi ≤ 35)
+2026-10-02 19:22    |audit| 
+2026-10-02 19:22    |audit| · FR0013346681  [monetario]  Amundi PEA Euro Court Terme UCITS ETF Acc
+2026-10-02 19:22    |audit|     → volatilità 5% (soglia 4% per monetario)
+2026-10-02 19:22    |audit| · IE0009W21NT4  [azionario]  UBS MSCI World Selection UCITS ETF hEUR acc
+2026-10-02 19:22    |audit|     → buco di 146 giorni nella serie
+2026-10-02 19:22    |audit| · IE000F0DNOJ1  [azionario]  UBS MSCI World Selection UCITS ETF hCHF acc
+2026-10-02 19:22    |audit|     → buco di 146 giorni nella serie
+2026-10-02 19:22    |audit| · IE000PEAJOT0  [azionario]  Amundi MSCI USA ESG Selection UCITS ETF Acc
+2026-10-02 19:22    |audit|     → buco di 60 giorni nella serie
+2026-10-02 19:22    |audit| · IE000TG1LGI4  [azionario]  UBS MSCI World Selection UCITS ETF USD acc
+2026-10-02 19:22    |audit|     → buco di 146 giorni nella serie
+2026-10-02 19:22    |audit| · IE00B9MRHC27  [azionario]  Xtrackers Msci Nordic UCITS ETF 1d
+2026-10-02 19:22    |audit|     → buco di 148 giorni nella serie
+2026-10-02 19:22    |audit| · IE00BPVLQD13  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 1d
+2026-10-02 19:22    |audit|     → buco di 53 giorni nella serie
+2026-10-02 19:22    |audit| · IE00BQWJFQ70  [multi-asset]  State Street® SPDR® Morningstar Multi-Asset Global Infr
+2026-10-02 19:22    |audit|     → buco di 82 giorni nella serie
+2026-10-02 19:22    |audit| · IE00BRB36B93  [azionario]  Xtrackers Msci Japan Screened UCITS ETF 3c Eur Hedged
+2026-10-02 19:22    |audit|     → buco di 53 giorni nella serie
+2026-10-02 19:22    |audit| · LU0290358497  [monetario]  Xtrackers Eur Overnight Rate Swap UCITS ETF 1c
+2026-10-02 19:22    |audit|     → buco di 90 giorni nella serie
+2026-10-02 19:22    |audit| · LU2109787635  [azionario]  Amundi MSCI EMU SRI Climate Paris Aligned UCITS ETF Acc
+2026-10-02 19:22    |audit|     → buco di 60 giorni nella serie
+2026-10-02 19:22    |audit| · LU0292108619  [azionario]  Xtrackers Msci Em Latin America Swap UCITS ETF 1c
+2026-10-02 19:22    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-05-29 (NAV fino al 2026-09-30) — TD e confronto non pubblicati
+2026-10-02 19:22    |audit| · LU0322252338  [azionario]  Xtrackers Msci Pacific Ex Japan UCITS ETF 1c
+2026-10-02 19:22    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-06-08 (NAV fino al 2026-09-30) — TD e confronto non pubblicati
+2026-10-02 19:22    |audit| · LU2090062352  [monetario]  Amundi USD Fed Funds Rate UCITS ETF Dist
+2026-10-02 19:22    |audit|     → benchmark fermo: indice dell'emittente fino al 2026-04-20 (NAV fino al 2026-10-01) — TD e confronto non pubblicati
+2026-10-02 19:22    |audit-bench|   DE0005933923  1 tick (0 ai confini)  es: 2011-05-09
+2026-10-02 19:22    |audit-bench|   IE0005QL4147  1 tick (0 ai confini)  es: 2023-04-11
+2026-10-02 19:22    |audit-bench|   IE000OHHIBC6  1 tick (0 ai confini)  es: 2025-03-31
+2026-10-02 19:22    |audit-bench|   IE000V73IL86  1 tick (0 ai confini)  es: 2025-10-10
+2026-10-02 19:22    |audit-bench|   IE00B0M63177  1 tick (0 ai confini)  es: 2025-03-31
+2026-10-02 19:22    |audit-bench|   IE00B1YZSC51  1 tick (1 ai confini)  es: 2022-12-30
+2026-10-02 19:27    |holdings-xtrackers|   archivio raw dws-constituent-export: 375 salvati (13.2 MB grezzi) · 0 già presenti → /home/rebalix/backups/rebalix-raw-archivio/dws-constituent-export
+2026-10-02 19:27    |holdings-xtrackers| 
+2026-10-02 19:27    |holdings-xtrackers| esito: ok 375 · senza file 1 · falliti 0
+2026-10-02 19:30    |holdings-spdr|   archivio raw spdr-holdings-daily: 168 salvati (18.1 MB grezzi) · 1 già presenti → /home/rebalix/backups/rebalix-raw-archivio/spdr-holdings-daily
+2026-10-02 19:30    |holdings-spdr| 
+2026-10-02 19:30    |holdings-spdr| esito: ok 169 · senza file 7 · falliti 0
+2026-10-02 19:30    |holdings-avantis| Avantis: 6 fondi (COMMIT)
+2026-10-02 19:30    |holdings-avantis|   ✓ IE0003R87OG3 1866 pos · as_of 2026-10-01 · top: LEAR CORP COMMON STOCK USD.01 0.63%
+2026-10-02 19:30    |holdings-avantis|   ✓ IE000K975W13 3051 pos · as_of 2026-10-01 · top: SAMSUNG ELECTR GDR REG S GDR 5.7%
+2026-10-02 19:30    |holdings-avantis|   ✓ IE000OW54ZX1 2286 pos · as_of 2026-10-01 · top: NVIDIA CORP COMMON STOCK USD.0 5.86%
+2026-10-02 19:30    |holdings-avantis|   ✓ IE000RJECXS5 4343 pos · as_of 2026-10-01 · top: NVIDIA CORP COMMON STOCK USD.0 4.08%
+2026-10-02 19:30    |holdings-avantis|   ✓ IE000SDFJUU0 1269 pos · as_of 2026-10-01 · top: ASML HOLDING NV NY REG SHS NY  3.4%
+2026-10-02 19:30    |holdings-avantis|   ✓ IE000T62NEO6 1373 pos · as_of 2026-10-01 · top: BHP GROUP LTD SPON ADR ADR 2.51%
+2026-10-02 19:30    |holdings-avantis| 
+2026-10-02 19:30    |holdings-avantis| esito: ok 6 · falliti 0
+2026-10-02 19:52    |holdings-invesco|   archivio raw invesco-dng-api: 290 salvati (8.7 MB grezzi) · 1 già presenti → /home/rebalix/backups/rebalix-raw-archivio/invesco-dng-api
+2026-10-02 19:52    |holdings-invesco| 
+2026-10-02 19:52    |holdings-invesco| esito: ok 291 · falliti 0
+2026-10-02 19:52    |copertura|   · UBS · obiettivi KID en: 67% (atteso: idem: obiettivi KID en col modulo documenti del 2/10 — attesa fino al 2026-10-03)
+2026-10-02 19:52    |copertura|   · UBS · factsheet (it o en): 54% (atteso: idem: factsheet col modulo documenti del 2/10 — attesa fino al 2026-10-03)
+2026-10-02 19:52    |copertura|   · JPMorgan · TD 1 anno: 0% (atteso: niente serie-indice nel feed JPM)
+2026-10-02 19:52    |copertura|   · Avantis · TD 1 anno: 0% (atteso: attivi: TD non pertinente)
+2026-10-02 19:52    |copertura| 
+2026-10-02 19:52    |copertura| ✓ nessun buco di copertura non dichiarato
+2026-10-02 19:53    |xetra| 
+2026-10-02 19:53    |xetra| esito: TER trovati 0 · AUM trovati 2 · non quotati a Xetra 190 · falliti 0 · righe aggiornate 2
+2026-10-02 19:53    |xetra| per emittente: {"LGIM":1,"Xtrackers":1}
+2026-10-02 20:32    |holdings-ishares| esito: perimetro 912 = 896 fotografabili + 9 fondi di fondi (SOURCE_NOT_LOOKTHROUGH, non scritti) + 0 senza data ammissibile (non scritti, fotografia non rinnovata) + 7 senza componente/falliti · 896 scritte
+2026-10-02 20:32    |holdings-ishares|   date (target 2026-09-30, ripiego ≤ 5 giorni all'indietro): FINE_MESE 905
+2026-10-02 20:32    |holdings-ishares|   fondi di fondi → IE00BLB2GQ94, IE00BLB2GS19, IE00BLB2GT26, IE00BLLZQ797, IE00BLLZQ805, IE00BLLZQ912, IE00BLLZQS08, IE00BLP53M98, IE00BLP53N06
+2026-10-02 20:32    |holdings-ishares|   1. in banda 97–103 con holdingPercent: 896 / 896
+2026-10-02 20:32    |holdings-ishares|   2. al tetto di 20000 righe (elenco troncato): 9 → IE000E5H5AN1, IE000FHBZDZ8, IE00B3F81409, IE00BDBRDM35, IE00BF540Y54, IE00BJBLQB74, IE00BMGNVD65, IE00BYV3HN70, IE00BZ043R46
+2026-10-02 20:32    |holdings-ishares|   3. massa osservata: min 100.000 · mediana 100.000 · max 100.780
+2026-10-02 20:32    |holdings-ishares|   4. ancora < 97 o > 103 a precisione piena: 0
+2026-10-02 20:32    |holdings-ishares|   stati: AGGREGATED_COMPLETE 893 · ABSENT 3 · Top Issuers dichiarati presenti: 414 · cedola per posizione: 426 fondi
+2026-10-02 20:32    |holdings-ishares|   scritto /home/rebalix/backups/rebalix-edizioni/2026-10/acquisizione/ishares-api.json
+2026-10-02 20:35    |holdings-vanguard| 
+2026-10-02 20:35    |holdings-vanguard| esito: ok 81 · falliti 0
+2026-10-02 20:36    |holdings-jpm| 
+2026-10-02 20:36    |holdings-jpm| esito: ok 96 · senza posizioni 0 · falliti 0
+2026-10-02 20:40    |holdings-lgim| 
+2026-10-02 20:40    |holdings-lgim| esito: con lista 46 (da top-10 a piena 0) · invariati 10 · senza mappa 0 · senza CSV 3 · sintetici (collaterale, saltati) 12 · falliti 0 · scritte 46
+2026-10-02 20:47    |holdings-ubs| esito: con lista 320 (da top-10 a piena 174) · SOURCE_DEGRADED (veto) 0 · IDENTIFIER_MAPPING_MISSING 50 · SOURCE_EMPTY 52 · falliti 0 · scritte 320
+2026-10-02 20:47    |holdings-ubs|   righe 127075 · con cedola 97/320 fondi · con scadenza 97/320 · perpetui (sentinella 2999, m non compilata) 281 · m_raw non ISO 0 · contrazioni fisiologiche 71 · Σ min 20.0215 max 100.7 · < 97: 60 · scadenza più lontana 2175-03-09 · date {"2026-09-30":311,"2026-02-27":3,"2025-03-25":2,"2025-02-18":2,"2026-03-04":2}
+2026-10-02 20:50    |holdings-amundi| 
+2026-10-02 20:50    |holdings-amundi| esito: con lista 423 (di cui da top-10 a lista piena 2) · invariati 240 · senza composizione 6 · falliti 0 · dichiarate≠ricevute 0 · scritte 423
+2026-10-02 20:51    |holdings-franklin|   golden TREASURY BILL: 0 righe → cedola semantica 0 e scadenza ✗
+2026-10-02 20:51    |holdings-franklin| ✗ GOLDEN raw/semantico VIOLATO
+2026-10-02 20:51  !! HOLDINGS FRANKLIN: troppi falliti - vedi righe sopra
+2026-10-02 20:51    |dividendi-vanguard| 
+2026-10-02 20:51    |dividendi-vanguard| esito: ok 32 · senza distribuzioni 49 · falliti 0
+2026-10-02 21:11    |dividendi-ishares| 
+2026-10-02 21:11    |dividendi-ishares| esito: ok 377 · senza cedole 17 · falliti 0
+2026-10-02 21:11    |dividendi-spdr| dalla più antica 2011-07-29 alla più recente 2026-10-01
+2026-10-02 21:11    |dividendi-spdr| upsert completato: 1241 righe
+2026-10-02 21:13    |dividendi-xtrackers| 
+2026-10-02 21:13    |dividendi-xtrackers| esito: ok 103 (1637 cedole) · senza tabella 2 · falliti 0
+2026-10-02 21:14    |dividendi-amundi| 
+2026-10-02 21:14    |dividendi-amundi| esito: ok 210 (1702 cedole) · senza stacchi 457 · falliti 0
+2026-10-02 21:14    |dividendi-ubs| 
+2026-10-02 21:14    |dividendi-ubs| esito: ok 145 (2815 cedole) · senza stacchi 4 · falliti 0
+2026-10-02 21:14    |dividendi-jpm| 
+2026-10-02 21:14    |dividendi-jpm| esito: ok 16 (387 cedole) · senza stacchi 1 · falliti 0
+2026-10-02 21:14    |dividendi-franklin| 
+2026-10-02 21:14    |dividendi-franklin| esito: ok 7 (106 cedole) · senza stacchi 0 · falliti 0
+2026-10-02 21:14    |dividendi-lgim| golden vs casa: combaciano 197 · scarti 0 · riconvertite (valuta di classe) 0 · nuove 6 · promosse {} · invariate 197
+2026-10-02 21:14    |dividendi-lgim| scritte 6 · falliti 0
+2026-10-02 21:14    |dividendi-invesco| DB: 0 cedole upsertate su 39 fondi
+2026-10-02 21:14    |dividendi-invesco| esito: fondi con deduzione 104 · senza 1 · da scrivere 39 fondi / 459 cedole
+2026-10-02 21:17    |dividendi-date-invesco| 
+2026-10-02 21:17    |dividendi-date-invesco| esito: cedole aggiornate con date 0 · stacchi nuovi 0 · già complete 2248 · importi diversi (saltati) 0 · classi senza xlsx 0 · falliti 0 · scritte 0
+2026-10-02 21:23    |bond-metrics-invesco-api| esito: letti 123 · senza duration nell'API 3 · falliti 0 · da scrivere 123 (di cui nuovi 0)
+2026-10-02 21:23    |bond-metrics-invesco-api| scritte 123
+2026-10-02 21:25    |bond-metrics-ubs-api| esito: letti 98 · senza Modified duration datata in pagina 12 · senza instId 1 · falliti 0 · da scrivere 37 (di cui nuovi 0)
+2026-10-02 21:25    |bond-metrics-ubs-api| scritte 37
+2026-10-02 21:25    |holdings-history| foto 2026-10-01 (COMMIT) · writer append-only · giorno 2: finestra dell'edizione APERTA
+2026-10-02 21:25    |holdings-history| esito: 3046 fondi letti · 3046 fotografati · già presenti: 0 identiche, 0 col paniere andato avanti dopo la fotografia (la fotografia resta la prima), 0 ANOMALE
+2026-10-02 21:25    |holdings-history| verifica: 3046 righe nella foto 2026-10-01
+2026-10-02 21:25    |anteprima-cambi| fotografie mensili: 1 (2026-08) · ultima 2026-08 con 2822 fondi
+2026-10-02 21:25    |anteprima-cambi| meno di 2 foto: niente email (giusto così)
+2026-10-02 21:25    |edizione:gate| ✓ holdings-ishares: exit 0 · perimetro 912 = 896 fotografabili + 9 fondi_di_fondi + 0 senza_data + 7 falliti
+2026-10-02 21:25    |edizione:apri| apertura: edizione 2026-10 aperta su baseline f0072cd62826… (manifest 8524814fbc69…)
+2026-10-02 21:25    |edizione:apri|   stato: PREPARING
+2026-10-02 21:26    |edizione:esporta| dichiarazioni ishares-api.json: perimetro 912 = 896 fotografabili + 9 fondi_di_fondi + 0 senza_data + 7 falliti
+2026-10-02 21:26    |edizione:esporta|   fondi esportati: 3046
+2026-10-02 21:26    |edizione:esporta|   /home/rebalix/backups/rebalix-edizioni/2026-10/esportazione/foto-dopo.tsv.gz · 65140267 B · sha256 776eb34ff0465abc2ff575158555797a3ac8c7fc848c3577dc8fc0208f972abc
+2026-10-02 21:26    |edizione:esporta|   provenienza: /home/rebalix/backups/rebalix-edizioni/2026-10/esportazione/acquisizione.json (commit 104073d) · dichiarazioni: FONDO_DI_FONDI 9, DATA_NON_DISPONIBILE 0
+2026-10-02 21:26    |edizione:congela-dopo| congelamento_dopo: 3046 fondi · 776eb34ff046… · acquisizione dal commit 104073d · stato FROZEN
+2026-10-02 21:26    |edizione:confronta|   fondi: 1500/3046
+2026-10-02 21:26    |edizione:confronta|   fondi: 2000/3046
+2026-10-02 21:26    |edizione:confronta|   fondi: 2500/3046
+2026-10-02 21:26    |edizione:confronta|   fondi: 3000/3046
+2026-10-02 21:26    |edizione:confronta|   fondi: 3046/3046
+2026-10-02 21:26    |edizione:confronta|   dettagli: 500/702
+2026-10-02 21:26    |edizione:confronta|   dettagli: 702/702
+2026-10-02 21:26    |edizione:confronta|   DB: edizione 2026-10 v1 COMPARED · 3046 verdetti · 702 dettagli · quadratura ok · testimone 4e49474d3873…
+2026-10-02 21:26    |edizione:completa| completamento: baseline di 2026-11 congelata in /home/rebalix/backups/rebalix-baseline/2026-11 (3046 fondi, 776eb34ff046…) · stato COMPLETE
+2026-10-02 21:26    |edizione:completa|   DB: edizione 2026-10 v1 COMPLETE · testimone 852305e72f3d…
+2026-10-02 21:26    |foto-panieri| 2026-10-02 21:26:26 inizio foto panieri → /home/rebalix/backups/rebalix-holdings-foto/etf_holdings-2026-10-02
+2026-10-02 21:26    |foto-panieri| 2026-10-02 21:26:45 fatto: 3047 righe, as_of 2018-08-24 → 2026-10-02, 66M dump + 65M tsv
+2026-10-02 21:32    |riepilogo-panieri| 
+2026-10-02 21:32    |riepilogo-panieri| esito: righe mensili 3046 · solo AUM (senza paniere) 107 · senza as_of 0 · falliti 0 · scritte 3153
+2026-10-02 21:32    |riepilogo-panieri| ♻️  schede+cronologie rinfrescate (revalidate on-demand)
+2026-10-02 21:33    |settori-paniere|   «Vendita al dettaglio di automobili» ×1 peso tot 4 [Franklin Templeton]
+2026-10-02 21:33    |settori-paniere|   «Elettronica di consumo» ×2 peso tot 3 [Franklin Templeton]
+2026-10-02 21:33    |temi|   Infrastrutture e risorse Minatori (oro, argento, rame)                  3
+2026-10-02 21:33    |temi| esempi (golden per il confronto esterno): {"Alimentare e agricoltura":["DE000A0H08H3","IE00B5MTYL84","IE00B6R52143"],"Viaggi e tempo libero":["DE000A0H08S0","IE00B5MJYC95"],"Acqua":["FR0010527275","FR0011882364","FR0014002CH1","IE0007WJ6B10","IE000CFH1JX2"],"Energia pulita":["FR0010930644","IE00053WDH64","IE0008RX29L5","IE000DR59CI3","IE000JZYIUN0"],"Lusso":["FR001400S9V0","LU1681048630","LU1681048713"],"Legno e foreste":["IE0003ZXNJY5","IE00B27YCF74"],"Metaverso":["IE0004U3TX15","IE000RN58M26"],"Infrastrutture":["IE0005E47AH7","IE000CK5G8J7","IE000PTMIE90","IE000TCZMZM8","IE00B1FZS467"],"Minatori (oro, argento, rame)":["IE00063FT9K6","IE00B3CNHG25","LU2611731824"],"Cybersecurity":["IE00072RHT03","IE000SC8O430","IE000ST40PX8","IE00BG0J4841","IE00BG0J4C88"],"Difesa e aerospazio":["IE0008GRJRO8","IE000A9G9R73","IE000BRM9046","IE000IAXNM41","IE000U9ODG19"],"Uranio e nucleare":["IE000BMZP0I6"],"Intelligenza artificiale e robotica":["IE000G0E83X3","IE000IM4K4K2","IE000LGWDNE5","IE000Q9W2IR3","IE000X59ZHE2"],"Semiconduttori":["IE000I8KRLL9","LU1900066033","LU2090063327"],"Biotecnologie e genomica":["IE000KD0BZ68","IE00BDZVHG35","IE00BQ70R696","IE00BYXG2H39"],"Blockchain":["IE000RDRMSD1","IE00BGBN6P67"],"Digitale, cloud e internet":["IE000XOQ9TK4","IE00BF0M6N54","IE00BYZK4883","LU2023678878"],"Fintech":["IE000YDOORK7","IE00BYMS5W68"],"Mobilità del futuro e smart city":["IE00BGL86Z12","IE00BGV5VR99","IE00BKTLJB70","IE00BKTLJC87","LU2023679090"],"Dispositivi medici e innovazione sanitaria":["IE00BMX0DF60","IE00BYZK4776"],"Invecchiamento della popolazione":["IE00BYZK4669"],"Millennials":["LU2023678449"]}
+2026-10-02 21:33    |esma-mmf| registro ESMA MMF: 674 fondi
+2026-10-02 21:33    |esma-mmf| ISIN dichiarati: 2159 · record senza ISIN (match per nome): 146
+2026-10-02 21:33    |esma-mmf| 
+2026-10-02 21:33    |esma-mmf| incroci col censimento: 4 (4 Authorised) → lib/esma-mmf.json
+2026-10-02 21:33    |esma-mmf|   ✓ LU3178805456  Standard VNAV · Authorised · match isin  «AMUNDI INDEX SOLUTIONS - AMUNDI EUR CASH ACTIVE»
+2026-10-02 21:33    |esma-mmf|   ✓ IE000AFVKJZ0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-10-02 21:33    |esma-mmf|   ✓ IE000JJPY166  Short-term VNAV · Authorised · match nome  «iShares EUR Cash UCITS ETF»
+2026-10-02 21:33    |esma-mmf|   ✓ IE000SOORXS0  Short-term VNAV · Authorised · match nome  «Vanguard EUR Cash UCITS ETF»
+2026-10-02 21:34    |esma-mmf| json committato · pull ok · push ok
+2026-10-02 21:34    |golden-esterno| ↳ despike justETF su SWDA: 31 blip di 1 giorno ≥2 tick (prezzo 129.94, tick 0.01%) tolti dalla LORO serie
+2026-10-02 21:34    |golden-esterno|   ↳ ultimo punto justETF su SWDA scartato: 2026-10-02 salta del 1.1% senza giorno successivo che lo confermi
+2026-10-02 21:34    |golden-esterno| ✓ SWDA    1a +19.5%|+19.4% · YTD +16.0%|+15.9% · MAX +669.2%|+668.6% · DD -33.9%|-33.9%
+2026-10-02 21:34    |golden-esterno|   ↳ despike justETF su VWCE: 8 blip di 1 giorno ≥2 tick (prezzo 170.98, tick 0.01%) tolti dalla LORO serie
+2026-10-02 21:34    |golden-esterno|   ↳ ultimo punto justETF su VWCE scartato: 2026-10-02 salta del 1.1% senza giorno successivo che lo confermi
+2026-10-02 21:34    |golden-esterno| ✓ VWCE    1a +21.1%|+20.9% · YTD +17.3%|+17.1% · MAX +136.6%|+136.2% · DD -33.5%|-33.5%
+2026-10-02 21:34    |golden-esterno|   ↳ despike justETF su VNGA60: 36 blip di 1 giorno ≥2 tick (prezzo 37.19, tick 0.03%) tolti dalla LORO serie
+2026-10-02 21:34    |golden-esterno| ✓ VNGA60  1a +11.0%|+10.8% · YTD +8.8%|+8.5% · MAX +48.0%|+48.2% · DD -15.2%|-15.4%
+2026-10-02 21:34    |golden-esterno|   ↳ despike justETF su VAGF: 92 blip di 1 giorno ≥2 tick (prezzo 23.04, tick 0.04%) tolti dalla LORO serie
+2026-10-02 21:34    |golden-esterno| ✓ VAGF    1a -3.1%|-3.2% · YTD -3.3%|-3.4% · MAX -8.1%|-8.3% · DD -19.6%|-19.5%
+2026-10-02 21:34    |golden-esterno|   ↳ despike justETF su AGGH: 34 blip di 1 giorno ≥2 tick (prezzo 4.81, tick 0.21%) tolti dalla LORO serie
+2026-10-02 21:34    |golden-esterno| ✓ AGGH    1a -2.4%|-2.6% · YTD -2.6%|-2.8% · MAX -4.0%|-4.2% · DD -17.8%|-17.8%
+2026-10-02 21:34    |golden-esterno|   ↳ despike justETF su SGLN: 37 blip di 1 giorno ≥2 tick (prezzo 71.36, tick 0.01%) tolti dalla LORO serie
+2026-10-02 21:34    |golden-esterno| ✓ SGLN    1a +12.7%|+13.1% · YTD +0.1%|+0.5% · MAX +249.2%|+251.7% · DD -37.4%|-37.2%
+2026-10-02 21:34    |golden-esterno|   ↳ despike justETF su ORO-AM: 8 blip di 1 giorno ≥2 tick (prezzo 145.68, tick 0.01%) tolti dalla LORO serie
+2026-10-02 21:34    |golden-esterno| ✓ ORO-AM  1a +12.5%|+12.5% · YTD +0.2%|+0.2% · MAX +219.8%|+216.0% · DD -23.4%|-23.4%
+2026-10-02 21:34    |golden-esterno| 
+2026-10-02 21:34    |golden-esterno| golden esterno ✓ (metriche entro tolleranza sul roster)
+2026-10-02 21:34  [heartbeat] inviato (200)
