@@ -7011,3 +7011,105 @@
 2026-10-02 21:05  provenienza nav: ✓ provenienza serie NAV: 3293 righe scritte · scartate 0
 2026-10-02 21:05  [heartbeat] inviato (200)
 2026-10-02 21:05  fine giro: PROBLEMI (1)
+2026-10-03 20:15  giro quotidiano serie: avantis,xtrackers,spdr,ubs,jpmorgan,lgim,21shares,franklin
+2026-10-03 20:47    | ingest-etf-series — COMMIT
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → Xtrackers: 394 fondi, 394 da elaborare
+2026-10-03 20:47    |   …25/394 (0 falliti)
+2026-10-03 20:47    |   …50/394 (0 falliti)
+2026-10-03 20:47    |   …75/394 (0 falliti)
+2026-10-03 20:47    |   …100/394 (0 falliti)
+2026-10-03 20:47    |   …125/394 (0 falliti)
+2026-10-03 20:47    |   …150/394 (0 falliti)
+2026-10-03 20:47    |   …175/394 (0 falliti)
+2026-10-03 20:47    |   …200/394 (0 falliti)
+2026-10-03 20:47    |   …225/394 (0 falliti)
+2026-10-03 20:47    |   …250/394 (0 falliti)
+2026-10-03 20:47    |   …275/394 (0 falliti)
+2026-10-03 20:47    |   …300/394 (0 falliti)
+2026-10-03 20:47    |   …325/394 (0 falliti)
+2026-10-03 20:47    |   …350/394 (0 falliti)
+2026-10-03 20:47    |   …375/394 (0 falliti)
+2026-10-03 20:47    |   Xtrackers: 394 serie ok, 0 falliti, 357 con serie benchmark (TD), 0 con composizione
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → JPMorgan: 96 fondi, 96 da elaborare
+2026-10-03 20:47    |   …25/96 (0 falliti)
+2026-10-03 20:47    |   …50/96 (0 falliti)
+2026-10-03 20:47    |   …75/96 (0 falliti)
+2026-10-03 20:47    |   JPMorgan: 96 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → LGIM: 71 fondi, 71 da elaborare
+2026-10-03 20:47    |   …25/71 (0 falliti)
+2026-10-03 20:47    |   …50/71 (0 falliti)
+2026-10-03 20:47    |   LGIM: 71 serie ok, 0 falliti, 61 con serie benchmark (TD), 0 con composizione · 1 neonati sotto i 30 punti fatti crescere
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → SPDR: 176 fondi, 176 da elaborare
+2026-10-03 20:47    |   …25/176 (0 falliti)
+2026-10-03 20:47    |    · IE000P60WPS6: navhist trovato per SCOPERTA sotto swwd-gy (il registro elencava solo swwd-ln)
+2026-10-03 20:47    |   …50/176 (0 falliti)
+2026-10-03 20:47    |   …75/176 (0 falliti)
+2026-10-03 20:47    |   …100/176 (0 falliti)
+2026-10-03 20:47    |   …125/176 (0 falliti)
+2026-10-03 20:47    |   …150/176 (0 falliti)
+2026-10-03 20:47    |   …175/176 (0 falliti)
+2026-10-03 20:47    |   SPDR: 176 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → UBS: 422 fondi, 422 da elaborare
+2026-10-03 20:47    |   …25/422 (0 falliti)
+2026-10-03 20:47    |   …50/422 (0 falliti)
+2026-10-03 20:47    |   …75/422 (0 falliti)
+2026-10-03 20:47    |   …100/422 (0 falliti)
+2026-10-03 20:47    |   …125/422 (0 falliti)
+2026-10-03 20:47    |   …150/422 (0 falliti)
+2026-10-03 20:47    |   …175/422 (0 falliti)
+2026-10-03 20:47    |   …200/422 (0 falliti)
+2026-10-03 20:47    |   …225/422 (0 falliti)
+2026-10-03 20:47    |   …250/422 (0 falliti)
+2026-10-03 20:47    |   …275/422 (0 falliti)
+2026-10-03 20:47    |   …300/422 (0 falliti)
+2026-10-03 20:47    |   …325/422 (0 falliti)
+2026-10-03 20:47    |   …350/422 (0 falliti)
+2026-10-03 20:47    |   …375/422 (0 falliti)
+2026-10-03 20:47    |   …400/422 (0 falliti)
+2026-10-03 20:47    |   UBS: 422 serie ok, 0 falliti, 417 con serie benchmark (TD), 0 con composizione · 3 neonati sotto i 30 punti fatti crescere
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → Avantis: 6 fondi, 6 da elaborare
+2026-10-03 20:47    |   Avantis: 6 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → 21Shares: 60 fondi, 60 da elaborare
+2026-10-03 20:47    |   …25/60 (0 falliti)
+2026-10-03 20:47    |   …50/60 (0 falliti)
+2026-10-03 20:47    |   21Shares: 60 serie ok, 0 falliti, 59 con serie benchmark (TD), 0 con composizione · 2 neonati sotto i 30 punti fatti crescere
+2026-10-03 20:47    | 
+2026-10-03 20:47    | → Franklin Templeton: 48 fondi, 48 da elaborare
+2026-10-03 20:47    |   …25/48 (0 falliti)
+2026-10-03 20:47    |   Franklin Templeton: 48 serie ok, 0 falliti, 31 con serie benchmark (TD), 0 con composizione
+2026-10-03 20:47    |   serie dal DB: 25  serie dal DB: 525  serie dal DB: 1025  serie dal DB: 1525  serie dal DB: 2025  serie dal DB: 2525  serie dal DB: 3025  cache serie riscritta: 3293 righe → /home/rebalix/cache/etf-series.json
+2026-10-03 20:47  ok Avantis: 6/6 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:47  ok Xtrackers: 394/394 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:47  ok SPDR: 176/176 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:47  ok UBS: 422/422 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:47  ok JPMorgan: 96/96 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:47  ok LGIM: 71/71 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:47  ok 21Shares: 60/0 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:47  ok Franklin Templeton: 48/48 serie rinfrescate · dato più fresco 2026-10-02
+2026-10-03 20:48  ok iShares (coda screener): 909 punti aggiunti · 3 già freschi/respinti · 0 falliti
+2026-10-03 20:48  ok Amundi (coda batch): 0 punti aggiunti · 0 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-10-03 20:48  ok Vanguard (coda GraphQL): 140 punti aggiunti · 560 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-10-03 20:56  ok Invesco (coda browser): 210 punti aggiunti · 81 fermi/respinti · 0 falliti · 0 scartati per valuta · ETC (valore del certificato): 0 aggiunti, 8 fermi · cedole viste 104, nuove 0, in annuncio (TBA) 0
+2026-10-03 20:56    |dist-date-ubs| 
+2026-10-03 20:56    |dist-date-ubs| esito: date trovate 0 · ex non combacia/senza paydate 0 · importi diversi (non scritte) 0 · classi senza instId 0 · falliti 0 · scritte 0
+2026-10-03 20:56    |dist-pay-stima| 
+2026-10-03 20:56    |dist-pay-stima| esito: da stimare 0 · scritte 0 · falliti 0
+2026-10-03 20:56    |stabilita| audit-stabilita-dati — 2026-10-03 vs 2026-10-02
+2026-10-03 20:56    |stabilita| ✗ CALI (dati spariti — rosso): 1
+2026-10-03 20:56    |stabilita|    etf_holdings.colonne.posizioni_totali: 2199554 → 2199398 (−156)
+2026-10-03 20:56  !! stabilita: DATI SPARITI rispetto a ieri (exit 2) — vedi righe sopra; sospettati: gli script che hanno scritto stasera
+2026-10-03 20:56    |serie| totale: attese 3234 · presenti 3234 · stale 0 · missing 0 ✓
+2026-10-03 20:57  cache serie riscritta: 3293 righe
+2026-10-03 20:57    |buchi| ✓ nessun intervallo > 7 gg negli ultimi 30 giorni
+2026-10-03 20:57  metal detector: exit 0 · serie esaminate: 3293 · anomalie DURE: 0 · osservazioni morbide: 14 · benchmark fermi: 3 (attesi ≤ 65, confine-mese)
+2026-10-03 20:57  provenienza aum: ✓ provenienza serie AUM: 1886 righe scritte · scartate 0
+2026-10-03 20:57  provenienza nav: ✓ provenienza serie NAV: 3293 righe scritte · scartate 0
+2026-10-03 20:57  [heartbeat] inviato (200)
+2026-10-03 20:57  fine giro: PROBLEMI (1)
