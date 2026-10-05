@@ -255,3 +255,24 @@ Running build in Cleve
 2026-09-28 07:44  [deploy] deploy prod OK via deploy-prod.sh (c4d0ef65)
 2026-09-28 07:44  [heartbeat] inviato (errori=0)
 2026-09-28 07:44  === giro completato (0 errori) ===
+2026-10-05 07:40  === giro 2026-W41 avviato (dry=False) ===
+2026-10-05 07:40  [baskets:xspu] ok — 358/504 titoli, active share 54.2%
+2026-10-05 07:40  [baskets:world] ok — 456/1283 titoli, active share 61.8%
+2026-10-05 07:40  [td] ok — 1563 punti comuni, fine 2026-10-02, scarti +16pb, +21pb, +22pb, +23pb
+2026-10-05 07:40  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-10-05 07:40  [hybrid] ok — 736 titoli fisici, USA 0.4%; scarto vs fisico +48 pb/a su 456 sedute
+2026-10-05 07:44  [deploy] Production      https://rebalix-ja03132j4-rebalixs-projects.vercel.app
+2026-10-05 07:44  [deploy] [2K[1A[2K[G  Production      https://rebalix-ja03132j4-rebalixs-projects.vercel.app
+2026-10-05 07:44  [deploy] ▲ Aliased         https://rebalix.com
+2026-10-05 07:44  [deploy] status	● Ready
+2026-10-05 07:44  [deploy] created	Mon Oct 05 2026 07:43:18 GMT+0200 (Central European Summer Time) [45s ago]
+2026-10-05 07:44  [deploy] 
+2026-10-05 07:44  [deploy] ── 8 · sonde (home doppia anti-MISS + pagine richieste) ──
+2026-10-05 07:44  [deploy] it?x=1 → 200
+2026-10-05 07:44  [deploy] it?x=2 → 200
+2026-10-05 07:44  [deploy] 
+2026-10-05 07:44  [deploy] DEPLOY COMPLETO · log: /tmp/deploy-prod-20261005-074040.log
+2026-10-05 07:44  [deploy] ESITO: ok commit=59df3687 deploy=https://rebalix-ja03132j4-rebalixs-projects.vercel.app log=/tmp/deploy-prod-20261005-074040.log
+2026-10-05 07:44  [deploy] deploy prod OK via deploy-prod.sh (59df3687)
+2026-10-05 07:44  [heartbeat] inviato (errori=0)
+2026-10-05 07:44  === giro completato (0 errori) ===
