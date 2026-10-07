@@ -786,6 +786,21 @@ def main():
                 log(f"!! holdings-{emittente} fallito (non blocca): {e}")
                 modules[f"holdings-{emittente}"] = False
 
+    # Composizioni Melanion (emittente n.16, 6 ott 2026 — GO Linus, 3 audit muti):
+    # CSV quotidiano dichiarato dalla scheda, 5 GET con pausa 10,5 s (Crawl-delay del
+    # robots della fonte), grezzi conservati in ~/backups/rebalix-raw-archivio. ~1 min.
+    if not DRY:
+        try:
+            hm = subprocess.run([NODE, "scripts/ingest-etf-holdings-melanion.mjs",
+                                 "--raw-dir", os.path.expanduser("~/backups/rebalix-raw-archivio"), "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=900)
+            for line in ((hm.stdout or "") + (hm.stderr or "")).strip().splitlines()[-2:]:
+                log(f"  |holdings-melanion| {line}")
+            modules["holdings-melanion"] = hm.returncode == 0
+        except Exception as e:
+            log(f"!! holdings-melanion fallito (non blocca): {e}")
+            modules["holdings-melanion"] = False
+
     # DIVIDENDI (industrializzazione 11 ago sera): storico cedole in
     # etf_distributions. Vanguard via gpx (distributionDetails), iShares dal
     # foglio Distributions del fundDownload (stesso file delle serie).
