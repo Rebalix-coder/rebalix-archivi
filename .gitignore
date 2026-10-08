@@ -22,3 +22,4 @@ rebalix-arca-fonti/
 .env.*
 # backup cifrati del DB sulla VPS (con il loro .env): fuori anche se un giorno qualcuno usasse «git add -A»
 rebalix-db/
+rebalix-docs-archivio/
