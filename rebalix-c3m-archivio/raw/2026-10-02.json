@@ -1,12 +1,12 @@
 {
  "productId": "FR0010754200",
  "characteristics": {
-  "NAV": 127.3637,
-  "NAV_DATE_DISPLAYED": 1791158400000,
-  "AUM": 935355319.2527,
-  "AUM_IN_EURO": 935355319.2527,
-  "FUND_AUM": 935355631.47,
-  "FUND_AUM_IN_EURO": 935355631.47,
+  "NAV": 127.3749,
+  "NAV_DATE_DISPLAYED": 1791244800000,
+  "AUM": 938438142.2471999,
+  "AUM_IN_EURO": 938438142.2471999,
+  "FUND_AUM": 938438075.15,
+  "FUND_AUM_IN_EURO": 938438075.15,
   "TER": 0.14,
   "TOTAL_EXPENSE_RATIO": 0.14,
   "SRRI": 1,
@@ -241,22 +241,22 @@
   {
    "period": "ONE_YEAR",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.01977898782831411
+   "value": 0.01975039668732026
   },
   {
    "period": "THREE_YEARS",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.026909853777692394
+   "value": 0.026791328198603415
   },
   {
    "period": "FIVE_YEARS",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.01863144583338272
+   "value": 0.01867526974718481
   },
   {
    "period": "TEN_YEARS",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.005860299718607687
+   "value": 0.005866584120330032
   },
   {
    "period": "SINCE_INCEPTION",
@@ -271,22 +271,22 @@
   {
    "period": "ONE_YEAR",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.020908556633594033
+   "value": 0.020912026196859834
   },
   {
    "period": "THREE_YEARS",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.028161805764712167
+   "value": 0.02801190390993069
   },
   {
    "period": "FIVE_YEARS",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.019875662191553456
+   "value": 0.019902076661940216
   },
   {
    "period": "TEN_YEARS",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.00739992859296601
+   "value": 0.007405618782514001
   },
   {
    "period": "SINCE_INCEPTION",

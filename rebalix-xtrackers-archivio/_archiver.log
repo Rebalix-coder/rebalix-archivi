@@ -5089,3 +5089,94 @@ Error: Command "npm run build" exited with 1
 2026-10-06 10:34  [deploy] deploy prod OK via deploy-prod.sh (444eafe4)
 2026-10-06 10:34  [heartbeat] inviato (200)
 2026-10-06 10:34  fatto, tutto OK
+2026-10-07 10:30  --- avvio archiviatore Xtrackers  ---
+2026-10-07 10:30  xeq2: dato al 2026-10-02, 0 snapshot nuovi (gia' in archivio)
+2026-10-07 10:30  xeq2: NAV ufficiale, 176 punti
+2026-10-07 10:30  xeq4: dato al 2026-10-02, 0 snapshot nuovi (gia' in archivio)
+2026-10-07 10:30  xeq4: NAV ufficiale, 176 punti
+2026-10-07 10:30  xeq6: dato al 2026-10-02, 0 snapshot nuovi (gia' in archivio)
+2026-10-07 10:30  xeq6: NAV ufficiale, 176 punti
+2026-10-07 10:30  xeq8: dato al 2026-10-02, 0 snapshot nuovi (gia' in archivio)
+2026-10-07 10:30  xeq8: NAV ufficiale, 176 punti
+2026-10-07 10:30  xqui: dato al 2026-10-06, 1 snapshot nuovi
+2026-10-07 10:30  xqui: NAV ufficiale, 4442 punti
+2026-10-07 10:30  xinc: dato al 2026-10-05, 1 snapshot nuovi
+2026-10-07 10:30  xinc: NAV ufficiale, 3932 punti
+2026-10-07 10:30  magr: 21 posizioni, NUOVA composizione (impronta 906dd1709558c8fd)
+2026-10-07 10:30  modr: 27 posizioni, NUOVA composizione (impronta 307a13bf0c75bb99)
+2026-10-07 10:30  macv: 28 posizioni, NUOVA composizione (impronta 0fe92ab157b77867)
+2026-10-07 10:30  spread: snapshot 2026-10-07 10:30, 4/11 book validi
+2026-10-07 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-10-07 10:30  lookthrough IE0006GNB732: 277 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE0006WW1TQ4: 754 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE000F04HGE5: 184 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE000F354Q61: 3460 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE000HY30YW6: 238 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE000UX5WPU4: 1917 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BD4DX952: 388 posizioni al 2026-10-05
+2026-10-07 10:30  !! lookthrough IE00BFMKQ930: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-10-07 10:30  lookthrough IE00BFMKQC67: 3400 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BG04LT92: 778 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BG04M077: 521 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BGHQ0G80: 1806 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BJ0KDR00: 521 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BJZ2DD79: 1985 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BL25JM42: 412 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BL58LL31: 2034 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BTJRMP35: 1221 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BYPHT736: 1917 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough IE00BZ036J45: 3400 posizioni al 2026-10-05
+2026-10-07 10:30  lookthrough LU0274209237: 399 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0274209740: 175 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0290355717: 565 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0290356871: 36 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0290357259: 34 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0290358224: 40 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0321462953: 869 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0322253906: 852 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0328475792: 617 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0378818131: 1315 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0478205379: 4254 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0484968903: 2945 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0524480265: 196 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU0942970798: 5338 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU1109943388: 681 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU1399300455: 306 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU1920015440: 869 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU2178481649: 2225 posizioni al 2026-10-02
+2026-10-07 10:30  lookthrough LU3003218446: 282 posizioni al 2026-10-02
+2026-10-07 10:30  [golden] XEQ2.MI: 151 date | cum Yahoo -0.70% vs NAV -1.09% (diff 0.40 pt) | rend. mediano 0.184 pt | livello max 1.75%
+2026-10-07 10:30  [golden] XEQ4.MI: 152 date | cum Yahoo +2.27% vs NAV +1.88% (diff 0.39 pt) | rend. mediano 0.217 pt | livello max 1.83%
+2026-10-07 10:30  [golden] XEQ6.MI: 154 date | cum Yahoo +5.95% vs NAV +5.82% (diff 0.13 pt) | rend. mediano 0.262 pt | livello max 1.92%
+2026-10-07 10:30  [golden] XEQ8.MI: 154 date | cum Yahoo +9.19% vs NAV +9.65% (diff 0.46 pt) | rend. mediano 0.311 pt | livello max 1.99%
+2026-10-07 10:30  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 176 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-10-07 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-10-07 10:30  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-10-07 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-10-07 10:30  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-10-07 10:30  [xd-hold] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-10-02) — 20: swap 0.0%, HY 5.0%+EM 14.7% dei bond | 40: swap 16.47%, HY 5.0%+EM 14.7% dei bond | 60: swap 31.3%, HY 5.0%+EM 14.7% dei bond | 80: swap 44.42%, HY 5.0%+EM 14.7% dei bond
+2026-10-07 10:30  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-10-07 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.59}, {'nome': 'Giappone', 'pct': 6.09}, {'nome': 'Taiwan', 'pct': 4.28}]
+2026-10-07 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 32.87}, {'nome': 'Finanza', 'pct': 16.36}, {'nome': 'Prodotti industriali', 'pct': 10.9}]
+2026-10-07 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.8}, {'nome': 'Giappone', 'pct': 7.85}, {'nome': 'Francia', 'pct': 5.0}]
+2026-10-07 10:30  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 84 giorni, ultimo (2026-10-07): 20%=3.026M, 40%=3.259M, 60%=6.03M, 80%=6.251M
+2026-10-07 10:30  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-10-07 10:30  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-10-07 10:30  [xd-costs] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.28% · verificato 2026-10-07
+2026-10-07 10:30  [xd-changes] invariato (0 eventi)
+2026-10-07 10:30  [deploy] commit dei moduli xd
+2026-10-07 10:33  [deploy] Production      https://rebalix-ppdo3zhnn-rebalixs-projects.vercel.app
+2026-10-07 10:33  [deploy] [2K[1A[2K[G  Production      https://rebalix-ppdo3zhnn-rebalixs-projects.vercel.app
+2026-10-07 10:33  [deploy] ▲ Aliased         https://rebalix.com
+2026-10-07 10:33  [deploy] status	● Ready
+2026-10-07 10:33  [deploy] created	Wed Oct 07 2026 10:33:03 GMT+0200 (Central European Summer Time) [54s ago]
+2026-10-07 10:33  [deploy] 
+2026-10-07 10:33  [deploy] ── 8 · sonde (home doppia anti-MISS + pagine richieste) ──
+2026-10-07 10:33  [deploy] it?x=1 → 200
+2026-10-07 10:33  [deploy] it?x=2 → 200
+2026-10-07 10:33  [deploy] 
+2026-10-07 10:33  [deploy] DEPLOY COMPLETO · log: /tmp/deploy-prod-20261007-103029.log
+2026-10-07 10:33  [deploy] ESITO: ok commit=be9e9df6 deploy=https://rebalix-ppdo3zhnn-rebalixs-projects.vercel.app log=/tmp/deploy-prod-20261007-103029.log
+2026-10-07 10:33  [deploy] deploy prod OK via deploy-prod.sh (be9e9df6)
+2026-10-07 10:34  [heartbeat] inviato (200)
+2026-10-07 10:34  fatto, tutto OK

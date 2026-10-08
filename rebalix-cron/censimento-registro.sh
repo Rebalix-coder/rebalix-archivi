@@ -25,10 +25,14 @@ MT=false
 if [ "$OK" = true ] && timeout 2h node scripts/build-motore-dataset.mjs --commit >> "$LOG" 2>&1; then MT=true; log "motore ricostruito OK"; else ERR=$((ERR+1)); log "!! motore NON ricostruito (registro e motore possono divergere)"; fi
 # factsheet freschi degli obbligazionari (solo hash cambiati) + metriche dichiarate
 # (duration/rating/scadenze). Non bloccano il battito del censimento: moduli propri.
-FS=false; BM=false
+FS=false; BM=false; DS=false
 if timeout 3h node scripts/archive-etf-documents.mjs --commit --solo-factsheet --solo-obbligazionari >> "$LOG" 2>&1; then FS=true; log "factsheet obbligazionari OK"; else log "!! archivio factsheet obbligazionari FALLITO (non blocca)"; fi
 if timeout 1h node scripts/enrich-bond-metrics.mjs --commit >> "$LOG" 2>&1; then BM=true; log "bond-metrics OK"; else log "!! bond-metrics FALLITO (non blocca)"; fi
+# Serie storica della duration DICHIARATA (7 ott 2026, richiesta Linus): etf_registry.duration_mod
+# viene sovrascritta a ogni giro — qui la si fotografa in etf_duration_storico (append,
+# ON CONFLICT DO NOTHING: rilanci nello stesso giorno innocui). Disegno: docs/duration-storico.md
+if timeout 10m node scripts/snapshot-etf-duration.mjs --commit >> "$LOG" 2>&1; then DS=true; log "duration-storico OK"; else log "!! duration-storico FALLITO (non blocca)"; fi
 SECRET=$(grep "^CRON_SECRET=" "$REPO/.env.local" | head -1 | cut -d= -f2- | tr -d "\"" | tr -d "'")
 curl -s -m 30 -X POST https://rebalix.com/api/heartbeat -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" \
-  -d "{\"name\":\"etf-registry-censimento\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"host\":\"$(hostname)\",\"modules\":{\"censimento\":$OK,\"motore\":$MT,\"tracking-difference\":$TD,\"factsheet-bond\":$FS,\"bond-metrics\":$BM},\"data_date\":\"$(date +%F)\"}}" >> "$LOG" 2>&1 && log "[heartbeat] inviato"
+  -d "{\"name\":\"etf-registry-censimento\",\"ok\":$OK,\"errors_count\":$ERR,\"metrics\":{\"host\":\"$(hostname)\",\"modules\":{\"censimento\":$OK,\"motore\":$MT,\"tracking-difference\":$TD,\"factsheet-bond\":$FS,\"bond-metrics\":$BM,\"duration-storico\":$DS},\"data_date\":\"$(date +%F)\"}}" >> "$LOG" 2>&1 && log "[heartbeat] inviato"
 [ "$OK" = true ]
