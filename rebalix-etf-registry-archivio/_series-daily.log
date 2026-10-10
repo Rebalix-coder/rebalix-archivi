@@ -7854,3 +7854,230 @@
 2026-10-08 21:06  provenienza nav: ✓ provenienza serie NAV: 3294 righe scritte · scartate 0
 2026-10-08 21:06  [heartbeat] inviato (200)
 2026-10-08 21:06  fine giro: PROBLEMI (1)
+2026-10-09 20:15  giro quotidiano serie: avantis,xtrackers,spdr,ubs,jpmorgan,lgim,21shares,franklin,melanion
+2026-10-09 20:50    | ingest-etf-series — COMMIT
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → Xtrackers: 394 fondi, 394 da elaborare
+2026-10-09 20:50    |   ⚠ IE0000QMH1B4: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2026-08-18) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …25/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ IE0006FDYJF8: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-01-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000CXLGK86: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-03-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …50/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ IE000E4BATC9: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2024-12-04) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000EXUE0G2: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2025-07-09) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000FL46JJ1: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2025-07-09) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000FO05UG4: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2025-07-09) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000FW16TX1: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2026-03-18) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000GYDNJS5: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-01-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000I687JU4: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2026-08-18) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …75/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ IE000NS5HRY9: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-09-13) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000V04SL39: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-09-13) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000VCBWFL8: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-09-13) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE000WQ16XQ4: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-09-13) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …100/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ IE00B3Y8D011: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2011-02-04) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00B9MRHC27: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2013-09-04) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00B9MRJJ36: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2014-01-09) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BCHWNQ94: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2018-03-26) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BCHWNS19: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2017-09-12) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BCHWNT26: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2017-09-12) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BCHWNV48: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2021-01-21) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BCHWNW54: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2017-09-12) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BD4DX952: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2016-04-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BD4DXB77: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2017-07-31) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BDB7J586: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2016-11-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BDGN9Z19: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2016-11-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BDR5HM97: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2018-02-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BDVPTJ63: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2018-12-03) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BF8J5974: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2018-03-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …125/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ IE00BGQYRQ28: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2017-09-12) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BGQYRR35: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2017-09-12) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BGQYRS42: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2017-09-12) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BGV5VM45: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2019-01-14) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BK1PV445: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2021-02-18) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BK1PV551: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2015-02-23) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …150/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ IE00BNC1G707: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2021-01-21) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BPVLQD13: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2015-03-31) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …175/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ IE00BYPHT736: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2016-06-09) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BZ036H21: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2015-09-30) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ IE00BZ036J45: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2016-02-29) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0274211217: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-01-04) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0274212538: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-01-04) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0274221281: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-01-22) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …200/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU0292095535: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-06-01) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0292096186: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-06-01) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0292097234: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-06-05) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0292097317: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-06-15) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0292097747: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-06-15) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …225/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU0321464652: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2007-10-10) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0322248146: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2008-01-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0322250985: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2008-07-09) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0328474803: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2008-01-17) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0335044896: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2008-03-11) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …250/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU0429458895: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2009-07-07) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0429459356: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2009-07-07) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0468896575: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2010-01-05) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0468897110: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2010-01-05) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0478205965: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2021-10-14) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0484968812: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2010-10-18) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …275/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU0614173549: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2011-08-24) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0614173895: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2011-08-24) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0643975591: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2011-08-24) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0677077884: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2018-05-09) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0690964092: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2011-11-22) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0838782315: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2012-11-28) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0839027447: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2013-01-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0846194776: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2012-11-28) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0875160326: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2014-01-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0927735406: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2013-06-10) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0942970103: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2014-03-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …300/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU0962078753: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2013-10-28) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU0994505336: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2013-12-19) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU1094612022: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2015-07-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU1109939865: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2015-01-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU1109942653: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2015-01-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU1242369327: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2015-09-30) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU1310477036: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2016-03-22) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU1399300455: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2016-11-30) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU1875395870: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2018-11-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …325/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU2009147757: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2022-06-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2158769930: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-04-12) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2361257269: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2021-10-14) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2385068163: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2021-12-07) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2385068593: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2021-12-07) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2456436083: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2022-04-20) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2504532487: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2022-10-13) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2504537445: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2022-10-13) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2552296563: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-01-24) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2581375073: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-03-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2581375156: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-03-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2581375230: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-03-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …350/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU2662649412: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-12-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2662649503: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-12-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2662649685: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-12-06) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2673523218: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-11-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2673523309: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-11-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2673523481: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-11-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2673523564: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2023-11-08) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2809864296: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2024-09-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2809864452: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2024-09-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2809864619: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2024-09-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU2810185665: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2024-09-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   …375/394 (0 falliti)
+2026-10-09 20:50    |   ⚠ LU3152892546: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2025-11-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU3152892629: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2025-11-25) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   ⚠ LU3284391318: l'emittente pubblica meno storia di prima (da 2026-08-25 vs 2026-03-26) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   Xtrackers: 394 serie ok, 0 falliti, 357 con serie benchmark (TD), 0 con composizione
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → JPMorgan: 96 fondi, 96 da elaborare
+2026-10-09 20:50    |   …25/96 (0 falliti)
+2026-10-09 20:50    |   …50/96 (0 falliti)
+2026-10-09 20:50    |   …75/96 (0 falliti)
+2026-10-09 20:50    |   JPMorgan: 96 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → LGIM: 71 fondi, 71 da elaborare
+2026-10-09 20:50    |   …25/71 (0 falliti)
+2026-10-09 20:50    |   …50/71 (0 falliti)
+2026-10-09 20:50    |   LGIM: 71 serie ok, 0 falliti, 61 con serie benchmark (TD), 0 con composizione · 1 neonati sotto i 30 punti fatti crescere
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → SPDR: 176 fondi, 176 da elaborare
+2026-10-09 20:50    |   …25/176 (0 falliti)
+2026-10-09 20:50    |    · IE000P60WPS6: navhist trovato per SCOPERTA sotto swwd-gy (il registro elencava solo swwd-ln)
+2026-10-09 20:50    |   …50/176 (0 falliti)
+2026-10-09 20:50    |   …75/176 (0 falliti)
+2026-10-09 20:50    |   …100/176 (0 falliti)
+2026-10-09 20:50    |   …125/176 (0 falliti)
+2026-10-09 20:50    |   …150/176 (0 falliti)
+2026-10-09 20:50    |   …175/176 (0 falliti)
+2026-10-09 20:50    |   SPDR: 176 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → UBS: 422 fondi, 422 da elaborare
+2026-10-09 20:50    |   …25/422 (0 falliti)
+2026-10-09 20:50    |   …50/422 (0 falliti)
+2026-10-09 20:50    |   …75/422 (0 falliti)
+2026-10-09 20:50    |   …100/422 (0 falliti)
+2026-10-09 20:50    |   …125/422 (0 falliti)
+2026-10-09 20:50    |   …150/422 (0 falliti)
+2026-10-09 20:50    |   …175/422 (0 falliti)
+2026-10-09 20:50    |   …200/422 (0 falliti)
+2026-10-09 20:50    |   …225/422 (0 falliti)
+2026-10-09 20:50    |   …250/422 (0 falliti)
+2026-10-09 20:50    |   …275/422 (0 falliti)
+2026-10-09 20:50    |   …300/422 (0 falliti)
+2026-10-09 20:50    |   …325/422 (0 falliti)
+2026-10-09 20:50    |   …350/422 (0 falliti)
+2026-10-09 20:50    |   …375/422 (0 falliti)
+2026-10-09 20:50    |   …400/422 (0 falliti)
+2026-10-09 20:50    |   UBS: 422 serie ok, 0 falliti, 417 con serie benchmark (TD), 0 con composizione · 3 neonati sotto i 30 punti fatti crescere
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → Avantis: 6 fondi, 6 da elaborare
+2026-10-09 20:50    |   Avantis: 6 serie ok, 0 falliti, 0 con serie benchmark (TD), 0 con composizione
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → 21Shares: 60 fondi, 60 da elaborare
+2026-10-09 20:50    |   …25/60 (0 falliti)
+2026-10-09 20:50    |   …50/60 (0 falliti)
+2026-10-09 20:50    |   21Shares: 60 serie ok, 0 falliti, 59 con serie benchmark (TD), 0 con composizione · 2 neonati sotto i 30 punti fatti crescere
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → Franklin Templeton: 48 fondi, 48 da elaborare
+2026-10-09 20:50    |   …25/48 (0 falliti)
+2026-10-09 20:50    |   Franklin Templeton: 48 serie ok, 0 falliti, 31 con serie benchmark (TD), 0 con composizione
+2026-10-09 20:50    | 
+2026-10-09 20:50    | → Melanion: 1 fondi, 1 da elaborare
+2026-10-09 20:50    |   ⚠ FR0014002IH8: l'emittente pubblica meno storia di prima (da 2026-10-08 vs 2026-10-05) — testa conservata dal nostro archivio
+2026-10-09 20:50    |   Melanion: 1 serie ok, 0 falliti, 1 con serie benchmark (TD), 0 con composizione · 1 neonati sotto i 30 punti fatti crescere
+2026-10-09 20:50    |   serie dal DB: 25  serie dal DB: 525  serie dal DB: 1025  serie dal DB: 1525  serie dal DB: 2025  serie dal DB: 2525  serie dal DB: 3025  cache serie riscritta: 3294 righe → /home/rebalix/cache/etf-series.json
+2026-10-09 20:50  ok Avantis: 6/6 serie rinfrescate · dato più fresco 2026-10-08
+2026-10-09 20:50  ok Xtrackers: 394/394 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:50  ok SPDR: 176/176 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:50  ok UBS: 422/422 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:50  ok JPMorgan: 96/96 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:50  ok LGIM: 71/71 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:50  ok 21Shares: 60/0 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:50  ok Franklin Templeton: 48/48 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:50  ok Melanion: 1/1 serie rinfrescate · dato più fresco 2026-10-09
+2026-10-09 20:51  ok iShares (coda screener): 905 punti aggiunti · 7 già freschi/respinti · 0 falliti
+2026-10-09 21:18    |ishares-tr| perimetro: 534 classi Dist vive nel registro = 386 ETF + 148 fondi indice (non ETF, fuori dal perimetro ETF per natura)
+2026-10-09 21:18    |ishares-tr|            ETF nel giro: 386 con serie in casa · 0 ETF SENZA serie = lacuna di copertura da seguire
+2026-10-09 21:18    |ishares-tr| riepilogo: allineate 386 · già allineate 0 · assenti alla fonte 0 · download falliti 0 · sospese 0 · non elaborate 0 · rettifiche oltre soglia 0
+2026-10-09 21:18    |ishares-tr| totale 386 su 386 ETF del giro: RICONCILIATO · ETF senza serie (lacuna) 0 · fondi indice non ETF 148 · durata 1620 s · scaricati 1153 MB
+2026-10-09 21:18  ok iShares (coda total return): 386 allineate · 0 già allineate · 0 assenti · 0 falliti · 0 sospese · 0 non elaborate · totale 386/386 riconciliato · 1620 s · 1153 MB
+2026-10-09 21:18  !! Amundi IE0006IP4XZ8: valuta risposta USD ≠ serie EUR — punto SCARTATO (candidato istruttoria)
+2026-10-09 21:18  !! Amundi IE000KXCEXR3: valuta risposta USD ≠ serie EUR — punto SCARTATO (candidato istruttoria)
+2026-10-09 21:18  !! Amundi IE000QQ8Z0D8: valuta risposta USD ≠ serie EUR — punto SCARTATO (candidato istruttoria)
+2026-10-09 21:19  ok Amundi (coda batch): 664 punti aggiunti · 0 fermi/respinti · 0 falliti · 3 scartati per valuta
+2026-10-09 21:22    |amundi-tr| perimetro: 206 classi Dist vive nel registro = 206 ETF + 0 non ETF
+2026-10-09 21:22    |amundi-tr|            ETF nel giro: 159 con total return dell'emittente già in casa (--solo-con-tr) · 47 ETF senza TR dell'emittente acquisito (fuori perimetro: 83 del censimento con motivazioni distinte) · 0 ETF SENZA serie = lacuna interna
+2026-10-09 21:22    |amundi-tr| riepilogo: allineate 0 · già allineate 159 · assenti alla fonte 0 · download falliti 0 · sospese 0 · non elaborate 0 · rettifiche oltre soglia 0
+2026-10-09 21:22    |amundi-tr| totale 159 su 159 ETF del giro: RICONCILIATO · ETF senza TR acquisito 47 · ETF senza serie 0 · durata 225 s · scaricati 21.1 MB
+2026-10-09 21:22    |amundi-tr| differenza di copertura: TR nasce su 0 classi · TR cresce su 0 · TD calcolata passa dal TR sintetico (cedole) al TR dell'emittente su 0
+2026-10-09 21:22  ok Amundi (coda total return): 0 allineate · 159 già allineate · 0 assenti · 0 falliti · 0 sospese · 0 non elaborate · totale 159/159 riconciliato · 225 s · 21 MB
+2026-10-09 21:23  ok Vanguard (coda GraphQL): 140 punti aggiunti · 560 fermi/respinti · 0 falliti · 0 scartati per valuta
+2026-10-09 21:35  ok Invesco (coda browser): 291 punti aggiunti · 0 fermi/respinti · 0 falliti · 0 scartati per valuta · ETC (valore del certificato): 8 aggiunti, 0 fermi · cedole viste 104, nuove 0, in annuncio (TBA) 0
+2026-10-09 21:35    |dist-date-ubs| 
+2026-10-09 21:35    |dist-date-ubs| esito: date trovate 0 · ex non combacia/senza paydate 0 · importi diversi (non scritte) 0 · classi senza instId 0 · falliti 0 · scritte 0
+2026-10-09 21:35    |dist-pay-stima| 
+2026-10-09 21:35    |dist-pay-stima| esito: da stimare 0 · scritte 0 · falliti 0
+2026-10-09 21:35    |stabilita| audit-stabilita-dati — 2026-10-09 vs 2026-10-08
+2026-10-09 21:35    |stabilita| ✓ nessun dato sparito rispetto alla fotografia precedente
+2026-10-09 21:35    |serie| · Amundi: attese 669 · presenti 669 · SERIES_STALE 2 (HK0000308285 9g amundi-historics, HK0000308293 9g amundi-historics)
+2026-10-09 21:35    |serie| totale: attese 3235 · presenti 3235 · stale 2 · missing 0
+2026-10-09 21:36  cache serie riscritta: 3294 righe
+2026-10-09 21:36    |buchi| · Invesco: 5 serie con intervalli > 7 gg negli ultimi 30 gg — IE0000FCGYF9 2026-09-30→2026-10-08 (8g) · IE000AWRDWI7 2026-09-30→2026-10-08 (8g) · IE000K9Z3SF5 2026-09-30→2026-10-08 (8g) · IE00BK80XL30 2026-09-30→2026-10-08 (8g)
+2026-10-09 21:37  metal detector: exit 2 · serie esaminate: 3294 · anomalie DURE: 2 · osservazioni morbide: 14 · benchmark fermi: 21 (attesi ≤ 35)
+2026-10-09 21:37    ‼ LU2090063327  [azionario]  Amundi MSCI Semiconductors UCITS ETF Dist
+2026-10-09 21:37    ‼ LU2572256746  [azionario]  Amundi Core MSCI China A Swap UCITS ETF Dist
+2026-10-09 21:37  provenienza aum: ✓ provenienza serie AUM: 1886 righe scritte · scartate 0
+2026-10-09 21:37  provenienza nav: ✓ provenienza serie NAV: 3294 righe scritte · scartate 0
+2026-10-09 21:37  [heartbeat] inviato (200)
+2026-10-09 21:37  fine giro: PROBLEMI (2)
