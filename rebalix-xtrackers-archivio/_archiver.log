@@ -5827,3 +5827,76 @@ Error: Command "npm run build" exited with 1
 2026-10-16 10:36  [deploy] deploy prod OK via deploy-prod.sh (f0fc9fec)
 2026-10-16 10:36  [heartbeat] inviato (200)
 2026-10-16 10:36  fatto, tutto OK
+2026-10-17 10:30  --- avvio archiviatore Xtrackers  ---
+2026-10-17 10:30  xeq2: dato al 2026-10-09, 0 snapshot nuovi (gia' in archivio)
+2026-10-17 10:30  xeq2: NAV ufficiale, 184 punti
+2026-10-17 10:30  xeq4: dato al 2026-10-09, 0 snapshot nuovi (gia' in archivio)
+2026-10-17 10:30  xeq4: NAV ufficiale, 184 punti
+2026-10-17 10:30  xeq6: dato al 2026-10-09, 0 snapshot nuovi (gia' in archivio)
+2026-10-17 10:30  xeq6: NAV ufficiale, 184 punti
+2026-10-17 10:30  xeq8: dato al 2026-10-09, 0 snapshot nuovi (gia' in archivio)
+2026-10-17 10:30  xeq8: NAV ufficiale, 184 punti
+2026-10-17 10:30  xqui: dato al 2026-10-16, 1 snapshot nuovi
+2026-10-17 10:30  xqui: NAV ufficiale, 4450 punti
+2026-10-17 10:30  xinc: dato al 2026-10-15, 1 snapshot nuovi
+2026-10-17 10:30  xinc: NAV ufficiale, 3940 punti
+2026-10-17 10:30  magr: 21 posizioni, NUOVA composizione (impronta 759fc48461729279)
+2026-10-17 10:30  modr: 28 posizioni, NUOVA composizione (impronta fd300b73a1957d2a)
+2026-10-17 10:30  macv: 28 posizioni, NUOVA composizione (impronta b1d6374e0380f24d)
+2026-10-17 10:30  spread: snapshot 2026-10-17 10:30, 4/11 book validi
+2026-10-17 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-10-17 10:30  !! lookthrough IE00BFMKQ930: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-10-17 10:30  lookthrough LU0274209237: 398 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0274209740: 174 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0290355717: 561 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0290356871: 33 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0290357259: 33 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0290358224: 40 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0321462953: 869 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0322253906: 851 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0328475792: 617 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0378818131: 1315 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0478205379: 4263 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0484968903: 2951 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0524480265: 194 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU0942970798: 5340 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU1109943388: 677 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU1399300455: 306 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU1920015440: 869 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU2178481649: 2238 posizioni al 2026-10-09
+2026-10-17 10:30  lookthrough LU3003218446: 282 posizioni al 2026-10-09
+2026-10-17 10:30  [golden] XEQ2.MI: 159 date | cum Yahoo +0.06% vs NAV -0.55% (diff 0.61 pt) | rend. mediano 0.184 pt | livello max 1.75%
+2026-10-17 10:30  [golden] XEQ4.MI: 160 date | cum Yahoo +2.44% vs NAV +1.84% (diff 0.60 pt) | rend. mediano 0.210 pt | livello max 1.83%
+2026-10-17 10:30  [golden] XEQ6.MI: 162 date | cum Yahoo +5.70% vs NAV +5.23% (diff 0.47 pt) | rend. mediano 0.248 pt | livello max 1.92%
+2026-10-17 10:30  [golden] XEQ8.MI: 162 date | cum Yahoo +8.78% vs NAV +8.48% (diff 0.30 pt) | rend. mediano 0.305 pt | livello max 1.99%
+2026-10-17 10:30  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 184 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-10-17 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-10-17 10:30  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-10-17 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-10-17 10:30  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-10-17 10:30  !! xeq2: snapshot del 2026-10-09 (8 giorni fa) — stantio, modulo NON scritto
+2026-10-17 10:30  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-10-17 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.76}, {'nome': 'Giappone', 'pct': 6.0}, {'nome': 'Taiwan', 'pct': 4.27}]
+2026-10-17 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 32.17}, {'nome': 'Finanza', 'pct': 16.49}, {'nome': 'Prodotti industriali', 'pct': 10.78}]
+2026-10-17 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 40.95}, {'nome': 'Giappone', 'pct': 7.86}, {'nome': 'Francia', 'pct': 4.98}]
+2026-10-17 10:30  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 94 giorni, ultimo (2026-10-17): 20%=2.967M, 40%=3.216M, 60%=7.048M, 80%=6.245M
+2026-10-17 10:30  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-10-17 10:30  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-10-17 10:30  [xd-costs] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.28% · verificato 2026-10-17
+2026-10-17 10:30  [xd-changes] invariato (0 eventi)
+2026-10-17 10:30  [deploy] commit dei moduli xd
+2026-10-17 10:35  [deploy] Production      https://rebalix-ndqoimj07-rebalixs-projects.vercel.app
+2026-10-17 10:35  [deploy] [2K[1A[2K[G  Production      https://rebalix-ndqoimj07-rebalixs-projects.vercel.app
+2026-10-17 10:35  [deploy] ▲ Aliased         https://rebalix.com
+2026-10-17 10:35  [deploy] status	● Ready
+2026-10-17 10:35  [deploy] created	Sat Oct 17 2026 10:35:02 GMT+0200 (Central European Summer Time) [44s ago]
+2026-10-17 10:35  [deploy] 
+2026-10-17 10:35  [deploy] ── 8 · sonde (home doppia anti-MISS + pagine richieste) ──
+2026-10-17 10:35  [deploy] it?x=1 → 200
+2026-10-17 10:35  [deploy] it?x=2 → 200
+2026-10-17 10:35  [deploy] 
+2026-10-17 10:35  [deploy] DEPLOY COMPLETO · log: /tmp/deploy-prod-20261017-103033.log
+2026-10-17 10:35  [deploy] ESITO: ok commit=da91a688 deploy=https://rebalix-ndqoimj07-rebalixs-projects.vercel.app log=/tmp/deploy-prod-20261017-103033.log
+2026-10-17 10:35  [deploy] deploy prod OK via deploy-prod.sh (da91a688)
+2026-10-17 10:35  [heartbeat] inviato (200)
+2026-10-17 10:35  fatto, tutto OK
