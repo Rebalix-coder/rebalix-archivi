@@ -15,7 +15,7 @@ Uso: python3 _archiver.py [--dry-run] [--force]
 Cadenza: launchd il giorno 2 del mese alle 07:45 (RunAtLoad recupera i mesi col
 Mac spento; _state.json evita i doppi giri nello stesso mese).
 """
-import os, re, sys, json, shutil, datetime, subprocess, urllib.request
+import os, re, sys, json, shutil, datetime, subprocess, urllib.request, hashlib
 
 os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH", "")
 
@@ -113,10 +113,190 @@ def marcatore_fine_giro(state, ym, modules, edizione_richiesta, edizione_stato, 
     base = {k: v for k, v in state.items() if k not in ("in_corso_ym", "iniziato_il", "moduli", "errore", "edizione")}
     if concluso:
         return {**base, "last_ym": ym, "at": adesso, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5,
-                "moduli": modules, "edizione": edizione_stato}
-    return {**base, "in_corso_ym": ym, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5, "moduli": modules,
+                "moduli": modules, "limitazioni": EXTRA_METRICS.get("limitazioni", {}), "preflight": EXTRA_METRICS.get("preflight", PREFLIGHT), "edizione": edizione_stato}
+    return {**base, "in_corso_ym": ym, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5, "moduli": modules, "limitazioni": EXTRA_METRICS.get("limitazioni", {}), "preflight": EXTRA_METRICS.get("preflight", PREFLIGHT),
             "edizione": edizione_stato, "errore": errore or "edizione non arrivata a COMPLETE"}
 
+
+# ---------------------------------------------------------------------------
+# (ETF-20 passo 5, 27 ott 2026 — rev. 2 dopo il riesame dell'auditor) RIFIUTI VISIBILI e BATTITO DEI PANIERI
+# - GIRO = identificativo di QUESTA esecuzione: va ai lettori con la guardia (--giro) e al compositore del battito; rapporti e righe
+#   dei rifiuti valgono solo se lo portano (un rapporto del mese prima non prova il giro corrente);
+# - EXTRA_METRICS = metriche allegate al battito (blocco «panieri» composto da scripts/panieri-battito.mjs);
+# - le due funzioni sotto sono ESEGUIBILI fuori dal giro (prova con comandi finti: prova-runner-passo5.py).
+EXTRA_METRICS = {}
+
+# ── LIMITAZIONI DICHIARATE del giro (27 ott 2026, condizioni del 2/11/2026; parere auditor 27/10, una voce per modulo con GO di Linus) ──
+# File ARCHIVE/LIMITAZIONI-GIRO.json: {"giro": "YYYY-MM", "salta": ["documents", "doc-archive", "doc-langs"], "motivo": "…", "go": "…"}.
+# Effetti distinti per modulo: documents = aggiornamento dei COLLEGAMENTI ai documenti (URL nel registro); doc-archive = ARCHIVIAZIONE
+# dei PDF (archiviatore storico senza indice/versioni); doc-langs = QUALIFICAZIONE DELLE LINGUE senza provenienza.
+# Regole: senza file → nessuna limitazione. File presente ma illeggibile, senza "giro", di un ALTRO mese, con moduli non ammessi o senza
+# motivo/GO → il giro NON PARTE (uscita 3): una limitazione vecchia non si applica né si ignora in silenzio. I moduli saltati NON entrano
+# in `modules` (né verdi né rossi): stanno nel battito (metrics.limitazioni) e nel marcatore di fine giro (limitazioni), con motivo e GO.
+LIMITAZIONI_FILE = os.path.join(ARCHIVE, "LIMITAZIONI-GIRO.json")
+MODULI_LIMITABILI = ("documents", "doc-archive", "doc-langs")
+LIMITAZIONI = {"attive": False, "salta": (), "giro": None, "motivo": None, "go": None}
+
+
+def leggi_limitazioni(percorso, ym):
+    """Limitazioni dichiarate per il giro `ym` (vedi sopra). Senza file: nessuna. File non valido: SystemExit(3), il giro non parte."""
+    if not os.path.exists(percorso):
+        return {"attive": False, "salta": (), "giro": None, "motivo": None, "go": None}
+    try:
+        with open(percorso) as f:
+            j = json.load(f)
+    except Exception as e:
+        log(f"ARRESTO: {percorso} illeggibile ({e}) — il giro non parte")
+        raise SystemExit(3)
+    giro = j.get("giro") if isinstance(j, dict) else None
+    salta_ = j.get("salta") if isinstance(j, dict) else None
+    if giro != ym:
+        log(f"ARRESTO: {percorso} dichiara il giro {giro!r} ma il giro corrente è {ym}: rimuovere o aggiornare il file — il giro non parte")
+        raise SystemExit(3)
+    if not isinstance(salta_, list) or not salta_ or any(s not in MODULI_LIMITABILI for s in salta_):
+        log(f"ARRESTO: {percorso}: 'salta' deve elencare solo moduli fra {MODULI_LIMITABILI} (trovato {salta_!r}) — il giro non parte")
+        raise SystemExit(3)
+    if not str(j.get("motivo") or "").strip() or not str(j.get("go") or "").strip():
+        log(f"ARRESTO: {percorso}: servono 'motivo' e 'go' (la parola di Linus) — il giro non parte")
+        raise SystemExit(3)
+    lim = {"attive": True, "salta": tuple(salta_), "giro": giro, "motivo": str(j["motivo"]).strip(), "go": str(j["go"]).strip()}
+    log(f"LIMITAZIONI DICHIARATE per il giro {giro}: salta {', '.join(lim['salta'])} — {lim['motivo']} (GO: {lim['go']})")
+    return lim
+
+
+def salta(nome):
+    """True se il modulo è escluso dal giro per limitazione dichiarata: lo registra (log, battito, marcatore) e il chiamante NON lo lancia."""
+    if nome not in LIMITAZIONI["salta"]:
+        return False
+    log(f"  |{nome}| SALTATO per limitazione dichiarata (giro {LIMITAZIONI['giro']}; GO: {LIMITAZIONI['go']}) — {LIMITAZIONI['motivo']}")
+    EXTRA_METRICS.setdefault("limitazioni", {})[nome] = {"giro": LIMITAZIONI["giro"], "motivo": LIMITAZIONI["motivo"], "go": LIMITAZIONI["go"]}
+    return True
+
+FASC_PANIERI = os.path.expanduser("~/fascicoli/panieri-giro")
+LETTORI_CON_GUARDIA = ("amundi", "lgim")
+GIRO = f"{TODAY}T{datetime.datetime.now().strftime('%H%M%S')}-{os.getpid()}"
+
+def argomenti_lettore(emittente, primario, giro=None, fasc=None, raw_dir=None, node=None):
+    """Comando del lettore primario di panieri: per i lettori con la guardia aggiunge rifiuti visibili, rapporto del giro e identificativo."""
+    giro = giro or GIRO; fasc = fasc or FASC_PANIERI; raw_dir = raw_dir or RAW_DIR; node = node or NODE
+    argomenti = [node, primario, "--commit", "--raw-dir", raw_dir]
+    if emittente in LETTORI_CON_GUARDIA:
+        os.makedirs(fasc, exist_ok=True)
+        argomenti += ["--rifiuti", os.path.join(fasc, f"rifiuti-{emittente}-{TODAY}.jsonl"),
+                      "--esito", os.path.join(fasc, f"esito-{emittente}-{TODAY}.json"),
+                      "--giro", giro]
+    return argomenti
+
+
+# ── PREFLIGHT OBBLIGATORIO (27 ott 2026, percorso D rev. 3; auditor: «un meccanismo autorizzato che impedisca il giro con preflight
+# assente o fallito», «verificare l'intera catena rapporto valido → marcatore valido → autorizzazione, comprese le evidenze richiamate»).
+# Sulla VPS, fuori dal --dry-run, il giro PARTE solo se esiste PREFLIGHT_DIR/PREFLIGHT-OK-<YM>.json scritto dal controllo finale
+# CONFORME della mattina (controllo-finale-2-novembre.sh rev. 3): giro == YM, verdetto == CONFORME, orario di oggi e non più vecchio di
+# PREFLIGHT_MAX_ORE, E le evidenze richiamate (riepilogo del controllo e della sonda completa dell'1/11 nel fascicolo indicato) esistono,
+# hanno le impronte sha256 dichiarate, portano «VERDETTO FINALE: CONFORME» e la sonda completa è datata ieri o oggi. Altrimenti uscita 3
+# prima di ogni modulo. Unica alternativa: PREFLIGHT-DEROGA-<YM>.json con «motivo» e «go» (le parole di Linus), registrata nel log, nel
+# battito e nel marcatore. Mai un terzo stato.
+PREFLIGHT_DIR = os.path.expanduser("~/fascicoli/preflight")
+PREFLIGHT_MAX_ORE = 6
+PREFLIGHT = {"stato": "non richiesto"}
+
+
+def _arresto_preflight(msg):
+    log(f"ARRESTO: {msg} — il giro non parte")
+    raise SystemExit(3)
+
+
+def _evidenza_conforme(fascicolo, voce, nome, adesso=None, data_attesa=None):
+    """Una evidenza richiamata dal marcatore: file presente nel fascicolo, sha256 uguale al dichiarato, «VERDETTO FINALE: CONFORME»
+    dentro; se data_attesa è data, il nome del file deve portare quella data (AAAAMMGG). Ritorna il percorso o arresta."""
+    if not isinstance(voce, dict) or not voce.get("riepilogo") or not voce.get("sha256"):
+        _arresto_preflight(f"marcatore senza l'evidenza «{nome}» (riepilogo e sha256)")
+    percorso = os.path.join(fascicolo, os.path.basename(str(voce["riepilogo"])))
+    if not os.path.isfile(percorso):
+        _arresto_preflight(f"evidenza «{nome}» richiamata dal marcatore ma assente: {percorso}")
+    with open(percorso, "rb") as f:
+        contenuto = f.read()
+    if hashlib.sha256(contenuto).hexdigest() != str(voce["sha256"]).lower():
+        _arresto_preflight(f"evidenza «{nome}» alterata: sha256 diverso da quello dichiarato nel marcatore ({percorso})")
+    if not any(l.startswith("VERDETTO FINALE: CONFORME") for l in contenuto.decode("utf-8", "replace").split("\n")):
+        _arresto_preflight(f"evidenza «{nome}» senza «VERDETTO FINALE: CONFORME» ({percorso})")
+    if data_attesa and not any(d in os.path.basename(percorso) for d in data_attesa):
+        _arresto_preflight(f"evidenza «{nome}» non datata ieri/oggi ({os.path.basename(percorso)}; attese {data_attesa})")
+    return percorso
+
+
+def verifica_preflight(cartella, ym, adesso=None):
+    """Ritorna il dizionario del preflight accettato (marcatore con evidenze verificate, o deroga); altrimenti SystemExit(3)."""
+    adesso = adesso or datetime.datetime.now()
+    marcatore = os.path.join(cartella, f"PREFLIGHT-OK-{ym}.json")
+    deroga = os.path.join(cartella, f"PREFLIGHT-DEROGA-{ym}.json")
+    if os.path.exists(marcatore):
+        try:
+            with open(marcatore) as f:
+                j = json.load(f)
+        except Exception as e:
+            _arresto_preflight(f"{marcatore} illeggibile ({e})")
+        if not isinstance(j, dict) or j.get("giro") != ym or j.get("verdetto") != "CONFORME":
+            _arresto_preflight(f"{marcatore} non è un preflight CONFORME del giro {ym} (giro={j.get('giro') if isinstance(j, dict) else None!r}, verdetto={j.get('verdetto') if isinstance(j, dict) else None!r})")
+        try:
+            quando = datetime.datetime.strptime(str(j.get("quando"))[:19], "%Y-%m-%dT%H:%M:%S")
+        except Exception:
+            _arresto_preflight(f"{marcatore} senza orario leggibile ('quando')")
+        eta = (adesso - quando).total_seconds() / 3600
+        if quando.date() != adesso.date() or eta < 0 or eta > PREFLIGHT_MAX_ORE:
+            _arresto_preflight(f"preflight del {quando:%Y-%m-%d %H:%M} non è di oggi entro {PREFLIGHT_MAX_ORE} ore (ora {adesso:%Y-%m-%d %H:%M})")
+        fascicolo = str(j.get("fascicolo") or "")
+        if not fascicolo or not os.path.isdir(fascicolo):
+            _arresto_preflight(f"{marcatore} senza fascicolo delle evidenze leggibile ('fascicolo'={fascicolo!r})")
+        ieri_oggi = [(adesso - datetime.timedelta(days=1)).strftime("%Y%m%d"), adesso.strftime("%Y%m%d")]
+        ev_controllo = _evidenza_conforme(fascicolo, j.get("controllo_finale"), "controllo finale", adesso)
+        ev_completa = _evidenza_conforme(fascicolo, j.get("sonda_completa"), "sonda completa", adesso, data_attesa=ieri_oggi)
+        p = {"stato": "conforme", "quando": j.get("quando"), "file": marcatore, "evidenze": {"controllo_finale": ev_controllo, "sonda_completa": ev_completa}}
+        log(f"PREFLIGHT CONFORME per il giro {ym}: {marcatore} ({j.get('quando')}); evidenze verificate: {os.path.basename(ev_controllo)}, {os.path.basename(ev_completa)}")
+        EXTRA_METRICS["preflight"] = p
+        return p
+    if os.path.exists(deroga):
+        try:
+            with open(deroga) as f:
+                j = json.load(f)
+        except Exception as e:
+            _arresto_preflight(f"{deroga} illeggibile ({e})")
+        if not isinstance(j, dict) or j.get("giro") != ym or not str(j.get("motivo") or "").strip() or not str(j.get("go") or "").strip():
+            _arresto_preflight(f"{deroga} non valida (servono giro == {ym}, 'motivo' e 'go' = la parola di Linus)")
+        p = {"stato": "deroga", "motivo": str(j["motivo"]).strip(), "go": str(j["go"]).strip(), "file": deroga}
+        log(f"PREFLIGHT IN DEROGA per il giro {ym}: {p['motivo']} (GO: {p['go']}) — il giro parte senza controllo finale conforme")
+        EXTRA_METRICS["preflight"] = p
+        return p
+    _arresto_preflight(f"nessun preflight conforme per il giro {ym} ({marcatore} assente) e nessuna deroga ({deroga})")
+
+
+
+def battito_panieri(modules, uscite, giro=None, fasc=None, repo=None, node=None, log_fn=None):
+    """Compone il blocco «panieri» (scripts/panieri-battito.mjs) e lo allega al battito in EXTRA_METRICS['panieri'].
+    Il compositore legge SOLO i rapporti di questo giro; se fallisce il blocco manca e il guardiano segnala il rapporto assente.
+    Nessuna scrittura nel DB. Ritorna il codice di uscita del compositore."""
+    giro = giro or GIRO; fasc = fasc or FASC_PANIERI; repo = repo or REPO; node = node or NODE; log_fn = log_fn or log
+    os.makedirs(fasc, exist_ok=True)
+    uscite_arg = ",".join(f"{k}={'' if v is None else v}" for k, v in uscite.items())
+    battito_file = os.path.join(fasc, f"battito-{TODAY}.json")
+    try:
+        pb = subprocess.run([node, "scripts/panieri-battito.mjs", "--cartella", fasc, "--giorno", f"{TODAY}", "--giro", giro,
+                             "--lettori", ",".join(LETTORI_CON_GUARDIA), "--uscite", uscite_arg,
+                             "--aperti", os.path.join(fasc, "anomalie-aperte.json"), "--out", battito_file],
+                            cwd=repo, capture_output=True, text=True, timeout=300)
+        for line in (pb.stdout or "").strip().splitlines()[-4:]:
+            log_fn(f"  |panieri-battito| {line}")
+        modules["panieri-battito"] = pb.returncode == 0
+        if pb.returncode == 0:
+            with open(battito_file) as f:
+                EXTRA_METRICS["panieri"] = json.load(f)
+        else:
+            log_fn(f"!! panieri-battito uscita {pb.returncode}: {(pb.stderr or '').strip()[-300:]}")
+        return pb.returncode
+    except Exception as e:
+        log_fn(f"!! panieri-battito fallito (non blocca): {e}")
+        modules["panieri-battito"] = False
+        return -1
 
 def send_heartbeat(ok, errori, modules):
     if DRY:
@@ -134,7 +314,7 @@ def send_heartbeat(ok, errori, modules):
             return
         payload = json.dumps({"name": "etf-registry", "ok": ok, "errors_count": errori,
                               "metrics": {"host": os.uname().nodename, "modules": modules, "data_date": f"{TODAY}",
-                                          "delisted": DELISTED}}).encode()
+                                          "delisted": DELISTED, **EXTRA_METRICS}}).encode()
         req = urllib.request.Request("https://rebalix.com/api/heartbeat", data=payload, method="POST",
                                      headers={"Authorization": f"Bearer {secret}",
                                               "Content-Type": "application/json"})
@@ -144,9 +324,122 @@ def send_heartbeat(ok, errori, modules):
         log(f"!! [heartbeat] invio fallito (non blocca): {e}")
 
 
+def moduli_documentali(modules):
+    """(27 ott 2026, limitazioni del giro) |documents| = collegamenti ai documenti (URL nel registro), |doc-archive| = archivio storico dei
+    PDF, |kid-objectives| = obiettivi dal KID: i tre blocchi di main() spostati qui IDENTICI, con il solo salto per limitazione dichiarata
+    (salta(nome)) sui primi due. Chiamata da main(); provabile a banco con comandi finti."""
+    # Documenti ufficiali (prospetto+factsheet): aggancia i fondi nuovi e vigila
+    # sugli schemi-URL. Gli URL emittente sono stabili e aggiornati sul posto.
+    if not DRY and not salta("documents"):
+        try:
+            dd = subprocess.run([NODE, "scripts/enrich-etf-documents.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=4*3600)  # 16 ago: il giro pieno supera i 20 min; 2 set (debutto VPS): a inizio mese l'archivio del mese è VERGINE e l'ora piena non basta (morto a metà, ripreso a mano) → 4h
+            for line in (dd.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |documents| {line}")
+            modules["documents"] = dd.returncode == 0
+        except Exception as e:
+            log(f"!! documents fallito (non blocca): {e}")
+            modules["documents"] = False
+
+    # Archivio storico dei PDF (KID/prospetto/factsheet): gli emittenti aggiornano
+    # sul posto e la versione di ieri sparisce dal mondo — noi la teniamo. Dedup
+    # per hash: si salva solo ciò che è cambiato. «La storia è valore» (Linus).
+    if not DRY and not salta("doc-archive"):
+        try:
+            da = subprocess.run([NODE, "scripts/archive-etf-documents.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=6*3600)  # 7 ago: prima passata > 3h
+            for line in (da.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |doc-archive| {line}")
+            modules["doc-archive"] = da.returncode == 0
+        except Exception as e:
+            log(f"!! doc-archive fallito (non blocca): {e}")
+            modules["doc-archive"] = False
+
+    # Obiettivi dal KID (12 ago): sezione PRIIPs estratta dai PDF appena archiviati
+    # (marcatori per lingua it/en/de/fr, lingua verificata dal testo, guardie di
+    # lunghezza/pulizia; i curati a mano — Avantis, Flexible — non si toccano).
+    if not DRY:
+        try:
+            ko = subprocess.run([NODE, "scripts/extract-kid-objectives.mjs", "--commit"],
+                                cwd=REPO, capture_output=True, text=True, timeout=3600)
+            for line in (ko.stdout or "").strip().splitlines()[-10:]:
+                log(f"  |kid-objectives| {line}")
+            modules["kid-objectives"] = ko.returncode == 0
+        except Exception as e:
+            log(f"!! kid-objectives fallito (non blocca): {e}")
+            modules["kid-objectives"] = False
+
+
+def moduli_arricchimento(modules):
+    """(27 ott 2026, limitazioni del giro) i tre lettori dei documenti in archivio e gli arricchitori: il loop di main() spostato qui
+    IDENTICO; |doc-langs| (lingua dei documenti senza provenienza) saltabile per limitazione dichiarata. Chiamata da main()."""
+    # I TRE LETTORI DEI DOCUMENTI IN ARCHIVIO (18 ago 2026, caso Xeon senza TER/politica/AUM
+    # trovato da Linus): il feed Xtrackers porta solo nome/indice/valuta e LGIM non dà AUM né
+    # politica, quindi TER, politica di distribuzione e patrimonio si leggono dai KID e dai
+    # factsheet gia' archiviati in ~/backups/rebalix-docs-archivio (senza rete per i primi
+    # tre, ~390 pdftotext
+    # locali). QUI, dopo tutti gli arricchimenti e PRIMA del motore, perche' il motore legge
+    # ter/dp/aum. Golden a mano dentro ogni script: se un golden fallisce lo script NON scrive
+    # nulla ed esce 2 -> modulo rosso e il guardiano lo segnala (comportamento voluto).
+    for nome, script in (("kid-xtrackers", "enrich-kid-xtrackers.mjs"),
+                         ("kid-politica", "enrich-kid-politica.mjs"),
+                         ("factsheet-aum", "enrich-factsheet-aum.mjs"),
+                         # 18 ago sera: anagrafica dei 58 ETP 21Shares (benchmark_raw,
+                         # kid_url IT, factsheet_url). UNICO del gruppo che tocca la RETE:
+                         # 58 HEAD sul CDN 21Shares, ~1 min.
+                         ("21shares-anagrafica", "enrich-21shares-anagrafica.mjs"),
+                         # 19 ago (fase 2 «campi», decisione Linus «prima i documenti, poi i
+                         # campi»): anagrafica Xtrackers dall'API pdp it-it (lancio, domicilio,
+                         # SRRI, AUM — rete: ~390 GET, ~4 min) e data di lancio 21Shares dal
+                         # JSON-LD delle pagine prodotto (rete: 58 GET). Scrivono solo dove vuoto.
+                         ("xtrackers-pdp", "enrich-xtrackers-pdp.mjs"),
+                         ("21shares-inception", "enrich-21shares-inception.mjs"),
+                         # SFDR (19 ago): dal KID/factsheet in archivio (art. 8/9 dichiarati;
+                         # silenzio = art. 6 ETICHETTATO solo per Xtrackers/iShares/SPDR/LGIM,
+                         # con guardia ESG-nel-nome), poi dagli allegati del prospetto-ombrello
+                         # (Vanguard/UBS), infine UNA sola forma nel campo (normalizza-sfdr, che
+                         # non tocca mai la provenienza). Tutti scrivono solo dove il campo e'
+                         # muto: i fondi nuovi del censimento nascono gia' classificati.
+                         ("sfdr-da-kid", "enrich-sfdr-da-kid.mjs"),
+                         ("sfdr-da-prospetto", "enrich-sfdr-da-prospetto.mjs"),
+                         ("sfdr-normalizza", "normalizza-sfdr.mjs"),
+                         # 20 ago, chiusura rassegna orfani (specifica sessione Database ETF):
+                         # ter-21shares = TER dai KID PRIIPs, solo-dove-vuoto (oggi 58/58 pieni:
+                         # protegge gli ETP FUTURI — era il buco che il censimento azzerava,
+                         # incidente 18 ago); doc-langs = colonne *_en dopo |documents|;
+                         # replica-from-kid = replica di riserva dal KID, solo-dove-vuoto.
+                         # NON agganciati: rating-breakdown (valutare per g.17, decisione
+                         # aperta) e whitelist-tickers (fuori: ha il suo giro).
+                         ("21shares-ter", "enrich-ter-21shares.mjs"),
+                         ("doc-langs", "enrich-doc-langs.mjs"),
+                         ("replica-from-kid", "enrich-replica-from-kid.mjs"),
+                         # 3 set (agenda Database ETF): indice dichiarato NEL KID dove
+                         # benchmark_raw e' vuoto (caso Vanguard 18 ago: fondi nuovi non
+                         # ancora nel PDF pro ma gia' nel KID). Solo-dove-vuoto, mai dedotto.
+                         ("benchmark-da-kid", "enrich-benchmark-da-kid.mjs")):
+        if DRY or salta(nome):
+            continue
+        try:
+            d = subprocess.run([NODE, f"scripts/{script}", "--commit"],
+                               cwd=REPO, capture_output=True, text=True, timeout=1800)
+            for line in (d.stdout or "").strip().splitlines()[-2:]:
+                log(f"  |{nome}| {line}")
+            modules[nome] = d.returncode == 0
+            if d.returncode != 0:
+                log(f"!! {nome}: exit {d.returncode} (golden fallito? nulla scritto)")
+        except Exception as e:
+            log(f"!! {nome} fallito (non blocca): {e}")
+            modules[nome] = False
+
+
 def main():
     # stato: un solo giro per mese (RunAtLoad può svegliarci più volte)
     state = {}
+    global LIMITAZIONI
+    LIMITAZIONI = leggi_limitazioni(LIMITAZIONI_FILE, YM)   # (27 ott 2026) file assente = nessuna; file non valido = il giro non parte (uscita 3)
+    global PREFLIGHT
+    if not DRY and os.uname().nodename == HOST_VPS:   # (27 ott 2026) sulla VPS il giro parte SOLO con preflight conforme (evidenze verificate) o deroga con GO
+        PREFLIGHT = verifica_preflight(PREFLIGHT_DIR, YM)
     if os.path.exists(STATE):
         with open(STATE) as f:
             state = json.load(f)
@@ -169,6 +462,7 @@ def main():
 
     # moduli per il guardiano: '  <emittente>: N righe …' = ok; 'FALLITO' = ko; 'SALTATO' = omesso
     modules = {}
+    USCITE_PANIERI = {}   # (ETF-20 passo 5) codice di uscita dei lettori con la guardia, per il battito dei panieri
     for m in re.finditer(r"^\s{2}(\w[\w&]*): (\d+) righe", out, re.M):
         modules[m.group(1)] = True
     for m in re.finditer(r"^\s{2}✗ (\w[\w&]*):", out, re.M):
@@ -388,46 +682,7 @@ def main():
                 log(f"!! {nome} fallito (non blocca): {e}")
                 modules[nome] = False
 
-    # Documenti ufficiali (prospetto+factsheet): aggancia i fondi nuovi e vigila
-    # sugli schemi-URL. Gli URL emittente sono stabili e aggiornati sul posto.
-    if not DRY:
-        try:
-            dd = subprocess.run([NODE, "scripts/enrich-etf-documents.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=4*3600)  # 16 ago: il giro pieno supera i 20 min; 2 set (debutto VPS): a inizio mese l'archivio del mese è VERGINE e l'ora piena non basta (morto a metà, ripreso a mano) → 4h
-            for line in (dd.stdout or "").strip().splitlines()[-2:]:
-                log(f"  |documents| {line}")
-            modules["documents"] = dd.returncode == 0
-        except Exception as e:
-            log(f"!! documents fallito (non blocca): {e}")
-            modules["documents"] = False
-
-    # Archivio storico dei PDF (KID/prospetto/factsheet): gli emittenti aggiornano
-    # sul posto e la versione di ieri sparisce dal mondo — noi la teniamo. Dedup
-    # per hash: si salva solo ciò che è cambiato. «La storia è valore» (Linus).
-    if not DRY:
-        try:
-            da = subprocess.run([NODE, "scripts/archive-etf-documents.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=6*3600)  # 7 ago: prima passata > 3h
-            for line in (da.stdout or "").strip().splitlines()[-2:]:
-                log(f"  |doc-archive| {line}")
-            modules["doc-archive"] = da.returncode == 0
-        except Exception as e:
-            log(f"!! doc-archive fallito (non blocca): {e}")
-            modules["doc-archive"] = False
-
-    # Obiettivi dal KID (12 ago): sezione PRIIPs estratta dai PDF appena archiviati
-    # (marcatori per lingua it/en/de/fr, lingua verificata dal testo, guardie di
-    # lunghezza/pulizia; i curati a mano — Avantis, Flexible — non si toccano).
-    if not DRY:
-        try:
-            ko = subprocess.run([NODE, "scripts/extract-kid-objectives.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=3600)
-            for line in (ko.stdout or "").strip().splitlines()[-10:]:
-                log(f"  |kid-objectives| {line}")
-            modules["kid-objectives"] = ko.returncode == 0
-        except Exception as e:
-            log(f"!! kid-objectives fallito (non blocca): {e}")
-            modules["kid-objectives"] = False
+    moduli_documentali(modules)   # (27 ott 2026) documents · doc-archive · kid-objectives, con le limitazioni dichiarate
 
     # Gestione attiva/passiva + replica di riserva (17 ago 2026, Lavoro A del brief
     # guardiano): emittente -> KID (obiettivi appena estratti) -> Xetra, solo dichiarato.
@@ -507,63 +762,7 @@ def main():
             log(f"!! td-spdr fallito (non blocca): {e}")
             modules["td-spdr"] = False
 
-    # I TRE LETTORI DEI DOCUMENTI IN ARCHIVIO (18 ago 2026, caso Xeon senza TER/politica/AUM
-    # trovato da Linus): il feed Xtrackers porta solo nome/indice/valuta e LGIM non dà AUM né
-    # politica, quindi TER, politica di distribuzione e patrimonio si leggono dai KID e dai
-    # factsheet gia' archiviati in ~/backups/rebalix-docs-archivio (senza rete per i primi
-    # tre, ~390 pdftotext
-    # locali). QUI, dopo tutti gli arricchimenti e PRIMA del motore, perche' il motore legge
-    # ter/dp/aum. Golden a mano dentro ogni script: se un golden fallisce lo script NON scrive
-    # nulla ed esce 2 -> modulo rosso e il guardiano lo segnala (comportamento voluto).
-    for nome, script in (("kid-xtrackers", "enrich-kid-xtrackers.mjs"),
-                         ("kid-politica", "enrich-kid-politica.mjs"),
-                         ("factsheet-aum", "enrich-factsheet-aum.mjs"),
-                         # 18 ago sera: anagrafica dei 58 ETP 21Shares (benchmark_raw,
-                         # kid_url IT, factsheet_url). UNICO del gruppo che tocca la RETE:
-                         # 58 HEAD sul CDN 21Shares, ~1 min.
-                         ("21shares-anagrafica", "enrich-21shares-anagrafica.mjs"),
-                         # 19 ago (fase 2 «campi», decisione Linus «prima i documenti, poi i
-                         # campi»): anagrafica Xtrackers dall'API pdp it-it (lancio, domicilio,
-                         # SRRI, AUM — rete: ~390 GET, ~4 min) e data di lancio 21Shares dal
-                         # JSON-LD delle pagine prodotto (rete: 58 GET). Scrivono solo dove vuoto.
-                         ("xtrackers-pdp", "enrich-xtrackers-pdp.mjs"),
-                         ("21shares-inception", "enrich-21shares-inception.mjs"),
-                         # SFDR (19 ago): dal KID/factsheet in archivio (art. 8/9 dichiarati;
-                         # silenzio = art. 6 ETICHETTATO solo per Xtrackers/iShares/SPDR/LGIM,
-                         # con guardia ESG-nel-nome), poi dagli allegati del prospetto-ombrello
-                         # (Vanguard/UBS), infine UNA sola forma nel campo (normalizza-sfdr, che
-                         # non tocca mai la provenienza). Tutti scrivono solo dove il campo e'
-                         # muto: i fondi nuovi del censimento nascono gia' classificati.
-                         ("sfdr-da-kid", "enrich-sfdr-da-kid.mjs"),
-                         ("sfdr-da-prospetto", "enrich-sfdr-da-prospetto.mjs"),
-                         ("sfdr-normalizza", "normalizza-sfdr.mjs"),
-                         # 20 ago, chiusura rassegna orfani (specifica sessione Database ETF):
-                         # ter-21shares = TER dai KID PRIIPs, solo-dove-vuoto (oggi 58/58 pieni:
-                         # protegge gli ETP FUTURI — era il buco che il censimento azzerava,
-                         # incidente 18 ago); doc-langs = colonne *_en dopo |documents|;
-                         # replica-from-kid = replica di riserva dal KID, solo-dove-vuoto.
-                         # NON agganciati: rating-breakdown (valutare per g.17, decisione
-                         # aperta) e whitelist-tickers (fuori: ha il suo giro).
-                         ("21shares-ter", "enrich-ter-21shares.mjs"),
-                         ("doc-langs", "enrich-doc-langs.mjs"),
-                         ("replica-from-kid", "enrich-replica-from-kid.mjs"),
-                         # 3 set (agenda Database ETF): indice dichiarato NEL KID dove
-                         # benchmark_raw e' vuoto (caso Vanguard 18 ago: fondi nuovi non
-                         # ancora nel PDF pro ma gia' nel KID). Solo-dove-vuoto, mai dedotto.
-                         ("benchmark-da-kid", "enrich-benchmark-da-kid.mjs")):
-        if DRY:
-            continue
-        try:
-            d = subprocess.run([NODE, f"scripts/{script}", "--commit"],
-                               cwd=REPO, capture_output=True, text=True, timeout=1800)
-            for line in (d.stdout or "").strip().splitlines()[-2:]:
-                log(f"  |{nome}| {line}")
-            modules[nome] = d.returncode == 0
-            if d.returncode != 0:
-                log(f"!! {nome}: exit {d.returncode} (golden fallito? nulla scritto)")
-        except Exception as e:
-            log(f"!! {nome} fallito (non blocca): {e}")
-            modules[nome] = False
+    moduli_arricchimento(modules)   # (27 ott 2026) lettori dei documenti in archivio e arricchitori, doc-langs limitabile
 
     # ULTIMO: ricostruisce le righe pronte del motore /cerca-etf (etf_search_rows)
     # da tutte le fonti appena aggiornate. Golden interni (Xeon, CSPX, numerosita')
@@ -769,8 +968,11 @@ def main():
                 ("amundi", "scripts/ingest-etf-holdings-amundi-api.mjs", "scripts/ingest-etf-holdings-amundi-factsheet.mjs"),
                 ("franklin", "scripts/ingest-etf-holdings-franklin.mjs", None)):
             try:
-                hf = subprocess.run([NODE, primario, "--commit", "--raw-dir", RAW_DIR],
+                # (ETF-20 passo 5) lettori con la guardia: rifiuti visibili per ISIN, rapporto del giro e identificativo dell'esecuzione
+                hf = subprocess.run(argomenti_lettore(emittente, primario),
                                     cwd=REPO, capture_output=True, text=True, timeout=3600)
+                if emittente in LETTORI_CON_GUARDIA:
+                    USCITE_PANIERI[emittente] = hf.returncode
                 for line in (hf.stdout or "").strip().splitlines()[-2:]:
                     log(f"  |holdings-{emittente}| {line}")
                 if hf.returncode != 0 and ripiego:
@@ -785,6 +987,12 @@ def main():
             except Exception as e:
                 log(f"!! holdings-{emittente} fallito (non blocca): {e}")
                 modules[f"holdings-{emittente}"] = False
+                if emittente in LETTORI_CON_GUARDIA:
+                    USCITE_PANIERI[emittente] = None   # non lanciato / eccezione: il battito lo dirà «rapporto mancante»
+
+    # (ETF-20 passo 5, 27 ott 2026) BATTITO DEI PANIERI: rapporti riconciliabili + rifiuti verificati + anomalie aperte, legati a GIRO
+    if not DRY:
+        battito_panieri(modules, USCITE_PANIERI)
 
     # Composizioni Melanion (emittente n.16, 6 ott 2026 — GO Linus, 3 audit muti):
     # CSV quotidiano dichiarato dalla scheda, 5 GET con pausa 10,5 s (Crawl-delay del
