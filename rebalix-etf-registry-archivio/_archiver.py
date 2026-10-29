@@ -15,7 +15,7 @@ Uso: python3 _archiver.py [--dry-run] [--force]
 Cadenza: launchd il giorno 2 del mese alle 07:45 (RunAtLoad recupera i mesi col
 Mac spento; _state.json evita i doppi giri nello stesso mese).
 """
-import os, re, sys, json, shutil, datetime, subprocess, urllib.request, hashlib
+import os, re, sys, json, shutil, datetime, subprocess, urllib.request, urllib.error, hashlib, time, signal, tempfile, uuid
 
 os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH", "")
 
@@ -113,8 +113,8 @@ def marcatore_fine_giro(state, ym, modules, edizione_richiesta, edizione_stato, 
     base = {k: v for k, v in state.items() if k not in ("in_corso_ym", "iniziato_il", "moduli", "errore", "edizione")}
     if concluso:
         return {**base, "last_ym": ym, "at": adesso, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5,
-                "moduli": modules, "limitazioni": EXTRA_METRICS.get("limitazioni", {}), "preflight": EXTRA_METRICS.get("preflight", PREFLIGHT), "edizione": edizione_stato}
-    return {**base, "in_corso_ym": ym, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5, "moduli": modules, "limitazioni": EXTRA_METRICS.get("limitazioni", {}), "preflight": EXTRA_METRICS.get("preflight", PREFLIGHT),
+                "moduli": modules, "limitazioni": EXTRA_METRICS.get("limitazioni", {}), "preflight": EXTRA_METRICS.get("preflight", PREFLIGHT), "documenti": EXTRA_METRICS.get("documenti", {}), "edizione": edizione_stato}
+    return {**base, "in_corso_ym": ym, "iniziato_il": avviato_il, "archiviatore_md5": archiviatore_md5, "moduli": modules, "limitazioni": EXTRA_METRICS.get("limitazioni", {}), "preflight": EXTRA_METRICS.get("preflight", PREFLIGHT), "documenti": EXTRA_METRICS.get("documenti", {}),
             "edizione": edizione_stato, "errore": errore or "edizione non arrivata a COMPLETE"}
 
 
@@ -136,6 +136,870 @@ EXTRA_METRICS = {}
 LIMITAZIONI_FILE = os.path.join(ARCHIVE, "LIMITAZIONI-GIRO.json")
 MODULI_LIMITABILI = ("documents", "doc-archive", "doc-langs")
 LIMITAZIONI = {"attive": False, "salta": (), "giro": None, "motivo": None, "go": None}
+
+# ── MODULI DOCUMENTALI CORRETTI (rev. 4, 28 ott 2026; auditor: «correzioni dei moduli documentali per il 2/11»; criterio del piano
+# straordinaria rev. 3 §1 del 25/10: «la fase 2 non usa più l'archiviatore… usa la macchina dei lotti») ──
+# |documents| scrive i collegamenti come prima MA con fotografia prima/dopo delle 6 colonne URL (righe vive), elenco delle scritture,
+#   COLLAUDO dei documenti ricevuti (collaudo-documenti-ricevuti.mjs --come utente) sulle sole classi toccate e revalidazione delle loro
+#   schede con corpo validato: senza fotografia «prima» il modulo NON parte (nessuna scrittura non collaudabile).
+# |doc-archive| NON scrive più nell'archivio canonico: PROVA con conservazione (archive-etf-documents.mjs --conserva-in <FASC_DOCUMENTI>/<YM>/
+#   prova-archivio): indice-prova.jsonl + PDF conservati + confronto testo/immagini; archiviazione canonica, lingua (R1/R2/R2-bis) e
+#   controllo per riga avvengono poi con la macchina dei LOTTI (indice → lotti → COMMIT da sorgenti conservate, anteprima approvata, GO).
+# |doc-langs| RIMOSSO: la lingua si decide nei lotti con provenienza; enrich-doc-langs sovrascriverebbe le colonne con provenienza.
+# (rev. 5) dopo una prova VALIDA: lotti per regole scritte → prova offline → verifica → COMMIT autorizzato dal file di GO (lotti_automatici).
+# Tutto finisce in EXTRA_METRICS["documenti"] (battito) e nel marcatore di fine giro. Funzioni eseguibili fuori dal giro (prova-documenti-rev4.py).
+FASC_DOCUMENTI = os.path.expanduser("~/fascicoli/giro-documenti")
+DB_ENV_FILE = os.path.expanduser("~/backups/rebalix-db/.env")
+PSQL = shutil.which("psql") or "psql"
+SITO = "https://rebalix.com"
+COLONNE_URL = ("kid_url", "kid_url_en", "prospectus_url", "prospectus_url_en", "factsheet_url", "factsheet_url_en")
+
+
+def _env_db():
+    """Ambiente con le variabili PG* del file ~/backups/rebalix-db/.env (psql le usa senza URL)."""
+    env = dict(os.environ)
+    try:
+        with open(DB_ENV_FILE) as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                env[k.strip()] = v.strip().strip('"').strip("'")
+    except Exception as e:
+        log(f"!! ambiente del DB non leggibile ({e})")
+    return env
+
+
+def cron_secret():
+    try:
+        with open(os.path.join(REPO, ".env.local")) as f:
+            for line in f:
+                if line.startswith("CRON_SECRET="):
+                    return line.split("=", 1)[1].strip().strip('"').strip("'")
+    except Exception:
+        pass
+    return None
+
+
+ISIN_RE = re.compile(r"^[A-Z]{2}[A-Z0-9]{10}$")
+TIPO_DI_COLONNA = {"kid_url": "kid_it", "kid_url_en": "kid_en", "prospectus_url": "prospetto_it", "prospectus_url_en": "prospetto_en", "factsheet_url": "factsheet_it", "factsheet_url_en": "factsheet_en"}
+
+
+def interpreta_foto(testo):
+    """(rev. 4b) Valida l'uscita di psql: prima riga = conteggio delle righe vive, poi una riga TSV per classe con 7 campi, ISIN valido e
+    univoco, numero di righe = conteggio. Ritorna ({isin: (url…)}, None) oppure (None, motivo): fotografia non interpretabile = niente avvio."""
+    righe = [r for r in (testo or "").split("\n") if r != ""]
+    if not righe:
+        return None, "uscita di psql vuota"
+    try:
+        attese = int(righe[0].strip())
+    except ValueError:
+        return None, f"prima riga non è il conteggio delle righe vive: {righe[0][:40]!r}"
+    foto = {}
+    for i, riga in enumerate(righe[1:], start=2):
+        campi = riga.split("\t")
+        if len(campi) != 1 + len(COLONNE_URL):
+            return None, f"riga {i}: {len(campi)} campi invece di {1 + len(COLONNE_URL)} ({riga[:40]!r})"
+        if not ISIN_RE.match(campi[0]):
+            return None, f"riga {i}: ISIN non valido {campi[0]!r}"
+        if campi[0] in foto:
+            return None, f"riga {i}: ISIN duplicato {campi[0]}"
+        foto[campi[0]] = tuple(campi[1:])
+    if len(foto) != attese:
+        return None, f"perimetro non riconciliato: {len(foto)} righe lette, {attese} righe vive dichiarate dal conteggio"
+    if not foto:
+        return None, "nessuna riga viva"
+    return foto, None
+
+
+def foto_colonne_documenti(percorso):
+    """Fotografia delle 6 colonne URL dei documenti (etf_registry, righe vive) in un TSV validato; {isin: (url…)} oppure None se fallisce."""
+    sql_conteggio = "select count(*) from etf_registry where delisted_at is null"
+    sql_righe = ("select isin||E'\\t'||" + "||E'\\t'||".join(f"coalesce({c},'')" for c in COLONNE_URL)
+                 + " from etf_registry where delisted_at is null order by isin")
+    try:
+        r = subprocess.run([PSQL, "-At", "-c", sql_conteggio, "-c", sql_righe], capture_output=True, text=True, timeout=300, env=_env_db())
+    except Exception as e:
+        log(f"!! fotografia colonne documenti fallita ({e})")
+        return None
+    if r.returncode != 0:
+        log(f"!! fotografia colonne documenti: psql exit {r.returncode} {(r.stderr or '').strip()[:120]}")
+        return None
+    foto, motivo = interpreta_foto(r.stdout)
+    if foto is None:
+        log(f"!! fotografia colonne documenti NON interpretabile: {motivo}")
+        return None
+    with open(percorso, "w") as f:
+        f.write(r.stdout)
+    return foto
+
+
+def differenze_documenti(prima, dopo):
+    """[(isin, colonna, prima, dopo)] per ogni cella cambiata fra le due fotografie (stesso perimetro: lo verifica il chiamante)."""
+    out = []
+    for isin in sorted(set(prima) & set(dopo)):
+        p, d = prima[isin], dopo[isin]
+        for i, c in enumerate(COLONNE_URL):
+            if p[i] != d[i]:
+                out.append((isin, c, p[i], d[i]))
+    return out
+
+
+def revalidate_schede(isins, fasc):
+    """POST /api/revalidate?scope=schede per lotti di 200 con il CONTRATTO approvato: ok true, scartati = [] (array presente e vuoto),
+    troppi false, isin = ISIN del lotto, schede_letterali = 6 × ISIN."""
+    secret = cron_secret()
+    if not secret:
+        log("!! documents-revalidate: CRON_SECRET non trovato — salto")
+        return False, []
+    esiti = []
+    for i in range(0, len(isins), 200):
+        lotto = isins[i:i + 200]
+        n = i // 200 + 1
+        req = urllib.request.Request(f"{SITO}/api/revalidate?scope=schede&isins={','.join(lotto)}", data=b"", method="POST",
+                                     headers={"Authorization": f"Bearer {secret}"})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                corpo, stato = r.read().decode("utf-8", "replace"), r.status
+        except urllib.error.HTTPError as e:
+            corpo, stato = (e.read().decode("utf-8", "replace") if hasattr(e, "read") else ""), e.code
+        except Exception as e:
+            corpo, stato = str(e), 0
+        with open(os.path.join(fasc, f"revalidate-{n}.json"), "w") as f:
+            f.write(corpo)
+        try:
+            j = json.loads(corpo)
+        except Exception:
+            j = {}
+        if not isinstance(j, dict):
+            j = {}
+        ok = (stato == 200 and j.get("ok") is True and isinstance(j.get("scartati"), list) and len(j["scartati"]) == 0
+              and j.get("troppi") is False and j.get("isin") == len(lotto) and j.get("schede_letterali") == 6 * len(lotto))
+        esiti.append({"lotto": n, "n": len(lotto), "http": stato, "ok": ok, "isin": j.get("isin"), "schede_letterali": j.get("schede_letterali"), "scartati": j.get("scartati") if isinstance(j.get("scartati"), list) else "assente"})
+        log(f"  |documents-revalidate| lotto {n}: HTTP {stato} · {len(lotto)} ISIN · {'corpo conforme' if ok else 'NON conforme'} (isin {j.get('isin')}, schede_letterali {j.get('schede_letterali')}/{6 * len(lotto)}, scartati {'[]' if isinstance(j.get('scartati'), list) and not j['scartati'] else j.get('scartati', 'assente')})")
+    return all(e["ok"] for e in esiti), esiti
+
+
+def riconcilia_collaudo(attesi, percorso_jsonl):
+    """(rev. 4b) Ogni documento MODIFICATO (isin, tipo, url nuovo) deve avere nel JSONL del collaudo una riga con stesso isin, tipo e url
+    e verdetto «ricevuto e verificato». Ritorna (ok, {verificati, mancanti, non_conformi, url_diversi})."""
+    esiti = []
+    try:
+        with open(percorso_jsonl) as f:
+            for l in f:
+                if l.strip():
+                    esiti.append(json.loads(l))
+    except Exception as e:
+        return False, {"errore": f"esiti del collaudo non leggibili: {str(e)[:80]}", "verificati": 0, "mancanti": [f"{a[0]}/{a[1]}" for a in attesi]}
+    per_doc = {(e.get("isin"), e.get("tipo")): e for e in esiti}
+    verificati, mancanti, non_conformi, url_diversi = 0, [], [], []
+    for isin, tipo, url in attesi:
+        e = per_doc.get((isin, tipo))
+        if e is None:
+            mancanti.append(f"{isin}/{tipo}")
+        elif e.get("url") != url:
+            url_diversi.append(f"{isin}/{tipo}: collaudato {str(e.get('url'))[-40:]} ≠ scritto {url[-40:]}")
+        elif e.get("verdetto") != "ricevuto e verificato":
+            non_conformi.append(f"{isin}/{tipo}: {e.get('verdetto')}")
+        else:
+            verificati += 1
+    return (not mancanti and not non_conformi and not url_diversi and verificati == len(attesi)), {"verificati": verificati, "mancanti": mancanti, "non_conformi": non_conformi, "url_diversi": url_diversi, "esiti_letti": len(esiti)}
+
+
+def collaudo_documents(prima, fasc, modules):
+    """(rev. 4/4b) dopo |documents|: fotografia «dopo» validata e riconciliata nel perimetro, elenco delle scritture, collaudo dei documenti
+    ricevuti sulle classi toccate RICONCILIATO documento per documento, revalidazione con contratto completo; tutto nel fascicolo e nel battito."""
+    m = EXTRA_METRICS.setdefault("documenti", {})
+    dopo = foto_colonne_documenti(os.path.join(fasc, "documents-colonne-dopo.tsv"))
+    if dopo is None:
+        log("!! documents: fotografia «dopo» fallita — scritture NON riconciliate")
+        modules["documents-collaudo"] = False
+        m["documents"] = "scritture non riconciliate (fotografia dopo fallita)"
+        return
+    if set(prima) != set(dopo):
+        log(f"!! documents: perimetro cambiato fra le fotografie (solo prima {len(set(prima) - set(dopo))}, solo dopo {len(set(dopo) - set(prima))}) — scritture NON riconciliate")
+        modules["documents-collaudo"] = False
+        m["documents"] = f"scritture non riconciliate (perimetro cambiato: solo prima {len(set(prima) - set(dopo))}, solo dopo {len(set(dopo) - set(prima))})"
+        return
+    diff = differenze_documenti(prima, dopo)
+    with open(os.path.join(fasc, "documents-scritture.tsv"), "w") as f:
+        for isin, col, a, b in diff:
+            f.write(f"{isin}\t{col}\t{a}\t{b}\n")
+    attesi = [(isin, TIPO_DI_COLONNA[col], b) for isin, col, a, b in diff if b]
+    rimossi = [f"{isin}/{TIPO_DI_COLONNA[col]}" for isin, col, a, b in diff if not b]
+    isins = sorted({d[0] for d in diff})
+    m["documents"] = {"celle_cambiate": len(diff), "classi": len(isins), "documenti_da_collaudare": len(attesi), "collegamenti_rimossi": rimossi, "fascicolo": fasc}
+    log(f"  |documents| scritture riconciliate: {len(diff)} celle su {len(isins)} classi, {len(attesi)} documenti da collaudare, {len(rimossi)} collegamenti rimossi (documents-scritture.tsv)")
+    if not isins:
+        modules["documents-collaudo"] = True
+        return
+    lista = os.path.join(fasc, "documents-classi-toccate.txt")
+    with open(lista, "w") as f:
+        f.write("\n".join(isins) + "\n")
+    cartella = os.path.join(fasc, "collaudo")
+    rc = None
+    try:
+        cl = subprocess.run([NODE, "scripts/collaudo-documenti-ricevuti.mjs", "--file", lista, "--come", "utente", "--out", cartella],
+                            cwd=REPO, capture_output=True, text=True, timeout=3600)
+        with open(os.path.join(fasc, "collaudo-stdout.tsv"), "w") as f:
+            f.write((cl.stdout or "") + "\n" + (cl.stderr or ""))
+        for line in (cl.stdout or "").strip().splitlines()[-2:]:
+            log(f"  |documents-collaudo| {line}")
+        rc = cl.returncode
+    except Exception as e:
+        log(f"!! documents-collaudo fallito (non blocca): {e}")
+        m["collaudo"] = {"errore": str(e)[:120]}
+    ric_ok, ric = (False, {"verificati": 0, "mancanti": [f"{a[0]}/{a[1]}" for a in attesi]}) if rc is None else riconcilia_collaudo(attesi, os.path.join(cartella, "collaudo-documenti-ricevuti.jsonl"))
+    modules["documents-collaudo"] = rc == 0 and ric_ok
+    m["collaudo"] = {"uscita": rc, "classi": len(isins), **ric}
+    if not modules["documents-collaudo"]:
+        log(f"!! documents-collaudo: uscita {rc} · riconciliazione {'ok' if ric_ok else 'FALLITA'} (verificati {ric.get('verificati')}/{len(attesi)}, mancanti {len(ric.get('mancanti', []))}, non conformi {len(ric.get('non_conformi', []))}, url diversi {len(ric.get('url_diversi', []))}) — vedi {cartella}")
+    else:
+        log(f"  |documents-collaudo| riconciliazione: {ric['verificati']}/{len(attesi)} documenti modificati ricevuti e verificati")
+    ok, esiti = revalidate_schede(isins, fasc)
+    modules["documents-revalidate"] = ok
+    m["revalidate"] = esiti
+
+
+def _sha256_file(p):
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for blocco in iter(lambda: f.read(1 << 20), b""):
+            h.update(blocco)
+    return h.hexdigest()
+
+
+CAMPI_RIEPILOGO = ("quando", "url", "ok", "nonRaggiungibili", "nonPdf", "errori", "associazioni", "invariate", "diverse", "nuove", "nonLeggibili", "spurie", "nonConclusivi", "conservati")
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+
+
+def verifica_prova_archivio(prova_dir, t_lancio):
+    """(rev. 4b/4c) L'indice della prova è di QUESTA corsa ed è integro: ogni riga JSON con url, quando ≥ lancio, esito, associazioni; ogni
+    PDF conservato ha nell'indice un'impronta SHA-256 OBBLIGATORIA e il contenuto la rispetta; riepilogo-prova.json è un OGGETTO di questa
+    corsa con i campi obbligatori e conteggi RICONCILIATI con l'indice (url, esiti, associazioni, decisioni, file conservati).
+    Ritorna (ok, dettagli, motivi)."""
+    motivi = []
+    indice = os.path.join(prova_dir, "indice-prova.jsonl")
+    if not os.path.exists(indice):
+        return False, {"indice_righe": 0}, ["indice-prova.jsonl assente"]
+    righe, conservati, verificati = 0, 0, 0
+    conteggi = {"ok": 0, "nonRaggiungibili": 0, "nonPdf": 0, "errori": 0, "associazioni": 0, "invariate": 0, "diverse": 0, "nuove": 0, "nonLeggibili": 0, "conservati": 0}
+    ESITO_CHIAVE = {"ok": "ok", "non raggiungibile": "nonRaggiungibili", "non-PDF": "nonPdf", "errore": "errori"}
+    DECISIONE_CHIAVE = {"invariato": "invariate", "contenuto diverso": "diverse", "nuovo": "nuove", "ultima versione non leggibile": "nonLeggibili"}
+    with open(indice) as f:
+        for n, l in enumerate(f, start=1):
+            if not l.strip():
+                continue
+            try:
+                r = json.loads(l)
+            except Exception:
+                motivi.append(f"riga {n} dell'indice non è JSON"); continue
+            righe += 1
+            if not isinstance(r, dict) or not isinstance(r.get("url"), str) or not r.get("url") or r.get("esito") is None or not isinstance(r.get("associazioni"), list) or not isinstance(r.get("quando"), str):
+                motivi.append(f"riga {n}: campi obbligatori mancanti (url/esito/associazioni/quando)"); continue
+            if r["quando"] < t_lancio:
+                motivi.append(f"riga {n}: istante {r['quando']} precedente al lancio {t_lancio} (indice vecchio)"); continue
+            chiave = ESITO_CHIAVE.get(r["esito"])
+            if chiave is None:
+                motivi.append(f"riga {n}: esito sconosciuto {r['esito']!r}"); continue
+            conteggi[chiave] += 1
+            if r["esito"] == "ok":
+                conteggi["associazioni"] += len(r["associazioni"])
+                for a in r["associazioni"]:
+                    dk = DECISIONE_CHIAVE.get(a.get("decisione") if isinstance(a, dict) else None)
+                    if dk is None:
+                        motivi.append(f"riga {n}: associazione {a.get('isin') if isinstance(a, dict) else '?'}/{a.get('tipo') if isinstance(a, dict) else '?'} con decisione sconosciuta")
+                    else:
+                        conteggi[dk] += 1
+            for rel in r.get("conservati") or []:
+                p = os.path.join(prova_dir, rel)
+                if not os.path.isfile(p):
+                    motivi.append(f"riga {n}: file conservato assente {rel}"); continue
+                conservati += 1
+                if rel.endswith(".pdf"):
+                    conteggi["conservati"] += 1
+                    if not isinstance(r.get("sha256"), str) or not SHA256_RE.match(r["sha256"]):
+                        motivi.append(f"riga {n}: PDF conservato senza impronta sha256 nell'indice ({rel})"); continue
+                    if _sha256_file(p) != r["sha256"]:
+                        motivi.append(f"riga {n}: impronta del file conservato ≠ indice ({rel})"); continue
+                    verificati += 1
+            for a in r["associazioni"]:
+                if isinstance(a, dict) and a.get("conservato") and a["conservato"] not in (r.get("conservati") or []):
+                    motivi.append(f"riga {n}: associazione {a.get('isin')}/{a.get('tipo')} rimanda a un file non elencato fra i conservati")
+    if righe == 0:
+        motivi.append("indice senza righe")
+    if conteggi["conservati"] != verificati:
+        motivi.append(f"PDF conservati {conteggi['conservati']} ≠ impronte verificate {verificati}")
+    riep_p = os.path.join(prova_dir, "riepilogo-prova.json")
+    riep = None
+    try:
+        with open(riep_p) as f:
+            riep = json.load(f)
+    except Exception as e:
+        motivi.append(f"riepilogo-prova.json assente o illeggibile ({str(e)[:60]})")
+    if riep is not None and not isinstance(riep, dict):
+        motivi.append(f"riepilogo-prova.json non è un oggetto ({type(riep).__name__})"); riep = None
+    if isinstance(riep, dict):
+        mancanti = [k for k in CAMPI_RIEPILOGO if k not in riep]
+        if mancanti:
+            motivi.append(f"riepilogo: campi obbligatori mancanti {mancanti}")
+        else:
+            if not isinstance(riep["quando"], str) or riep["quando"] < t_lancio:
+                motivi.append("riepilogo di una corsa precedente (quando < lancio)")
+            if riep["url"] != righe:
+                motivi.append(f"riepilogo: url {riep['url']} ≠ righe dell'indice {righe}")
+            for k in ("ok", "nonRaggiungibili", "nonPdf", "errori", "associazioni", "invariate", "diverse", "nuove", "nonLeggibili", "conservati"):
+                if riep[k] != conteggi[k]:
+                    motivi.append(f"riepilogo: {k} {riep[k]} ≠ indice {conteggi[k]}")
+            if riep["ok"] + riep["nonRaggiungibili"] + riep["nonPdf"] + riep["errori"] != riep["url"]:
+                motivi.append("riepilogo: esiti non sommano a url")
+            if riep["invariate"] + riep["diverse"] + riep["nuove"] + riep["nonLeggibili"] != riep["associazioni"]:
+                motivi.append("riepilogo: decisioni non sommano a associazioni")
+    dettagli = {"indice_righe": righe, "file_conservati": conservati, "impronte_verificate": verificati, "conteggi_indice": conteggi, "riepilogo": {k: riep.get(k) for k in CAMPI_RIEPILOGO} if isinstance(riep, dict) else None}
+    return (not motivi), dettagli, motivi[:20]
+
+
+# ── PERCORSO DOCUMENTALE AUTOMATICO VERIFICABILE (rev. 5, 28 ott 2026; GO di Linus alla sola preparazione) ──
+ARCH_DOCS = os.path.expanduser("~/backups/rebalix-docs-archivio")
+REGOLE_LOTTI = os.path.join(REPO, "docs", "giro-documenti", "regole-lotti-automatici.json")
+COPIONE_COMMIT = os.path.join(ARCHIVE, "esegui-commit-lotto-giro.sh")
+COLLAUDO_PAGINA = os.path.join(ARCHIVE, "collaudo-pagina-documenti.py")
+BUDGET_LOTTI_MIN = int(os.environ.get("REBALIX_BUDGET_LOTTI_MIN", "300"))
+TIMEOUT_LOTTO_S = int(os.environ.get("REBALIX_TIMEOUT_LOTTO_S", str(2 * 3600)))
+
+
+def _sha256_testo(testo_):
+    return hashlib.sha256(testo_.encode("utf-8") if isinstance(testo_, str) else testo_).hexdigest()
+
+
+def leggi_autocommit(percorso, ym, regole_sha):
+    """Autorizzazione al COMMIT automatico: file {giro, regole_sha256, go}. Ritorna {stato: 'autorizzato'|'non autorizzato'|'non valido', motivo, go}."""
+    if not os.path.exists(percorso):
+        return {"stato": "non autorizzato", "motivo": "file di GO assente: i lotti restano pronti per il COMMIT con GO", "go": None}
+    try:
+        with open(percorso) as f:
+            j = json.load(f)
+    except Exception as e:
+        return {"stato": "non valido", "motivo": f"file di GO illeggibile ({str(e)[:60]})", "go": None}
+    if not isinstance(j, dict):
+        return {"stato": "non valido", "motivo": "file di GO non è un oggetto", "go": None}
+    if j.get("giro") != ym:
+        return {"stato": "non valido", "motivo": f"file di GO per il giro {j.get('giro')!r}, giro corrente {ym}", "go": None}
+    if j.get("regole_sha256") != regole_sha:
+        return {"stato": "non valido", "motivo": f"file di GO per regole {str(j.get('regole_sha256'))[:12]} ≠ regole in uso {regole_sha[:12]}", "go": None}
+    if not str(j.get("go") or "").strip():
+        return {"stato": "non valido", "motivo": "file di GO senza «go» (le parole di Linus)", "go": None}
+    return {"stato": "autorizzato", "motivo": "file di GO valido", "go": str(j["go"]).strip()}
+
+
+ATTESA_TERM_S = int(os.environ.get("REBALIX_ATTESA_TERM_S", "30"))
+
+
+MARCATORE_LANCIO = "REBALIX_LANCIO"
+
+
+def _pid_con_marcatore(marca, escludi=()):
+    """PID vivi il cui AMBIENTE porta REBALIX_LANCIO=<marca>: figli e nipoti del lancio anche se hanno cambiato gruppo o sessione (setsid).
+    Linux: /proc/<pid>/environ (leggibile per i processi dell'utente); macOS: `ps -E` elenca l'ambiente dopo gli argomenti."""
+    voluto = f"{MARCATORE_LANCIO}={marca}"
+    pids = set()
+    if os.path.isdir("/proc"):
+        for d in os.listdir("/proc"):
+            if not d.isdigit() or int(d) in escludi:
+                continue
+            try:
+                with open(f"/proc/{d}/environ", "rb") as f:
+                    if voluto.encode() in f.read().split(b"\0"):
+                        pids.add(int(d))
+            except Exception:
+                continue
+        return pids
+    try:
+        out = subprocess.check_output(["ps", "-axE", "-o", "pid=,stat=,command="], text=True, errors="replace")
+    except Exception:
+        return pids
+    for l in out.splitlines():
+        p = l.split(None, 2)
+        if len(p) == 3 and not p[1].startswith("Z") and voluto in p[2].split():
+            try:
+                if int(p[0]) not in escludi:
+                    pids.add(int(p[0]))
+            except ValueError:
+                pass
+    return pids
+
+
+def _processi_del_lancio(pgid, sid, marca, escludi=()):
+    """{pid: (pgid, descrizione)} dei processi VIVI appartenenti al lancio: stesso gruppo, stessa sessione (dove ps la espone) o marcatore
+    d'ambiente; zombie (stat Z) esclusi; `escludi` = PID da ignorare (il processo stesso del runner)."""
+    vivi = {}
+    try:
+        out = subprocess.check_output(["ps", "-eo", "pid=,pgid=,sess=,stat=,args="], text=True, errors="replace")
+    except Exception:
+        out = ""
+    for l in out.splitlines():
+        p = l.split(None, 4)
+        if len(p) < 4 or p[3].startswith("Z"):
+            continue
+        try:
+            pid, pg, ss = int(p[0]), int(p[1]), int(p[2])
+        except ValueError:
+            continue
+        if pid in escludi:
+            continue
+        if pg == pgid or (sid and ss == sid and ss > 1):
+            vivi[pid] = (pg, (p[4] if len(p) > 4 else "")[:100])
+    for pid in _pid_con_marcatore(marca, escludi):
+        if pid not in vivi:
+            try:
+                pg = os.getpgid(pid)
+            except Exception:
+                pg = None
+            vivi[pid] = (pg, "(trovato dal marcatore d'ambiente)")
+    return vivi
+
+
+def _ferma_lancio(pgid, sid, marca, escludi=()):
+    """TERM a ogni gruppo e a ogni processo del lancio, attesa fino a ATTESA_TERM_S, poi KILL; ritorna i residui dopo il KILL (attesi 0)."""
+    def segnala(sig):
+        vivi = _processi_del_lancio(pgid, sid, marca, escludi)
+        for pg in {v[0] for v in vivi.values() if v[0]}:
+            try:
+                os.killpg(pg, sig)
+            except Exception:
+                pass
+        for pid in vivi:
+            try:
+                os.kill(pid, sig)
+            except Exception:
+                pass
+        return vivi
+    if not segnala(signal.SIGTERM):
+        return 0
+    for _ in range(ATTESA_TERM_S):
+        time.sleep(1)
+        if not _processi_del_lancio(pgid, sid, marca, escludi):
+            return 0
+    segnala(signal.SIGKILL)
+    time.sleep(1)
+    return len(_processi_del_lancio(pgid, sid, marca, escludi))
+
+
+def _lancia(cmd, timeout, env=None, cwd=None):
+    """(rev. 5b/5c) Esegue `cmd` in un GRUPPO e in una SESSIONE propri (setsid) con un MARCATORE d'ambiente, stdout/stderr su FILE, e lo
+    aspetta. Alla fine conta i processi del LANCIO (gruppo ∪ sessione ∪ marcatore: anche i nipoti che hanno fatto setsid) e li ferma.
+    Ritorna (rc, out, err, info). Timeout → TERM/KILL e riconteggio: 124 solo se non resta nulla, 126 se l'arresto è incompleto.
+    Uscita normale con processi del lancio ancora vivi → li ferma e ritorna 127 (residui dopo l'uscita): mai un successo."""
+    marca = uuid.uuid4().hex
+    info = {"timeout": False, "residui_dopo_uscita": 0, "residui_finali": 0, "marcatore": marca}
+    ambiente = dict(env if env is not None else os.environ)
+    ambiente[MARCATORE_LANCIO] = marca
+    me = (os.getpid(),)
+    fo = tempfile.NamedTemporaryFile(prefix="lancia-out-", delete=False)
+    fe = tempfile.NamedTemporaryFile(prefix="lancia-err-", delete=False)
+
+    def leggi():
+        try:
+            fo.flush(); fe.flush()
+            with open(fo.name, errors="replace") as a, open(fe.name, errors="replace") as b:
+                o, e = a.read(), b.read()
+        except Exception:
+            o, e = "", ""
+        for f in (fo, fe):
+            try:
+                f.close(); os.unlink(f.name)
+            except Exception:
+                pass
+        return o, e
+    try:
+        p = subprocess.Popen(cmd, cwd=cwd or REPO, env=ambiente, stdout=fo, stderr=fe, start_new_session=True)
+    except Exception as e:
+        leggi()
+        return 125, "", str(e), info
+    pgid = sid = p.pid
+    try:
+        rc = p.wait(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        info["timeout"] = True
+        _ferma_lancio(pgid, sid, marca, me)
+        try:
+            p.wait(timeout=10)
+        except Exception:
+            pass
+        info["residui_finali"] = len(_processi_del_lancio(pgid, sid, marca, me))
+        out, err = leggi()
+        return (124 if info["residui_finali"] == 0 else 126), out, err + f"\ntimeout {timeout}s (residui finali {info['residui_finali']})", info
+    res = _processi_del_lancio(pgid, sid, marca, me)
+    if res:
+        info["residui_dopo_uscita"] = len(res)
+        info["residui"] = [f"{pid} (gruppo {v[0]}): {v[1]}" for pid, v in list(res.items())[:5]]
+        info["residui_finali"] = _ferma_lancio(pgid, sid, marca, me)
+        out, err = leggi()
+        return 127, out, err + f"\n{len(res)} processi del lancio ancora vivi dopo l'uscita {rc}: fermati (residui finali {info['residui_finali']})", info
+    out, err = leggi()
+    return rc, out, err, info
+
+
+def _esegui(cmd, timeout, env=None, cwd=None):
+    rc, out, err, _info = _lancia(cmd, timeout, env=env, cwd=cwd)
+    return rc, out, err
+
+
+def _sha256_file_(p):
+    with open(p, "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()
+
+
+def _iso_a_dt(s):
+    try:
+        return datetime.datetime.fromisoformat(str(s).replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+
+def verifica_valida(ver, rc, lotto, anteprima, t_avvio):
+    """(rev. 5b) L'anteprima è approvabile SOLO se: uscita 0, rapporto di QUESTA esecuzione, approvabile === true, nessun motivo, conteggi
+    coerenti con il lotto, impronte collegate a lotto e anteprima. Ritorna (ok, motivi)."""
+    motivi = []
+    if rc != 0:
+        motivi.append(f"verificatore uscita {rc}")
+    if not isinstance(ver, dict):
+        return False, motivi + ["rapporto del verificatore assente o non è un oggetto"]
+    if ver.get("approvabile") is not True:
+        motivi.append("rapporto: approvabile ≠ true")
+    if ver.get("motivi"):
+        motivi.append(f"rapporto con {len(ver['motivi'])} motivi (es. {str(ver['motivi'][0])[:80]})")
+    q = _iso_a_dt(ver.get("quando"))
+    if q is None or q < t_avvio - datetime.timedelta(seconds=2):
+        motivi.append(f"rapporto non di questa esecuzione (quando {ver.get('quando')!r}, lancio {t_avvio.isoformat(timespec='seconds')})")
+    try:
+        if ver.get("lotto_sha256") != _sha256_file_(lotto):
+            motivi.append("rapporto: impronta del lotto ≠ file del lotto")
+        if ver.get("anteprima_sha256") != _sha256_file_(anteprima):
+            motivi.append("rapporto: impronta dell'anteprima ≠ file dell'anteprima")
+        with open(lotto) as f:
+            n_voci = len(json.load(f).get("voci") or [])
+    except Exception as e:
+        return False, motivi + [f"file del lotto/anteprima non leggibili: {str(e)[:60]}"]
+    c = ver.get("conteggi") if isinstance(ver.get("conteggi"), dict) else {}
+    if not (c.get("voci") == n_voci and c.get("righe") == n_voci and c.get("verificate") == n_voci and n_voci > 0):
+        motivi.append(f"conteggi non coerenti con il lotto ({n_voci} voci): {c}")
+    for k in ("mancanti", "non_verificate", "impronte_diverse", "url_bloccanti"):
+        if c.get(k, 0) not in (0, None):
+            motivi.append(f"conteggi: {k} = {c.get(k)}")
+    return (not motivi), motivi
+
+
+def attese_da_anteprima(lotto, anteprima):
+    """Attese per voce del lotto, derivate dall'ANTEPRIMA APPROVATA (non dal rapporto del copione): lingua «scritta e verificata» se
+    azione_lingua è scrivi/invalida con patch, URL «scritto e verificato» se azione_url è «da scrivere», altrimenti «n/p».
+    Ritorna ({(isin, tipo): {"lingua": …, "url": …}}, motivi)."""
+    motivi = []
+    with open(lotto) as f:
+        voci = json.load(f).get("voci") or []
+    with open(anteprima) as f:
+        righe = json.load(f).get("righe") or []
+    attese = {}
+    for v in voci:
+        k = (v.get("isin"), v.get("tipo"))
+        if k in attese:
+            motivi.append(f"lotto: associazione {k[0]}/{k[1]} ripetuta")
+        attese[k] = {"lingua": "n/p", "url": "n/p"}
+    for r in righe:
+        k = (r.get("isin"), r.get("tipo"))
+        if k not in attese:
+            motivi.append(f"anteprima: riga {k[0]}/{k[1]} estranea al lotto")
+            continue
+        al = r.get("azione_lingua") if isinstance(r.get("azione_lingua"), dict) else None
+        if al and al.get("azione") in ("scrivi", "invalida") and isinstance(al.get("patch"), dict):
+            attese[k]["lingua"] = "scritta e verificata"
+        if r.get("azione_url") == "da scrivere":
+            attese[k]["url"] = "scritto e verificato"
+    return attese, motivi
+
+
+def riscontro_commit(w, t_avvio, lotto, anteprima):
+    """(rev. 5b/5c) Un COMMIT è riuscito solo se il copione ha lasciato in QUESTA corsa esito.txt con «ESITO: ok» e uno stato per voce
+    coerente IN OGNI RIGA: associazioni = voci del lotto (nessuna mancante, estranea o doppia), ogni riga archiviata, controllata,
+    «completo», con lingua e URL uguali alle attese derivate dall'anteprima approvata; i conteggi ricostruiti dal dettaglio coincidono con
+    il RIEPILOGO del copione e con il lotto. Ritorna (ok, motivi, riepilogo_testo)."""
+    motivi = []
+    esito_p = os.path.join(w, "esito.txt")
+    try:
+        if datetime.datetime.fromtimestamp(os.path.getmtime(esito_p), datetime.timezone.utc) < t_avvio - datetime.timedelta(seconds=2):
+            motivi.append("esito.txt di una corsa precedente")
+        with open(esito_p) as f:
+            righe_e = [l.strip() for l in f if "ESITO" in l]
+        ultimo = righe_e[-1] if righe_e else ""
+        if "ESITO: ok" not in ultimo:
+            motivi.append(f"esito finale non è «ESITO: ok» ({ultimo[:120]})")
+    except Exception as e:
+        return False, [f"esito.txt assente o illeggibile ({str(e)[:60]})"], ""
+    try:
+        attese, m_att = attese_da_anteprima(lotto, anteprima)
+        motivi += m_att
+    except Exception as e:
+        return False, motivi + [f"lotto/anteprima non leggibili ({str(e)[:60]})"], ""
+    riep, righe = {}, []
+    try:
+        with open(os.path.join(w, "stato-per-voce.tsv")) as f:
+            for l in f:
+                l = l.rstrip("\n")
+                if l.startswith("#RIEPILOGO"):
+                    for campo in l.split("\t")[1:]:
+                        k, _, v = campo.rpartition(" ")
+                        riep[k] = v
+                elif l and not l.startswith("#") and not l.startswith("isin\t"):
+                    righe.append(l.split("\t"))
+    except Exception as e:
+        return False, motivi + [f"stato per voce assente ({str(e)[:60]})"], ""
+    if not riep:
+        return False, motivi + ["RIEPILOGO dello stato per voce assente"], ""
+    viste = {}
+    for r in righe:
+        if len(r) < 7:
+            motivi.append(f"riga per voce malformata: {r[:3]}"); continue
+        k = (r[0], r[1])
+        if k in viste:
+            motivi.append(f"{k[0]}/{k[1]}: riga per voce DOPPIA"); continue
+        viste[k] = r
+        if k not in attese:
+            motivi.append(f"{k[0]}/{k[1]}: riga per voce ESTRANEA al lotto"); continue
+        if r[2] != "1":
+            motivi.append(f"{k[0]}/{k[1]}: non archiviata")
+        if r[3] != "1":
+            motivi.append(f"{k[0]}/{k[1]}: senza riga di controllo")
+        if r[4] != attese[k]["lingua"]:
+            motivi.append(f"{k[0]}/{k[1]}: lingua «{r[4]}» ≠ attesa dall'anteprima «{attese[k]['lingua']}»")
+        if r[5] != attese[k]["url"]:
+            motivi.append(f"{k[0]}/{k[1]}: URL «{r[5]}» ≠ atteso dall'anteprima «{attese[k]['url']}»")
+        if r[6] != "completo":
+            motivi.append(f"{k[0]}/{k[1]}: stato «{r[6]}» ≠ completo")
+    for k in attese:
+        if k not in viste:
+            motivi.append(f"{k[0]}/{k[1]}: voce del lotto SENZA riga per voce")
+    n_voci = len(attese)
+    ric = {"voci": len(righe), "archiviate": sum(1 for r in righe if len(r) > 2 and r[2] == "1"), "controlli": sum(1 for r in righe if len(r) > 3 and r[3] == "1"),
+           "complete": sum(1 for r in righe if len(r) > 6 and r[6] == "completo"), "parziali": sum(1 for r in righe if len(r) > 6 and r[6].startswith("PARZIALE")),
+           "lingue_ok": sum(1 for r in righe if len(r) > 4 and r[4] == "scritta e verificata"), "lingue_att": sum(1 for a in attese.values() if a["lingua"] != "n/p"),
+           "url_ok": sum(1 for r in righe if len(r) > 5 and r[5] == "scritto e verificato"), "url_att": sum(1 for a in attese.values() if a["url"] != "n/p")}
+
+    def n(k):
+        try:
+            return int(riep.get(k, "x"))
+        except ValueError:
+            return None
+    for k in ("voci", "archiviate", "controlli", "complete"):
+        if n(k) != n_voci:
+            motivi.append(f"riepilogo: {k} {riep.get(k)} ≠ {n_voci} voci del lotto")
+        if ric[k] != n_voci:
+            motivi.append(f"dettaglio: {k} ricostruite {ric[k]} ≠ {n_voci} voci del lotto")
+    for k in ("parziali", "non eseguite", "nuovi file fuori attesa", "registro non autorizzato", "archivio preesistente alterato"):
+        if n(k) != 0:
+            motivi.append(f"riepilogo: {k} = {riep.get(k)}")
+    if ric["parziali"] != 0:
+        motivi.append(f"dettaglio: {ric['parziali']} righe parziali")
+    if riep.get("lingue") != f"{ric['lingue_att']}/{ric['lingue_att']}" or ric["lingue_ok"] != ric["lingue_att"]:
+        motivi.append(f"lingue: riepilogo {riep.get('lingue')} · dettaglio {ric['lingue_ok']} · attese dall'anteprima {ric['lingue_att']}")
+    if riep.get("url") != f"{ric['url_att']}/{ric['url_att']}" or ric["url_ok"] != ric["url_att"]:
+        motivi.append(f"url: riepilogo {riep.get('url')} · dettaglio {ric['url_ok']} · attesi dall'anteprima {ric['url_att']}")
+    return (not motivi), motivi, " ".join(f"{k} {v}" for k, v in riep.items())
+
+
+def lotti_automatici(prova_dir, modules):
+    """Dopo una prova dell'archivio VALIDA: regole → lotti riconciliati → per lotto PROVA → verifica → COMMIT se autorizzato (entro budget)."""
+    m = EXTRA_METRICS.setdefault("documenti", {}).setdefault("lotti", {})
+    t_inizio = datetime.datetime.now()
+    scadenza = t_inizio + datetime.timedelta(minutes=BUDGET_LOTTI_MIN)
+    # 1. regole
+    try:
+        with open(REGOLE_LOTTI, "rb") as f:
+            regole_bytes = f.read()
+        regole = json.loads(regole_bytes.decode("utf-8"))
+        regole_sha = _sha256_testo(regole_bytes)
+    except Exception as e:
+        log(f"!! lotti-automatici NON eseguiti: regole non leggibili ({REGOLE_LOTTI}: {str(e)[:80]})")
+        modules["lotti-automatici"] = False
+        m.update({"stato": "regole non leggibili", "regole": REGOLE_LOTTI})
+        return
+    m.update({"regole": REGOLE_LOTTI, "regole_versione": regole.get("versione"), "regole_sha256": regole_sha, "budget_min": BUDGET_LOTTI_MIN})
+    # 2. lotti dall'indice
+    lotti_dir = os.path.join(prova_dir, "lotti")
+    rc, out, err = _esegui([NODE, "scripts/lotti-automatici-da-indice.mjs", "--indice", os.path.join(prova_dir, "indice-prova.jsonl"), "--regole", REGOLE_LOTTI, "--out", lotti_dir, "--base", prova_dir], 600)
+    for line in (out + err).strip().splitlines()[-6:]:
+        log(f"  |lotti-automatici| {line}")
+    ric = None
+    try:
+        with open(os.path.join(lotti_dir, "riconciliazione-lotti.json")) as f:
+            ric = json.load(f)
+    except Exception:
+        ric = None
+    if isinstance(ric, dict):
+        m["riconciliazione"] = {k: ric.get(k) for k in ("associazioni_indice", "in_lotto", "escluse", "non_proposte", "per_motivo", "lotti", "errori")}
+    if rc == 3:
+        log("  |lotti-automatici| nulla da archiviare: tutte le associazioni invariate, escluse o non proposte (vedi riconciliazione)")
+        modules["lotti-automatici"] = True
+        m["stato"] = "nessun lotto"
+        return
+    if rc != 0 or not isinstance(ric, dict) or ric.get("errori"):
+        log(f"!! lotti-automatici: uscita {rc} — riconciliazione incompleta o regole non valide: nessun lotto eseguito")
+        modules["lotti-automatici"] = False
+        m["stato"] = f"errore (uscita {rc})"
+        return
+    nomi = sorted(f for f in os.listdir(lotti_dir) if f.startswith("lotto-") and f.endswith(".json"))
+    # (rev. 5b) COERENZA lotti ↔ riconciliazione PRIMA di eseguire: nessun duplicato, stesse associazioni, stessi conteggi per lotto
+    ass_ric = set(f"{t.get('isin')}/{t.get('tipo')}" for t in (ric.get("tabella") or []) if t.get("categoria") == "lotto")
+    viste, conteggi_lotti, incoerenze = {}, {}, []
+    for nome_file in nomi:
+        try:
+            with open(os.path.join(lotti_dir, nome_file)) as f:
+                lj = json.load(f)
+            voci = lj.get("voci") if isinstance(lj, dict) else None
+        except Exception as e:
+            incoerenze.append(f"{nome_file}: non leggibile ({str(e)[:60]})"); continue
+        if not isinstance(voci, list) or not voci:
+            incoerenze.append(f"{nome_file}: senza voci"); continue
+        conteggi_lotti[nome_file] = len(voci)
+        for v in voci:
+            k = f"{v.get('isin')}/{v.get('tipo')}"
+            if k in viste:
+                incoerenze.append(f"{k}: associazione presente in {viste[k]} e in {nome_file}")
+            viste[k] = nome_file
+            if k not in ass_ric:
+                incoerenze.append(f"{k}: nel lotto {nome_file} ma non «lotto» nella riconciliazione")
+    for k in sorted(ass_ric - set(viste)):
+        incoerenze.append(f"{k}: «lotto» nella riconciliazione ma in nessun file di lotto")
+    if sum(conteggi_lotti.values()) != ric.get("in_lotto"):
+        incoerenze.append(f"voci nei lotti {sum(conteggi_lotti.values())} ≠ in_lotto {ric.get('in_lotto')} nella riconciliazione")
+    slug = lambda s: re.sub(r"[^a-z0-9]+", "-", str(s).lower()).strip("-")
+    lotti_ric = {slug(k): v for k, v in (ric.get("lotti") or {}).items()}
+    for nome_file, nv in conteggi_lotti.items():
+        nome = nome_file[len("lotto-"):-len(".json")]
+        if lotti_ric.get(nome) != nv:
+            incoerenze.append(f"{nome_file}: {nv} voci ≠ {lotti_ric.get(nome)} dichiarate nella riconciliazione")
+    if incoerenze:
+        log(f"!! lotti-automatici: lotti NON coerenti con la riconciliazione ({len(incoerenze)}; es. {incoerenze[0][:120]}) — nessun lotto eseguito")
+        modules["lotti-automatici"] = False
+        m["stato"] = "lotti incoerenti con la riconciliazione"
+        m["incoerenze"] = incoerenze[:10]
+        return
+    modules["lotti-automatici"] = True
+    m["coerenza_lotti"] = {"lotti": len(nomi), "associazioni": len(viste)}
+    OFF_REG = os.environ.get("REBALIX_LOTTI_OFFLINE_REGISTRO"); OFF_SRC = os.environ.get("REBALIX_LOTTI_OFFLINE_SORGENTI")
+    offline = bool(OFF_REG and OFF_SRC)
+    if offline:
+        log("  |lotti-automatici| MODALITÀ OFFLINE DI PROVA (mai in produzione): registro JSON e sorgenti locali al posto di DB e rete — il battito la segna ROSSA")
+        m["offline_di_prova"] = True
+        modules["lotti-offline-di-prova"] = False   # un giro reale con i ganci di prova nell'ambiente deve risultare rosso al guardiano
+    blocco = None
+    # 3. autorizzazione al COMMIT
+    aut = leggi_autocommit(os.path.join(FASC_DOCUMENTI, f"AUTOCOMMIT-DOCUMENTI-{YM}.json"), YM, regole_sha)
+    m["autorizzazione"] = aut
+    log(f"  |lotti-automatici| {len(nomi)} lotti · COMMIT {aut['stato']} ({aut['motivo']})")
+    rc_git, head, _ = _esegui(["git", "-C", REPO, "rev-parse", "HEAD"], 60)
+    head = head.strip()
+    dett = m.setdefault("dettaglio", {})
+    m.update({"lotti_totali": len(nomi), "prove_ok": 0, "approvabili": 0, "commit_ok": 0, "commit_falliti": 0, "non_eseguiti_budget": 0, "pronti_per_go": 0, "commit_sospesi": 0, "verifiche_non_valide": 0, "commit_non_riscontrati": 0})
+    budget_rosso = False
+    for nome_file in nomi:
+        nome = nome_file[len("lotto-"):-len(".json")]
+        lotto = os.path.join(lotti_dir, nome_file)
+        d = dett.setdefault(nome, {})
+        if datetime.datetime.now() >= scadenza:
+            d["stato"] = "non eseguito per budget"
+            m["non_eseguiti_budget"] += 1
+            budget_rosso = True
+            log(f"  |lotto-{nome}| NON eseguito: budget di {BUDGET_LOTTI_MIN} min esaurito (resta pronto per un giro successivo)")
+            continue
+        # 3a. PROVA offline sui file conservati
+        ant_tsv = os.path.join(lotti_dir, f"{nome}-anteprima.tsv")
+        ant_json = os.path.join(lotti_dir, f"{nome}-anteprima.json")
+        cmd_prova = [NODE, "scripts/lotto-documenti-mirato.mjs", "--file", lotto, "--anteprima", ant_tsv, "--sorgenti-conservate", prova_dir, "--archivio", ARCH_DOCS, "--scarica-in", os.path.join(lotti_dir, f"{nome}-scarico")]
+        if offline:
+            cmd_prova += ["--registro-json", OFF_REG, "--sorgenti-locali", OFF_SRC]
+        rc_p, out_p, err_p = _esegui(cmd_prova, TIMEOUT_LOTTO_S)
+        with open(os.path.join(lotti_dir, f"{nome}-prova.out"), "w") as f:
+            f.write(out_p + "\n" + err_p)
+        d["prova_uscita"] = rc_p
+        if rc_p != 0 or not os.path.exists(ant_json):
+            d["stato"] = f"prova fallita (uscita {rc_p})"
+            modules[f"lotto-{nome}"] = False
+            log(f"!! lotto-{nome}: prova fallita (uscita {rc_p}): {(err_p or out_p).strip().splitlines()[-1:] or ''}")
+            continue
+        m["prove_ok"] += 1
+        # 3b. verifica automatica dell'anteprima
+        ver_json = os.path.join(lotti_dir, f"{nome}-verifica.json")
+        t_ver = datetime.datetime.now(datetime.timezone.utc)
+        rc_v, out_v, err_v = _esegui([NODE, "scripts/verifica-anteprima-lotto.mjs", "--lotto", lotto, "--anteprima", ant_json, "--out", ver_json], 600)
+        try:
+            with open(ver_json) as f:
+                ver = json.load(f)
+        except Exception:
+            ver = None
+        ok_ver, motivi_ver = verifica_valida(ver, rc_v, lotto, ant_json, t_ver)
+        d["verifica"] = {"uscita": rc_v, "valida": ok_ver, "conteggi": (ver or {}).get("conteggi") if isinstance(ver, dict) else None, "motivi": motivi_ver[:5]}
+        if not ok_ver:
+            d["stato"] = "anteprima NON approvabile" if rc_v != 0 else "verifica NON valida (rapporto non collegato o incoerente)"
+            modules[f"lotto-{nome}"] = False
+            if rc_v == 0:
+                m["verifiche_non_valide"] += 1
+            log(f"!! lotto-{nome}: {d['stato']} ({len(motivi_ver)} motivi; es. {(motivi_ver or ['?'])[0][:110]})")
+            continue
+        m["approvabili"] += 1
+        if aut["stato"] != "autorizzato":
+            d["stato"] = "pronto per COMMIT con GO (anteprima verificata)"
+            m["pronti_per_go"] += 1
+            modules[f"lotto-{nome}"] = "pronto"
+            log(f"  |lotto-{nome}| anteprima verificata ({ver.get('conteggi', {}).get('voci')} voci): pronto per il COMMIT con GO")
+            continue
+        if blocco:
+            d["stato"] = f"pronto per COMMIT con GO — COMMIT SOSPESO: {blocco}"
+            m["commit_sospesi"] += 1
+            modules[f"lotto-{nome}"] = "sospeso"
+            modules["lotti-commit-sospesi"] = False
+            log(f"!! lotto-{nome}: COMMIT SOSPESO ({blocco}); anteprima verificata conservata")
+            continue
+        # 3c. COMMIT con il copione (foto prima/dopo, verifiche per voce, revalidate, collaudo pubblico)
+        with open(lotto, "rb") as f:
+            sha_l = _sha256_testo(f.read())
+        with open(ant_json, "rb") as f:
+            sha_a = _sha256_testo(f.read())
+        w = os.path.join(lotti_dir, f"{nome}-commit")
+        env = dict(os.environ, LOTTO=lotto, APPROVATA=ant_json, SORGENTI=prova_dir, W=w, ATTESO=head, SHA_LOTTO=sha_l, SHA_APPROVATA=sha_a, REPO=REPO, ARCH=ARCH_DOCS, NODE=NODE,
+                   COLLAUDO=COLLAUDO_PAGINA, ORA_LIMITE=scadenza.strftime("%H%M") if scadenza.date() == t_inizio.date() else "2359")
+        if offline:
+            env.update(OFFLINE_REGISTRO=OFF_REG, OFFLINE_SORGENTI=OFF_SRC)
+        t_commit = datetime.datetime.now(datetime.timezone.utc)
+        rc_c, out_c, err_c, info_c = _lancia(["/bin/bash", COPIONE_COMMIT], TIMEOUT_LOTTO_S + 600, env=env)
+        with open(os.path.join(lotti_dir, f"{nome}-commit.out"), "w") as f:
+            f.write(out_c + "\n" + err_c)
+        ok_r, motivi_r, riep_r = riscontro_commit(w, t_commit, lotto, ant_json)
+        d["commit"] = {"uscita": rc_c, "riscontro": ok_r, "motivi": motivi_r[:5], "riepilogo": riep_r[:300], "processi": info_c, "cartella": w, "go": aut["go"]}
+        if rc_c == 0 and ok_r:
+            d["stato"] = "COMMIT riuscito, riscontrato, revalidato e collaudato"
+            m["commit_ok"] += 1
+            modules[f"lotto-{nome}"] = True
+            log(f"  |lotto-{nome}| COMMIT ok e riscontrato · {riep_r[:160]}")
+            continue
+        modules[f"lotto-{nome}"] = False
+        if rc_c == 0 and not ok_r:
+            d["stato"] = "COMMIT NON riscontrato (uscita 0 ma riscontro finale incoerente)"
+            m["commit_non_riscontrati"] += 1
+            blocco = f"COMMIT di {nome} non riscontrato ({(motivi_r or ['?'])[0][:80]})"
+        elif rc_c in (2, 7):
+            d["stato"] = f"COMMIT non avvenuto (uscita {rc_c}: nulla scritto)"
+            m["commit_falliti"] += 1
+        else:
+            d["stato"] = f"COMMIT fallito o incerto (uscita {rc_c})"
+            m["commit_falliti"] += 1
+            blocco = f"lotto {nome}: uscita {rc_c}" + (" con residui/arresto incompleto" if rc_c in (124, 126, 127) else "")
+        log(f"!! lotto-{nome}: {d['stato']} · {(motivi_r or [''])[0][:120] if rc_c == 0 else (err_c or out_c).strip()[-160:]} — nessun rilancio automatico{'; COMMIT successivi SOSPESI' if blocco else ''}")
+    if budget_rosso:
+        modules["lotti-budget"] = False
+    if blocco:
+        m["blocco_commit"] = blocco
+    m["durata_min"] = round((datetime.datetime.now() - t_inizio).total_seconds() / 60, 1)
 
 
 def leggi_limitazioni(percorso, ym):
@@ -325,35 +1189,71 @@ def send_heartbeat(ok, errori, modules):
 
 
 def moduli_documentali(modules):
-    """(27 ott 2026, limitazioni del giro) |documents| = collegamenti ai documenti (URL nel registro), |doc-archive| = archivio storico dei
-    PDF, |kid-objectives| = obiettivi dal KID: i tre blocchi di main() spostati qui IDENTICI, con il solo salto per limitazione dichiarata
-    (salta(nome)) sui primi due. Chiamata da main(); provabile a banco con comandi finti."""
+    """(27 ott 2026, limitazioni del giro; rev. 4 del 28 ott) |documents| = collegamenti ai documenti con fotografia prima/dopo, collaudo
+    dei documenti ricevuti e revalidate delle schede toccate; |doc-archive-prova| = PROVA con conservazione (nessuna scrittura canonica);
+    |kid-objectives| = obiettivi dal KID (invariato). Salto per limitazione dichiarata (salta(nome)) sui primi due. Provabile a banco."""
     # Documenti ufficiali (prospetto+factsheet): aggancia i fondi nuovi e vigila
     # sugli schemi-URL. Gli URL emittente sono stabili e aggiornati sul posto.
     if not DRY and not salta("documents"):
+        fasc = os.path.join(FASC_DOCUMENTI, YM)
+        os.makedirs(fasc, exist_ok=True)
+        prima = foto_colonne_documenti(os.path.join(fasc, "documents-colonne-prima.tsv"))
+        if prima is None:
+            log("!! documents NON eseguito (rev. 4): senza fotografia «prima» delle colonne URL le scritture non sarebbero collaudabili")
+            modules["documents"] = False
+            EXTRA_METRICS.setdefault("documenti", {})["documents"] = "non eseguito: fotografia prima fallita"
+        else:
+            dd = None
         try:
+            if prima is None:
+                raise StopIteration
             dd = subprocess.run([NODE, "scripts/enrich-etf-documents.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=4*3600)  # 16 ago: il giro pieno supera i 20 min; 2 set (debutto VPS): a inizio mese l'archivio del mese è VERGINE e l'ora piena non basta (morto a metà, ripreso a mano) → 4h
+                                cwd=REPO, capture_output=True, text=True, timeout=4*3600)
+            with open(os.path.join(fasc, "documents-stdout.txt"), "w") as f:
+                f.write((dd.stdout or "") + "\n" + (dd.stderr or ""))  # 16 ago: il giro pieno supera i 20 min; 2 set (debutto VPS): a inizio mese l'archivio del mese è VERGINE e l'ora piena non basta (morto a metà, ripreso a mano) → 4h
             for line in (dd.stdout or "").strip().splitlines()[-2:]:
                 log(f"  |documents| {line}")
             modules["documents"] = dd.returncode == 0
+        except StopIteration:
+            pass
         except Exception as e:
             log(f"!! documents fallito (non blocca): {e}")
             modules["documents"] = False
+        if prima is not None:
+            collaudo_documents(prima, fasc, modules)   # (rev. 4) scritture riconciliate, collaudo dei documenti ricevuti, revalidate
 
     # Archivio storico dei PDF (KID/prospetto/factsheet): gli emittenti aggiornano
     # sul posto e la versione di ieri sparisce dal mondo — noi la teniamo. Dedup
     # per hash: si salva solo ciò che è cambiato. «La storia è valore» (Linus).
     if not DRY and not salta("doc-archive"):
-        try:
-            da = subprocess.run([NODE, "scripts/archive-etf-documents.mjs", "--commit"],
-                                cwd=REPO, capture_output=True, text=True, timeout=6*3600)  # 7 ago: prima passata > 3h
-            for line in (da.stdout or "").strip().splitlines()[-2:]:
-                log(f"  |doc-archive| {line}")
-            modules["doc-archive"] = da.returncode == 0
-        except Exception as e:
-            log(f"!! doc-archive fallito (non blocca): {e}")
-            modules["doc-archive"] = False
+        # (rev. 4/4b) PROVA con conservazione in una cartella PROPRIA di questa corsa (mai riusata): nessuna scrittura nell'archivio canonico;
+        # indice + PDF conservati + confronto testo/immagini, poi VALIDATI e riconciliati con la corsa (verifica_prova_archivio);
+        # l'archiviazione, la lingua e il controllo per riga seguono con i lotti (indice → lotti → COMMIT da sorgenti conservate, GO)
+        prova_dir = os.path.join(FASC_DOCUMENTI, YM, f"prova-archivio-{GIRO}")
+        if os.path.exists(prova_dir):
+            log(f"!! doc-archive-prova NON eseguita: la cartella {prova_dir} esiste già (una prova non si riusa)")
+            modules["doc-archive-prova"] = False
+        else:
+            os.makedirs(prova_dir)
+            t_lancio = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+            try:
+                da = subprocess.run([NODE, "scripts/archive-etf-documents.mjs", "--conserva-in", prova_dir],
+                                    cwd=REPO, capture_output=True, text=True, timeout=6*3600)  # 7 ago: prima passata > 3h; 2/10: ~3 h
+                with open(os.path.join(prova_dir, "stdout.txt"), "w") as f:
+                    f.write((da.stdout or "") + "\n" + (da.stderr or ""))
+                for line in (da.stdout or "").strip().splitlines()[-2:]:
+                    log(f"  |doc-archive-prova| {line}")
+                ok, dett, motivi = verifica_prova_archivio(prova_dir, t_lancio)
+                modules["doc-archive-prova"] = da.returncode == 0 and ok
+                EXTRA_METRICS.setdefault("documenti", {})["doc_archive_prova"] = {"uscita": da.returncode, "cartella": prova_dir, "valida": ok, "motivi": motivi, **dett}
+                if modules["doc-archive-prova"]:
+                    log(f"  |doc-archive-prova| indice {dett['indice_righe']} righe, {dett['file_conservati']} file conservati, {dett['impronte_verificate']} impronte verificate — archivio canonico NON scritto qui")
+                    lotti_automatici(prova_dir, modules)   # (rev. 5) regole → lotti → prova → verifica → COMMIT autorizzato → riscontri, revalidate, collaudo
+                else:
+                    log(f"!! doc-archive-prova NON valida (uscita {da.returncode}): {'; '.join(motivi[:3]) or 'nessun motivo'} — vedi {prova_dir}")
+            except Exception as e:
+                log(f"!! doc-archive-prova fallito (non blocca): {e}")
+                modules["doc-archive-prova"] = False
 
     # Obiettivi dal KID (12 ago): sezione PRIIPs estratta dai PDF appena archiviati
     # (marcatori per lingua it/en/de/fr, lingua verificata dal testo, guardie di
@@ -372,7 +1272,9 @@ def moduli_documentali(modules):
 
 def moduli_arricchimento(modules):
     """(27 ott 2026, limitazioni del giro) i tre lettori dei documenti in archivio e gli arricchitori: il loop di main() spostato qui
-    IDENTICO; |doc-langs| (lingua dei documenti senza provenienza) saltabile per limitazione dichiarata. Chiamata da main()."""
+    IDENTICO; (rev. 4) |doc-langs| non c'è più: la lingua dei documenti si decide nei lotti con provenienza. Chiamata da main()."""
+    if not DRY:
+        log("  |doc-langs| non eseguito (rev. 4): la lingua dei documenti si decide nei lotti sullo stesso originale, con provenienza (R1/R2/R2-bis)")
     # I TRE LETTORI DEI DOCUMENTI IN ARCHIVIO (18 ago 2026, caso Xeon senza TER/politica/AUM
     # trovato da Linus): il feed Xtrackers porta solo nome/indice/valuta e LGIM non dà AUM né
     # politica, quindi TER, politica di distribuzione e patrimonio si leggono dai KID e dai
@@ -411,7 +1313,8 @@ def moduli_arricchimento(modules):
                          # NON agganciati: rating-breakdown (valutare per g.17, decisione
                          # aperta) e whitelist-tickers (fuori: ha il suo giro).
                          ("21shares-ter", "enrich-ter-21shares.mjs"),
-                         ("doc-langs", "enrich-doc-langs.mjs"),
+                         # (rev. 4, 28 ott 2026) "doc-langs" RIMOSSO: enrich-doc-langs scriveva kid_lang/factsheet_lang senza provenienza
+                         # dall'«ultimo file per nome»; la lingua si decide nei lotti sullo stesso originale (R1/R2/R2-bis, lib-lingua-documenti)
                          ("replica-from-kid", "enrich-replica-from-kid.mjs"),
                          # 3 set (agenda Database ETF): indice dichiarato NEL KID dove
                          # benchmark_raw e' vuoto (caso Vanguard 18 ago: fondi nuovi non

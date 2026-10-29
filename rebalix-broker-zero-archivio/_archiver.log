@@ -245,3 +245,27 @@
 2026-10-22 08:36  [deploy] deploy prod OK via deploy-prod.sh (023222f4)
 2026-10-22 08:37  [heartbeat] inviato (200)
 2026-10-22 08:37  === giro completato (0 errori) ===
+2026-10-29 08:30  === giro 2026-10 avviato (dry=False) ===
+2026-10-29 08:30  [fineco] ok: 478 ISIN
+2026-10-29 08:30  [moneyfarm] ok: 808 ISIN
+2026-10-29 08:30  [bgsaxo] ok: 255 ISIN
+2026-10-29 08:30  !! [directa] HTTP Error 410: Gone — TENGO il dato del giro precedente
+2026-10-29 08:30  [xtb] ok: 1530 ISIN
+2026-10-29 08:30  [diff] moneyfarm: +2 −0
+2026-10-29 08:30  indice rigenerato: 2466 ISIN, 2124 nomi; counts {'fineco': 478, 'directa': 859, 'bgsaxo': 255, 'moneyfarm': 808}
+2026-10-29 08:30  [deploy] commit dei dati rigenerati
+2026-10-29 08:32  [deploy] [31m+ 0[39m
+2026-10-29 08:32  [deploy] 
+2026-10-29 08:32  [deploy] [36m [2m❯[22m __tests__/ingest-lgim-esecuzione.test.ts:[2m90:22[22m[39m
+2026-10-29 08:32  [deploy] 
+2026-10-29 08:32  [deploy] 
+2026-10-29 08:32  [deploy] [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+2026-10-29 08:32  [deploy] 
+2026-10-29 08:32  [deploy] 
+2026-10-29 08:32  [deploy] [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m294 passed[39m[22m[90m (295)[39m
+2026-10-29 08:32  [deploy] [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3237 passed[39m[22m[90m (3238)[39m
+2026-10-29 08:32  [deploy] [2m   Start at [22m 08:31:32
+2026-10-29 08:32  [deploy] [2m   Duration [22m 55.14s[2m (transform 13.27s, setup 31.56s, import 23.85s, tests 60.91s, environment 42ms)[22m
+2026-10-29 08:32  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (95a74dde) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
+2026-10-29 08:32  [heartbeat] inviato (200)
+2026-10-29 08:32  === giro completato (2 errori) ===
