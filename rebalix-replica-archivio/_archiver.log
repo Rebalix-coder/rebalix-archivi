@@ -339,3 +339,24 @@ Running build in Cleve
 2026-10-26 07:46  [deploy] deploy prod OK via deploy-prod.sh (25cb49af)
 2026-10-26 07:46  [heartbeat] inviato (errori=0)
 2026-10-26 07:46  === giro completato (0 errori) ===
+2026-11-02 07:40  === giro 2026-W45 avviato (dry=False) ===
+2026-11-02 07:40  [baskets:xspu] ok — 339/504 titoli, active share 52.7%
+2026-11-02 07:40  [baskets:world] ok — 462/1283 titoli, active share 61.6%
+2026-11-02 07:40  [td] ok — 1583 punti comuni, fine 2026-10-30, scarti +16pb, +21pb, +21pb, +23pb
+2026-11-02 07:40  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-11-02 07:40  [hybrid] ok — 733 titoli fisici, USA 0.4%; scarto vs fisico +45 pb/a su 476 sedute
+2026-11-02 07:43  [deploy] [90m113|[39m     [34mexpect[39m(sql)[33m.[39m[34mtoContain[39m([32m"ARRAY['tdDichiarataVerifica', v_anno]"[39m)
+2026-11-02 07:43  [deploy] [90m   |[39m                 [31m^[39m
+2026-11-02 07:43  [deploy] [90m114|[39m     [34mexpect[39m(sql)[33m.[39m[34mtoContain[39m([32m'FOR UPDATE'[39m)
+2026-11-02 07:43  [deploy] [90m115|[39m     [34mexpect[39m(sql)[33m.[39m[34mtoContain[39m([32m'IS DISTINCT FROM v_atteso'[39m)
+2026-11-02 07:43  [deploy] 
+2026-11-02 07:43  [deploy] [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+2026-11-02 07:43  [deploy] 
+2026-11-02 07:43  [deploy] 
+2026-11-02 07:43  [deploy] [2m Test Files [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m298 passed[39m[22m[90m (301)[39m
+2026-11-02 07:43  [deploy] [2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m3317 passed[39m[22m[90m (3320)[39m
+2026-11-02 07:43  [deploy] [2m   Start at [22m 07:42:26
+2026-11-02 07:43  [deploy] [2m   Duration [22m 59.05s[2m (transform 14.29s, setup 34.84s, import 26.09s, tests 62.03s, environment 46ms)[22m
+2026-11-02 07:43  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (2233a81b) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
+2026-11-02 07:43  [heartbeat] inviato (errori=1)
+2026-11-02 07:43  === giro completato (1 errori) ===

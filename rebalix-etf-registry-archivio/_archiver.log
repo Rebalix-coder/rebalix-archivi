@@ -1495,3 +1495,35 @@
 2026-10-02 21:34    |golden-esterno| 
 2026-10-02 21:34    |golden-esterno| golden esterno ✓ (metriche entro tolleranza sul roster)
 2026-10-02 21:34  [heartbeat] inviato (200)
+2026-11-02 07:45  PREFLIGHT CONFORME per il giro 2026-11: /home/rebalix/fascicoli/preflight/PREFLIGHT-OK-2026-11.json (2026-11-02T06:46:14+0100); evidenze verificate: controllo-finale-2nov-20261102-064525.riepilogo.txt, sonda-completa-1nov-20261101-085953.riepilogo.txt
+2026-11-02 07:45  lancio: /usr/bin/node scripts/ingest-etf-registry.mjs --commit
+2026-11-02 08:07    |   lgim: 72 righe, 72 con benchmark  ✓
+2026-11-02 08:07    | → 21shares…
+2026-11-02 08:07    |   ✗ 21shares: 21Shares: 63/63 prodotti senza valuta dal product_details — API giù? Non scrivo
+2026-11-02 08:07    | → avantis…
+2026-11-02 08:07    |   avantis: 6 righe, 6 con benchmark  ✓
+2026-11-02 08:07    | → melanion…
+2026-11-02 08:07    |   melanion: 1 righe, 1 con benchmark  ✓
+2026-11-02 08:07    | → invesco…
+2026-11-02 08:07    |   …invesco 50/301
+2026-11-02 08:07    |   …invesco 100/301
+2026-11-02 08:07    |   …invesco 150/301
+2026-11-02 08:07    |   …invesco 200/301
+2026-11-02 08:07    |   …invesco 250/301
+2026-11-02 08:07    |   …invesco 300/301
+2026-11-02 08:07    |   invesco: 301 righe, 300 con benchmark  ✓
+2026-11-02 08:07    | → franklin…
+2026-11-02 08:07    |   franklin: 48 righe, 48 con benchmark  ✓
+2026-11-02 08:07    | 
+2026-11-02 08:07    | Totale: 3748 righe, 3626 con benchmark, 1943 indici distinti
+2026-11-02 08:07    | Snapshot righe: /tmp/etf-registry-dry/registry-rows.json
+2026-11-02 08:07    | 
+2026-11-02 08:07    | ⚠ PROBLEMI RILEVATI:
+2026-11-02 08:07    |   · 21shares: FALLITO — 21Shares: 63/63 prodotti senza valuta dal product_details — API giù? Non scrivo
+2026-11-02 08:07    | 
+2026-11-02 08:07    | ✗ Con un emittente FALLITO non scrivo: il soft-delist marcherebbe centinaia di ISIN sani.
+2026-11-02 08:07  esito: exit=1, emittenti ok=12/13
+2026-11-02 08:07    |etc|   ✓ DE000A2UDH63 Xtrackers IE Physical Platinum EUR Hedged ETC Se — fee 0,73% EUR Metalli preziosi
+2026-11-02 08:07    |etc|   ✓ DE000A1E0HS6 Xtrackers Physical Silver ETC (EUR) — fee 0,40% USD Metalli preziosi
+2026-11-02 08:07    |etc|   ✓ CH1492505164 Xtrackers Galaxy MSCI Physical Crypto Market ETC — fee 0,65% USD DIGITAL ASSET
+2026-11-02 08:07    |etc| Xtrackers ETC scritti: 18/18
