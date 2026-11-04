@@ -1570,3 +1570,62 @@
 2026-11-03 07:54    |listings| 
 2026-11-03 07:54    |listings| Fatto: 3384 ISIN con listing, 436 senza documenti FIRDS, 1 falliti; 108143 righe scritte
 2026-11-03 07:54    |listings| Listing non-attivi visti: 30736
+2026-11-03 09:57    |series|   serie dal DB: 2025
+2026-11-03 09:57    |series|   serie dal DB: 2525
+2026-11-03 09:57    |series|   serie dal DB: 3025
+2026-11-03 09:57    |series|   cache serie riscritta: 3313 righe → /home/rebalix/cache/etf-series.json
+2026-11-03 10:14    |bench-ishares| 
+2026-11-03 10:14    |bench-ishares| esito: bench dalla pagina 1 [via API UK 216 · API UK ko 0] · senza pagina/ajax 44 [pid assente 0 · HTTP 404 31 · altri HTTP 0 · pagina senza grafico 13] · pagina senza bench 28 · discordi 0 · hedged saltate 214 · scritte 1
+2026-11-03 10:14    |bench-ishares| cache serie riscritta
+2026-11-03 10:14    |bench-invesco|   ⚠ IE00B3YCGJ38: indice rolling ≠ indice file sul tratto comune — saltato
+2026-11-03 10:14    |bench-invesco| 
+2026-11-03 10:14    |bench-invesco| ✗ GOLDEN VIOLATO
+2026-11-03 10:20    |distfreq|   Franklin dichiarate: 0
+2026-11-03 10:20    |distfreq| frequenze pronte: 800 — scritte (solo dove mancava): 800
+2026-11-03 11:56    |lending| prestito dichiarato: 1674 — frase assente: 1022 — KID non raggiunti: 0
+2026-11-03 11:56    |lending| golden UBS ✓ (dichiara il prestito)
+2026-11-03 12:23    |kidrisk| rischio estratto: 1762 — KID letti senza numero: 203 — non raggiunti: 30
+2026-11-03 12:23    |kidrisk| golden CSPX ✓ (rischio 4)
+2026-11-03 13:15    |declared| aggiornati: 72 — azzerati (nessuna fonte): 2 — iShares non letti: 92
+2026-11-03 13:15    |declared|   borse fuori mappa (tenute col nome originale): Bolsa De Valores De Colombia×41, Santiago Stock Exchange×98, Bolsa Institucional de Valores×65, Cboe Europe×46, BATS Chi-X Europe×4, Tel Aviv Stock Exchange×23
+2026-11-03 13:15    |declared| golden ✓ MDAX=["SIX Zurigo","Xetra"] CSPX=["Bolsa De Valores De Colombia","Bolsa Mexicana","Borsa Italiana","Euronext Amsterdam","Londra (LSE)","SIX Zurigo","Santiago Stock Exchange","Tel Aviv Stock Exchange","Xetra"]
+2026-11-03 13:18    |venues|   CH1492505164/XETA: XBSE → XBSK
+2026-11-03 13:18    |venues|   CH1492505164/XETU: XBSE → XBSK
+2026-11-03 14:07    |tickers| collaudo whitelist↔openfigi: 22700 confronti, 532 divergenze (2.3%)
+2026-11-03 14:07    |tickers| scritte 39622 righe
+2026-11-03 14:07    |tickers| mappa tarata salvata in /tmp/figi-mic-map.json
+2026-11-03 14:07    |fondo| 
+2026-11-03 14:07    |fondo| ✓ etf_fund: 1877 fondi upsertati, 2 orfani cancellati · etf_registry.fund_id: 24 classi scritte, 3231 già giuste
+2026-11-03 14:07    |listing-emittente| 
+2026-11-03 14:07    |listing-emittente| ✓ 376 righe aggiornate · 27 righe nuove · 0 righe nate dal feed portate a terminated (sede corroborabile senza FIRDS attiva)
+2026-11-03 14:07    |linee| 
+2026-11-03 14:07    |linee| ✓ etf_listing_lines: 4088 righe upsertate · contatori aggiornati su 7 mancate · in tabella 4095 · segnali {"RICONFERMATA":4045,"NUOVA":43,"NEVER_RECONFIRMED":7}
+2026-11-03 14:07    |whitelist-ticker| 
+2026-11-03 14:07    |whitelist-ticker| ✓ whitelist-ticker: 0 righe aggiornate (ticker 0, mappa 0) · valori esistenti toccati dal riempimento 0 · correzioni dichiarato 0 · correzioni IOB 0 · correzioni Milano non corroborata 0 · conflitti residui visibili 1
+2026-11-03 14:53    |documents|   lingueMancanti: 170 slot con lingua non-madre da ricontrollare
+2026-11-03 14:53    |documents| LingueMancanti: 1 fondi con documenti (71s)
+2026-11-03 14:53    |documents| scritture riconciliate: 233 celle su 225 classi, 233 documenti da collaudare, 0 collegamenti rimossi (documents-scritture.tsv)
+2026-11-03 15:13    |documents-collaudo| 
+2026-11-03 15:13    |documents-collaudo| COLLAUDO (utente): documenti 1261 = ricevuti e verificati 843 + non conformi 418
+2026-11-03 15:13  !! documents-collaudo: uscita 2 · riconciliazione FALLITA (verificati 208/233, mancanti 0, non conformi 25, url diversi 0) — vedi /home/rebalix/fascicoli/giro-documenti/2026-11/collaudo
+2026-11-03 15:13    |documents-revalidate| lotto 1: HTTP 200 · 200 ISIN · corpo conforme (isin 200, schede_letterali 1200/1200, scartati [])
+2026-11-03 15:13    |documents-revalidate| lotto 2: HTTP 200 · 25 ISIN · corpo conforme (isin 25, schede_letterali 150/150, scartati [])
+2026-11-03 20:17    |doc-archive-prova| estrazioni: calcolate 6027 · riusate dalla memoria 2729 · in memoria 32 · scartate 5995
+2026-11-03 20:17    |doc-archive-prova| (prova con conservazione: nessun file scritto nell’archivio canonico, nessuna scrittura nel registro)
+2026-11-03 20:17    |doc-archive-prova| indice 12813 righe, 4458 file conservati, 4439 impronte verificate — archivio canonico NON scritto qui
+2026-11-03 20:17    |lotti-automatici| regole 2026-11-rev5 (sha a29439583293) · associazioni 15380 = in lotto 4434 + escluse 1 + non proposte 10945 · lotti 21
+2026-11-03 20:17    |lotti-automatici|       1  esclusa: decisione umana: testo o immagini non confrontabili [confronto «non conclusivo»]
+2026-11-03 20:17    |lotti-automatici|   10788  non proposta: invariato
+2026-11-03 20:17    |lotti-automatici|     134  non proposta: accesso fallito (non raggiungibile: HTTP 404)
+2026-11-03 20:17    |lotti-automatici|      19  non proposta: accesso fallito (non-PDF)
+2026-11-03 20:17    |lotti-automatici|       4  non proposta: versione spuria (stessa edizione, binario diverso): non si archivia
+2026-11-03 20:17    |lotti-automatici| 21 lotti · COMMIT non autorizzato (file di GO assente: i lotti restano pronti per il COMMIT con GO)
+2026-11-03 20:17  !! lotto-21shares-parte-01: anteprima NON approvabile (5 motivi; es. verificatore uscita 1)
+2026-11-03 20:21  !! lotto-amundi-parte-01: anteprima NON approvabile (5 motivi; es. verificatore uscita 1)
+2026-11-03 20:25  !! lotto-amundi-parte-02: anteprima NON approvabile (5 motivi; es. verificatore uscita 1)
+2026-11-03 20:29  !! lotto-amundi-parte-03: anteprima NON approvabile (5 motivi; es. verificatore uscita 1)
+2026-11-03 20:34  !! lotto-amundi-parte-04: anteprima NON approvabile (5 motivi; es. verificatore uscita 1)
+2026-11-03 20:37  !! lotto-amundi-parte-05: anteprima NON approvabile (5 motivi; es. verificatore uscita 1)
+2026-11-03 20:37  !! lotto-avantis-parte-01: anteprima NON approvabile (5 motivi; es. verificatore uscita 1)
+2026-11-03 20:37    |lotto-franklin-templeton-parte-01| anteprima verificata (2 voci): pronto per il COMMIT con GO
+2026-11-03 20:37  !! lotto-invesco-parte-01: prova fallita (uscita 1): ['lotto-documenti-mirato — PROVA · 211 associazioni · archivio /home/rebalix/backups/rebalix-docs-archivio · scarico in /
