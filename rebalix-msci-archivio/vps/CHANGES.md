@@ -70,3 +70,24 @@
 → scaricarla, leggerla in diff con la base fattuale e aprire la revisione umana (con data) degli articoli che la citano; poi aggiornare EDIZIONI_NOTE e METHODOLOGY in questo script.
 
 🙈 Sentinella pagine CIECA: consultazioni e market-classification restituiscono lo stesso identico contenuto (guscio anti-bot). Il controllo via script non vede nulla: le consultazioni si verificano a mano (browser) o dai riepiloghi delle Index Review.
+
+## 2026-11-06
+
+📊 Factsheet MSCI World aggiornato al 2026-10-30. Variazioni:
+- constituents: 1249 → 1248
+- top10Pct: 27.85 → 26.58
+- pe: 22.69 → 22.29
+- peFwd: 17.92 → 17.38
+- pb: 4.1 → 4.06
+- divYieldPct: 1.52 → 1.54
+→ aggiornare lib/blog/msci-world-data.ts (asOf, numeri, pesi) e rideployare.
+
+📊 Factsheet MSCI ACWI aggiornato al 2026-10-30 (archivio per il futuro pilastro ACWI / scheda-indice — nessuna pagina da aggiornare oggi).
+- constituents: 2414 → 2413
+- top10Pct: 25.4 → 24.26
+- pe: 21.35 → 20.82
+
+📊 Factsheet MSCI ACWI IMI aggiornato al 2026-10-30 (archivio per il futuro pilastro ACWI / scheda-indice — nessuna pagina da aggiornare oggi).
+- constituents: 8036 → 8017
+- top10Pct: 22.73 → 21.7
+- pe: 21.55 → 21.04

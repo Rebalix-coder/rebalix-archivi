@@ -1,0 +1,31 @@
+{
+ "constituents": 8017,
+ "asOf": "2026-10-30",
+ "top10Pct": 21.7,
+ "divYieldPct": 1.66,
+ "pe": 21.04,
+ "peFwd": 15.59,
+ "pb": 3.38,
+ "turnoverPct": 2.62,
+ "sectors": {
+  "Information Technology": 29.37,
+  "Financials": 16.35,
+  "Industrials": 11.13,
+  "Health Care": 9.6,
+  "Consumer Discretionary": 8.78,
+  "Communication Services": 6.63,
+  "Consumer Staples": 5.01,
+  "Energy": 4.54,
+  "Materials": 3.94,
+  "Utilities": 2.47,
+  "Real Estate": 2.17
+ },
+ "countries": {
+  "United States": 63.51,
+  "Japan": 5.7,
+  "United Kingdom": 3.19,
+  "Canada": 3.12,
+  "Taiwan": 3.26,
+  "Other": 21.22
+ }
+}
