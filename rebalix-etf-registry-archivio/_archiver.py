@@ -1540,13 +1540,31 @@ def main():
 
     # Listini ufficiali delle borse (ticker+valuta per linea; primo modulo Xetra).
     # PRIMA dei ticker derivati: cio' che scrive la borsa non va sovrascritto.
+    # (7 nov 2026, lettore rev. 2 dopo l'incidente venues di L1, doc. 107–115; riscontro auditor sulla prima proposta) il giro mensile
+    # PREPARA SOLTANTO: prova a secco del lettore (conserva il CSV con impronta, scrive il PIANO con valori precedenti e patch, elenca le
+    # righe ambigue/fuori listino come pendenze) e lascia il piano «IN ATTESA DI AUTORIZZAZIONE». NESSUN commit da qui: l'esecuzione
+    # passa SOLO dal copione dedicato (strumenti/venues/copione-venues.sh --esegui --piano … --impronta …) sotto GO che cita l'impronta
+    # del piano, con export e verifica prima/dopo. L'autorizzazione ricorrente degli aggiornamenti mensili è un passaggio successivo,
+    # con criteri definiti e verifiche equivalenti: nessun file generico di autorizzazione.
     if not DRY:
         try:
-            v = subprocess.run([NODE, "scripts/enrich-venue-listings.mjs", "--commit"],
-                               cwd=REPO, capture_output=True, text=True, timeout=1800)
-            for line in (v.stdout or "").strip().splitlines()[-2:]:
-                log(f"  |venues| {line}")
-            modules["venues"] = v.returncode == 0
+            venues_dir = os.path.expanduser("~/fascicoli/listini-xetra")
+            amb = dict(os.environ, VENUES_ESITO_DIR=venues_dir)
+            p = subprocess.run([NODE, "scripts/enrich-venue-listings.mjs"], cwd=REPO, capture_output=True, text=True, timeout=1800, env=amb)
+            for line in (p.stdout or "").strip().splitlines()[-4:]:
+                log(f"  |venues:prova| {line}")
+            m_piano = re.search(r"^PIANO scritto: (\S+\.json) \((\d+) righe\)", p.stdout or "", re.M)
+            m_csv = re.search(r"^listino: (\S+\.csv) · sha256 ([0-9a-f]{64})", p.stdout or "", re.M)
+            if p.returncode != 0 or not m_piano or not m_csv:
+                raise RuntimeError(f"prova a secco uscita {p.returncode} senza piano/listino dichiarati")
+            piano, n_piano, csv_path, csv_sha = m_piano.group(1), int(m_piano.group(2)), m_csv.group(1), m_csv.group(2)
+            with open(piano, "rb") as fp:
+                sha_piano = hashlib.sha256(fp.read()).hexdigest()
+            if n_piano == 0:
+                log(f"  |venues| piano {piano} VUOTO (sha256 {sha_piano}, listino {csv_sha}): nessuna modifica proposta, nessuna scrittura")
+            else:
+                log(f"  |venues| piano {piano} · righe {n_piano} · sha256 {sha_piano} · listino {csv_path} · sha256 {csv_sha} — STATO: IN ATTESA DI AUTORIZZAZIONE (nessuna scrittura da questo giro; esecuzione solo con copione-venues.sh --esegui sotto GO che cita «piano {sha_piano[:16]}»)")
+            modules["venues"] = True
         except Exception as e:
             log(f"!! venues fallito (non blocca): {e}")
             modules["venues"] = False
