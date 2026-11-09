@@ -360,3 +360,24 @@ Running build in Cleve
 2026-11-02 07:43  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (2233a81b) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
 2026-11-02 07:43  [heartbeat] inviato (errori=1)
 2026-11-02 07:43  === giro completato (1 errori) ===
+2026-11-09 07:40  === giro 2026-W46 avviato (dry=False) ===
+2026-11-09 07:40  [baskets:xspu] ok — 354/503 titoli, active share 55.2%
+2026-11-09 07:40  [baskets:world] ok — 466/1251 titoli, active share 65.2%
+2026-11-09 07:40  [td] ok — 1588 punti comuni, fine 2026-11-06, scarti +15pb, +21pb, +21pb, +23pb
+2026-11-09 07:40  [xeon] ok — 11 semestri, ultimo 2026-07-01 → 78.08%
+2026-11-09 07:40  [hybrid] ok — 733 titoli fisici, USA 0.4%; scarto vs fisico +45 pb/a su 481 sedute
+2026-11-09 07:43  [deploy] [31m+ 0[39m
+2026-11-09 07:43  [deploy] 
+2026-11-09 07:43  [deploy] [36m [2m❯[22m __tests__/ingest-lgim-esecuzione.test.ts:[2m90:22[22m[39m
+2026-11-09 07:43  [deploy] 
+2026-11-09 07:43  [deploy] 
+2026-11-09 07:43  [deploy] [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+2026-11-09 07:43  [deploy] 
+2026-11-09 07:43  [deploy] 
+2026-11-09 07:43  [deploy] [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m308 passed[39m[22m[90m (309)[39m
+2026-11-09 07:43  [deploy] [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3405 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (3407)[39m
+2026-11-09 07:43  [deploy] [2m   Start at [22m 07:42:07
+2026-11-09 07:43  [deploy] [2m   Duration [22m 94.56s[2m (transform 14.35s, setup 34.55s, import 26.27s, tests 158.07s, environment 47ms)[22m
+2026-11-09 07:43  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (b299ffe2) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
+2026-11-09 07:43  [heartbeat] inviato (errori=1)
+2026-11-09 07:43  === giro completato (1 errori) ===

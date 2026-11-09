@@ -1188,6 +1188,93 @@ def send_heartbeat(ok, errori, modules):
         log(f"!! [heartbeat] invio fallito (non blocca): {e}")
 
 
+def passo_fondo(modules, oggi=None, node=None, repo=None, run=None, base_dir=None, log_fn=None, tetto_prova=1200, tetto_commit=1200):
+    """(8 nov 2026, doc. 125–130) MODELLO FONDO con piano CONSERVATO e cancello automatico — mai più il solo --commit.
+    1) elenco EFFETTIVO delle classi nuove del giro (scripts/classi-nuove-registro.mjs --dal <oggi>: first_seen ≥ oggi, non delistate), conservato;
+    2) prova a secco del lettore con --out <cartella del giro>/piano-fondo.json --perimetro-automatico --classi-nuove <elenco>: il piano è ENUMERATO
+       (nuovi con tutti i valori, cancellati, modificati campo per campo, fund_id per classe) e conservato; il cancello ammette SOLO il piano spiegato
+       da QUELLE classi e dagli orfani senza classi attive (mandato precedente: niente rinomine, nuove identità, delisting, fund_inception);
+    3) se ammesso → --commit --piano <file> --impronta <sha256> (+ stessi flag): il lettore riverifica impronta, identità del piano ricalcolato e
+       cancello, poi scrive SOLO quel piano;
+    4) se fuori perimetro (uscita 4 della prova) → NESSUNA scrittura, piano IN ATTESA DI AUTORIZZAZIONE (GO di Linus che citi l'impronta), modulo
+       rosso = giro PARZIALE «fondo rinviato» (doc. 124 A7).
+    Esiti del commit: 0 eseguito · 4 RIFIUTATO dal lettore nei controlli preliminari (piano cambiato/impronta/elenco: il lettore esce prima di
+    ogni scrittura) · altro, timeout o QUALUNQUE errore dopo l'avvio del commit = DA ACCERTARE sul DB (scritture parziali possibili): mai dichiarare
+    «nessuna scrittura» senza riscontro; l'output parziale di un processo interrotto è conservato nel log della fase (rev. 3, 8/11 sera).
+    Tutto resta nella cartella del giro: classi-nuove.txt/.log, piano-fondo.json, prova-a-secco.log, commit.log. Processi iniettabili per il banco offline.
+    Restituisce (stato, cartella): stato ∈ eseguito · in-attesa · rifiutato · da-accertare · fallito."""
+    node = node or NODE; repo = repo or REPO; run = run or subprocess.run; log_fn = log_fn or log; oggi = oggi or TODAY
+    base = base_dir or os.path.expanduser("~/fascicoli/piani-fondo")
+    fondo_dir = os.path.join(base, "fondo-" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f") + f"-{os.getpid()}")   # cartella UNICA per chiamata (il banco S7 ha mostrato la collisione nello stesso secondo)
+    os.makedirs(fondo_dir, exist_ok=True)
+    classi = os.path.join(fondo_dir, "classi-nuove.txt"); piano = os.path.join(fondo_dir, "piano-fondo.json")
+    def salva(nome, p):
+        with open(os.path.join(fondo_dir, nome), "w") as fp:
+            fp.write((p.stdout or "") + (p.stderr or ""))
+    def sha(p):
+        with open(p, "rb") as fp:
+            return hashlib.sha256(fp.read()).hexdigest()
+    stato = "fallito"; fase = "classi"; modules["fondo"] = False
+    try:
+        cn = run([node, "scripts/classi-nuove-registro.mjs", "--dal", f"{oggi:%Y-%m-%d}", "--out", classi], cwd=repo, capture_output=True, text=True, timeout=600)
+        salva("classi-nuove.log", cn)
+        if cn.returncode != 0 or not os.path.isfile(classi):
+            raise RuntimeError(f"elenco delle classi nuove del giro NON prodotto (uscita {cn.returncode}): nessuna scrittura (fase di sola lettura)")
+        with open(classi) as fp:
+            n_cl = sum(1 for l in fp if l.strip())
+        log_fn(f"  |fondo| classi nuove del giro (first_seen ≥ {oggi:%Y-%m-%d}): {n_cl} · {classi} · sha256 {sha(classi)}")
+        fase = "prova"
+        pf = run([node, "scripts/build-etf-fund.mjs", "--out", piano, "--perimetro-automatico", "--classi-nuove", classi], cwd=repo, capture_output=True, text=True, timeout=tetto_prova)
+        salva("prova-a-secco.log", pf)
+        m_pf = re.search(r"^PIANO FONDO: .*$", pf.stdout or "", re.M)
+        log_fn(f"  |fondo:prova| {m_pf.group(0) if m_pf else '(riga PIANO FONDO assente)'} · uscita {pf.returncode}")
+        if not os.path.isfile(piano) or not m_pf:
+            raise RuntimeError(f"prova a secco uscita {pf.returncode} senza piano conservato: nessuna scrittura (fase di sola lettura) — {(pf.stderr or pf.stdout or '').strip()[-300:]}")
+        sha_p = sha(piano)
+        if pf.returncode == 4:
+            for line in (pf.stderr or "").strip().splitlines()[:12]:
+                log_fn(f"  |fondo| {line}")
+            log_fn(f"  |fondo| piano {piano} · sha256 {sha_p} — STATO: IN ATTESA DI AUTORIZZAZIONE (fuori perimetro automatico; NESSUNA scrittura da questo giro; esecuzione solo con GO di Linus che citi l'impronta: node scripts/build-etf-fund.mjs --commit --piano {piano} --impronta {sha_p}) · modulo rinviato = giro PARZIALE")
+            return "in-attesa", fondo_dir
+        if pf.returncode != 0:
+            raise RuntimeError(f"prova a secco uscita {pf.returncode}: nessuna scrittura (fase di sola lettura) — {(pf.stderr or pf.stdout or '').strip()[-300:]}")
+        log_fn(f"  |fondo| piano {piano} · sha256 {sha_p} · cancello automatico superato → commit del SOLO piano conservato")
+        fase = "commit"
+        mc = run([node, "scripts/build-etf-fund.mjs", "--commit", "--piano", piano, "--impronta", sha_p, "--perimetro-automatico", "--classi-nuove", classi], cwd=repo, capture_output=True, text=True, timeout=tetto_commit)
+        salva("commit.log", mc)
+        for line in ((mc.stdout or "") + (mc.stderr or "")).strip().splitlines()[-2:]:
+            log_fn(f"  |fondo| {line}")
+        if mc.returncode == 0:
+            log_fn(f"  |fondo| commit uscita 0 · piano {sha_p} ESEGUITO (= piano conservato)"); modules["fondo"] = True; return "eseguito", fondo_dir
+        if mc.returncode == 4:
+            log_fn(f"  |fondo| commit RIFIUTATO dal lettore nei controlli preliminari (uscita 4: piano cambiato fra prova a secco e commit, o impronta/elenco diversi): il lettore esce PRIMA di ogni scrittura — piano {piano} conservato, riscontro in {os.path.join(fondo_dir, 'commit.log')}")
+            return "rifiutato", fondo_dir
+        log_fn(f"!! fondo: commit uscita {mc.returncode} — ESITO DA ACCERTARE sul DB (scritture PARZIALI possibili: export e verifica prima/dopo): vedi {os.path.join(fondo_dir, 'commit.log')}")
+        return "da-accertare", fondo_dir
+    except subprocess.TimeoutExpired as e:
+        # (rev. 3, rilievo auditor) l'output PARZIALE del processo interrotto (TimeoutExpired.stdout/stderr) va CONSERVATO: serve a ricostruire le scritture parziali
+        testo = lambda x: (x.decode("utf-8", "replace") if isinstance(x, (bytes, bytearray)) else (x or ""))
+        parziale = testo(getattr(e, "stdout", None)) + testo(getattr(e, "stderr", None))
+        nome_log = {"classi": "classi-nuove.log", "prova": "prova-a-secco.log", "commit": "commit.log"}[fase]
+        try:
+            with open(os.path.join(fondo_dir, nome_log), "a") as fp:
+                fp.write(parziale + f"\n!! INTERROTTO al limite di durata (fase {fase}, {e.timeout} s) — output parziale conservato sopra ({len(parziale)} caratteri)\n")
+        except Exception as e2:
+            log_fn(f"!! fondo: impossibile conservare l'output parziale della fase «{fase}»: {e2}")
+        if fase == "commit":
+            log_fn(f"!! fondo: commit INTERROTTO al limite di durata ({tetto_commit} s) — scritture PARZIALI possibili: ESITO DA ACCERTARE sul DB, nessuna dichiarazione di «nessuna scrittura» senza riscontro; output parziale ({len(parziale)} caratteri) in {os.path.join(fondo_dir, 'commit.log')}")
+            return "da-accertare", fondo_dir
+        log_fn(f"!! fondo: fase «{fase}» interrotta al limite di durata — nessuna scrittura (fase di sola lettura); output parziale in {os.path.join(fondo_dir, nome_log)}")
+        return "fallito", fondo_dir
+    except Exception as e:
+        # (rev. 3, rilievo auditor) il recupero generico distingue la FASE: dopo l'avvio del commit l'esito è INCERTO e le scritture possibili
+        if fase == "commit":
+            log_fn(f"!! fondo: errore DOPO l'avvio del commit ({type(e).__name__}: {e}) — ESITO DA ACCERTARE sul DB (scritture possibili; il commit può essere andato a buon fine): riscontro con export e verifica prima/dopo, evidenze in {fondo_dir}")
+            return "da-accertare", fondo_dir
+        log_fn(f"!! fondo fallito PRIMA del commit, fase «{fase}» (non blocca): {e} — nessuna scrittura (fase di sola lettura)")
+        return "fallito", fondo_dir
+
+
 def moduli_documentali(modules):
     """(27 ott 2026, limitazioni del giro; rev. 4 del 28 ott) |documents| = collegamenti ai documenti con fotografia prima/dopo, collaudo
     dei documenti ricevuti e revalidate delle schede toccate; |doc-archive-prova| = PROVA con conservazione (nessuna scrittura canonica);
@@ -1583,12 +1670,17 @@ def main():
             modules["tickers"] = False
 
     # MODELLO fondo→classe→listing (12 set 2026, Fase 1/2/2b): dopo registro e ticker, le classi
-    # NUOVE ricevono fund_id (build-etf-fund, golden), le sedi le linee dichiarate dagli emittenti
+    # NUOVE ricevono fund_id (build-etf-fund: dall'8 nov 2026 via passo_fondo, piano CONSERVATO e cancello automatico), le sedi le linee dichiarate dagli emittenti
     # (enrich-listings-emittente: il listino della borsa vince sempre) e la tabella delle linee si
     # rinfresca (build-listing-lines, golden). Idempotenti, NON bloccano: modulo proprio ciascuno.
+    # (8 nov 2026, dopo l'arresto 6 di L1 sul modulo fondo — doc. 125–130, rilievo auditor «censire e adeguare i chiamanti mantenendo il vincolo
+    # del piano approvato») FONDO non passa più dal ciclo generico col solo --commit: passo_fondo = piano CONSERVATO con impronta, elenco
+    # effettivo delle classi nuove del giro, cancello automatico; fuori perimetro = nessuna scrittura, piano in attesa di GO, giro PARZIALE.
     if not DRY:
-        for nome, script, tetto in (("fondo", "scripts/build-etf-fund.mjs", 1200),
-                                    ("listing-emittente", "scripts/enrich-listings-emittente.mjs", 1800),
+        stato_fondo, cartella_fondo = passo_fondo(modules)
+        log(f"  |fondo| stato {stato_fondo} · evidenze in {cartella_fondo}")
+    if not DRY:
+        for nome, script, tetto in (("listing-emittente", "scripts/enrich-listings-emittente.mjs", 1800),
                                     ("linee", "scripts/build-listing-lines.mjs", 900),
                                     # (13 set 2026, cantiere con l'auditor, doc §5.4) il ticker della white list come regola:
                                     # riempie ticker/tickers_by_mic SOLO dove null (eredita' dall'ISIN + etf_listings), mai rete;
