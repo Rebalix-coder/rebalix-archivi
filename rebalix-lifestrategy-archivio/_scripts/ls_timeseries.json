@@ -3035,5 +3035,243 @@
         }
       }
     }
+  },
+  {
+    "data_riferimento": "2026-09-30",
+    "file": "2026/Settembre.pdf",
+    "fondi": {
+      "20": {
+        "isin": "IE00BMVB5K07",
+        "aum_eur_m": 116.8,
+        "ter": 0.25,
+        "durata_modificata": 5.9,
+        "rendimento_scadenza": 4.9,
+        "pe": 21.0,
+        "dividend_yield": 1.6,
+        "holdings": [
+          {
+            "etf": "Vanguard FTSE All-World UCITS ETF",
+            "peso": 19.4
+          },
+          {
+            "etf": "Vanguard USD Treasury Bond UCITS ETF EUR Hedged",
+            "peso": 19.2
+          },
+          {
+            "etf": "Vanguard Global Aggregate Bond UCITS ETF EUR Hedged",
+            "peso": 19.1
+          },
+          {
+            "etf": "Vanguard EUR Eurozone Government Bond UCITS ETF",
+            "peso": 16.2
+          },
+          {
+            "etf": "Vanguard USD Corporate Bond UCITS ETF EUR Hedged",
+            "peso": 16.1
+          },
+          {
+            "etf": "Vanguard EUR Corporate Bond UCITS ETF",
+            "peso": 5.9
+          },
+          {
+            "etf": "Vanguard U.K. Gilt UCITS ETF EUR Hedged",
+            "peso": 3.2
+          },
+          {
+            "etf": "Vanguard FTSE Developed World UCITS ETF",
+            "peso": 0.8
+          },
+          {
+            "etf": "Vanguard FTSE Emerging Markets UCITS ETF",
+            "peso": 0.1
+          }
+        ],
+        "credito": {
+          "A": 22.9
+        }
+      },
+      "40": {
+        "isin": "IE00BMVB5M21",
+        "aum_eur_m": 297.5,
+        "ter": 0.25,
+        "durata_modificata": 5.9,
+        "rendimento_scadenza": 4.9,
+        "pe": 20.9,
+        "dividend_yield": 1.5,
+        "holdings": [
+          {
+            "etf": "Vanguard FTSE All-World UCITS ETF",
+            "peso": 19.5
+          },
+          {
+            "etf": "Vanguard Global Aggregate Bond UCITS ETF EUR Hedged",
+            "peso": 19.2
+          },
+          {
+            "etf": "Vanguard FTSE Developed World UCITS ETF",
+            "peso": 18.6
+          },
+          {
+            "etf": "Vanguard USD Treasury Bond UCITS ETF EUR Hedged",
+            "peso": 15.3
+          },
+          {
+            "etf": "Vanguard EUR Eurozone Government Bond UCITS ETF",
+            "peso": 9.9
+          },
+          {
+            "etf": "Vanguard USD Corporate Bond UCITS ETF EUR Hedged",
+            "peso": 9.8
+          },
+          {
+            "etf": "Vanguard EUR Corporate Bond UCITS ETF",
+            "peso": 3.7
+          },
+          {
+            "etf": "Vanguard FTSE Emerging Markets UCITS ETF",
+            "peso": 2.1
+          },
+          {
+            "etf": "Vanguard U.K. Gilt UCITS ETF EUR Hedged",
+            "peso": 1.9
+          }
+        ],
+        "credito": {}
+      },
+      "60": {
+        "isin": "IE00BMVB5P51",
+        "aum_eur_m": 1123.1,
+        "ter": 0.25,
+        "durata_modificata": 5.9,
+        "rendimento_scadenza": 4.9,
+        "pe": 21.2,
+        "dividend_yield": 1.5,
+        "holdings": [
+          {
+            "etf": "Vanguard FTSE All-World UCITS ETF",
+            "peso": 19.3
+          },
+          {
+            "etf": "Vanguard FTSE Developed World UCITS ETF",
+            "peso": 19.3
+          },
+          {
+            "etf": "Vanguard Global Aggregate Bond UCITS ETF EUR Hedged",
+            "peso": 19.1
+          },
+          {
+            "etf": "Vanguard FTSE North America UCITS ETF",
+            "peso": 12.7
+          },
+          {
+            "etf": "Vanguard USD Treasury Bond UCITS ETF EUR Hedged",
+            "peso": 7.7
+          },
+          {
+            "etf": "Vanguard USD Corporate Bond UCITS ETF EUR Hedged",
+            "peso": 5.0
+          },
+          {
+            "etf": "Vanguard EUR Eurozone Government Bond UCITS ETF",
+            "peso": 5.0
+          },
+          {
+            "etf": "Vanguard FTSE Emerging Markets UCITS ETF",
+            "peso": 4.2
+          },
+          {
+            "etf": "Vanguard FTSE Developed Europe UCITS ETF",
+            "peso": 2.7
+          },
+          {
+            "etf": "Vanguard EUR Corporate Bond UCITS ETF",
+            "peso": 1.8
+          },
+          {
+            "etf": "Vanguard FTSE Japan UCITS ETF",
+            "peso": 1.2
+          },
+          {
+            "etf": "Vanguard FTSE Developed Asia Pacific ex Japan UCITS ETF",
+            "peso": 1.0
+          },
+          {
+            "etf": "Vanguard U.K. Gilt UCITS ETF EUR Hedged",
+            "peso": 1.0
+          }
+        ],
+        "credito": {}
+      },
+      "80": {
+        "isin": "IE00BMVB5R75",
+        "aum_eur_m": 1377.5,
+        "ter": 0.25,
+        "durata_modificata": 5.9,
+        "rendimento_scadenza": 4.8,
+        "pe": 21.3,
+        "dividend_yield": 1.5,
+        "holdings": [
+          {
+            "etf": "Vanguard FTSE North America UCITS ETF",
+            "peso": 19.4
+          },
+          {
+            "etf": "Vanguard FTSE All-World UCITS ETF",
+            "peso": 19.3
+          },
+          {
+            "etf": "Vanguard FTSE Developed World UCITS ETF",
+            "peso": 19.3
+          },
+          {
+            "etf": "Vanguard Global Aggregate Bond UCITS ETF EUR Hedged",
+            "peso": 18.8
+          },
+          {
+            "etf": "Vanguard S&P 500 UCITS ETF",
+            "peso": 6.4
+          },
+          {
+            "etf": "Vanguard FTSE Emerging Markets UCITS ETF",
+            "peso": 6.1
+          },
+          {
+            "etf": "Vanguard FTSE Developed Europe UCITS ETF",
+            "peso": 5.4
+          },
+          {
+            "etf": "Vanguard FTSE Japan UCITS ETF",
+            "peso": 2.4
+          },
+          {
+            "etf": "Vanguard FTSE Developed Asia Pacific ex Japan UCITS ETF",
+            "peso": 2.0
+          },
+          {
+            "etf": "Vanguard USD Treasury Bond UCITS ETF EUR Hedged",
+            "peso": 0.3
+          },
+          {
+            "etf": "Vanguard USD Corporate Bond UCITS ETF EUR Hedged",
+            "peso": 0.2
+          },
+          {
+            "etf": "Vanguard EUR Eurozone Government Bond UCITS ETF",
+            "peso": 0.2
+          },
+          {
+            "etf": "Vanguard EUR Corporate Bond UCITS ETF",
+            "peso": 0.1
+          },
+          {
+            "etf": "Vanguard U.K. Gilt UCITS ETF EUR Hedged",
+            "peso": 0.1
+          }
+        ],
+        "credito": {
+          "NR": 0.1
+        }
+      }
+    }
   }
 ]

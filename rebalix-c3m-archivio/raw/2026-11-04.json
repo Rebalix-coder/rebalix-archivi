@@ -1,10 +1,10 @@
 {
  "productId": "FR0010754200",
  "characteristics": {
-  "NAV": 127.6561,
+  "NAV": 127.65,
   "NAV_DATE_DISPLAYED": 1793836800000,
-  "AUM": 970892042.9207999,
-  "AUM_IN_EURO": 970892042.9207999,
+  "AUM": 970845649.2,
+  "AUM_IN_EURO": 970845649.2,
   "FUND_AUM": 970892050.06,
   "FUND_AUM_IN_EURO": 970892050.06,
   "TER": 0.14,
@@ -14,7 +14,7 @@
   "FUND_BREAKDOWNS_AS_OF_DATE": "2026-11-04",
   "BENCHMARK_NAME": "FTSE Eurozone Government Bill 0-6 Month Capped Index",
   "BENCHMARK_TICKER": "EMTT6CC",
-  "BENCHMARK_NUMBER_OF_COMPONENTS": 53,
+  "BENCHMARK_NUMBER_OF_COMPONENTS": 54,
   "FUND_REPLICATION_METHODOLOGY": "Direct(Physical)",
   "FUND_SECURITIES_LENDING": false,
   "DISTRIBUTION_POLICY": "Capitalisation",
@@ -241,22 +241,22 @@
   {
    "period": "ONE_YEAR",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.020307003517748168
+   "value": 0.02054685001598955
   },
   {
    "period": "THREE_YEARS",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.02644844064228158
+   "value": 0.026519813221776545
   },
   {
    "period": "FIVE_YEARS",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.019213484213130627
+   "value": 0.01926137135624395
   },
   {
    "period": "TEN_YEARS",
    "indicator": "shareAnnualizedPerformance",
-   "value": 0.006138619010378266
+   "value": 0.006160563058817292
   },
   {
    "period": "SINCE_INCEPTION",
@@ -271,22 +271,22 @@
   {
    "period": "ONE_YEAR",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.02149310436677898
+   "value": 0.02171850399858477
   },
   {
    "period": "THREE_YEARS",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.027674274920420183
+   "value": 0.02777654849530542
   },
   {
    "period": "FIVE_YEARS",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.02044244191946265
+   "value": 0.02049380803474188
   },
   {
    "period": "TEN_YEARS",
    "indicator": "benchmarkAnnualizedPerformance",
-   "value": 0.0076699177710317645
+   "value": 0.007695369196673463
   },
   {
    "period": "SINCE_INCEPTION",

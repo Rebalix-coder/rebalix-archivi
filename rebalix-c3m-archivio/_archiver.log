@@ -3402,3 +3402,43 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 2026-11-08 10:48  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (b4c9f710) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
 2026-11-08 10:48  [heartbeat] battito inviato
 2026-11-08 10:48  fatto (1 errori)
+2026-11-09 10:48  === giro C3M ===
+2026-11-09 10:48     serie aggiornate (officialNav, adjustedBenchPrice, shareAumInMCcy)
+2026-11-09 10:48     spread registrato per 2 simboli
+2026-11-09 10:48     [retry 1/3] HTTP Error 404: Not Found
+2026-11-09 10:48     [retry 2/3] HTTP Error 404: Not Found
+2026-11-09 10:49     [retry 3/3] HTTP Error 404: Not Found
+2026-11-09 10:49     factsheet 20261031: non ancora pubblicato — si ritenta domani (lag normale Amundi)
+2026-11-09 10:49     [c3m-changes] nessun evento nuovo, modulo invariato
+2026-11-09 10:49     [c3m-performance] scritto: 2388 sedute 2017-07-10→2026-11-05, TD -15bp/a, maxDD -3.634% (2022-09-20), golden ok (16 vs dichiarato)
+2026-11-09 10:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:55: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-09 10:49     d = datetime.datetime.utcfromtimestamp(p["date"] / 1000).date()
+2026-11-09 10:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_performance.py:69: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-09 10:49     return {datetime.datetime.utcfromtimestamp(t).date(): c for t, c in zip(ts, close) if c}
+2026-11-09 10:49     [c3m-composition] scritto: asof 2026-11-04, NAV 127.65, AUM 970.8M, France 34.5% (tetto 34.5), somma paesi 100.0%
+2026-11-09 10:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_composition.py:149: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-09 10:49     navDate: '{datetime.datetime.utcfromtimestamp(car["NAV_DATE_DISPLAYED"] / 1000).date().isoformat() if car.get("NAV_DATE_DISPLAYED") else asof}',
+2026-11-09 10:49     [c3m-tax] scritto: C3M 4 semestri (corrente 98.94% → 12.64%), XEON 11 semestri (corrente 78.08% → 15.46%)
+2026-11-09 10:49     [c3m-aum] scritto: 113 mesi 2017-07→2026-11, AUM 971M, raccolta 12m +222M, anni flussi: ['2017']…['2026']
+2026-11-09 10:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_aum.py:26: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-09 10:49     d = datetime.datetime.utcfromtimestamp(p["date"] / 1000).date()
+2026-11-09 10:49     [c3m-xeon-series] scritto: 237 mesi 2007-01→2026-11, golden ok
+2026-11-09 10:49     /home/rebalix/backups/rebalix-c3m-archivio/_scripts/gen_c3m_xeon_series.py:48: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-09 10:49     dt = datetime.datetime.utcfromtimestamp(ts / 1000).date()
+2026-11-09 10:49     [c3m-xeon-dati] scritto: data comune 2026-11-05, 2026 parziale XEON 1.8% · se vendi 4 punti · maxDD XEON -3.69% (2022-09-14) · golden a) ok (8 anni chiusi vs API DWS)
+2026-11-09 10:49  [deploy] commit dei moduli c3m
+2026-11-09 10:52  [deploy] [31m+ 0[39m
+2026-11-09 10:52  [deploy] 
+2026-11-09 10:52  [deploy] [36m [2m❯[22m __tests__/ingest-lgim-esecuzione.test.ts:[2m90:22[22m[39m
+2026-11-09 10:52  [deploy] 
+2026-11-09 10:52  [deploy] 
+2026-11-09 10:52  [deploy] [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+2026-11-09 10:52  [deploy] 
+2026-11-09 10:52  [deploy] 
+2026-11-09 10:52  [deploy] [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m308 passed[39m[22m[90m (309)[39m
+2026-11-09 10:52  [deploy] [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3410 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (3412)[39m
+2026-11-09 10:52  [deploy] [2m   Start at [22m 10:50:29
+2026-11-09 10:52  [deploy] [2m   Duration [22m 93.37s[2m (transform 15.50s, setup 34.31s, import 27.32s, tests 157.50s, environment 47ms)[22m
+2026-11-09 10:52  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (0350aa28) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
+2026-11-09 10:52  [heartbeat] battito inviato
+2026-11-09 10:52  fatto (1 errori)
