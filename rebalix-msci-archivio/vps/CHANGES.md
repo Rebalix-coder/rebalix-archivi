@@ -91,3 +91,11 @@
 - constituents: 8036 → 8017
 - top10Pct: 22.73 → 21.7
 - pe: 21.55 → 21.04
+
+## 2026-11-13
+
+📗 NUOVA EDIZIONE GIMI (Nov 2026): https://www.msci.com/eqb/methodology/meth_docs/MSCI_GIMIMethodology_Nov2026.pdf
+→ scaricarla, leggerla in diff con la base fattuale e aprire la revisione umana (con data) degli articoli che la citano; poi aggiornare EDIZIONI_NOTE e METHODOLOGY in questo script.
+
+📗 NUOVA EDIZIONE Calc (Nov 2026): https://www.msci.com/eqb/methodology/meth_docs/MSCI_Index_Calculation_Methodology_Nov2026.pdf
+→ scaricarla, leggerla in diff con la base fattuale e aprire la revisione umana (con data) degli articoli che la citano; poi aggiornare EDIZIONI_NOTE e METHODOLOGY in questo script.
