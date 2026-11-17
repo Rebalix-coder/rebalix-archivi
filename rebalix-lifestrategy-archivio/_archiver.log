@@ -1142,3 +1142,51 @@
 2026-11-09 10:03  report online = Settembre 2026
 2026-11-09 10:03  già archiviato (2026/Settembre.pdf) — niente da fare.
 2026-11-09 10:04  [heartbeat] inviato (200)
+2026-11-16 10:00  --- avvio archiviatore  ---
+2026-11-16 10:00  [capture] salvato snapshot look-through 2026-10-31 -> lookthrough/2026-10-31.json
+2026-11-16 10:01  2022-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2023-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2023-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2023-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2023-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2024-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 12}
+2026-11-16 10:01  2024-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2024-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2024-09-30  fondi=0  holdings={}
+2026-11-16 10:01  2025-12-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2025-06-30  fondi=0  holdings={}
+2026-11-16 10:01  2025-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2025-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2026-06-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2026-03-31  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  2026-09-30  fondi=4  holdings={'20': 9, '40': 9, '60': 13, '80': 14}
+2026-11-16 10:01  -> 16 trimestri scritti in /home/rebalix/backups/rebalix-lifestrategy-archivio/_scripts/ls_timeseries.json
+2026-11-16 10:01  [aum] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-aum.ts: 14 trimestri, ultimo 2026-09, totale attuale €2915M
+2026-11-16 10:01  [holdings] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-holdings.ts: LS20 9 / LS40 9 / LS60 13 / LS80 14 mattoncini, trimestre 2026-09
+2026-11-16 10:01  [uk] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-holdings-uk.ts: eff 2026-10 · LS20 10 / LS100 7 righe
+2026-11-16 10:01  [xray] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-lookthrough.ts: effective 2026-10-31, LS60 46 paesi / 11 settori
+2026-11-16 10:01  [tax] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-tax.ts: eff 2026-07 · aliquota LS60 22.54% · fai-da-te VWCE 26.0% / VAGF 17.55%
+2026-11-16 10:01  [dist] LS20 (port 9491): 11 distribuzioni, rendimento storico 3.55 (al 2026-10-31)
+2026-11-16 10:01  [dist] LS40 (port 9493): 11 distribuzioni, rendimento storico 2.92 (al 2026-10-31)
+2026-11-16 10:01  [dist] LS60 (port 9495): 11 distribuzioni, rendimento storico 2.36 (al 2026-10-31)
+2026-11-16 10:01  [dist] LS80 (port 9497): 11 distribuzioni, rendimento storico 1.85 (al 2026-10-31)
+2026-11-16 10:01  [dist] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-distributions.ts: aggiornato 2026-06, rendimento al 2026-10-31, valuta EUR
+2026-11-16 10:01  [bond] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-bondstats.ts: 2026-09 · duration LS20 5.9 / YTM 4.9%
+2026-11-16 10:01  [ls-changes] scritto /home/rebalix/progetti/rebalix/lib/blog/ls-changes.ts: 1 eventi su 14 report (ultimo 2026-09-30)
+2026-11-16 10:01  [deploy] commit dei moduli: lib/blog/ls-holdings-uk.ts, lib/blog/ls-lookthrough.ts
+2026-11-16 10:04  [deploy] [31m+ 0[39m
+2026-11-16 10:04  [deploy] 
+2026-11-16 10:04  [deploy] [36m [2m❯[22m __tests__/ingest-lgim-esecuzione.test.ts:[2m90:22[22m[39m
+2026-11-16 10:04  [deploy] 
+2026-11-16 10:04  [deploy] 
+2026-11-16 10:04  [deploy] [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+2026-11-16 10:04  [deploy] 
+2026-11-16 10:04  [deploy] 
+2026-11-16 10:04  [deploy] [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m318 passed[39m[22m[90m (319)[39m
+2026-11-16 10:04  [deploy] [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3551 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (3553)[39m
+2026-11-16 10:04  [deploy] [2m   Start at [22m 10:02:30
+2026-11-16 10:04  [deploy] [2m   Duration [22m 94.46s[2m (transform 15.85s, setup 35.50s, import 29.75s, tests 161.03s, environment 46ms)[22m
+2026-11-16 10:04  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (8126c679) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
+2026-11-16 10:04  report online = Settembre 2026
+2026-11-16 10:04  già archiviato (2026/Settembre.pdf) — niente da fare.
+2026-11-16 10:04  [heartbeat] inviato (200)
