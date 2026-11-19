@@ -8057,3 +8057,95 @@ Error: Command "npm run build" exited with 1
 2026-11-17 10:33  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (ccdb2517) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
 2026-11-17 10:33  [heartbeat] inviato (200)
 2026-11-17 10:33  fatto (1 errori)
+2026-11-18 10:30  --- avvio archiviatore Xtrackers  ---
+2026-11-18 10:30  xeq2: dato al 2026-11-16, 1 snapshot nuovi
+2026-11-18 10:30  xeq2: NAV ufficiale, 206 punti
+2026-11-18 10:30  xeq4: dato al 2026-11-16, 1 snapshot nuovi
+2026-11-18 10:30  xeq4: NAV ufficiale, 206 punti
+2026-11-18 10:30  xeq6: dato al 2026-11-16, 1 snapshot nuovi
+2026-11-18 10:30  xeq6: NAV ufficiale, 206 punti
+2026-11-18 10:30  xeq8: dato al 2026-11-16, 1 snapshot nuovi
+2026-11-18 10:30  xeq8: NAV ufficiale, 206 punti
+2026-11-18 10:30  xqui: dato al 2026-11-17, 2 snapshot nuovi
+2026-11-18 10:30  xqui: NAV ufficiale, 4472 punti
+2026-11-18 10:30  xinc: dato al 2026-11-16, 1 snapshot nuovi
+2026-11-18 10:30  xinc: NAV ufficiale, 3962 punti
+2026-11-18 10:30  magr: 23 posizioni, NUOVA composizione (impronta 28bd485fa49677aa)
+2026-11-18 10:30  modr: 30 posizioni, NUOVA composizione (impronta ce7fa9b4d34c3a94)
+2026-11-18 10:30  macv: 28 posizioni, NUOVA composizione (impronta 0d84356059d04b19)
+2026-11-18 10:30  spread: snapshot 2026-11-18 10:30, 4/11 book validi
+2026-11-18 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-11-18 10:30  lookthrough IE0006GNB732: 294 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE0006WW1TQ4: 753 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE000F04HGE5: 200 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE000F354Q61: 3442 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE000HY30YW6: 279 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE000UX5WPU4: 1916 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BD4DX952: 388 posizioni al 2026-11-16
+2026-11-18 10:30  !! lookthrough IE00BFMKQ930: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-11-18 10:30  lookthrough IE00BFMKQC67: 3407 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BG04LT92: 780 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BG04M077: 520 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BGHQ0G80: 1803 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BJ0KDR00: 520 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BJZ2DD79: 1978 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BL25JM42: 412 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BL58LL31: 2092 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BTJRMP35: 1217 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BYPHT736: 1916 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough IE00BZ036J45: 3407 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0274209237: 399 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0274209740: 173 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0290355717: 561 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0290356871: 34 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0290357259: 35 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0290358224: 41 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0321462953: 879 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0322253906: 851 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0328475792: 617 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0378818131: 1312 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0478205379: 4268 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0484968903: 3155 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0524480265: 212 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU0942970798: 5328 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU1109943388: 681 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU1399300455: 303 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU1920015440: 879 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU2178481649: 2375 posizioni al 2026-11-16
+2026-11-18 10:30  lookthrough LU3003218446: 287 posizioni al 2026-11-16
+2026-11-18 10:30  !! fiscalita: nessun link trovato nella pagina — layout DWS cambiato?
+2026-11-18 10:30  [golden] XEQ2.MI: 181 date | cum Yahoo -0.40% vs NAV -1.10% (diff 0.70 pt) | rend. mediano 0.187 pt | livello max 1.75%
+2026-11-18 10:30  [golden] XEQ4.MI: 182 date | cum Yahoo +1.71% vs NAV +0.96% (diff 0.75 pt) | rend. mediano 0.198 pt | livello max 1.83%
+2026-11-18 10:30  [golden] XEQ6.MI: 184 date | cum Yahoo +4.87% vs NAV +3.99% (diff 0.88 pt) | rend. mediano 0.234 pt | livello max 1.92%
+2026-11-18 10:30  [golden] XEQ8.MI: 184 date | cum Yahoo +7.96% vs NAV +6.89% (diff 1.07 pt) | rend. mediano 0.305 pt | livello max 1.99%
+2026-11-18 10:30  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 206 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-6.63%
+2026-11-18 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-18 10:30  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-11-18 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-18 10:30  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-11-18 10:30  [xd-hold] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-11-16) — 20: swap 0.0%, HY 4.9%+EM 14.7% dei bond | 40: swap 16.14%, HY 5.0%+EM 14.7% dei bond | 60: swap 30.75%, HY 4.9%+EM 14.7% dei bond | 80: swap 43.8%, HY 4.9%+EM 14.7% dei bond
+2026-11-18 10:30  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-11-18 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 60.8}, {'nome': 'Giappone', 'pct': 5.93}, {'nome': 'Taiwan', 'pct': 3.61}]
+2026-11-18 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 28.22}, {'nome': 'Finanza', 'pct': 17.82}, {'nome': 'Prodotti industriali', 'pct': 10.98}]
+2026-11-18 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 41.12}, {'nome': 'Giappone', 'pct': 7.89}, {'nome': 'Francia', 'pct': 4.88}]
+2026-11-18 10:30  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 126 giorni, ultimo (2026-11-18): 20%=2.996M, 40%=3.235M, 60%=7.066M, 80%=6.9M
+2026-11-18 10:30  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-11-18 10:30  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-11-18 10:30  [xd-costs] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.28% · verificato 2026-11-18
+2026-11-18 10:30  [xd-changes] invariato (0 eventi)
+2026-11-18 10:30  [deploy] commit dei moduli xd
+2026-11-18 10:33  [deploy] [31m+ 0[39m
+2026-11-18 10:33  [deploy] 
+2026-11-18 10:33  [deploy] [36m [2m❯[22m __tests__/ingest-lgim-esecuzione.test.ts:[2m90:22[22m[39m
+2026-11-18 10:33  [deploy] 
+2026-11-18 10:33  [deploy] 
+2026-11-18 10:33  [deploy] [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+2026-11-18 10:33  [deploy] 
+2026-11-18 10:33  [deploy] 
+2026-11-18 10:33  [deploy] [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m318 passed[39m[22m[90m (319)[39m
+2026-11-18 10:33  [deploy] [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3551 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (3553)[39m
+2026-11-18 10:33  [deploy] [2m   Start at [22m 10:32:11
+2026-11-18 10:33  [deploy] [2m   Duration [22m 95.63s[2m (transform 16.90s, setup 37.48s, import 30.75s, tests 162.70s, environment 46ms)[22m
+2026-11-18 10:33  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (0ba3e937) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
+2026-11-18 10:33  [heartbeat] inviato (200)
+2026-11-18 10:33  fatto (1 errori)
