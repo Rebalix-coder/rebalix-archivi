@@ -311,3 +311,12 @@
 2026-11-19 08:30  liste invariate rispetto al giro precedente — indice fermo, nessun deploy
 2026-11-19 08:30  [heartbeat] inviato (200)
 2026-11-19 08:30  === giro completato (invariato) ===
+2026-11-26 08:30  === giro 2026-11 avviato (dry=False) ===
+2026-11-26 08:30  [fineco] ok: 478 ISIN
+2026-11-26 08:30  [moneyfarm] ok: 810 ISIN
+2026-11-26 08:30  [bgsaxo] ok: 255 ISIN
+2026-11-26 08:30  !! [directa] HTTP Error 410: Gone — TENGO il dato del giro precedente
+2026-11-26 08:30  !! [xtb] PDF Tabella OMI non trovato nella pagina documenti XTB — TENGO il dato del giro precedente
+2026-11-26 08:30  liste invariate rispetto al giro precedente — indice fermo, nessun deploy
+2026-11-26 08:30  [heartbeat] inviato (200)
+2026-11-26 08:30  === giro completato (invariato) ===
