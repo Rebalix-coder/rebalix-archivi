@@ -13,7 +13,11 @@ set -a; source "$HOME/backups/rebalix-db/.env"; set +a
 DEST="$HOME/backups/rebalix-holdings-foto"; mkdir -p "$DEST"
 LOG="$DEST/_foto-panieri.log"
 OGGI=$(date +%F); ET="${1:-}"; BASE="$DEST/etf_holdings-$OGGI${ET:+-$ET}"
-C="host=$PGHOST port=$PGPORT dbname=$PGDATABASE user=$PGUSER password=$PGPASSWORD"
+# (26 nov 2026) La parola d'ordine NON sta più nella stringa di connessione, che è un ARGOMENTO di pg_dump e psql e si vede nell'elenco
+# dei processi: i due programmi la leggono da PGPASSWORD nell'ambiente. Macchina, porta, base e utente restano nella stringa, come prima.
+[ -n "${PGPASSWORD+x}" ] || { echo "foto-panieri: PGPASSWORD non è definita (da ~/backups/rebalix-db/.env): non parto" >&2; exit 1; }
+export PGPASSWORD
+C="host=$PGHOST port=$PGPORT dbname=$PGDATABASE user=$PGUSER"
 log(){ echo "$(date '+%F %H:%M:%S') $*" | tee -a "$LOG"; }
 
 log "inizio foto panieri → $BASE"

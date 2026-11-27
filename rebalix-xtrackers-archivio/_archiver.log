@@ -8622,3 +8622,58 @@ Error: Command "npm run build" exited with 1
 2026-11-25 10:34  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (4c8b9f66) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
 2026-11-25 10:34  [heartbeat] inviato (200)
 2026-11-25 10:34  fatto (1 errori)
+2026-11-26 10:30  --- avvio archiviatore Xtrackers  ---
+2026-11-26 10:30  xeq2: dato al 2026-11-24, 1 snapshot nuovi
+2026-11-26 10:30  xeq2: NAV ufficiale, 212 punti
+2026-11-26 10:30  xeq4: dato al 2026-11-24, 1 snapshot nuovi
+2026-11-26 10:30  xeq4: NAV ufficiale, 212 punti
+2026-11-26 10:30  xeq6: dato al 2026-11-24, 1 snapshot nuovi
+2026-11-26 10:30  xeq6: NAV ufficiale, 212 punti
+2026-11-26 10:30  xeq8: dato al 2026-11-24, 1 snapshot nuovi
+2026-11-26 10:30  xeq8: NAV ufficiale, 212 punti
+2026-11-26 10:30  xqui: dato al 2026-11-25, 2 snapshot nuovi
+2026-11-26 10:30  xqui: NAV ufficiale, 4478 punti
+2026-11-26 10:30  xinc: dato al 2026-11-24, 1 snapshot nuovi
+2026-11-26 10:30  xinc: NAV ufficiale, 3968 punti
+2026-11-26 10:30  magr: 32 posizioni, NUOVA composizione (impronta e7e8591d4213ea2d)
+2026-11-26 10:30  modr: 43 posizioni, NUOVA composizione (impronta 0de0e0720f094435)
+2026-11-26 10:30  macv: 37 posizioni, NUOVA composizione (impronta 901b7d3057525d74)
+2026-11-26 10:30  spread: snapshot 2026-11-26 10:30, 4/11 book validi
+2026-11-26 10:30  !! lookthrough DE000A2T0VU5: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-11-26 10:30  !! lookthrough IE00BFMKQ930: nessun dato su it-it/en-lu (ETC oro?) — salto
+2026-11-26 10:30  !! fiscalita: nessun link trovato nella pagina — layout DWS cambiato?
+2026-11-26 10:30  [golden] XEQ2.MI: 187 date | cum Yahoo -1.20% vs NAV -1.50% (diff 0.30 pt) | rend. mediano 0.190 pt | livello max 1.75%
+2026-11-26 10:30  [golden] XEQ4.MI: 188 date | cum Yahoo -0.10% vs NAV -0.17% (diff 0.07 pt) | rend. mediano 0.216 pt | livello max 1.83%
+2026-11-26 10:30  [golden] XEQ6.MI: 190 date | cum Yahoo +1.95% vs NAV +2.11% (diff 0.16 pt) | rend. mediano 0.245 pt | livello max 1.92%
+2026-11-26 10:30  [golden] XEQ8.MI: 190 date | cum Yahoo +4.39% vs NAV +4.19% (diff 0.20 pt) | rend. mediano 0.308 pt | livello max 1.99%
+2026-11-26 10:30  [xd-perf] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-performance.ts: 212 sedute dal 2026-01-29, max DD: 20%=-4.16%, 40%=-4.98%, 60%=-5.78%, 80%=-7.74%
+2026-11-26 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:74: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-26 10:30  out[datetime.datetime.utcfromtimestamp(ts / 1000).date().isoformat()] = box[0][0]
+2026-11-26 10:30  /home/rebalix/backups/rebalix-xtrackers-archivio/_scripts/gen_xd_performance.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+2026-11-26 10:30  out[datetime.datetime.utcfromtimestamp(ts).date().isoformat()] = round(c, 4)
+2026-11-26 10:30  [xd-hold] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-holdings.ts (asof 2026-11-24) — 20: swap 0.0%, HY 4.9%+EM 14.6% dei bond | 40: swap 15.86%, HY 4.9%+EM 14.6% dei bond | 60: swap 30.45%, HY 4.9%+EM 14.6% dei bond | 80: swap 43.71%, HY 4.9%+EM 14.6% dei bond
+2026-11-26 10:30  [xd-look] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-lookthrough.ts
+2026-11-26 10:30  controllo 80%: paesi az. top3 [{'nome': "Stati Uniti d'America", 'pct': 61.02}, {'nome': 'Giappone', 'pct': 5.81}, {'nome': 'Taiwan', 'pct': 3.47}]
+2026-11-26 10:30  settori top3 [{'nome': "Tecnologia dell'informazione", 'pct': 28.34}, {'nome': 'Finanza', 'pct': 17.63}, {'nome': 'Prodotti industriali', 'pct': 11.01}]
+2026-11-26 10:30  bond top3 [{'nome': "Stati Uniti d'America", 'pct': 41.28}, {'nome': 'Giappone', 'pct': 7.91}, {'nome': 'Francia', 'pct': 4.85}]
+2026-11-26 10:30  [xd-aum] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-aum.ts: 134 giorni, ultimo (2026-11-26): 20%=2.996M, 40%=3.235M, 60%=7.066M, 80%=6.9M
+2026-11-26 10:30  [xd-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-tax.ts: XEQ wl=0% (alq 26), XQUI wl=13.084% (alq 24.23), semestre 2026-07-01→2026-12-31
+2026-11-26 10:30  [xeon-tax] scritto /home/rebalix/progetti/rebalix/lib/blog/xeon-tax.ts: wl=78.08% → aliquota 15.46% (semestre 2026-07-01→2026-12-31)
+2026-11-26 10:30  [xd-costs] scritto /home/rebalix/progetti/rebalix/lib/blog/xd-costs.ts: XEQ6 0.4% · LS60 0.28% · verificato 2026-11-26
+2026-11-26 10:30  [xd-changes] invariato (0 eventi)
+2026-11-26 10:30  [deploy] commit dei moduli xd
+2026-11-26 10:33  [deploy] [31m+ 0[39m
+2026-11-26 10:33  [deploy] 
+2026-11-26 10:33  [deploy] [36m [2m❯[22m __tests__/ingest-lgim-esecuzione.test.ts:[2m90:22[22m[39m
+2026-11-26 10:33  [deploy] 
+2026-11-26 10:33  [deploy] 
+2026-11-26 10:33  [deploy] [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+2026-11-26 10:33  [deploy] 
+2026-11-26 10:33  [deploy] 
+2026-11-26 10:33  [deploy] [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m321 passed[39m[22m[90m (322)[39m
+2026-11-26 10:33  [deploy] [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3598 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (3600)[39m
+2026-11-26 10:33  [deploy] [2m   Start at [22m 10:32:05
+2026-11-26 10:33  [deploy] [2m   Duration [22m 93.84s[2m (transform 15.12s, setup 36.03s, import 28.41s, tests 160.30s, environment 49ms)[22m
+2026-11-26 10:33  !! [deploy] CANCELLO deploy-prod.sh: exit 1 (31bf24f5) - moduli su GitHub ma NON in produzione (voluto se suite/typecheck rossi)
+2026-11-26 10:33  [heartbeat] inviato (200)
+2026-11-26 10:33  fatto (1 errori)
